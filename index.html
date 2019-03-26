@@ -18,7 +18,6 @@
      .jumbotron {
       margin-bottom: 0;
       background-color: #808080
-
     }
    
     /* Adicionar uma cor de plano de fundo cinza e algum preenchimento ao rodapé */
@@ -31,15 +30,12 @@
   </style>
 </head>
 <body>
-
 <!--<div class="jumbotron">
   <div class="container text-center">
     <h1>Suporte</h1>      
     <p>Bitmax Informatica</p>
   </div>
 </div> -->
-
-
 <div class="container">
   <h2>Área de Suporte</h2>
   <ul class="nav nav-tabs">
@@ -48,11 +44,65 @@
     <li><a data-toggle="tab" href="#menu2">Manuais</a></li>
     <li><a data-toggle="tab" href="#menu3">Perguntas Frequentes</a></li>
   </ul>
-
   <div class="tab-content">
     <div id="home" class="tab-pane fade in active">
-      <h3>Institucional</h3>
-      <p>Informática é um termo usado para descrever o conjunto das ciências relacionadas à coleta, armazenamento, transmissão e processamento de informações em meios digitais, estando incluídas neste grupo: a ciência da computação, os sistemas de informação, a teoria da informação, o processo de cálculo, a análise numérica e os métodos teóricos da representação dos conhecimentos e da modelagem dos problemas. Mas também a informática pode ser entendida como ciência que estuda o conjunto de informações e conhecimentos por meios digitais.<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></p>   
+      <h3>Correções</h3>
+      <b>Últimas mudanças:</b><br /><br />
+      1.  Erro ao puxar relatório da Curva ABC de Produtos;<br />
+      2.  Erro ao iniciar vendas clicando na pesquisa de produtos (Faturamento e Outras Saídas/Entradas); <br />
+      3.  Erro de escrita no PDV, “Cancelar”;<br />
+      4.  Erro de cálculos causado pelo Balanço, Faturamento e Outras Saídas/Entradas na Ficha Cardex;<br />
+      5.  Erro ao alterar tipo de pesquisa de produtos no faturamento e outras;<br />
+      6.  Adicionado atalhos e correções nas exclusões do PDV (erro no Financeiro);<br />
+      7.  Adicionado recebimento direto do “pedido atual” no PDV;<br />
+      8.  Erro ao realizar um balanço. Os custos dos produtos eram zerados;<br />
+      9.  Erro no cadastro de fornecedor na importação (aborta processo);<br />
+      10. Erro na atribuição do grupo na importação (não permanece o grupo definido);<br />
+      11. Adicionado a gravação do cálculo do fator de conversão usado na importação (auditoria);<br />
+      12. Erro ao clicar diretamente em data (pedido ou emissão) no Faturamento. Ao digitar qualquer caractere ele traz a própria <br />licenciada e ao clicar em “Cancelar” ele apresenta uma tela de erro;<br />
+      13. Erro ao realizar um recebimento e colocar a forma de pagamento como cartão através do código ou digitar o nome “Cartão” no campo de digitação da forma de pagamento, não está aparecendo a janela com as opções de preenchimento das informações, porém ao clicar na lupa a janela aparece normalmente. O mesmo acontece com a opção “Cheque”;<br />
+      14. Erro no Param. ICMS. Ajustado o tamanho dos campos, pois alguns valores apresentavam visualização comprometida devido a quantidade de caracteres;<br />
+      15. Erro no Faturamento. Inserir um item, clicar no botão “OK” e em seguida aplicar um desconto, o valor do item é zerado. Só funciona corretamente quando utilizado a tecla “Enter”;<br />
+      16. Erro no desconto e acréscimo de Outras Saídas/Entradas; <br />
+      17. Erro ao pesquisar do PDV. Não funciona após o recebimento;<br />
+      18. Erro na entrada manual de produtos no estoque. Traz a CFOP (11021) e alíquota de ICMS (17%) padrão sem que o usuário digite os dados. Pode induzir o mesmo a fazer entrada com dados incorretos;<br />
+      19. Erro ao informar o fornecedor máster do produto. Ao cadastrar é gerado código de barras automático (inválido para emissão de notas);<br />
+      20. Erro no relatório de Faturamento Detalhado. Mostra código diferente do código do produto;<br />
+      21. Adicionado recursos no Inventário essenciais para bases provenientes de conversão e para o layout padrão exigido;<br />
+      22. Erro no botão de CFOP em: Faturamento; Outras Saídas/Entradas. Ao clicar e fechar sem selecionar nada, apresenta o erro de “Acesso Violation”;<br />
+      23. Erro no Faturamento e Outras Saídas/Entradas.  Permitem deletar itens sem clicar em alterar;<br />
+      24. Adicionado na tela de pesquisa de entrada por XML o campo para visualizar o que está sendo digitado;<br />
+      25. Adicionado novo limite de caracteres para e-mail no DB. Aumentado 30 para 50;<br />
+      26. Erro no Recebimento. Ao adicionar o item está aparecendo a janela com as opções de preenchimento das informações de Cartão;<br />
+      27. Erro no Balanço. Ao clicar na pesquisa de produtos e fechar sem selecionar nada, apresenta o erro de “Acesso Violation”;<br />
+      28. Erro ao alimentar a quantidade com valor acima de 999 no PDV;<br />
+      29. Erro ao adicionar filtro de fornecedor no relatório de “Ficha de Balanço”;<br />
+      30. Adicionado no relatório de “Ficha de Balanço” o nome do fornecedor escolhido no filtro. Anteriormente apresentava apenas o código; <br />
+      31. Erro ao definir a finalidade em Outras Saídas/Entradas. Leva apenas “Complementar/Saída” em ambos os módulos;<br />
+      32. Erro no cadastro da Classificação Fiscal. Quando o cliente é novo e cria uma configuração para outro estado, exibe a mensagem que já existe um registro com os mesmos dados, sendo necessário cancelar para fazer novamente. (Corrigido para novas INSTALAÇÕES);<br />
+      33. Adicionado novo limite de caracteres no campo “Mensagem p/ Nota” no Faturamento. Aumentado 100 para 200, visto que determinado cliente solicitou que seja possível adicionar duas mensagens pré-definidas, pois é comum ao ramo atacadista;<br />
+      34. Erro de registro existente ao tentar criar um movimento de caixa após um recebimento;
+      35. Adicionado nova mascara para placa de veículos. Padrão 2019;<br />
+      36. Adicionado, no cadastro de clientes, a obrigatoriedade para os campos: “CEP”; “Contribuinte” e “Simples?”;<br />
+      37. Adicionado nova validação para busca da classificação fiscal na tela de Vínculo de Produtos / Importação. Agora pelo “Número da Classificação”. Anteriormente buscava-se pelo “REG / ID”;<br />
+      38. Erro nas validações de campos na tela de Vínculo de Produtos/Importação. Quando as informações eram apenas digitadas e não selecionadas pela busca, apresentava-se o erro: “is not a valid integer value”;<br />
+      39. Adicionado filtro de “Subgrupo” no Relatório de Produtos;<br />
+      40. Adicionado filtro de “Inutilizadas” no Relatório de Vendas no Período;<br />
+      41. Adicionado bloqueio de edição do item no PDV; <br />
+      42. Erro na NFC-e do PDV. Apresentava-se “Fornecedor não Identificado” mesmo quando informado o CPF/CNPJ; <br />
+      43. Erro na impressão do balanço. Imprimia-se e visualizava-se apenas a primeira página;<br />
+      44. Erro de conexão do DB na porta 3689. Válido para próximos instaladores;<br />
+      45. Erro no relatório “Ficha de Balanço”. Estava informando o nome contábil do produto, não o completo;<br />
+      46. Erro na impressão do faturamento, PDV – recebimento e serviço. Não apresentavam as informações do cliente; <br />
+      47. Adicionado filtro de “Grupos” e “Subgrupo” no Relatório de Posição do Estoque;<br />
+      48. Erro no relatório “Fechamento do Dia”. Ao abrir apresentava a mensagem: “Não foi possível carregar as opções de filtro! Comunique a Bitmax Informática.”;<br />
+      49. Erro no relatório “Vendas por Vendedor”. Não exibia os totais de espécies e de notas;<br />
+      50. Erro no Recebimento. Ao adicionar parcelas nas formas de pagamento: cartão ou cheque, aparecia a janela com as opções de preenchimento das informações no fim do processo;<br />
+      51. Adicionado nova query no relatório de “Vendas por Vendedor”. Apresentava demasiada lentidão em bases com movimentação considerável; <br />
+      52. Erro na impressão do PDV. Não funcionava o Ctrl+F8 a partir na versão 2.0;<br />
+      53. Adicionado novo relatório de “Vendas em Cartão”;<br />
+      54. Adicionado nova query e nova estrutura no relatório de “Tabela de Preços”. Adicionado filtro de “Subgrupo” e adicionado novas colunas com todos os preços do produto, bem como a correção de itens duplicados devido existência de múltiplos fornecedores; <br />
+   
     </div>
     <div id="menu1" class="tab-pane fade">
       <h3>Downloads</h3>
@@ -85,7 +135,6 @@
     </div>
   </div>
 </div><br>
-
 <div class="container">    
   <div class="row">
     <div class="col-sm-4">
@@ -121,18 +170,55 @@
       <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     </div>
     <div id="menu3" class="tab-pane fade">
-      <h3>Perguntas Frequentes</h3>
-      <p>Em desenvolvimento.</p>
-      <a href='#pergunta1'>teste</a>
-      Resposta 1 : <a name='#pergunta1'>resposta teste</a> - <a href=#top>Topo</a>
+      
+     <div class="container">
+  <h3>Dúvidas Frequentes</h3>
+  <p>Verifique se a sua questão não está respondida nas FAQs abaixo, caso contrário, entre em contato com o suporte.</p>
+  <div class="panel-group" id="accordion">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">1 - Mantenha seu banco de dados seguro</a>
+        </h4>
+      </div>
+      <div id="collapse1" class="panel-collapse collapse in">
+        <div class="panel-body">Para que os servidores que hospedam os SISTEMAS DIGISAT possam garantir um bom nível de confiabilidade e robustez ao sistema, devem ser observados alguns aspectos, os quais se ignorados podem vir a comprometer a integridade do hardware do servidor e do banco de dados:.</div>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">2 - Como cadastrar um usuário no G6?</a>
+        </h4>
+      </div>
+      <div id="collapse2" class="panel-collapse collapse">
+        <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">3 - Lista de Servidores SMTP para envio da NF-E/NFC-E/SAT por e-mail.</a>
+        </h4>
+      </div>
+      <div id="collapse3" class="panel-collapse collapse">
+        <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+      </div>
+    </div>
+  </div> 
+</div>   
+
+
       <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     </div>
   </div>
 </div>
-
 <footer class="container-fluid text-center">
   <p>Bitmax Copyright</p>  
 </footer>
-
 </body>
 </html>
