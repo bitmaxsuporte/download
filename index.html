@@ -102,6 +102,45 @@
       52. Erro na impressão do PDV. Não funcionava o Ctrl+F8 a partir na versão 2.0;<br />
       53. Adicionado novo relatório de “Vendas em Cartão”;<br />
       54. Adicionado nova query e nova estrutura no relatório de “Tabela de Preços”. Adicionado filtro de “Subgrupo” e adicionado novas colunas com todos os preços do produto, bem como a correção de itens duplicados devido existência de múltiplos fornecedores; <br />
+      ###################################################################################################################<br />
+      MUDANÇAS 1.90M<br />
+      ###################################################################################################################<br />
+      55. Adicionado tipo de impressão analítico ao relatório “Vendas em Cartão”;<br />
+	  56. Erro nos cálculos de estoque para bases de conversão. Estavam desconsiderando o estoque anterior ao realizar: Entrada, Saída e Balanço;<br />
+	  57. Erro de custos do produto em: Cadastro do Produto, Posição do Estoque e Inventário;<br />
+	  58. Erro no “Ficha Cardex”. Não estava levando em consideração o estoque anterior(conversão);<br />
+	  59. Erro na Importação. Apresentava erro ao importar XMLs com número elevado de itens;<br />
+	  60. Adicionado, na importação, valor unitário do produto ao lado do valor total;<br />
+	  61. Adicionado, na importação, padrão “0,00” na busca do vínculo de produtos;<br />
+	  62. Erro na Importação com número considerável de itens. Ao vincular um item, a seleção sempre retornava ao topo, tendo que descer toda a barra para vincular os últimos.<br />
+	  63. Erro ortográfico. Corrigidos diversos erros dentro do sistema;<br />
+	  64. Erro nos relatórios de Posição do Faturamento e Posição do Faturamento Detalhado. O Balanço estava sendo contabilizado nesses relatórios;<br />
+	  65. Erro na Baixa de Títulos. Não matinha a pesquisa dos títulos do cliente selecionado;<br />
+	  66. Erro na Baixa de Títulos. Alguns títulos apresentavam R$ 0,00 no valor da baixa;<br />
+	  67. Erro no relatório Posição de Títulos em Aberto. Apresentava tracejados em cima dos “Totais do Dia”;<br />
+	  68. Erro no relatório Títulos Baixados. Apresentava tracejados em cima dos “Totais do Dia”; <br />
+	  69. Erro no relatório Posição de Títulos Abertos por Cliente. Apresentava informações sobrepostas, tanto na visualização, quanto na impressão; <br />
+	  70. Adicionado busca por código em Títulos do Cliente;<br />
+	  71. Erro na pesquisa do Registro de Títulos a Receber. Ao pesquisar títulos abertos estava trazendo os que já foram baixados;<br />
+	  72. Adicionado filtro de “Subgrupo” no Relatório de Vendas por grupo;<br />
+	  73. Adicionado filtro de “Subgrupo” no Relatório de Ficha de Balanço;<br />
+	  74. Erro no Recebimento de Vendas. Estava exibindo as opções de preenchimento das informações de cartão ao excluir o recebimento e ao adicionar parcelas menores que o valor total;<br />
+	  75. Adicionado o apelido da forma de pagamento no formulário de adição de títulos da Baixa em Lote;<br />
+	  76. Erro ao excluir recebimento quando recebido em cheque. Apresentava a mensagem “daseaset not in edit”, depois perguntava se desejava excluir normalmente;<br />
+	  77. Erro na tela de cadastro de veículos. Quando pesquisado o cliente, o campo de telefone apresentava apenas os 8 primeiros dígitos;<br />
+	  78. Erro no Recebimento de Vendas. Quando não preenchidos e/ou deletados os números da “Orpag” e “Autorização” do cartão, o recebimento apresenta diversos erros e consequentemente a NF não é transmitida;<br /> 
+	  79. Erro no Balanço. Não selecionava itens com mais de um fornecedor;<br />
+	  80. Erro no Balanço. A ordem do ponteiro estava incorreta. O foco saia do fornecedor e ia para observações, não para busca do produto;<br />
+      NFe:<br />
+	  81. Adicionado novas schemas e dlls;<br />
+	  82. Adicionado a dll “libxmlsec” no arquivo de configurações;<br />
+	  83. Erro na separação por pastas. Deixou de separar as NFes e NFCes por ano/mês;<br />
+	  84. Erro na NFC-e quando informado CPF/CNPJ avulso no PDV. Estava levando o endereço do cliente da licenciada;<br />
+	  85. Adicionado nova query na aba pedidos, afim de não mostrar notas realizadas pelo balanço;<br />
+	  86. Erro na Emissão de notas. Após uma atualização do Windows Update nos sistemas operacionais Windows 8 a 10, vários usuários começaram a ter problemas na conexão segura com o SEFAZ;<br />
+	  87. Adicionado nova query para visualização dos XMLs inutilizados pelo PDV antigo;<br />
+	  88. Erro impressão da inutilização. Buscava a data da autorização do XML, dessa forma XMLs inutilizados e sem vínculos não poderiam ser impressos;<br />
+
    
     </div>
     <div id="menu1" class="tab-pane fade">
@@ -111,18 +150,18 @@
   <div class="row">
     <div class="col-sm-4">
       <div class="panel panel-primary">
-        <div class="panel-heading">BITMAX EMPRESARIAL 2.00L</div>
+        <div class="panel-heading">BITMAX EMPRESARIAL 1.90M</div>
         <div class="panel-body"><img src="https://static.wixstatic.com/media/a05cd2_07ed83808cb44afd85a27be92af0065e.png/v1/fill/w_426,h_86,al_c,q_80,usm_0.33_1.00_0.00/a05cd2_07ed83808cb44afd85a27be92af0065e.webp" class="img-responsive" style="width:100%" alt="Image"></div>
-        <div class="panel-footer">Instalador versão 20.02.2019+IBexpert</div>
-       <a href="http://www.mediafire.com/file/k8oo433wu1c17na/BitmaxInstall_Empresarial_2.00L.rar/file" class="btn btn-primary btn-block" target="_blank">Download</a>
+        <div class="panel-footer">Instalador versão 21.05.2019+IBexpert</div>
+       <a href="https://www.mediafire.com/file/g7dw3d7hg5sy8xn/Instalador_1.90M.rar/file" class="btn btn-primary btn-block" target="_blank">Download</a>
       </div>
     </div>
     <div class="col-sm-4"> 
       <div class="panel panel-primary">
-        <div class="panel-heading">BITMAX EMPRESARIAL 2.00L</div>
+        <div class="panel-heading">BITMAX EMPRESARIAL 1.90M</div>
         <div class="panel-body"><img src="https://static.wixstatic.com/media/a05cd2_07ed83808cb44afd85a27be92af0065e.png/v1/fill/w_426,h_86,al_c,q_80,usm_0.33_1.00_0.00/a05cd2_07ed83808cb44afd85a27be92af0065e.webp" class="img-responsive" style="width:100%" alt="Image"></div>
-        <div class="panel-footer">Executáveis Atualização 04.04.2019+IBexpert</div>
-        <a href="https://www.mediafire.com/file/rzzs7q0rb5jh4y3/Atualiza%E7%F5es_Empresarial_04.04.2019.rar/file" class="btn btn-primary btn-block" class="btn btn-primary btn-block" target="_blank">Download</a>
+        <div class="panel-footer">Executáveis Atualização 21.05.2019+IBexpert</div>
+        <a href="https://www.mediafire.com/file/ee6my2rog87ocwy/Atualiza%E7%E3o_Empresaria_21.05.2019.rar/file" class="btn btn-primary btn-block" class="btn btn-primary btn-block" target="_blank">Download</a>
       </div>
     </div>
     <div class="col-sm-4"> 
