@@ -46,101 +46,10 @@
   </ul>
   <div class="tab-content">
     <div id="home" class="tab-pane fade in active">
-      <h3>Correções</h3>
-      <b>Últimas mudanças:</b><br /><br />
-      1.  Erro ao puxar relatório da Curva ABC de Produtos;<br />
-      2.  Erro ao iniciar vendas clicando na pesquisa de produtos (Faturamento e Outras Saídas/Entradas); <br />
-      3.  Erro de escrita no PDV, “Cancelar”;<br />
-      4.  Erro de cálculos causado pelo Balanço, Faturamento e Outras Saídas/Entradas na Ficha Cardex;<br />
-      5.  Erro ao alterar tipo de pesquisa de produtos no faturamento e outras;<br />
-      6.  Adicionado atalhos e correções nas exclusões do PDV (erro no Financeiro);<br />
-      7.  Adicionado recebimento direto do “pedido atual” no PDV;<br />
-      8.  Erro ao realizar um balanço. Os custos dos produtos eram zerados;<br />
-      9.  Erro no cadastro de fornecedor na importação (aborta processo);<br />
-      10. Erro na atribuição do grupo na importação (não permanece o grupo definido);<br />
-      11. Adicionado a gravação do cálculo do fator de conversão usado na importação (auditoria);<br />
-      12. Erro ao clicar diretamente em data (pedido ou emissão) no Faturamento. Ao digitar qualquer caractere ele traz a própria <br />licenciada e ao clicar em “Cancelar” ele apresenta uma tela de erro;<br />
-      13. Erro ao realizar um recebimento e colocar a forma de pagamento como cartão através do código ou digitar o nome “Cartão” no campo de digitação da forma de pagamento, não está aparecendo a janela com as opções de preenchimento das informações, porém ao clicar na lupa a janela aparece normalmente. O mesmo acontece com a opção “Cheque”;<br />
-      14. Erro no Param. ICMS. Ajustado o tamanho dos campos, pois alguns valores apresentavam visualização comprometida devido a quantidade de caracteres;<br />
-      15. Erro no Faturamento. Inserir um item, clicar no botão “OK” e em seguida aplicar um desconto, o valor do item é zerado. Só funciona corretamente quando utilizado a tecla “Enter”;<br />
-      16. Erro no desconto e acréscimo de Outras Saídas/Entradas; <br />
-      17. Erro ao pesquisar do PDV. Não funciona após o recebimento;<br />
-      18. Erro na entrada manual de produtos no estoque. Traz a CFOP (11021) e alíquota de ICMS (17%) padrão sem que o usuário digite os dados. Pode induzir o mesmo a fazer entrada com dados incorretos;<br />
-      19. Erro ao informar o fornecedor máster do produto. Ao cadastrar é gerado código de barras automático (inválido para emissão de notas);<br />
-      20. Erro no relatório de Faturamento Detalhado. Mostra código diferente do código do produto;<br />
-      21. Adicionado recursos no Inventário essenciais para bases provenientes de conversão e para o layout padrão exigido;<br />
-      22. Erro no botão de CFOP em: Faturamento; Outras Saídas/Entradas. Ao clicar e fechar sem selecionar nada, apresenta o erro de “Acesso Violation”;<br />
-      23. Erro no Faturamento e Outras Saídas/Entradas.  Permitem deletar itens sem clicar em alterar;<br />
-      24. Adicionado na tela de pesquisa de entrada por XML o campo para visualizar o que está sendo digitado;<br />
-      25. Adicionado novo limite de caracteres para e-mail no DB. Aumentado 30 para 50;<br />
-      26. Erro no Recebimento. Ao adicionar o item está aparecendo a janela com as opções de preenchimento das informações de Cartão;<br />
-      27. Erro no Balanço. Ao clicar na pesquisa de produtos e fechar sem selecionar nada, apresenta o erro de “Acesso Violation”;<br />
-      28. Erro ao alimentar a quantidade com valor acima de 999 no PDV;<br />
-      29. Erro ao adicionar filtro de fornecedor no relatório de “Ficha de Balanço”;<br />
-      30. Adicionado no relatório de “Ficha de Balanço” o nome do fornecedor escolhido no filtro. Anteriormente apresentava apenas o código; <br />
-      31. Erro ao definir a finalidade em Outras Saídas/Entradas. Leva apenas “Complementar/Saída” em ambos os módulos;<br />
-      32. Erro no cadastro da Classificação Fiscal. Quando o cliente é novo e cria uma configuração para outro estado, exibe a mensagem que já existe um registro com os mesmos dados, sendo necessário cancelar para fazer novamente. (Corrigido para novas INSTALAÇÕES);<br />
-      33. Adicionado novo limite de caracteres no campo “Mensagem p/ Nota” no Faturamento. Aumentado 100 para 200, visto que determinado cliente solicitou que seja possível adicionar duas mensagens pré-definidas, pois é comum ao ramo atacadista;<br />
-      34. Erro de registro existente ao tentar criar um movimento de caixa após um recebimento;
-      35. Adicionado nova mascara para placa de veículos. Padrão 2019;<br />
-      36. Adicionado, no cadastro de clientes, a obrigatoriedade para os campos: “CEP”; “Contribuinte” e “Simples?”;<br />
-      37. Adicionado nova validação para busca da classificação fiscal na tela de Vínculo de Produtos / Importação. Agora pelo “Número da Classificação”. Anteriormente buscava-se pelo “REG / ID”;<br />
-      38. Erro nas validações de campos na tela de Vínculo de Produtos/Importação. Quando as informações eram apenas digitadas e não selecionadas pela busca, apresentava-se o erro: “is not a valid integer value”;<br />
-      39. Adicionado filtro de “Subgrupo” no Relatório de Produtos;<br />
-      40. Adicionado filtro de “Inutilizadas” no Relatório de Vendas no Período;<br />
-      41. Adicionado bloqueio de edição do item no PDV; <br />
-      42. Erro na NFC-e do PDV. Apresentava-se “Fornecedor não Identificado” mesmo quando informado o CPF/CNPJ; <br />
-      43. Erro na impressão do balanço. Imprimia-se e visualizava-se apenas a primeira página;<br />
-      44. Erro de conexão do DB na porta 3689. Válido para próximos instaladores;<br />
-      45. Erro no relatório “Ficha de Balanço”. Estava informando o nome contábil do produto, não o completo;<br />
-      46. Erro na impressão do faturamento, PDV – recebimento e serviço. Não apresentavam as informações do cliente; <br />
-      47. Adicionado filtro de “Grupos” e “Subgrupo” no Relatório de Posição do Estoque;<br />
-      48. Erro no relatório “Fechamento do Dia”. Ao abrir apresentava a mensagem: “Não foi possível carregar as opções de filtro! Comunique a Bitmax Informática.”;<br />
-      49. Erro no relatório “Vendas por Vendedor”. Não exibia os totais de espécies e de notas;<br />
-      50. Erro no Recebimento. Ao adicionar parcelas nas formas de pagamento: cartão ou cheque, aparecia a janela com as opções de preenchimento das informações no fim do processo;<br />
-      51. Adicionado nova query no relatório de “Vendas por Vendedor”. Apresentava demasiada lentidão em bases com movimentação considerável; <br />
-      52. Erro na impressão do PDV. Não funcionava o Ctrl+F8 a partir na versão 2.0;<br />
-      53. Adicionado novo relatório de “Vendas em Cartão”;<br />
-      54. Adicionado nova query e nova estrutura no relatório de “Tabela de Preços”. Adicionado filtro de “Subgrupo” e adicionado novas colunas com todos os preços do produto, bem como a correção de itens duplicados devido existência de múltiplos fornecedores; <br />
-      ###################################################################################################################<br />
-      MUDANÇAS 1.90M<br />
-      ###################################################################################################################<br />
-      55. Adicionado tipo de impressão analítico ao relatório “Vendas em Cartão”;<br />
-	  56. Erro nos cálculos de estoque para bases de conversão. Estavam desconsiderando o estoque anterior ao realizar: Entrada, Saída e Balanço;<br />
-	  57. Erro de custos do produto em: Cadastro do Produto, Posição do Estoque e Inventário;<br />
-	  58. Erro no “Ficha Cardex”. Não estava levando em consideração o estoque anterior(conversão);<br />
-	  59. Erro na Importação. Apresentava erro ao importar XMLs com número elevado de itens;<br />
-	  60. Adicionado, na importação, valor unitário do produto ao lado do valor total;<br />
-	  61. Adicionado, na importação, padrão “0,00” na busca do vínculo de produtos;<br />
-	  62. Erro na Importação com número considerável de itens. Ao vincular um item, a seleção sempre retornava ao topo, tendo que descer toda a barra para vincular os últimos.<br />
-	  63. Erro ortográfico. Corrigidos diversos erros dentro do sistema;<br />
-	  64. Erro nos relatórios de Posição do Faturamento e Posição do Faturamento Detalhado. O Balanço estava sendo contabilizado nesses relatórios;<br />
-	  65. Erro na Baixa de Títulos. Não matinha a pesquisa dos títulos do cliente selecionado;<br />
-	  66. Erro na Baixa de Títulos. Alguns títulos apresentavam R$ 0,00 no valor da baixa;<br />
-	  67. Erro no relatório Posição de Títulos em Aberto. Apresentava tracejados em cima dos “Totais do Dia”;<br />
-	  68. Erro no relatório Títulos Baixados. Apresentava tracejados em cima dos “Totais do Dia”; <br />
-	  69. Erro no relatório Posição de Títulos Abertos por Cliente. Apresentava informações sobrepostas, tanto na visualização, quanto na impressão; <br />
-	  70. Adicionado busca por código em Títulos do Cliente;<br />
-	  71. Erro na pesquisa do Registro de Títulos a Receber. Ao pesquisar títulos abertos estava trazendo os que já foram baixados;<br />
-	  72. Adicionado filtro de “Subgrupo” no Relatório de Vendas por grupo;<br />
-	  73. Adicionado filtro de “Subgrupo” no Relatório de Ficha de Balanço;<br />
-	  74. Erro no Recebimento de Vendas. Estava exibindo as opções de preenchimento das informações de cartão ao excluir o recebimento e ao adicionar parcelas menores que o valor total;<br />
-	  75. Adicionado o apelido da forma de pagamento no formulário de adição de títulos da Baixa em Lote;<br />
-	  76. Erro ao excluir recebimento quando recebido em cheque. Apresentava a mensagem “daseaset not in edit”, depois perguntava se desejava excluir normalmente;<br />
-	  77. Erro na tela de cadastro de veículos. Quando pesquisado o cliente, o campo de telefone apresentava apenas os 8 primeiros dígitos;<br />
-	  78. Erro no Recebimento de Vendas. Quando não preenchidos e/ou deletados os números da “Orpag” e “Autorização” do cartão, o recebimento apresenta diversos erros e consequentemente a NF não é transmitida;<br /> 
-	  79. Erro no Balanço. Não selecionava itens com mais de um fornecedor;<br />
-	  80. Erro no Balanço. A ordem do ponteiro estava incorreta. O foco saia do fornecedor e ia para observações, não para busca do produto;<br />
-      NFe:<br />
-	  81. Adicionado novas schemas e dlls;<br />
-	  82. Adicionado a dll “libxmlsec” no arquivo de configurações;<br />
-	  83. Erro na separação por pastas. Deixou de separar as NFes e NFCes por ano/mês;<br />
-	  84. Erro na NFC-e quando informado CPF/CNPJ avulso no PDV. Estava levando o endereço do cliente da licenciada;<br />
-	  85. Adicionado nova query na aba pedidos, afim de não mostrar notas realizadas pelo balanço;<br />
-	  86. Erro na Emissão de notas. Após uma atualização do Windows Update nos sistemas operacionais Windows 8 a 10, vários usuários começaram a ter problemas na conexão segura com o SEFAZ;<br />
-	  87. Adicionado nova query para visualização dos XMLs inutilizados pelo PDV antigo;<br />
-	  88. Erro impressão da inutilização. Buscava a data da autorização do XML, dessa forma XMLs inutilizados e sem vínculos não poderiam ser impressos;<br />
-
+     
+   <center> 
+<img src="https://clubealphaville.com.br/wp-content/uploads/2018/12/MANUTEN%C3%87%C3%83O-878x439.jpg"  alt="some text" >
+<center/>
    
     </div>
     <div id="menu1" class="tab-pane fade">
@@ -153,15 +62,15 @@
         <div class="panel-heading">BITMAX EMPRESARIAL 2.10M</div>
         <div class="panel-body"><img src="https://static.wixstatic.com/media/a05cd2_07ed83808cb44afd85a27be92af0065e.png/v1/fill/w_426,h_86,al_c,q_80,usm_0.33_1.00_0.00/a05cd2_07ed83808cb44afd85a27be92af0065e.webp" class="img-responsive" style="width:100%" alt="Image"></div>
         <div class="panel-footer">Instalador versão 21.05.2019+IBexpert</div>
-       <a href="http://www.mediafire.com/file/xkpnu2c1y7qkjjn/Instalador+2.10M.rar" class="btn btn-primary btn-block" target="_blank">Download</a>
+       <a href="http://www.mediafire.com/file/xkpnu2c1y7qkjjn/Instalador_2.10M.rar/file" class="btn btn-primary btn-block" target="_blank">Download</a>
       </div>
     </div>
     <div class="col-sm-4"> 
       <div class="panel panel-primary">
         <div class="panel-heading">BITMAX EMPRESARIAL 2.31M</div>
         <div class="panel-body"><img src="https://static.wixstatic.com/media/a05cd2_07ed83808cb44afd85a27be92af0065e.png/v1/fill/w_426,h_86,al_c,q_80,usm_0.33_1.00_0.00/a05cd2_07ed83808cb44afd85a27be92af0065e.webp" class="img-responsive" style="width:100%" alt="Image"></div>
-        <div class="panel-footer">Executáveis Atualização 13.01.2020</div>
-        <a href="https://www.mediafire.com/file/1rx7flouo6pqax8/Atualiza%E7%E3o_2.31M_13.01.2020.rar/file" class="btn btn-primary btn-block" class="btn btn-primary btn-block" target="_blank">Download</a>
+        <div class="panel-footer">Executáveis Atualização 17.01.2020</div>
+        <a href="https://www.mediafire.com/file/324os6vpodc20r2/Empresarial_2.31M_17.01.2020.rar/file" class="btn btn-primary btn-block" class="btn btn-primary btn-block" target="_blank">Download</a>
       </div>
     </div>
     <div class="col-sm-4"> 
@@ -169,7 +78,7 @@
         <div class="panel-heading">BITMAX EMPRESARIAL 2.30M</div>
         <div class="panel-body"><img src="https://static.wixstatic.com/media/a05cd2_07ed83808cb44afd85a27be92af0065e.png/v1/fill/w_426,h_86,al_c,q_80,usm_0.33_1.00_0.00/a05cd2_07ed83808cb44afd85a27be92af0065e.webp" class="img-responsive" style="width:100%" alt="Image"></div>
         <div class="panel-footer">Executáveis Atualização 31.10.2019+IBexpert</div>
-        <a href="https://www.mediafire.com/file/wc9a3lhyw5nmvki/Atualiza%E7%E3o_Empresarial__31.10.2019.rar/file" class="btn btn-primary btn-block" class="btn btn-primary btn-block" target="_blank">Download</a>
+        <a href="http://www.mediafire.com/file/wc9a3lhyw5nmvki/Atualiza%25C3%25A7%25C3%25A3o_Empresarial__31.10.2019.rar/file" class="btn btn-primary btn-block" class="btn btn-primary btn-block" target="_blank">Download</a>
       </div>
     </div>
   </div>
