@@ -128,9 +128,15 @@ body {
 .video:nth-child(odd) a:before {
 	background: url(../img/video.svg) no-repeat;
 } 
-
-
-
+.video2:nth-child(even) a:before {
+	background: url(../img/video.svg) no-repeat;
+} 
+.video3:nth-child(odd) a:before {
+	background: url(../img/video.svg) no-repeat;
+} 
+.video4:nth-child(even) a:before {
+	background: url(../img/video.svg) no-repeat;
+} 
 
 
 @media(min-width: 769px) {
