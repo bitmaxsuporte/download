@@ -1,3 +1,5 @@
+
+
 .cabecalhoPrincipal .container {
 	display: flex;
 	align-items: center;
@@ -40,11 +42,16 @@
 .conteudoPrincipal-cursos {
 	display: flex;
 	flex-wrap: wrap;
+
 }
 
 .conteudoPrincipal-cursos-link {
 	width: 23%;
 	margin: 1%;
+	border-style:solid;
+	border-width:2px;
+	border-radius:0px 20px 0px 20px;
+    border-color: black;
 }
 
 .conteudoPrincipal-cursos-link:nth-child(4n) {
