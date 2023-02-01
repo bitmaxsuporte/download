@@ -14,35 +14,50 @@ echo  3. MODO AVANCADO
 echo  4. SAIR               
 echo __________________________ 
                
-set /p opcao= Escolha uma opcao:
-echo _______________________
-if %opcao% equ 1 goto opcao1
-if %opcao% equ 2 goto opcao2
-if %opcao% equ 3 goto opcao3
-if %opcao% equ 4 goto opcao4
-if %opcao% GEQ 5 goto opcao5
 
+@echo off
+
+:menu
+echo Escolha uma opção:
+set /p opcao=
+
+rem Utilize o comando "choice" para validar a entrada do usuário
+choice /c 12345 /n /m "Escolha uma opção:"
+if errorlevel 5 goto opcao5
+if errorlevel 4 goto opcao4
+if errorlevel 3 goto opcao3
+if errorlevel 2 goto opcao2
+if errorlevel 1 goto opcao1
 
 :opcao1
 cls
-if exist "C:\Bitmax\Suporte" (
-bitsadmin /transfer InstallBitmax /priority normal https://raw.githubusercontent.com/bitmaxsuporte/download/gh-pages/files/BitmaxInstall_Empresarial.rar C:\Bitmax\Suporte\BitmaxInstall_Empresarial.rar
-cd C:\Bitmax\Suporte
-cd c:\arquiv~1\winrar
-rar x -ep -o+ C:\Bitmax\Suporte\BitmaxInstall_Empresarial.rar C:\Bitmax\Suporte
-explorer.exe /e, /n,C:\Bitmax\Suporte
-msg %username% /TIME:15 Download do instalador em C:\Bitmax\Suporte. 
-goto menu
-) else (
-mkdir "C:\Bitmax\Suporte
-bitsadmin /transfer InstallBitmax /priority normal https://raw.githubusercontent.com/bitmaxsuporte/download/gh-pages/files/BitmaxInstall_Empresarial.rar C:\Bitmax\Suporte\BitmaxInstall_Empresarial.rar
-cd C:\Bitmax\Suporte
-cd c:\arquiv~1\winrar
-rar x -ep -o+ C:\Bitmax\Suporte\BitmaxInstall_Empresarial.rar C:\Bitmax\Suporte
-explorer.exe /e, /n,C:\Bitmax\Suporte
-msg %username% /TIME:15 Download do instalador em C:\Bitmax\Suporte. 
-goto menu
+
+rem Defina o caminho de download e extração
+set "downloadPath=C:\Bitmax\Suporte\BitmaxInstall_Empresarial.rar"
+set "extractPath=C:\Bitmax\Suporte"
+
+rem Verifique se a pasta de extração existe, se não crie-a
+if not exist "%extractPath%" (
+    md "%extractPath%"
 )
+
+rem Utilize o PowerShell para baixar o arquivo
+powershell -Command "Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/bitmaxsuporte/download/gh-pages/files/BitmaxInstall_Empresarial.rar' -OutFile '%downloadPath%'"
+
+rem Mude o diretório atual para o caminho de extração
+cd /d "%extractPath%"
+
+rem Extraia o arquivo baixado
+"c:\Program Files\WinRAR\UnRAR.exe" x -ep -o+ %downloadPath%
+
+rem Abra o caminho de extração no explorador
+explorer.exe /e, /n,%extractPath%
+
+rem Envie uma mensagem para o usuário com o caminho de download
+msg %username% /TIME:15 Download do instalador em %extractPath%. 
+
+rem Volte para o menu
+goto menu
 
 :opcao2
 cls

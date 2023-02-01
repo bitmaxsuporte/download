@@ -137,6 +137,10 @@ body {
 .video4:nth-child(even) a:before {
 	background: url(../img/video.svg) no-repeat;
 } 
+.bat:nth-child(odd) a:before {
+	background: url(../img/tools.svg) no-repeat;
+} 
+
 
 
 @media(min-width: 769px) {
