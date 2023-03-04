@@ -85,6 +85,7 @@ cls
 if exist "C:\Bitmax\Suporte" (
 del /s /q "C:\Bitmax\BitmaxEmpresarial\Bin\BitmaxNFe_backup.exe"
 del /s /q "C:\Bitmax\BitmaxEmpresarial\Bin\BITMAXEMPRESARIAL_backup.exe"
+del /s /q "C:\Bitmax\BitmaxEmpresarial\Bin\LoadOptions.xml"
 rd /s /q "C:\Bitmax\BitmaxEmpresarial\Bin\Schemas"
 del /s /q "C:\Bitmax\Suporte\Backup.rar"
 rd /s /q "C:\Bitmax\Suporte\Backup"
@@ -104,6 +105,7 @@ rar x -ep -o+ C:\Bitmax\Suporte\Atualizacao.rar C:\Bitmax\Suporte\Update
 rar x -ep -o+ C:\Bitmax\Suporte\Update\Backup.rar C:\Bitmax\Suporte\Backup
 move C:\Bitmax\Suporte\Update\BITMAXEMPRESARIAL.exe C:\Bitmax\BitmaxEmpresarial\Bin
 move C:\Bitmax\Suporte\Update\BitmaxNFe.exe C:\Bitmax\BitmaxEmpresarial\Bin
+move C:\Bitmax\Suporte\Update\LoadOptions.xml C:\Bitmax\BitmaxEmpresarial\Bin
 move C:\Bitmax\Suporte\Update\BitmaxSpedFiscal.exe C:\Bitmax\BitmaxEmpresarial\Bin
 move C:\Bitmax\Suporte\Update\Configuracoes.exe C:\Bitmax\BitmaxEmpresarial\Bin
 move C:\Bitmax\Suporte\Update\Backup.rar C:\Bitmax\Suporte
@@ -118,6 +120,7 @@ goto menu
 ) else (
 del /s /q "C:\Bitmax\BitmaxEmpresarial\Bin\BitmaxNFe_backup.exe"
 del /s /q "C:\Bitmax\BitmaxEmpresarial\Bin\BITMAXEMPRESARIAL_backup.exe"
+del /s /q "C:\Bitmax\BitmaxEmpresarial\Bin\LoadOptions.xml"
 rd /s /q "C:\Bitmax\BitmaxEmpresarial\Bin\Schemas"
 del /s /q "C:\Bitmax\BitmaxEmpresarial\Bin\Configuracoes.exe"
 del /s /q "C:\Bitmax\Suporte\Backup.rar"
@@ -139,6 +142,7 @@ rar x -ep -o+ C:\Bitmax\Suporte\Atualizacao.rar C:\Bitmax\Suporte\Update
 rar x -ep -o+ C:\Bitmax\Suporte\Update\Backup.rar C:\Bitmax\Suporte\Backup
 move C:\Bitmax\Suporte\Update\BITMAXEMPRESARIAL.exe C:\Bitmax\BitmaxEmpresarial\Bin
 move C:\Bitmax\Suporte\Update\BitmaxNFe.exe C:\Bitmax\BitmaxEmpresarial\Bin
+move C:\Bitmax\Suporte\Update\LoadOptions.xml C:\Bitmax\BitmaxEmpresarial\Bin
 move C:\Bitmax\Suporte\Update\BitmaxSpedFiscal.exe C:\Bitmax\BitmaxEmpresarial\Bin
 move C:\Bitmax\Suporte\Update\Configuracoes.exe C:\Bitmax\BitmaxEmpresarial\Bin
 move C:\Bitmax\Suporte\Update\Backup.rar C:\Bitmax\Suporte
