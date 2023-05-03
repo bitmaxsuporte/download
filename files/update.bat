@@ -96,7 +96,11 @@ ren C:\Bitmax\BitmaxEmpresarial\Bin\BitmaxNFe.exe BitmaxNFe_backup.exe
 rd /s /q "C:\Bitmax\Suporte\Update"
 bitsadmin /transfer AtualizadorBitmax /priority normal https://raw.githubusercontent.com/bitmaxsuporte/download/gh-pages/files/Atualizacao.rar C:\Bitmax\Suporte\Atualizacao.rar
 bitsadmin /transfer BackupBitmax /priority normal https://bitmaxsuporte.github.io/download/files/Backup.rar C:\Bitmax\Suporte\Backup.rar
+if exist "C:\Bitmax\Suporte\ibexpert.exe" (
+echo Existe ibexpert jah existe!
+) else (
 bitsadmin /transfer Ibexpert /priority normal https://raw.githubusercontent.com/bitmaxsuporte/download/gh-pages/files/exe/ibexpert.exe C:\Bitmax\Suporte\ibexpert.exe
+)
 mkdir "C:\Bitmax\Suporte\Backup
 mkdir "C:\Bitmax\Suporte\Update
 cd C:\Bitmax\Suporte
@@ -133,7 +137,11 @@ cd C:\Bitmax\Suporte
 mkdir "C:\Bitmax\Suporte
 bitsadmin /transfer AtualizadorBitmaxBitmax /priority normal https://raw.githubusercontent.com/bitmaxsuporte/download/gh-pages/files/Atualizacao.rar C:\Bitmax\Suporte\Atualizacao.rar
 bitsadmin /transfer BackupBitmax /priority normal https://bitmaxsuporte.github.io/download/files/Backup.rar C:\Bitmax\Suporte\Backup.rar
+if exist "C:\Bitmax\Suporte\ibexpert.exe" (
+echo Existe ibexpert jah existe!
+) else (
 bitsadmin /transfer Ibexpert /priority normal https://raw.githubusercontent.com/bitmaxsuporte/download/gh-pages/files/exe/ibexpert.exe C:\Bitmax\Suporte\ibexpert.exe
+)
 mkdir "C:\Bitmax\Suporte\Backup
 mkdir "C:\Bitmax\Suporte\Update
 cd C:\Bitmax\Suporte
@@ -160,7 +168,7 @@ goto menu
 :opcao4
 exit
 
-:op5
+:opcao5
 cls
 echo -----------------------------------
 echo Opcao invalida! Escolha outra opcao
