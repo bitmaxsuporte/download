@@ -140,6 +140,9 @@ body {
 .bat:nth-child(odd) a:before {
 	background: url(../img/tools.svg) no-repeat;
 } 
+.backup2:nth-child(even) a:before {
+	background: url(../img/backup.svg) no-repeat;
+} 
 
 
 
