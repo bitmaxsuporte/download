@@ -35,6 +35,16 @@ class ConfigManager:
         return caminho_instalacao
 
     @staticmethod
+    def load_caminho_backup():
+        caminho_arquivo = os.path.join(get_executable_dir(), ConfigManager.CONFIG_FILE)
+        caminho_backup = ""
+        if os.path.exists(caminho_arquivo):
+            with open(caminho_arquivo, "r") as f:
+                caminho_backup = f.read().strip()
+        caminho_backup = os.path.join(caminho_backup, "Backup")
+        return caminho_backup
+
+    @staticmethod
     def existe_arquivo_config():
         caminho_arquivo = os.path.join(get_executable_dir(), ConfigManager.CONFIG_FILE)
         return os.path.exists(caminho_arquivo)
@@ -267,12 +277,18 @@ class BackupApplication:
             self.instalacao_button.config(state=tk.NORMAL)
 
     def abrir_pasta_backup(self):
-        if (
-            self.backup_manager
-            and self.backup_manager.pasta_backup
-            and os.path.exists(self.backup_manager.pasta_backup)
-        ):
-            os.startfile(self.backup_manager.pasta_backup)
+        caminho_backup = ConfigManager.load_caminho_backup()
+        if caminho_backup and os.path.exists(caminho_backup):
+            # Usar o módulo subprocess para abrir a pasta com o gerenciador de arquivos padrão do sistema
+            try:
+                if sys.platform == "win32":
+                    subprocess.Popen(["explorer", caminho_backup])
+                elif sys.platform == "darwin":
+                    subprocess.Popen(["open", caminho_backup])
+                else:
+                    subprocess.Popen(["xdg-open", caminho_backup])
+            except Exception as e:
+                messagebox.showwarning("Erro ao Abrir Pasta", f"Não foi possível abrir a pasta: {str(e)}")
         else:
             messagebox.showwarning("Pasta de Backup", "A pasta de backup não foi configurada.")
 
@@ -289,6 +305,12 @@ import os
 
 if hasattr(sys, "_MEIPASS"):
     os.chdir(sys._MEIPASS)
+
+# Cria o arquivo "config.txt" se ele não existir no diretório de trabalho
+config_file_path = os.path.join(get_executable_dir(), "config.txt")
+if not os.path.exists(config_file_path):
+    with open(config_file_path, "w") as config_file:
+        config_file.write("")
 
 # Cria a janela principal
 root = tk.Tk()
