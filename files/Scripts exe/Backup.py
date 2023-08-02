@@ -8,6 +8,7 @@ import datetime
 import threading
 import tkinter.ttk as ttk
 import sys
+import subprocess
 
 # Função para obter o diretório do executável
 def get_executable_dir():
@@ -42,6 +43,10 @@ class ConfigManager:
             with open(caminho_arquivo, "r") as f:
                 caminho_backup = f.read().strip()
         caminho_backup = os.path.join(caminho_backup, "Backup")
+        print(f"Caminho da pasta de backup: {caminho_backup}")
+        caminho_backup = caminho_backup.replace("\\", "/")
+        print(f"Caminho da pasta de backup: {caminho_backup}")
+
         return caminho_backup
 
     @staticmethod
@@ -277,18 +282,19 @@ class BackupApplication:
             self.instalacao_button.config(state=tk.NORMAL)
 
     def abrir_pasta_backup(self):
+       
         caminho_backup = ConfigManager.load_caminho_backup()
+        caminho_backup = caminho_backup.replace("\\", "/")
+        print(f"Caminho da pasta de backup após substituição da barra invertida: {caminho_backup}")
+
         if caminho_backup and os.path.exists(caminho_backup):
             # Usar o módulo subprocess para abrir a pasta com o gerenciador de arquivos padrão do sistema
             try:
                 if sys.platform == "win32":
-                    subprocess.Popen(["explorer", caminho_backup])
-                elif sys.platform == "darwin":
-                    subprocess.Popen(["open", caminho_backup])
-                else:
-                    subprocess.Popen(["xdg-open", caminho_backup])
+                   subprocess.Popen(f'explorer "{caminho_backup}"', shell=True)
             except Exception as e:
-                messagebox.showwarning("Erro ao Abrir Pasta", f"Não foi possível abrir a pasta: {str(e)}")
+                print(f"Erro ao tentar abrir o diretório: {e}")
+
         else:
             messagebox.showwarning("Pasta de Backup", "A pasta de backup não foi configurada.")
 
