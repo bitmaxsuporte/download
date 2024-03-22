@@ -1,5 +1,6 @@
 body {
-	background-color: #F2F5F7;
+	background: rgb(2,0,36);
+background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(93,102,137,1) 37%, rgba(181,181,231,1) 59%);
 	font-family: 'Open Sans',Arial,sans-serif;
 }
 
@@ -9,7 +10,7 @@ body {
 }
 
 .cabecalhoPrincipal {
-	background-color: #FFF;
+	background-color: #ffffff89;
 	padding: 20px 0;
 }
 
@@ -21,7 +22,7 @@ body {
 
 .cabecalhoPrincipal-titulo a {
 	text-decoration: none;
-	color: inherit;
+	color: inherit;s
 }
 
 .cabecalhoPrincipal-nav-link {
