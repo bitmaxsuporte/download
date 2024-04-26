@@ -1,175 +1,73 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Painel do Suporte</title>
+<!doctype html>
+<html>
 
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;800&display=swap" rel="stylesheet" />
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Download</title>
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/flexbox.css">
+</head>
 
-		<link rel="stylesheet" href="./src/css/reset.css">
-		<link rel="stylesheet" href="./src/css/estilos.css">
-		<link rel="stylesheet" href="./src/css/scrollbar.css">
-	</head>
-	<body>
-		<header>
-			<a href="#">
-				<img src="./src/imagens/ferramentas-de-reparacao.png" alt="pokebola" class="logo" />
-			</a>
-			<button id="botao-alterar-tema">
-				<img src="./src/imagens/sun.png" alt="imagem do sol" class="imagem-botao" />
-			</button>
-		</header>
-		<main>
-			<ul class="listagem-download">
-				<li class="cartao-download">
-					<div class="informacoes">
-						<span>Instalador</span>
-					</div>
+<body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js">
+  </script>
+  <script src="../js/index.js"></script>
 
-					<img src="./src/imagens/instalar.png" alt="instalador" class="gif" />
+  <header class="cabecalhoPrincipal">
+    <div class="container">
+      <h1 class="cabecalhoPrincipal-titulo">
+        <a href="#">Ferramentas de Suporte</a>
+      </h1>
 
-					<ul class="tipos">
-						<li class="tipo download"><a href="src/files/BitmaxInstall_Empresarial.rar" target="_blank">Download</a></li>
-					</ul>
+  </header>
 
-					<p class="descricao">Instalação do sistema.</p>
-				</li>
+  <main class="conteudoPrincipal">
+    <script>
+      function funcao1()
+      {
+      alert("ATENÇÃO: Novo IBPT liberado data 04/10/2023!");
+      }
+     function funcao2()
+      {
+      alert("NADA AQUI");
+      }
 
-				<li class="cartao-download">
-					<div class="informacoes">
-						<span>Atualização</span>
-						<span>05.04</span>
-					</div>
+      </script>
 
-					<img src="./src/imagens/atualizacao-do-sistema.png" alt="atualização" class="gif" />
+    <div class="container">
+      <!-- <h2 class="subtitulo">Nossos cursos</h2> -->
 
-					<ul class="tipos">
-						<li class="tipo download"><a href="src/files/Atualizacao.rar" target="_blank">Download</a></li>
-					</ul>
+      <nav>
+        <ul class="conteudoPrincipal-cursos">
+          <li class="conteudoPrincipal-cursos-link instalador"><a href="files/BitmaxInstall_Empresarial.rar" target="_blank">Instalador</a></li>
+          <li class="conteudoPrincipal-cursos-link update" id="atualizacao"><a href="files/Atualizacao.rar" target="_blank" onclick="funcao1()">Atualização 22.03.2024</a></li>
+          <li class="conteudoPrincipal-cursos-link update2"><a href="" target="_blank" onclick="funcao2()">Correção NFe</a></li>
+          <li class="conteudoPrincipal-cursos-link table"><a href="files/IBPT.sql" target="_blank">Tabela IBPT</a></li>
+          <li class="conteudoPrincipal-cursos-link tools"><a href="files/exe/ibexpert.exe"target="_blank">IBExpert</a></li>
+          <li class="conteudoPrincipal-cursos-link database"><a href="files/exe/Instalador_Firebird.exe" target="_blank">Firebird</a></li>
+          <li class="conteudoPrincipal-cursos-link backup"><a href="files/Backup.rar" target="_blank">Rotina de Backup</a></li>
+          <li class="conteudoPrincipal-cursos-link manual"><a href="files/pdf/Manual Bitmax.chm" target="_blank">Manual Completo</a></li>
+          <li class="conteudoPrincipal-cursos-link manual2"><a href="files/pdf/Venda rápida.pdf" target="_blank">PDF Venda Rápida</a></li>
+          <li class="conteudoPrincipal-cursos-link manual3"><a href="files/pdf/Entrada por XML.pdf" target="_blank">PDF Entrada por XML</a></li>
+          <li class="conteudoPrincipal-cursos-link manual4"><a href="files/pdf/tabela de CFOP.pdf" target="_blank">PDF Tabela de CFOP</a></li>
+          <li class="conteudoPrincipal-cursos-link manual5"><a href="files/pdf/tutorial cadastro produtos.pdf" target="_blank">PDF Cadastro de Produtos</a></li>
+          <li class="conteudoPrincipal-cursos-link video"><a href="files/videos/Venda rapida.mp4" target="_blank">Venda Rápida</a></li>
+          <li class="conteudoPrincipal-cursos-link video2"><a href="files/videos/Importação de XML.mp4" target="_blank">Entrada por XML </a></li>
+          <li class="conteudoPrincipal-cursos-link video3"><a href="files/videos/Baixar XML.mp4" target="_blank">Baixar XML</a></li>
+          <li class="conteudoPrincipal-cursos-link video4"><a href="files/videos/Cadastro de Produtos.mp4" target="_blank">Cadastro de Produtos</a></li>
+          <li class="conteudoPrincipal-cursos-link bat"><a href="files/update.bat" target="_blank">Bat</a></li>
+          <li class="conteudoPrincipal-cursos-link backup2"><a href="files/exe/backup.exe" target="_blank">Backup Manual</a></li>
 
-					<p class="descricao">Atualização do sistema.</p>
-				</li>
+        </ul>
+      </nav>
+    </div>
 
-				<li class="cartao-download">
-					<div class="informacoes">
-						<span>Firebird</span>
-					</div>
 
-					<img src="./src/imagens/armazenamento-de-banco-de-dados.png" alt="firebird" class="gif" />
+  </main>
 
-					<ul class="tipos">
-						<li class="tipo download"><a href="src/files/exe/Instalador_Firebird.exe" target="_blank">Download</a></li>
-					</ul>
 
-					<p class="descricao">Instalador do Firebird.</p>
-				</li>
+</body>
 
-				<li class="cartao-download">
-					<div class="informacoes">
-						<span>Tabela IBPT</span>
-					</div>
-
-					<img src="./src/imagens/exe.png" alt="ibpt" class="gif" />
-
-					<ul class="tipos">
-						<li class="tipo download"><a href="src/files/IBPT.sql" target="_blank">Download</a></li>
-					</ul>
-
-					<p class="descricao">Tabela IBPT atual</p>
-				</li>
-
-				<li class="cartao-download">
-					<div class="informacoes">
-						<span>IBExpert</span>
-					</div>
-
-					<img src="./src/imagens/tabela-de-banco-de-dados.png" alt="ibexpert" class="gif" />
-
-					<ul class="tipos">
-						<li class="tipo download"><a href="src/files/exe/ibexpert.exe" target="_blank">Download</a></li>
-					</ul>
-
-					<p class="descricao">Exe do IBExpert</p>
-				</li>
-
-				<li class="cartao-download">
-					<div class="informacoes">
-						<span>BAT</span>
-					</div>
-
-					<img src="./src/imagens/prompt.png" alt="cmd" class="gif" />
-
-					<ul class="tipos">
-						<li class="tipo download"><a href="src/files/update.bat" target="_blank">Download</a></li>
-					</ul>
-
-					<p class="descricao">Instalador do Firebird.</p>
-				</li>
-
-				<li class="cartao-download">
-					<div class="informacoes">
-						<span>Rotina Backup</span>
-					</div>
-
-					<img src="./src/imagens/copia-de-seguranca.png" alt="backup" class="gif" />
-
-					<ul class="tipos">
-						<li class="tipo download"><a href="src/files/Backup.rar" target="_blank">Download</a></li>
-					</ul>
-
-					<p class="descricao">Rotina de Backup.</p>
-				</li>
-
-				<li class="cartao-download">
-					<div class="informacoes">
-						<span>Manual</span>
-					</div>
-
-					<img src="./src/imagens/manual.png" alt="manual" class="gif" />
-
-					<ul class="tipos">
-						<li class="tipo download"><a href="src/files/pdf/Manual Bitmax.chm" target="_blank">Download</a></li>
-					</ul>
-
-					<p class="descricao">Manual completo do sistema.</p>
-				</li>
-
-				<li class="cartao-download">
-					<div class="informacoes">
-						<span>PDF </span>
-					</div>
-
-					<img src="./src/imagens/pdf.png" alt="pdf" class="gif" />
-
-					<ul class="tipos">
-						<li class="tipo download"><a href="src/pages/pdf.html">Ir para PDF</a></li>
-					</ul>
-
-					<p class="descricao">Tutoriais em PDF.</p>
-				</li>
-
-				<li class="cartao-download">
-					<div class="informacoes">
-						<span>VIDEOS</span>
-					</div>
-
-					<img src="./src/imagens/aula-de-video.png" alt="videos" class="gif" />
-
-					<ul class="tipos">
-						<li class="tipo download"><a href="src/pages/videos.html">Ir para Vídeos</a></li>
-					</ul>
-
-					<p class="descricao">Tutoriais em vídeos.</p>
-				</li>
-
-				
-			</ul>
-		</main>
-
-		<script src="./src/js/index.js"></script>
-	</body>
 </html>

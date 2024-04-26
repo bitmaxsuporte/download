@@ -1,0 +1,225 @@
+body {
+	background: rgb(2,0,36);
+background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(93,102,137,1) 37%, rgba(181,181,231,1) 59%);
+	font-family: 'Open Sans',Arial,sans-serif;
+}
+
+.container {
+	width: 94%;
+	margin: 0 auto;
+}
+
+.cabecalhoPrincipal {
+	background-color: #ffffff89;
+	padding: 20px 0;
+}
+
+.cabecalhoPrincipal-titulo {
+	font-weight: bold;
+	font-size: 2em;
+	margin-bottom: 20px;
+}
+
+.cabecalhoPrincipal-titulo a {
+	text-decoration: none;
+	color: inherit;s
+}
+
+.cabecalhoPrincipal-nav-link {
+	padding: 10px;
+	margin-bottom: 10px;
+	color: #9799A6;
+	background-color: #FFF;
+	text-decoration: none;
+	transition: .5s;
+	display: block;
+
+	border-bottom: 1px solid #9799A6;
+}
+
+.conteudoPrincipal {
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.subtitulo {
+	font-weight: bold;
+	font-size: 32px;
+	margin-bottom: 10px;
+	text-align: center;
+}
+
+.conteudoPrincipal-cursos-link {
+	height: 100px;
+	background-color: #FFF;
+	text-align: center;
+	margin: 1%;
+	transition: .3s;
+	box-shadow: 2px 2px 2px #CCC;
+	position: relative;
+	border-radius: 20px;
+}
+
+.conteudoPrincipal-cursos-link a {
+	text-decoration: none;
+	color: #000;
+	font-weight: bold;
+	display: block;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.conteudoPrincipal-cursos-link:hover {
+	box-shadow: 10px 10px 10px #CCC;
+}
+
+.conteudoPrincipal-cursos-link a:before {
+	content: '';
+	display: block;
+	width: 50px;
+	height: 50px;
+	margin: 10px auto;
+}
+
+
+ /* .teste {
+	background: url(../img/install.svg) no-repeat;	
+ } */
+
+
+ .instalador:nth-child(odd) a:before {
+	background: url(../img/install.svg) no-repeat;
+} 
+.update:nth-child(even) a:before {
+	background: url(../img/update.svg) no-repeat;
+} 
+.update2:nth-child(odd) a:before {
+	background: url(../img/update.svg) no-repeat;
+} 
+.table:nth-child(even) a:before {
+	background: url(../img/table.svg) no-repeat;
+} 
+.tools:nth-child(odd) a:before {
+	background: url(../img/tools.svg) no-repeat;
+} 
+.database:nth-child(even) a:before {
+	background: url(../img/database.svg) no-repeat;
+} 
+.backup:nth-child(odd) a:before {
+	background: url(../img/backup.svg) no-repeat;
+} 
+.manual:nth-child(even) a:before {
+	background: url(../img/manual.svg) no-repeat;
+} 
+.manual2:nth-child(odd) a:before {
+	background: url(../img/manual.svg) no-repeat;
+} 
+.manual3:nth-child(even) a:before {
+	background: url(../img/manual.svg) no-repeat;
+} 
+.manual4:nth-child(odd) a:before {
+	background: url(../img/manual.svg) no-repeat;
+} 
+.manual5:nth-child(even) a:before {
+	background: url(../img/manual.svg) no-repeat;
+} 
+.video:nth-child(odd) a:before {
+	background: url(../img/video.svg) no-repeat;
+} 
+.video2:nth-child(even) a:before {
+	background: url(../img/video.svg) no-repeat;
+} 
+.video3:nth-child(odd) a:before {
+	background: url(../img/video.svg) no-repeat;
+} 
+.video4:nth-child(even) a:before {
+	background: url(../img/video.svg) no-repeat;
+} 
+.bat:nth-child(odd) a:before {
+	background: url(../img/tools.svg) no-repeat;
+} 
+.backup2:nth-child(even) a:before {
+	background: url(../img/backup.svg) no-repeat;
+} 
+
+
+
+@media(min-width: 769px) {
+
+	.container {
+		width: 85%;	
+	}
+
+	.subtitulo {
+		text-align: left;
+	}
+
+	.cabecalhoPrincipal-nav-link {
+		border-radius: 5px;
+		border: 1px solid #9799A6;
+	}
+
+	.cabecalhoPrincipal-nav-link:hover {
+		color: #FFF;
+		background-color: #9799A6;
+	}
+
+	.cabecalhoPrincipal-titulo {
+		margin: 0;
+	}
+
+	.cabecalhoPrincipal-nav {
+		width: auto;
+	}
+
+	.cabecalhoPrincipal-nav-link {
+		width: auto;
+		margin: 0 0 0 10px;
+	}
+
+	.rodapePrincipal-contatoForm {
+		margin-top: 0;
+		text-align: left;
+	}
+
+	.conteudoPrincipal-cursos-link:nth-child(3n) {
+		margin-right: 0;
+	}
+
+	.conteudoPrincipal-cursos-link:nth-child(3n+1) {
+		margin-left: 0;
+	}
+
+}
+
+@media(min-width: 1000px) {
+	.conteudoPrincipal-cursos-link {
+		margin: 1.333%;
+	}
+
+	.conteudoPrincipal-cursos-link:nth-child(3n) {
+		margin-right: 1.33%;
+	}
+
+	.conteudoPrincipal-cursos-link:nth-child(3n+1) {
+		margin-left: 1.333%;
+	}
+
+	.conteudoPrincipal-cursos-link:nth-child(4n) {
+		margin-right: 0;
+	}
+
+	.conteudoPrincipal-cursos-link:nth-child(4n+1) {
+		margin-left: 0;
+	}
+
+	.videoSobre-sobre {
+		margin-left: 1.5em;
+	}
+
+}
+
+
