@@ -1,4 +1,0 @@
-update RCV_DOCFPGTO
-set FPGTO_NOME = 'À VISTA',
-    FPGTO_APELIDO = 'À VISTA'
-where FPGTO_ID = 1
