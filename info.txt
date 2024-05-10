@@ -1,6 +1,19 @@
 ÚLTIMAS ALTERAÇÕES:
 
-09/05/2024:
+10/05/2024:
 
-- Permissão de transportadora com PF sem obrigação de Inscrição estadual
-- Tabela IBPT 24.01 D
+* Compare novo.
+* Outras entradas/saídas canceladas retirada no relatório.
+* Relatório de apuração de estoque em ferramentas > análise e diagnósticos.
+* Cadastro de tributação federal Cadastros>Compras/Vendas>Tributação federal.
+* Relatório de vendas por região.
+* Relatório ficha kardex retirado notas de substituição.
+* Relatório de CFOP por NFe de entrada.
+* Botão de tributação federal em outras entradas/saída.
+* Filtro de região e vendedores no relatório de clientes.
+* Emissão de NFe com Cadastro de transportadora com Pessoa física sem obrigação de IE.
+
+02/05/2024:
+
+* Tabela IBPT 2401 D.
+* Mudança rotina de backup automático corrigido para clientes que não executava.

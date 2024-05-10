@@ -46,6 +46,13 @@ main .listagem-download {
 	justify-content: center;
 }
 
+main .listagem-changelog {
+    color: black;
+	font-weight: bold;
+	gap: 30px;
+	justify-content: center;
+}
+
 main .cartao-download {
 	background-color: #d8e3ec;
 	width: 200px;
