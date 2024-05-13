@@ -47,8 +47,8 @@ main .listagem-download {
 }
 
 main .listagem-changelog {
-    color: black;
-	font-weight: bold;
+    color: white;
+	font-weight:100;
 	gap: 30px;
 	justify-content: center;
 }

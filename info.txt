@@ -2,6 +2,11 @@
 
 10/05/2024:
 
+* Novos Schemas de NFe.
+* Correção de CST e valores do PIS e COFINS no XML da NFe.
+
+10/05/2024:
+
 * Compare novo.
 * Outras entradas/saídas canceladas retirada no relatório.
 * Relatório de apuração de estoque em ferramentas > análise e diagnósticos.
