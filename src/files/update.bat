@@ -26,7 +26,7 @@ if %opcao% GEQ 5 goto opcao5
 :opcao1
 cls
 if exist "C:\Bitmax\Suporte" (
-bitsadmin /transfer InstallBitmax /priority normal https://raw.githubusercontent.com/bitmaxsuporte/download/gh-pages/files/BitmaxInstall_Empresarial.rar C:\Bitmax\Suporte\BitmaxInstall_Empresarial.rar
+bitsadmin /transfer InstallBitmax /priority normal https://raw.githubusercontent.com/bitmaxsuporte/download/master/src/files/BitmaxInstall_Empresarial.rar C:\Bitmax\Suporte\BitmaxInstall_Empresarial.rar
 cd C:\Bitmax\Suporte
 cd c:\arquiv~1\winrar
 rar x -ep -o+ C:\Bitmax\Suporte\BitmaxInstall_Empresarial.rar C:\Bitmax\Suporte
@@ -35,7 +35,7 @@ msg %username% /TIME:15 Download do instalador em C:\Bitmax\Suporte.
 goto menu
 ) else (
 mkdir "C:\Bitmax\Suporte
-bitsadmin /transfer InstallBitmax /priority normal https://raw.githubusercontent.com/bitmaxsuporte/download/gh-pages/files/BitmaxInstall_Empresarial.rar C:\Bitmax\Suporte\BitmaxInstall_Empresarial.rar
+bitsadmin /transfer InstallBitmax /priority normal https://raw.githubusercontent.com/bitmaxsuporte/download/master/src/files/BitmaxInstall_Empresarial.rar C:\Bitmax\Suporte\BitmaxInstall_Empresarial.rar
 cd C:\Bitmax\Suporte
 cd c:\arquiv~1\winrar
 rar x -ep -o+ C:\Bitmax\Suporte\BitmaxInstall_Empresarial.rar C:\Bitmax\Suporte
@@ -50,7 +50,7 @@ if exist "C:\Bitmax\Suporte" (
 del /s /q "C:\Bitmax\Suporte\Backup.rar"
 rd /s /q "C:\Bitmax\Suporte\Backup"
 rd /s /q "C:\Bitmax\Suporte\Update"
-bitsadmin /transfer AtualizadorBitmax /priority normal https://raw.githubusercontent.com/bitmaxsuporte/download/gh-pages/files/Atualizacao.rar C:\Bitmax\Suporte\Atualizacao.rar
+bitsadmin /transfer AtualizadorBitmax /priority normal https://raw.githubusercontent.com/bitmaxsuporte/download/master/src/files/Atualizacao.rar C:\Bitmax\Suporte\Atualizacao.rar
 bitsadmin /transfer BackupBitmax /priority normal https://bitmaxsuporte.github.io/download/files/Backup.rar C:\Bitmax\Suporte\Backup.rar
 cd C:\Bitmax\Suporte
 mkdir "C:\Bitmax\Suporte\Backup
@@ -67,7 +67,7 @@ rd /s /q "C:\Bitmax\Suporte\Backup"
 rd /s /q "C:\Bitmax\Suporte\Update"
 cd C:\Bitmax\Suporte
 mkdir "C:\Bitmax\Suporte
-bitsadmin /transfer AtualizadorBitmaxBitmax /priority normal https://raw.githubusercontent.com/bitmaxsuporte/download/gh-pages/files/Atualizacao.rar C:\Bitmax\Suporte\Atualizacao.rar
+bitsadmin /transfer AtualizadorBitmaxBitmax /priority normal https://raw.githubusercontent.com/bitmaxsuporte/download/master/src/files/Atualizacao.rar C:\Bitmax\Suporte\Atualizacao.rar
 bitsadmin /transfer BackupBitmax /priority normal https://bitmaxsuporte.github.io/download/files/Backup.rar C:\Bitmax\Suporte\Backup.rar
 cd C:\Bitmax\Suporte
 mkdir "C:\Bitmax\Suporte\Backup
@@ -94,12 +94,12 @@ del /s /q "C:\Bitmax\BitmaxEmpresarial\Bin\Configuracoes.exe"
 ren C:\Bitmax\BitmaxEmpresarial\Bin\BITMAXEMPRESARIAL.exe BITMAXEMPRESARIAL_backup.exe
 ren C:\Bitmax\BitmaxEmpresarial\Bin\BitmaxNFe.exe BitmaxNFe_backup.exe
 rd /s /q "C:\Bitmax\Suporte\Update"
-bitsadmin /transfer AtualizadorBitmax /priority normal https://raw.githubusercontent.com/bitmaxsuporte/download/gh-pages/files/Atualizacao.rar C:\Bitmax\Suporte\Atualizacao.rar
+bitsadmin /transfer AtualizadorBitmax /priority normal https://raw.githubusercontent.com/bitmaxsuporte/download/master/src/files/Atualizacao.rar C:\Bitmax\Suporte\Atualizacao.rar
 bitsadmin /transfer BackupBitmax /priority normal https://bitmaxsuporte.github.io/download/files/Backup.rar C:\Bitmax\Suporte\Backup.rar
 if exist "C:\Bitmax\Suporte\ibexpert.exe" (
 echo Existe ibexpert jah existe!
 ) else (
-bitsadmin /transfer Ibexpert /priority normal https://raw.githubusercontent.com/bitmaxsuporte/download/gh-pages/files/exe/ibexpert.exe C:\Bitmax\Suporte\ibexpert.exe
+bitsadmin /transfer Ibexpert /priority normal https://raw.githubusercontent.com/bitmaxsuporte/download/master/src/files/exe/ibexpert.exe C:\Bitmax\Suporte\ibexpert.exe
 )
 mkdir "C:\Bitmax\Suporte\Backup
 mkdir "C:\Bitmax\Suporte\Update
@@ -135,12 +135,12 @@ ren C:\Bitmax\BitmaxEmpresarial\Bin\BitmaxNFe.exe BitmaxNFe_backup.exe
 rd /s /q "C:\Bitmax\Suporte\Update"
 cd C:\Bitmax\Suporte
 mkdir "C:\Bitmax\Suporte
-bitsadmin /transfer AtualizadorBitmaxBitmax /priority normal https://raw.githubusercontent.com/bitmaxsuporte/download/gh-pages/files/Atualizacao.rar C:\Bitmax\Suporte\Atualizacao.rar
+bitsadmin /transfer AtualizadorBitmaxBitmax /priority normal https://raw.githubusercontent.com/bitmaxsuporte/download/master/src/files/Atualizacao.rar C:\Bitmax\Suporte\Atualizacao.rar
 bitsadmin /transfer BackupBitmax /priority normal https://bitmaxsuporte.github.io/download/files/Backup.rar C:\Bitmax\Suporte\Backup.rar
 if exist "C:\Bitmax\Suporte\ibexpert.exe" (
 echo Existe ibexpert jah existe!
 ) else (
-bitsadmin /transfer Ibexpert /priority normal https://raw.githubusercontent.com/bitmaxsuporte/download/gh-pages/files/exe/ibexpert.exe C:\Bitmax\Suporte\ibexpert.exe
+bitsadmin /transfer Ibexpert /priority normal https://raw.githubusercontent.com/bitmaxsuporte/download/master/src/files/exe/ibexpert.exe C:\Bitmax\Suporte\ibexpert.exe
 )
 mkdir "C:\Bitmax\Suporte\Backup
 mkdir "C:\Bitmax\Suporte\Update
