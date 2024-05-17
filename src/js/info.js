@@ -6,7 +6,7 @@ window.onload = function() {
             exibirPopup(texto);
         }
     };
-    xhr.open("GET", "./info.txt", true);
+    xhr.open("GET", "./changelog.txt", true);
     xhr.send();
 };
 

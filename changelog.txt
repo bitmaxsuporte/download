@@ -1,6 +1,11 @@
 ÚLTIMAS ALTERAÇÕES:
 
-10/05/2024:
+17/05/2024:
+
+* Correção relatório de resumo de PIS e COFINS que somava nota de balanço e pedido sem emissão.
+* Adicionado Relatório de PIS e Cofins do Cadastro de Produtos
+
+13/05/2024:
 
 * Novos Schemas de NFe.
 * Correção de CST e valores do PIS e COFINS no XML da NFe.
@@ -9,11 +14,11 @@
 
 * Compare novo.
 * Outras entradas/saídas canceladas retirada no relatório.
-* Relatório de apuração de estoque em ferramentas > análise e diagnósticos.
+* Adicionado Relatório de apuração de estoque em ferramentas > análise e diagnósticos.
 * Cadastro de tributação federal Cadastros>Compras/Vendas>Tributação federal.
-* Relatório de vendas por região.
-* Relatório ficha kardex retirado notas de substituição.
-* Relatório de CFOP por NFe de entrada.
+* Adicionado Relatório de vendas por região.
+* Adicionado Relatório ficha kardex retirado notas de substituição.
+* Adicionado Relatório de CFOP por NFe de entrada.
 * Botão de tributação federal em outras entradas/saída.
 * Filtro de região e vendedores no relatório de clientes.
 * Emissão de NFe com Cadastro de transportadora com Pessoa física sem obrigação de IE.
