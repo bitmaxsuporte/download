@@ -1,9 +1,10 @@
 ÚLTIMAS ALTERAÇÕES:
 
+
 17/05/2024:
 
 * Correção relatório de resumo de PIS e COFINS que somava nota de balanço e pedido sem emissão.
-* Adicionado Relatório de PIS e Cofins do Cadastro de Produtos
+* Adicionado Relatório de PIS e Cofins do Cadastro de Produtos.
 
 13/05/2024:
 
