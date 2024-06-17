@@ -1,5 +1,13 @@
 ÚLTIMAS ALTERAÇÕES:
 
+17/06/2024:
+
+* Valor default '1 / (1 * 1) = 1,00' no campo NFEI_CAL_CONV da emp_entradai.
+* Removido informações complementares da nota do 0450 no NFCe.
+* Removido C110 informações complementares quando a nota está cancelada.
+* Resolvido Registro 0450 com registro vazio.
+* Resolvido Erro no sped fiscal o registro 0200 vazio e o k foram os itens.
+* Somar no subtotal do item + frete + outras despesas + seguro e reduzir o total. 
 
 17/05/2024:
 
