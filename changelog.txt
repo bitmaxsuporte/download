@@ -2,7 +2,7 @@
 
 09/07/2024:
 
-* Retirado do IBPT percentual importado do cálculo. LEI 12741, DE 08/12/2021.
+* Retirado do IBPT percentual importado do cálculo LEI 12741, DE 08/12/2021.
 * Alteração rodapé do faturamento na aba de transportadora para somar frete na base.
 * Alteração rodapé do outras saídas na aba de transportadora para somar frete e IPI na base.
 * Ao aplicar desconto, reprocessa valores aproximados de tributos.
