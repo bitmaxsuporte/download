@@ -1,5 +1,22 @@
 ÚLTIMAS ALTERAÇÕES:
 
+09/07/2024:
+
+* Retirado do IBPT percentual importado do cálculo. LEI 12741, DE 08/12/2021.
+* Alteração rodapé do faturamento na aba de transportadora para somar frete na base.
+* Alteração rodapé do outras saídas na aba de transportadora para somar frete e IPI na base.
+* Ao aplicar desconto, reprocessa valores aproximados de tributos.
+* Falha ao dar desconto, e em seguida cancelar o desconto desfazia a redução.
+* Alteração do NFe para usar o valor real ao invés do valor unitário gerado pelo sistema.
+* Número de autorização, bandeira e CNPJ da maquineta no XML NT 2023 004.
+* Alteração do arredondamento de valores para XML da NFCe.
+* Inserção de dados de bandeira conforme manual do portal da NFe.
+* Criação do campo de bandeira para tipo de pagamento quando cartão.
+* Obrigatório preenchimento da ADM e da bandeira quando cartão.
+* Criação de campo para receber o protocolo de autorização quando PIX.
+* Criação de campo para colocar o protocolo do PIX.
+* Script de inserção de valores na tabela de bandeiras.
+
 17/06/2024:
 
 * Valor default '1 / (1 * 1) = 1,00' no campo NFEI_CAL_CONV da emp_entradai.
