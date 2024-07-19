@@ -1,5 +1,15 @@
 ÚLTIMAS ALTERAÇÕES:
 
+19/07/2024:
+
+* Filtro de fornecedor no relatório de compras.
+* Filtro de região no relatório de saída de itens no período.
+* Filtro fiscal/gerencial relatório de saída de itens no período.
+* Filtro de finalidade de nota no relatório de saída de itens no período.
+* Filtro de finalidade de nota no relatório de posição do faturamento.
+* Filtro de região relatório posição de faturamento.
+* Correção tela de outras saídas no botão de vincular a movimentação está mostrando as notas de saídas.
+
 09/07/2024:
 
 * Retirado do IBPT percentual importado do cálculo LEI 12741, DE 08/12/2021.
