@@ -1,5 +1,9 @@
 ÚLTIMAS ALTERAÇÕES:
 
+29/07/2024:
+
+* Substituição exe do empresarial com a correção da finalidade do outras saídas gravando errado no banco.
+
 19/07/2024:
 
 * Filtro de fornecedor no relatório de compras.
