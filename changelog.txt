@@ -1,5 +1,14 @@
 ÚLTIMAS ALTERAÇÕES:
 
+09/08/2024:
+
+* Corrigido problema que zerava os valores de frete e seguro quando salvava os dados da transportadora - faturamento e outras.
+* Corrigido problema que ficava preso no campo de subtotal apos mensagem de numero de caracteres do subtotal for muito grande.
+* Reprocessando valores de frete , outras e seguro quando adiciona ou retira um item.
+* Correção erro no ponto de venda devido forma de pagamento dinheiro esperando protocolo de autorização pix.
+* Alteração dbver para 202408080835EMP.
+* Alteração versão empresarial para 2408.
+
 29/07/2024:
 
 * Substituição exe do empresarial com a correção da finalidade do outras saídas gravando errado no banco.
