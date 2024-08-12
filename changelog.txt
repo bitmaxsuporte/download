@@ -9,9 +9,13 @@
 * Alteração dbver para 202408080835EMP.
 * Alteração versão empresarial para 2408.
 
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-**-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-.
+
 29/07/2024:
 
 * Substituição exe do empresarial com a correção da finalidade do outras saídas gravando errado no banco.
+
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-**-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-.
 
 19/07/2024:
 
@@ -22,6 +26,8 @@
 * Filtro de finalidade de nota no relatório de posição do faturamento.
 * Filtro de região relatório posição de faturamento.
 * Correção tela de outras saídas no botão de vincular a movimentação está mostrando as notas de saídas.
+
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-**-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-.
 
 09/07/2024:
 
@@ -40,6 +46,8 @@
 * Criação de campo para colocar o protocolo do PIX.
 * Script de inserção de valores na tabela de bandeiras.
 
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-**-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-.
+
 17/06/2024:
 
 * Valor default '1 / (1 * 1) = 1,00' no campo NFEI_CAL_CONV da emp_entradai.
@@ -49,15 +57,21 @@
 * Resolvido Erro no sped fiscal o registro 0200 vazio e o k foram os itens.
 * Somar no subtotal do item + frete + outras despesas + seguro e reduzir o total. 
 
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-**-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-.
+
 17/05/2024:
 
 * Correção relatório de resumo de PIS e COFINS que somava nota de balanço e pedido sem emissão.
 * Adicionado Relatório de PIS e Cofins do Cadastro de Produtos.
 
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-**-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-.
+
 13/05/2024:
 
 * Novos Schemas de NFe.
 * Correção de CST e valores do PIS e COFINS no XML da NFe.
+
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-**-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-.
 
 10/05/2024:
 
@@ -72,7 +86,11 @@
 * Filtro de região e vendedores no relatório de clientes.
 * Emissão de NFe com Cadastro de transportadora com Pessoa física sem obrigação de IE.
 
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-**-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-.
+
 02/05/2024:
 
 * Tabela IBPT 2401 D.
 * Mudança rotina de backup automático corrigido para clientes que não executava.
+
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-**-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-.
