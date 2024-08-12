@@ -8,6 +8,8 @@
 * Correção erro no ponto de venda devido forma de pagamento dinheiro esperando protocolo de autorização pix.
 * Alteração dbver para 202408080835EMP.
 * Alteração versão empresarial para 2408.
+* Mudança no rateamento do frete, seguro e outras despesas para  ficar proporcional ao valor de cada item.
+* Corrigido desconto com valor negativo com valor rateamento muito baixo.
 
 *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-**-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-.
 
