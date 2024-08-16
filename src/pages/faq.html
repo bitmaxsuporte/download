@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FAQ</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;800&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="../../src/css/reset.css">
+    <link rel="stylesheet" href="../../src/css/estilos.css">
+    <link rel="stylesheet" href="../../src/css/scrollbar.css">
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color:#5c718b;
+        }
+
+        .faq-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #ccc;
+            padding: 15px 0;
+            cursor: pointer;
+        }
+
+        .faq-item:hover {
+            background-color: #f9f9f9;
+        }
+
+        .faq-item h3 {
+            margin: 0;
+            font-weight: 500;
+        }
+
+        .faq-item p {
+            display: none;
+            margin-top: 10px;
+            font-weight: 300;
+        }
+
+        .faq-item p img {
+            display: block;
+            margin: 20px auto;
+            max-width: 100%;
+            height: auto;
+        }
+
+        .active p {
+            display: block;
+        }
+
+        .faq-link {
+            color: #0066cc;
+            text-decoration: none;
+        }
+
+        .faq-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Estilo para o campo de pesquisa */
+        .search-bar {
+            width: 100%;
+            padding: 10px;
+            margin: 20px 0;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+
+<body class="body-changelog1">
+    <header>
+        <a href="#">
+            <img src="../../src/imagens/ferramentas-de-reparacao.png" alt="pokebola" class="logo" />
+        </a>
+        <button id="botao-alterar-tema">
+            <img src="../../src/imagens/sun.png" alt="imagem do sol" class="imagem-botao" />
+        </button>
+    </header>
+
+    <main>
+        <!-- Campo de pesquisa -->
+        <input type="text" id="searchInput" class="search-bar" placeholder="Pesquisar FAQ...">
+
+        <ul class="faq-list" id="faqList">
+            <li class="faq-item">
+                <h3>O que é o sistema X?</h3>
+                <p>O sistema X é uma plataforma que permite o gerenciamento de processos de forma eficiente e rápida.
+                    Veja abaixo uma ilustração do sistema X:
+                    <br>
+                    <img src="../../src/imagens/teste.png" alt="Imagem do sistema X">
+                    Para saber mais, visite nosso site: 
+                    <a href="https://www.exemplo.com" class="faq-link">www.exemplo.com</a>
+                </p>
+            </li>
+            <li class="faq-item">
+                <h3>Como faço para alterar minha senha?</h3>
+                <p>Para alterar sua senha, vá até as configurações de conta, clique em "Alterar Senha" e siga as instruções.
+                    Aqui está um exemplo da tela de alteração de senha:
+                    <br>
+                    <img src="../../src/imagens/teste.png" alt="Tela de alteração de senha">
+                    <br>
+                    <a href="https://www.exemplo.com/suporte" class="faq-link">Veja o guia completo aqui.</a>
+                </p>
+            </li>
+            <li class="faq-item">
+                <h3>Como posso entrar em contato com o suporte?</h3>
+                <p>Você pode entrar em contato com o suporte através do nosso chat online ou enviando um e-mail para 
+                    <a href="mailto:suporte@exemplo.com" class="faq-link">suporte@exemplo.com</a>.
+                    Veja uma imagem do nosso chat de suporte:
+                    <br>
+                    <img src="../../src/imagens/teste.png" alt="Chat de suporte">
+                </p>
+            </li>
+        </ul>
+    </main>
+
+    <script>
+        // Função para alternar exibição da resposta
+        document.querySelectorAll('.faq-item').forEach(function(item) {
+            item.addEventListener('click', function() {
+                this.classList.toggle('active');
+            });
+        });
+
+        // Função para alterar tema (exemplo básico)
+        document.getElementById('botao-alterar-tema').addEventListener('click', function() {
+            document.body.classList.toggle('dark-mode');
+        });
+
+        // Função de pesquisa
+        document.getElementById('searchInput').addEventListener('input', function() {
+            var searchTerm = this.value.toLowerCase();
+            var faqItems = document.querySelectorAll('.faq-item');
+
+            faqItems.forEach(function(item) {
+                var text = item.textContent.toLowerCase();
+                if (text.includes(searchTerm)) {
+                    item.style.display = "block";
+                } else {
+                    item.style.display = "none";
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,5 +1,12 @@
 ÚLTIMAS ALTERAÇÕES:
 
+16/08/2024:
+
+* (SPED) Cadastro de cobradores adm cartão no registro 1601 puxa o cadastro do banco em cobradores no sistema.
+* (SPED) Se tiver o literal 'SEM GTIN' no cadastro, não é levado esse nome para o SPED Fiscal.
+* (SPED) Correção Advertência sped de diferença de valores do C100 e C190 por falta do frete e seguro no somatório dos itens.
+* (SPED) Correção 0220 puxando a unidade de venda do cadastro do item.
+
 09/08/2024:
 
 * Corrigido problema que zerava os valores de frete e seguro quando salvava os dados da transportadora - faturamento e outras.
