@@ -1,5 +1,13 @@
 ÚLTIMAS ALTERAÇÕES:
 
+19/08/2024:
+
+* Trigger para cadastrar a unidade de compra na tabela de unidades de medidas puxando o que existe na emp_entradai e não existe na EMP_PRODUTO_UNDMEDIDA.
+* Trigger para reprocessar o cadastro do item e colocar a unidade de compra correta conforme veio na nota de de entrada.
+* Trigger para colocar tributação federal padrão no cadastro do item ao cadastrar um item novo.
+* Exception para impedir de deletar a tributação federal padrão.
+* Novo compare.
+
 16/08/2024:
 
 * (SPED) Cadastro de cobradores adm cartão no registro 1601 puxa o cadastro do banco em cobradores no sistema.
