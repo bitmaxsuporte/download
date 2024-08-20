@@ -1,5 +1,9 @@
 ÚLTIMAS ALTERAÇÕES:
 
+20/08/2024:
+
+* Correção Trigger da ficha kardex no campo para finalidade nfs_nf_finalidade <> 5, pois estava dando erro checando a string NFS_TIPO_FINALIDADE <> 'Substituição de Nfc-e'.
+
 19/08/2024:
 
 * Trigger para cadastrar a unidade de compra na tabela de unidades de medidas puxando o que existe na emp_entradai e não existe na EMP_PRODUTO_UNDMEDIDA.
