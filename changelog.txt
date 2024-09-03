@@ -1,8 +1,36 @@
 ÚLTIMAS ALTERAÇÕES:
 
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-**-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-.
+
+03/09/2024:
+
+* Corrigido o erro de importação de XML com "55" na frente do telefone.
+* Modificado o sistema para não suprimir o "0" inicial em CEPs durante a importação de XML.
+* Alterada a ordem do curso na tela de recebimento no PDV para evitar que o ponteiro pule o campo bandeira.
+* Removido o campo de forma de pagamento na impressão do pedido no PDV, uma vez que essa informação já é impressa nos dados do recebimento.
+* Ajustado o ponteiro na tela de recebimento no PDV para não pular o campo bandeira ao usar tab ou enter.
+* Recuperado o campo edit1 perdido nos parâmetros do sistema.
+* Criada tabela com os códigos da ANP.
+* Corrigido o erro ao fechar o preview do pedido no PDV relacionado à impressora EPSON não encontrada.
+* Ajustado o sistema para que, ao adicionar outras despesas e confirmar o transporte, o valor seja adicionado ao total da nota e não zerado.
+* Adicionada opção nos parâmetros para exibir ou não o campo de peso na impressão do pedido no PDV.
+* Incluída opção no relatório de saída de itens para exibir o somatório dos pesos, com opção de ativar ou desativar.
+* Incluída opçãono relatório de posição do estoque para exibir o somatórios dos pesos no estoque, com opção de ativar ou desativar.
+* Adicionado o peso na impressão do pedido.
+
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-**-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-.
+
+02/09/2024:
+
+* IBPT 24.2D adicionado na atualização.
+
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-**-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-.
+
 20/08/2024:
 
 * Correção Trigger da ficha kardex no campo para finalidade nfs_nf_finalidade <> 5, pois estava dando erro checando a string NFS_TIPO_FINALIDADE <> 'Substituição de Nfc-e'.
+
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-**-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-.
 
 19/08/2024:
 
@@ -12,6 +40,8 @@
 * Exception para impedir de deletar a tributação federal padrão.
 * Novo compare.
 
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-**-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-.
+
 16/08/2024:
 
 * (SPED) Cadastro de cobradores adm cartão no registro 1601 puxa o cadastro do banco em cobradores no sistema.
@@ -19,77 +49,79 @@
 * (SPED) Correção Advertência sped de diferença de valores do C100 e C190 por falta do frete e seguro no somatório dos itens.
 * (SPED) Correção 0220 puxando a unidade de venda do cadastro do item.
 
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-**-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-.
+
 09/08/2024:
 
 * Corrigido problema que zerava os valores de frete e seguro quando salvava os dados da transportadora - faturamento e outras.
-* Corrigido problema que ficava preso no campo de subtotal apos mensagem de numero de caracteres do subtotal for muito grande.
-* Reprocessando valores de frete , outras e seguro quando adiciona ou retira um item.
-* Correção erro no ponto de venda devido forma de pagamento dinheiro esperando protocolo de autorização pix.
+* Corrigido problema que ficava preso no campo de subtotal após mensagem de número de caracteres do subtotal ser muito grande.
+* Reprocessados valores de frete, outras e seguro quando adiciona ou retira um item.
+* Corrigido erro no ponto de venda devido à forma de pagamento em dinheiro esperando protocolo de autorização pix.
 * Alteração dbver para 202408080835EMP.
-* Alteração versão empresarial para 2408.
-* Mudança no rateamento do frete, seguro e outras despesas para  ficar proporcional ao valor de cada item.
-* Corrigido desconto com valor negativo com valor rateamento muito baixo.
+* Alteração da versão empresarial para 2408.
+* Mudança no rateamento do frete, seguro e outras despesas para ficar proporcional ao valor de cada item.
+* Corrigido desconto com valor negativo com valor de rateamento muito baixo.
 
 *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-**-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-.
 
 03/08/2024:
 
-*IBPT 2402A.
+* IBPT 2402A adicionado.
 
 *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-**-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-.
 
 29/07/2024:
 
-* Substituição exe do empresarial com a correção da finalidade do outras saídas gravando errado no banco.
+* Substituição do exe do empresarial com a correção da finalidade das outras saídas gravando errado no banco.
 
 *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-**-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-.
 
 19/07/2024:
 
-* Filtro de fornecedor no relatório de compras.
-* Filtro de região no relatório de saída de itens no período.
-* Filtro fiscal/gerencial relatório de saída de itens no período.
-* Filtro de finalidade de nota no relatório de saída de itens no período.
-* Filtro de finalidade de nota no relatório de posição do faturamento.
-* Filtro de região relatório posição de faturamento.
-* Correção tela de outras saídas no botão de vincular a movimentação está mostrando as notas de saídas.
+* Filtro de fornecedor adicionado no relatório de compras.
+* Filtro de região adicionado no relatório de saída de itens no período.
+* Filtro fiscal/gerencial adicionado no relatório de saída de itens no período.
+* Filtro de finalidade de nota adicionado no relatório de saída de itens no período.
+* Filtro de finalidade de nota adicionado no relatório de posição do faturamento.
+* Filtro de região adicionado no relatório de posição de faturamento.
+* Corrigida a tela de outras saídas no botão de vincular a movimentação que estava mostrando as notas de saídas.
 
 *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-**-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-.
 
 09/07/2024:
 
-* Retirado do IBPT percentual importado do cálculo LEI 12741, DE 08/12/2021.
-* Alteração rodapé do faturamento na aba de transportadora para somar frete na base.
-* Alteração rodapé do outras saídas na aba de transportadora para somar frete e IPI na base.
-* Ao aplicar desconto, reprocessa valores aproximados de tributos.
-* Falha ao dar desconto, e em seguida cancelar o desconto desfazia a redução.
+* Retirado do IBPT o percentual importado do cálculo LEI 12741, DE 08/12/2021.
+* Alteração do rodapé do faturamento na aba de transportadora para somar frete na base.
+* Alteração do rodapé das outras saídas na aba de transportadora para somar frete e IPI na base.
+* Ao aplicar desconto, reprocessados valores aproximados de tributos.
+* Falha ao dar desconto, e em seguida cancelar o desconto, desfeita a redução.
 * Alteração do NFe para usar o valor real ao invés do valor unitário gerado pelo sistema.
-* Número de autorização, bandeira e CNPJ da maquineta no XML NT 2023 004.
+* Número de autorização, bandeira e CNPJ da maquineta adicionados no XML NT 2023 004.
 * Alteração do arredondamento de valores para XML da NFCe.
 * Inserção de dados de bandeira conforme manual do portal da NFe.
 * Criação do campo de bandeira para tipo de pagamento quando cartão.
 * Obrigatório preenchimento da ADM e da bandeira quando cartão.
 * Criação de campo para receber o protocolo de autorização quando PIX.
 * Criação de campo para colocar o protocolo do PIX.
-* Script de inserção de valores na tabela de bandeiras.
+* Script de inserção de valores na tabela de bandeiras adicionado.
 
 *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-**-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-.
 
 17/06/2024:
 
-* Valor default '1 / (1 * 1) = 1,00' no campo NFEI_CAL_CONV da emp_entradai.
-* Removido informações complementares da nota do 0450 no NFCe.
-* Removido C110 informações complementares quando a nota está cancelada.
+* Valor default '1 / (1 * 1) = 1,00' adicionado no campo NFEI_CAL_CONV da emp_entradai.
+* Informações complementares da nota do 0450 removidas no NFCe.
+* C110 informações complementares removidas quando a nota está cancelada.
 * Resolvido Registro 0450 com registro vazio.
 * Resolvido Erro no sped fiscal o registro 0200 vazio e o k foram os itens.
-* Somar no subtotal do item + frete + outras despesas + seguro e reduzir o total. 
+* Somado no subtotal do item + frete + outras despesas + seguro e reduzido o total. 
 
 *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-**-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-.
 
 17/05/2024:
 
-* Correção relatório de resumo de PIS e COFINS que somava nota de balanço e pedido sem emissão.
-* Adicionado Relatório de PIS e Cofins do Cadastro de Produtos.
+* Corrigido relatório de resumo de PIS e COFINS que somava nota de balanço e pedido sem emissão.
+* Relatório de PIS e Cofins do Cadastro de Produtos adicionado.
 
 *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-**-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-.
 
@@ -121,3 +153,4 @@
 * Mudança rotina de backup automático corrigido para clientes que não executava.
 
 *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-**-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-.
+
