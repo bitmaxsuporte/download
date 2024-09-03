@@ -15,7 +15,7 @@
 * Ajustado o sistema para que, ao adicionar outras despesas e confirmar o transporte, o valor seja adicionado ao total da nota e não zerado.
 * Adicionada opção nos parâmetros para exibir ou não o campo de peso na impressão do pedido no PDV.
 * Incluída opção no relatório de saída de itens para exibir o somatório dos pesos, com opção de ativar ou desativar.
-* Incluída opçãono relatório de posição do estoque para exibir o somatórios dos pesos no estoque, com opção de ativar ou desativar.
+* Incluída opção no relatório de posição do estoque para exibir o somatórios dos pesos no estoque, com opção de ativar ou desativar.
 * Adicionado o peso na impressão do pedido.
 
 *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-**-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-.
