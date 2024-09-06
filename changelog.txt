@@ -1,5 +1,12 @@
 ÚLTIMAS ALTERAÇÕES:
 
+06/09/2024:
+
+* Permitido o frete, ele será somado ao total da nota sem informar a transportadora.
+* Desativado o botão de excluir a tributação federal para a classificação fiscal federal com ID igual a 1.
+* Cadastrado automaticamente o remetente (transportador) na importação do CTe, ao importar o XML do CTe.
+* Corrigido script de inserção de tributação federal padrão que não estava atualizando o generator.
+
 *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-**-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-.
 
 03/09/2024:
