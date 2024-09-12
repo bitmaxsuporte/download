@@ -1,5 +1,12 @@
 ÚLTIMAS ALTERAÇÕES:
 
+13/09/2024:
+
+* Corrigido descrição do campo "Nº de autorização" do PIX no recebimento do PDV.
+* Modificado para levar o vendedor do cadastro de cliente para o faturamento.
+
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-**-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-.
+
 06/09/2024:
 
 * Permitido o frete, ele será somado ao total da nota sem informar a transportadora.
