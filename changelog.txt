@@ -1,5 +1,36 @@
 ÚLTIMAS ALTERAÇÕES:
 
+11/10/2024:
+
+* Criado tela de cadastro de clientes via API beta versão 001.
+* Criado Script para correção dos dados dos clientes na tabela emp_entrada em casos de devolução de entrada, onde a nota é emitida pela própria licenciada, A entrada fica com os dados da licenciada.
+* Alterado o campo de tributação federal na tela de cadastro do item na importação do XML, que não estava buscando a tributação ao digitar o código e pressionar Enter ou Tab, Antes, só funcionava ao clicar no botão de pesquisa.
+* Corrigida falha na importação, onde ao apresentar a mensagem de que já existe o código de barras, o sistema criava um novo cadastro, A cada mensagem exibida, um novo cadastro era criado.
+* Corrigida falha no cálculo do peso na transportadora - Ao apagar um item no faturamento com peso, o rodapé não recalculava o peso na aba de transportadora.
+* Corrigida falha no cálculo do peso na transportadora - Outras saídas não puxavam automaticamente o peso cadastrado no produto.
+* Corrigida falha no cálculo do peso na transportadora - Outras saídas não calculavam o volume. No faturamento, o cálculo estava correto.
+* Alterado para reprocessar o peso ao deletar/alterar itens para qualquer CRT na transportadora.
+* Corrigido o cálculo do volume para qualquer CRT na transportadora.
+* Ajustada a largura da exibição das colunas do CEST no cadastro do produto.
+* Liberado IBPT versão 242C.
+* Atualizada a tabela CEST.
+* Inseridos novos CSTs.
+* Alterado para, ao imprimir uma nota fiscal com carta de correção vinculada, enviar o PDF da nota fiscal e da carta de correção junto com os XMLs.
+* Removida a mensagem de inserção ao importar um XML na tela de compras.
+* Corrigida exibição de CST/CSOSN na importação do XML, que mostrava informação incompleta no cadastro do item.
+* Armazenado e exibido no histórico do item o fator de conversão utilizado anteriormente na importação do XML.
+* Adicionado botão na tela de cadastro do item pela importação do XML para selecionar a classificação fiscal federal.
+* Adicionada opção de somar o IPI na base de cálculo do ICMS - Indicador de operação "Consumidor Final" na aba 3 do faturamento.
+* Validação do CEP ajustada para exigir 8 dígitos.
+* Criada a tabela ANP.
+* Inseridos dados na tabela ANP.
+* Adicionado botão de seleção no cadastro de produtos para preencher o código e descrição ANP puxando da tabela EMP_ANP.
+* Criada a tela de cadastro da ANP.
+* Adicionada opção de endereço de entrega no XML.
+* No cadastro do item na importação do XML, adicionado campo de valor em reais ao lado do fator de conversão, exibindo a quantidade que será convertida.
+* Inserido frete na NFCe.
+
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-**-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-.
 13/09/2024:
 
 * Corrigido descrição do campo "Nº de autorização" do PIX no recebimento do PDV.
