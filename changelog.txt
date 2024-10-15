@@ -1,5 +1,13 @@
 ÚLTIMAS ALTERAÇÕES:
 
+15/10/2024:
+
+* Corrigido Erro cannot perform this operation on a closed dataset ao aplicar acrescimo no PDV e faturamento.
+* Corrigido erro ao dar acrescimo no PDV value is not floating point.
+* Corrigido Erro cannot focus disabled or invisible windows na tela de recebimento com formas de pagamentos eletrônicas.
+
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-**-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-.
+
 11/10/2024:
 
 * Criado tela de cadastro de clientes via API beta versão 001.
@@ -31,6 +39,7 @@
 * Inserido frete na NFCe.
 
 *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-**-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-.
+
 13/09/2024:
 
 * Corrigido descrição do campo "Nº de autorização" do PIX no recebimento do PDV.
