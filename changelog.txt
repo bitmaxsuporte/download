@@ -1,5 +1,23 @@
 ÚLTIMAS ALTERAÇÕES:
 
+14/11/2024:
+
+* Corrigido rejeição de cauculo de troco incorreto.
+* Corrigido falha ao editar um item depois de ter dado desconto no total da nota  Ao fazer isso, o sistema reprocessa os itens, mas não reprocessa o rodapé e mantêm o valor do desconto, mas o item editado fica sem o desconto.
+* Corrigido falha que deixava lançar o mesmo número do título repetidas vezes para o mesmo fornecedor.
+* Adicionado a rotina de reprocessar o estoque em ferramentas > Análise e diagnóstico.
+* Campos no cadastro de produto para cálculo de cubagem automaticamente.
+* Criação de campos para armazenagem e calculo de cubagem na emp_produto e emp_nfsi.
+* Opção de exibir a cubagem no pedido na impressão do pedido.
+* Corrigido Repetição de produtos no grid de pesquisa de itens na tela de importação.
+* Importando informação do ANP do XML para o cadastro do produto na importação de XML.
+* Alterado tamanho dos campos de razão e fantasia para 120 caracteres conforme o manual da nota fiscal.
+* Correção no faturamento que não estava calculando ICMS quando o cliente era pessoa jurídica.
+* Alteração DBver para 202411141740EMP.
+* Alteração versão para 2411.1
+* Atualizacao IBPT 24 2D.
+
+
 15/10/2024:
 
 * Corrigido Erro cannot perform this operation on a closed dataset ao aplicar acrescimo no PDV e faturamento.
