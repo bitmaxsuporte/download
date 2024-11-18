@@ -1,5 +1,10 @@
 ÚLTIMAS ALTERAÇÕES:
 
+18/112024:
+
+* Correção valor total da nota R$ 0,00 na nfce.
+* Correção pis e sem percentual de saída estava saindo com 99.
+
 14/11/2024:
 
 * Corrigido rejeição de cauculo de troco incorreto.
