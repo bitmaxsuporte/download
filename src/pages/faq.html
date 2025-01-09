@@ -97,13 +97,15 @@
         <ul class="faq-list" id="faqList">
             <li class="faq-item">
                 <h3>Como configurar o acesso TS?</h3>
-                <p>Primeiro faça o downdoad do Radmin.
-                    Depois de instalado crie uma rede na opção "Criar Rede", defina um nome da rede e uma senha, por exemplo: 
+                <p>Primeiro faça o download do <a href="../files/exe/RDPW_Installer.exe" class="faq-link">RDP Wrapper</a>. <br>
+                    Execute o instalador como ADMIN, certifique-se de que o antivírus não está bloqueando a execução do instalador: 
                     <br>
-                    <img src="../../src/imagens/faq/radmin/1.png" alt="Instalação radmin">
-                    <img src="../../src/imagens/faq/radmin/2.png" alt="Instação radmin">
-                    <a href="https://www.radmin-vpn.com/" class="faq-link">www.radmin-vpn.com</a>
-                    No computador terminal, instale o Radmin e entre na rede na opção "Entrar na rede" com os dados criado no servidor.
+                    Após a instalação, você verá uma tela igual a esta e que deve estar com tudo verde: 
+                    <img src="../../src/imagens/faq/rdpw/1.jpg" alt="Instalação rdpw">
+
+                    O próximo passo é criar usuários para cada estação no servidor no windows em "Gerenciador de usuários" e criar um usuário para cada estação.
+                    Depois de criar os usuários, você deve habilitar para "Todos" o acesso remoto no servidor em propriedade do computador e habilitar a opção "Permitir acesso remoto a este computador". 
+                    <img src="../../src/imagens/faq/rdpw/2.png" alt="Configuração acesso remoto">
                 </p>
                 <p> : 
                     <br>
@@ -112,24 +114,38 @@
                 </p>
             </li>
             <li class="faq-item">
-                <h3>Como faço para alterar minha senha?</h3>
-                <p>Para alterar sua senha, vá até as configurações de conta, clique em "Alterar Senha" e siga as instruções.
+                <h3>Como colocar o departamento para balança no MGV6?</h3>
+                <p>Cadastre dentro do item uma localização chamada "GERAL" e aplique em todos os itens.
                     Aqui está um exemplo da tela de alteração de senha:
                     <br>
-                    <img src="../../src/imagens/teste.png" alt="Tela de alteração de senha">
+                    <img src="../../src/imagens/faq/balança/1.png" alt="Tela cadastro localização">
                     <br>
-                    <a href="https://www.exemplo.com/suporte" class="faq-link">Veja o guia completo aqui.</a>
+                    
                 </p>
             </li>
             <li class="faq-item">
-                <h3>Como posso entrar em contato com o suporte?</h3>
-                <p>Você pode entrar em contato com o suporte através do nosso chat online ou enviando um e-mail para 
-                    <a href="mailto:suporte@exemplo.com" class="faq-link">suporte@exemplo.com</a>.
-                    Veja uma imagem do nosso chat de suporte:
+                <h3>Como corrigir erro SPED 1300, 1310 e 1320?</h3>
+                <p>Primeiro faça o download do <a href="../files/exe/Reprocessar sped.zip" class="faq-link">Reprocessar sped</a>. <br>
+                    Execute o arquivo como ADMIN, você verá uma tela igual a esta: <br>
+                    <img src="../../src/imagens/faq/sped/1.png" alt="Reprocessar sped">
                     <br>
-                    <img src="../../src/imagens/teste.png" alt="Chat de suporte">
+                    Clique em "Executar" e um novo txt será gerado com os erros corrigidos na pasta do executável.
                 </p>
             </li>
+            <li class="faq-item">
+                <h3>Como é o calculo de custo médio do sistema?</h3>
+                <p>O cálculo é: novo_custo_medio = ((custo_medio_anterior * estoque_anterior) + (custo_atual * quantidade_comprada)) / novo_estoque</a>. <br>
+                    
+                </p>
+            </li>
+            <li class="faq-item">
+                <h3>Como gerar o novo IBPT?</h3>
+                <p>Primeiro faça o download do <a href="../files/exe/ibpt.exe" class="faq-link">Gerar IBPT</a>. <br>
+                Faça o download da nova versão do IBPT no site de olho no imposto, em seguida, renomeie o arquivo como 'ibpt.csv'. Execute o arquivo como ADMIN e selecione o arquivo 'ibpt.csv'.
+                
+                </p>
+            </li>
+
         </ul>
     </main>
 
