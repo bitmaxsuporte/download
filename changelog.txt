@@ -1,5 +1,34 @@
 ÚLTIMAS ALTERAÇÕES:
 
+20/01/2025:
+
+* Alteração e-mail para 100 caracteres
+* Aumento de sigla unidade de medida para 6 caracteres
+* Aumento de nome do produto para 100 caracteres
+* Aumento de endereço, bairro, complemento, numero, e-mail para 60 caracteres.
+* Aumento do campo de msg do item para 500 caracteres.
+* Inserção de novas formas de pagamento (PIX DINÂMICO, PAGAMENTO ELETRONICO NÃO INFORMADO, CRÉDITO EM LOJA E CARTÃO LOJA (PRIVATE LABEL)).
+* Alteração na tag do PIX no XML para adequação da nova NT Removido a tag card.
+* Tabela IBPT 22.2F
+* Alteração na tela de faturamento, outras saídas, outras entradas e pdv para contemplar nova tela de desconto.
+* Alteração no rateio do frete, seguro e outras despesas para ficar proporcional ao peso do item.
+* Alteração no rateio do desconto e acréscimo para ficar proporcional ao peso do item.
+* Criação de novos campos para guardar os valores arredondados na emp_nfsi e emp_nfs sempre independente da quantidade de casas decimais.
+* Alteração na forma de arredondamento guardando no banco em 2 casas sem tratamento.
+* Alteração nfe para puxar os valores com os novos tamanhos dos campos.
+* Alteração nfe para fazer uso dos novos campos com valores arredondados.
+* Alteração no app de consulta CNPJ para cadastrar via API com conforme os tamanhos dos novos campos.
+* Inserção de botão para cadastrar via CNPJ na tela de fornecedor.
+* Inserção de botão para cadastrar via CNPJ na tela de transportadora.
+* Inserção de botão para cadastrar via CNPJ na tela de Adm de cartões.
+* Permissão para cadastrar o mesmo CNPJ via API para diferentes tipo (Clientes, Fornecedores, Adm e Transportadora).
+* Nova rotina de backup com opcional de envio de email para o cliente com o arquivo.
+* Correção de erro de troco na nota.
+* Correção do erro do PIX onde foi retirado a tag de cartão. 
+* Remoção dos valores aproximados do tributo do item e mantido apenas a soma no total da nfe.
+* Versão 2025.1
+ 
+
 22/11/2024:
 
 * Correção falha do desconto que zerava quando selecionava o item pela lupa e ia direto para o ok.
