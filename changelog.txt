@@ -1,5 +1,13 @@
 ÚLTIMAS ALTERAÇÕES:
 
+14/02/2025:
+
+* Ordenação no NFe com ordem alfabética a lista de produtos.
+* Limitação para exibir somente pedidos e notas dos últimos 30 dias.
+* Correção para concatenar mensagem padrão + mensagem digitada pelo usuário.
+* Correção para não sair duas mensagens que permite aproveitamento de crédito e que não permite.
+* Melhoria no app de consulta CNPJ.
+
 20/01/2025:
 
 * Alteração e-mail para 100 caracteres
