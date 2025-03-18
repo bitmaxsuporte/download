@@ -1,5 +1,18 @@
 ÚLTIMAS ALTERAÇÕES:
 
+18/03/2025:
+
+* Correção erro de importação do XML com erro de '' na tributação federal.
+* Correção de erro na inutilização.
+* Correção de erro na carta de correção.
+* Acrescentado em informações de peso e quant m³ em parâmetros > Faturamento > parâmetros impressão.
+* Atalho para abrir a tela de cadastro de veículo a dentro da tela de OS.
+* Correção erro ao editar um pedido feito e alterar a forma de pagamento na aba 3.
+* Alteração no recebimento para puxar o novo campo com 2 casas decimais feito para arredondamento.
+* Melhoria no rateio do desconto.
+* Correção Falha no acréscimo do item após ter dado um desconto e depois cancelar para aplicar o desconto O sistema usa o valor do desconto anterior que ficou armazenado Acontece o mesmo se fizer um novo pedido usa o valor do desconto anterior.
+* Falha ao fazer um novo pedido e aplicar um acréscimo nada acontece.
+
 14/02/2025:
 
 * Ordenação no NFe com ordem alfabética a lista de produtos.
