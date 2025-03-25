@@ -39,13 +39,13 @@
             <li class="cartao-download">
                 <div class="informacoes">
                     <span>Atualização</span>
-                    <span>18.03</span>
+                    <span>24.03</span>
                 </div>
                 <img src="./src/imagens/atualizacao-do-sistema.png" alt="atualização" class="gif">
                 <ul class="tipos">
-                    <li class="tipo download"><a href="src/files/Atualizacao.rar" target="_blank">Download</a></li>
+                    <li class="tipo download"><a href="#" onclick="baixarArquivos()">Download</a></li>
                 </ul>
-                <p class="descricao">Versão 2501.1.</p>
+                <p class="descricao">Versão 2501.1. Extraia o arquivo part1.rar</p>
             </li>
             <li class="cartao-download">
                 <div class="informacoes">
@@ -131,5 +131,24 @@
         </ul>
     </main>
     <script src="./src/js/index.js"></script>
+    <script>
+    function baixarArquivos() {
+        const arquivos = [
+            'src/files/Atualizacao.part1.rar', 
+            'src/files/Atualizacao.part2.rar'
+        ];
+
+        arquivos.forEach((arquivo, index) => {
+        setTimeout(() => {
+            const link = document.createElement("a");
+            link.href = arquivo;
+            link.download = ""; // Força o download
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }, index * 1000); // Adiciona um atraso de 1 segundo entre os downloads
+    });
+    }
+    </script>
 </body>
 </html>

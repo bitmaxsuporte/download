@@ -1,5 +1,10 @@
 ÚLTIMAS ALTERAÇÕES:
 
+24/03/2025:
+
+* Correção de erro de troco quando tinha duas formas de pagamentos na NFCe.
+* Reimpressão de carta de correção e cancelamento.
+
 18/03/2025:
 
 * Correção erro de importação do XML com erro de '' na tributação federal.
