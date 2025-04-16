@@ -1,5 +1,63 @@
 ÚLTIMAS ALTERAÇÕES:
 
+16/04/2025:
+
+* Correção de falha ao buscar um título em contas a pagar correção em todas procedures do financeiro onde continha os nomes com tamanho 40 de cliente, fornecedor, vendedor e bancos.
+* Criação e alteração nos calculos de Difal na nota fiscal. 
+* Bases de Cálculo do DIFAL:
+* vBCUFDest = Base do DIFAL (valor do <vBC> - Base do ICMS).
+* vBCFCPUFDest = Base do Fundo de Combate à Pobreza (valor do <vBC> - Base do ICMS).
+* Percentuais Aplicáveis no DIFAL:
+* pFCPUFDest = Percentual do Fundo de Combate à Pobreza (FCP).
+* pICMSUFDest = Percentual interno do ICMS (aplicável ao estado de destino).
+* pICMSInter = Percentual do ICMS interestadual (aplicável para operações entre estados).
+* pICMSInterPart = Percentual da partilha do ICMS (sempre 100%).
+* Cálculos dos Valores do DIFAL:
+* vFCPUFDest = vBCFCPUFDest * pFCPUFDest (Valor do FCP).
+* vICMSUFDest = (vBCUFDest * pICMSUFDest) - (vBCUFDest * pICMSInter) (ICMS devido ao estado de destino).
+* vICMSUFRemet = 0 (ICMS devido ao estado de origem).
+* Inclusão de campos relacionados ao DIFAL (Diferencial de Alíquota) e ICMS Efetivo na tabela EMP_NFSI:
+* NFSI_BC_DIFAL <vBCUFDest> Base do DIFAL = (Base do ICMS).
+* NFSI_BC_FCP_DIFAL Base do Fundo de Combate à Pobreza (Base do ICMS) <vBCFCPUFDest>.
+* NFSI_PER_ALIQ_FCP_DIFAL Percentual do Fundo de Combate à Pobreza (FCP) <pFCPUFDest>.
+* NFSI_PER_ALIQ_DEST_DIFAL Percentual interno do ICMS aplicado no estado destino <pICMSUFDest>.
+* NFSI_PER_ALIQ_INTER_DIFAL Percentual do ICMS interestadual (Entre estados) - Valor do Percentual entre a Bahia e o estado de destino (4%, 7% ou 12%) <pICMSInter>.
+* NFSI_PER_PARTILHA_DIFAL Percentual da partilha do ICMS (Sempre 100% - Seguindo a norma de 2019) <pICMSInterPart>.
+* NFSI_VLR_FCP_DIFAL Valor do Fundo de Combate à Pobreza (FCP) <vFCPUFDest>.
+* NFSI_VLR_ICMS_DEST_DIFAL Valor do ICMS devido ao estado de destino <vICMSUFDest>.
+* NFSI_VLR_ICMS_REMET_DIFAL Valor do ICMS devido ao estado de origem (Sempre 0 - Seguindo a norma de 2019) <vICMSUFRemet>.
+* NFSI_BC_EFETIVO Base de cálculo do ICMS Efetivo <vBCEfet>.
+* NFSI_PER_ALIQ_EFETIVO Percentual da Alíquota do ICMS Efetivo <pICMSEfet>.
+* NFSI_VLR_ICMS_EFETIVO Valor do ICMS Efetivo <vICMSEfet>.
+* NFSI_VLR_FCP_RET_ST_DIFAL Valor do Fundo de Combate à Pobreza (FCP) da Substituição Tributária <vFCPST>.
+* NFSI_BC_FCP_RET_ST_DIFAL Base de Cálculo do Fundo de Combate à Pobreza (FCP) da Substituição Tributária <vBCFCPST>.
+* NFSI_PER_ALIQ_FCP_RET_ST_DIFAL Percentual da alíquota do Fundo de Combate à Pobreza (FCP) da Substituição Tributária <pFCPST>.
+* Inclusão de campos de totais consolidados do DIFAL e FCP na tabela EMP_NFS.
+* NFS_VLR_ICMS_TOTAL_DIFAL <vICMSUFDest> Somatório total de todos os valores do NFSI_VLR_ICMS_DEST_DIFAL.
+* NFS_VLR_FCP_TOTAL_DIFAL <vFCPUFDest> Somatório total de todos os valores do NFSI_VLR_FCP_DIFAL.
+* NFS_VLR_TOTAL_FCP_RET_ST <vFCPSTRet> Somatório total de todos os valores do NFSI_VLR_FCP_RET_ST_DIFAL.
+* Inclusão do campo NFS_DEST_COMPRADOR na tabela EMP_NFS para identificação do tipo de operação (local ou interestadual).
+* NFS_DEST_COMPRADOR '1 - Operação interna, 2 - Operação Interestadual, 3 - Operação com Exterior'.
+* Criação de campo para comportar idDest: 1 (Identificador de local de destino da operação sendo que 1 significa Operação Interna) na NFe.
+* Aumentado o campo de digitação da carta de correção para comportar 1000 caracteres.
+* Campo de margem de lucro bruta dentro do cadastro de produto é atualizado automaticamente quando o usuário altera o preço de venda.
+* Correção calculo substituição quando coloca ipi + frete + seguro + outras.
+* Base do ICMS-ST = (Valor do produto + Valor do IPI + Frete + Seguro + Outras Despesas Acessórias – Descontos) * (1+(%MVA / 100)).
+* Valor do ICMS-ST = (base do ICMS-ST x (alíquota do ICMS Intra / 100)) – valor do ICMS Inter.
+* Alteração dos nomes dos campos da classificação fiscal para ficar mais coerente com o manual da nota fiscal e sua real funcionalidade.
+* Correção Erro de gramática "indentificar" tela impressao pedido.
+* Alteração de campo de mensagem da nota para 4000 e titulo 100.
+* Alteração de campo de mensagem do produto para 500 e titulo 100.
+* Correção de erro Lbl_Qtdemb2.caption ao alterar preço do produto.
+* Criação de tabela EMP_EMQUADRAMENTO_IPI para atender a regra de informar o enquadramento do IPI na NF-e.
+* Liberação do IBPT 25.1D data de validade até 30/04/2025.
+* Inclusão das regras fiscais para MEI no empresariale e no NF-e.
+* Correção de erro ao aplicar acréscimo na NFe.
+* Correção de erro ao gerar base de ICMS para cliente MEI quando não deve ter base de ICMS.
+* Alteração rotina de backup para execução mais rápida.
+* Alteração no script de insert geral para alimentar a tabela de enquadramento do IPI.
+
+
 24/03/2025:
 
 * Correção de erro de troco quando tinha duas formas de pagamentos na NFCe.

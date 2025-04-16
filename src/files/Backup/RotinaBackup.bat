@@ -21,9 +21,6 @@ exit
 
 del /f /s /q "C:\Bitmax\BitmaxEmpresarial\Backup\Temp"
 del /f /s /q "C:\Bitmax\BitmaxEmpresarialGerencial\Backup\Temp"
-del /f /s /q "C:\Bitmax\BitmaxEmpresarial\Backup"
-del /f /s /q "C:\Bitmax\BitmaxEmpresarialGerencial\Backup"
-del /f /s /q "D:\Backup Bitmax"
 del /f /s /q "C:\Temp"
 
 mkdir "C:\Bitmax\BitmaxEmpresarial\Backup\Temp"
@@ -33,19 +30,6 @@ mkdir "C:\Bitmax\BitmaxEmpresarial\Backup\Temp\XML\NFe"
 
 IF not EXIST "C:\Temp" mkdir "C:\Temp"
 IF not EXIST "D:\Backup Bitmax" mkdir "D:\Backup Bitmax"
-
-forfiles -p "C:\Bitmax\BitmaxEmpresarial\Bin\Arquivos NFe\NFe"  -m *.rar -c "cmd /c del /f /q @path"
-forfiles -p "C:\Bitmax\BitmaxEmpresarial\Bin\Arquivos NFe\NFe"  -m *.zip -c "cmd /c del /f /q @path"
-forfiles -p "C:\Bitmax\BitmaxEmpresarial\Bin\Arquivos NFe\NFe"  -m *.pdf -c "cmd /c del /f /q @path"
-
-forfiles -p "C:\Bitmax\BitmaxEmpresarial\Bin\Arquivos NFCe\NFCe"  -m *.rar -c "cmd /c del /f /q @path"
-forfiles -p "C:\Bitmax\BitmaxEmpresarial\Bin\Arquivos NFCe\NFCe"  -m *.zip -c "cmd /c del /f /q @path"
-forfiles -p "C:\Bitmax\BitmaxEmpresarial\Bin\Arquivos NFCe\NFCe"  -m *.pdf -c "cmd /c del /f /q @path"
-
-forfiles -p "C:\Bitmax\BitmaxEmpresarial\Bin\Arquivos NFCe" -d -1 -m *.xml -c "cmd /c del /f /q @path"
-forfiles -p "C:\Bitmax\BitmaxEmpresarial\Bin\Arquivos NFe" -d -1 -m *.xml -c "cmd /c del /f /q @path"
-
-forfiles -p "C:\Bitmax\BitmaxEmpresarial\Bin"  -m *.pdf -c "cmd /c del /f /q @path"
 
 
 COPY C:\Bitmax\BitmaxEmpresarial\DB\BITMAX.FDB C:\Bitmax\BitmaxEmpresarial\Backup\Temp
@@ -107,19 +91,6 @@ if exist "C:\Bitmax\BitmaxEmpresarialGerencial\" (
     mkdir "C:\Bitmax\BitmaxEmpresarialGerencial\Backup\Temp\XML\NFCe"
     mkdir "C:\Bitmax\BitmaxEmpresarialGerencial\Backup\Temp\XML\NFe"
 )
-
-forfiles -p "C:\Bitmax\BitmaxEmpresarialGerencial\Bin\Arquivos NFe\NFe"  -m *.rar -c "cmd /c del /f /q @path"
-forfiles -p "C:\Bitmax\BitmaxEmpresarialGerencial\Bin\Arquivos NFe\NFe"  -m *.zip -c "cmd /c del /f /q @path"
-forfiles -p "C:\Bitmax\BitmaxEmpresarialGerencial\Bin\Arquivos NFe\NFe"  -m *.pdf -c "cmd /c del /f /q @path"
-
-forfiles -p "C:\Bitmax\BitmaxEmpresarialGerencial\Bin\Arquivos NFCe\NFCe"  -m *.rar -c "cmd /c del /f /q @path"
-forfiles -p "C:\Bitmax\BitmaxEmpresarialGerencial\Bin\Arquivos NFCe\NFCe"  -m *.zip -c "cmd /c del /f /q @path"
-forfiles -p "C:\Bitmax\BitmaxEmpresarialGerencial\Bin\Arquivos NFCe\NFCe"  -m *.pdf -c "cmd /c del /f /q @path"
-
-forfiles -p "C:\Bitmax\BitmaxEmpresarialGerencial\Bin\Arquivos NFCe" -d -1 -m *.xml -c "cmd /c del /f /q @path"
-forfiles -p "C:\Bitmax\BitmaxEmpresarialGerencial\Bin\Arquivos NFe" -d -1 -m *.xml -c "cmd /c del /f /q @path"
-
-forfiles -p "C:\Bitmax\BitmaxEmpresarialGerencial\Bin"  -m *.pdf -c "cmd /c del /f /q @path"
 
 
 if exist "C:\Bitmax\BitmaxEmpresarialGerencial\" (
@@ -201,9 +172,6 @@ exit
 
 del /f /s /q "C:\Bitmax\BitmaxEmpresarial\Backup\Temp"
 del /f /s /q "C:\Bitmax\BitmaxEmpresarialGerencial\Backup\Temp"
-del /f /s /q "C:\Bitmax\BitmaxEmpresarial\Backup"
-del /f /s /q "C:\Bitmax\BitmaxEmpresarialGerencial\Backup"
-del /f /s /q "D:\Backup Bitmax"
 del /f /s /q "C:\Temp"
 
 mkdir "C:\Bitmax\BitmaxEmpresarial\Backup\Temp"
@@ -213,19 +181,6 @@ mkdir "C:\Bitmax\BitmaxEmpresarial\Backup\Temp\XML\NFe"
 
 IF not EXIST "C:\Temp" mkdir "C:\Temp"
 IF not EXIST "D:\Backup Bitmax" mkdir "D:\Backup Bitmax"
-
-forfiles -p "C:\Bitmax\BitmaxEmpresarial\Bin\Arquivos NFe\NFe"  -m *.rar -c "cmd /c del /f /q @path"
-forfiles -p "C:\Bitmax\BitmaxEmpresarial\Bin\Arquivos NFe\NFe"  -m *.zip -c "cmd /c del /f /q @path"
-forfiles -p "C:\Bitmax\BitmaxEmpresarial\Bin\Arquivos NFe\NFe"  -m *.pdf -c "cmd /c del /f /q @path"
-
-forfiles -p "C:\Bitmax\BitmaxEmpresarial\Bin\Arquivos NFCe\NFCe"  -m *.rar -c "cmd /c del /f /q @path"
-forfiles -p "C:\Bitmax\BitmaxEmpresarial\Bin\Arquivos NFCe\NFCe"  -m *.zip -c "cmd /c del /f /q @path"
-forfiles -p "C:\Bitmax\BitmaxEmpresarial\Bin\Arquivos NFCe\NFCe"  -m *.pdf -c "cmd /c del /f /q @path"
-
-forfiles -p "C:\Bitmax\BitmaxEmpresarial\Bin\Arquivos NFCe" -d -1 -m *.xml -c "cmd /c del /f /q @path"
-forfiles -p "C:\Bitmax\BitmaxEmpresarial\Bin\Arquivos NFe" -d -1 -m *.xml -c "cmd /c del /f /q @path"
-
-forfiles -p "C:\Bitmax\BitmaxEmpresarial\Bin"  -m *.pdf -c "cmd /c del /f /q @path"
 
 
 COPY C:\Bitmax\BitmaxEmpresarial\DB\BITMAX.FDB C:\Bitmax\BitmaxEmpresarial\Backup\Temp
@@ -287,19 +242,6 @@ if exist "C:\Bitmax\BitmaxEmpresarialGerencial\" (
     mkdir "C:\Bitmax\BitmaxEmpresarialGerencial\Backup\Temp\XML\NFCe"
     mkdir "C:\Bitmax\BitmaxEmpresarialGerencial\Backup\Temp\XML\NFe"
 )
-
-forfiles -p "C:\Bitmax\BitmaxEmpresarialGerencial\Bin\Arquivos NFe\NFe"  -m *.rar -c "cmd /c del /f /q @path"
-forfiles -p "C:\Bitmax\BitmaxEmpresarialGerencial\Bin\Arquivos NFe\NFe"  -m *.zip -c "cmd /c del /f /q @path"
-forfiles -p "C:\Bitmax\BitmaxEmpresarialGerencial\Bin\Arquivos NFe\NFe"  -m *.pdf -c "cmd /c del /f /q @path"
-
-forfiles -p "C:\Bitmax\BitmaxEmpresarialGerencial\Bin\Arquivos NFCe\NFCe"  -m *.rar -c "cmd /c del /f /q @path"
-forfiles -p "C:\Bitmax\BitmaxEmpresarialGerencial\Bin\Arquivos NFCe\NFCe"  -m *.zip -c "cmd /c del /f /q @path"
-forfiles -p "C:\Bitmax\BitmaxEmpresarialGerencial\Bin\Arquivos NFCe\NFCe"  -m *.pdf -c "cmd /c del /f /q @path"
-
-forfiles -p "C:\Bitmax\BitmaxEmpresarialGerencial\Bin\Arquivos NFCe" -d -1 -m *.xml -c "cmd /c del /f /q @path"
-forfiles -p "C:\Bitmax\BitmaxEmpresarialGerencial\Bin\Arquivos NFe" -d -1 -m *.xml -c "cmd /c del /f /q @path"
-
-forfiles -p "C:\Bitmax\BitmaxEmpresarialGerencial\Bin"  -m *.pdf -c "cmd /c del /f /q @path"
 
 
 if exist "C:\Bitmax\BitmaxEmpresarialGerencial\" (
@@ -381,9 +323,6 @@ exit
 
 del /f /s /q "C:\Bitmax\BitmaxEmpresarial\Backup\Temp"
 del /f /s /q "C:\Bitmax\BitmaxEmpresarialGerencial\Backup\Temp"
-del /f /s /q "C:\Bitmax\BitmaxEmpresarial\Backup"
-del /f /s /q "C:\Bitmax\BitmaxEmpresarialGerencial\Backup"
-del /f /s /q "D:\Backup Bitmax"
 del /f /s /q "C:\Temp"
 
 mkdir "C:\Bitmax\BitmaxEmpresarial\Backup\Temp"
@@ -393,19 +332,6 @@ mkdir "C:\Bitmax\BitmaxEmpresarial\Backup\Temp\XML\NFe"
 
 IF not EXIST "C:\Temp" mkdir "C:\Temp"
 IF not EXIST "D:\Backup Bitmax" mkdir "D:\Backup Bitmax"
-
-forfiles -p "C:\Bitmax\BitmaxEmpresarial\Bin\Arquivos NFe\NFe"  -m *.rar -c "cmd /c del /f /q @path"
-forfiles -p "C:\Bitmax\BitmaxEmpresarial\Bin\Arquivos NFe\NFe"  -m *.zip -c "cmd /c del /f /q @path"
-forfiles -p "C:\Bitmax\BitmaxEmpresarial\Bin\Arquivos NFe\NFe"  -m *.pdf -c "cmd /c del /f /q @path"
-
-forfiles -p "C:\Bitmax\BitmaxEmpresarial\Bin\Arquivos NFCe\NFCe"  -m *.rar -c "cmd /c del /f /q @path"
-forfiles -p "C:\Bitmax\BitmaxEmpresarial\Bin\Arquivos NFCe\NFCe"  -m *.zip -c "cmd /c del /f /q @path"
-forfiles -p "C:\Bitmax\BitmaxEmpresarial\Bin\Arquivos NFCe\NFCe"  -m *.pdf -c "cmd /c del /f /q @path"
-
-forfiles -p "C:\Bitmax\BitmaxEmpresarial\Bin\Arquivos NFCe" -d -1 -m *.xml -c "cmd /c del /f /q @path"
-forfiles -p "C:\Bitmax\BitmaxEmpresarial\Bin\Arquivos NFe" -d -1 -m *.xml -c "cmd /c del /f /q @path"
-
-forfiles -p "C:\Bitmax\BitmaxEmpresarial\Bin"  -m *.pdf -c "cmd /c del /f /q @path"
 
 
 COPY C:\Bitmax\BitmaxEmpresarial\DB\BITMAX.FDB C:\Bitmax\BitmaxEmpresarial\Backup\Temp
@@ -467,19 +393,6 @@ if exist "C:\Bitmax\BitmaxEmpresarialGerencial\" (
     mkdir "C:\Bitmax\BitmaxEmpresarialGerencial\Backup\Temp\XML\NFCe"
     mkdir "C:\Bitmax\BitmaxEmpresarialGerencial\Backup\Temp\XML\NFe"
 )
-
-forfiles -p "C:\Bitmax\BitmaxEmpresarialGerencial\Bin\Arquivos NFe\NFe"  -m *.rar -c "cmd /c del /f /q @path"
-forfiles -p "C:\Bitmax\BitmaxEmpresarialGerencial\Bin\Arquivos NFe\NFe"  -m *.zip -c "cmd /c del /f /q @path"
-forfiles -p "C:\Bitmax\BitmaxEmpresarialGerencial\Bin\Arquivos NFe\NFe"  -m *.pdf -c "cmd /c del /f /q @path"
-
-forfiles -p "C:\Bitmax\BitmaxEmpresarialGerencial\Bin\Arquivos NFCe\NFCe"  -m *.rar -c "cmd /c del /f /q @path"
-forfiles -p "C:\Bitmax\BitmaxEmpresarialGerencial\Bin\Arquivos NFCe\NFCe"  -m *.zip -c "cmd /c del /f /q @path"
-forfiles -p "C:\Bitmax\BitmaxEmpresarialGerencial\Bin\Arquivos NFCe\NFCe"  -m *.pdf -c "cmd /c del /f /q @path"
-
-forfiles -p "C:\Bitmax\BitmaxEmpresarialGerencial\Bin\Arquivos NFCe" -d -1 -m *.xml -c "cmd /c del /f /q @path"
-forfiles -p "C:\Bitmax\BitmaxEmpresarialGerencial\Bin\Arquivos NFe" -d -1 -m *.xml -c "cmd /c del /f /q @path"
-
-forfiles -p "C:\Bitmax\BitmaxEmpresarialGerencial\Bin"  -m *.pdf -c "cmd /c del /f /q @path"
 
 
 if exist "C:\Bitmax\BitmaxEmpresarialGerencial\" (
@@ -561,9 +474,6 @@ exit
 
 del /f /s /q "C:\Bitmax\BitmaxEmpresarial\Backup\Temp"
 del /f /s /q "C:\Bitmax\BitmaxEmpresarialGerencial\Backup\Temp"
-del /f /s /q "C:\Bitmax\BitmaxEmpresarial\Backup"
-del /f /s /q "C:\Bitmax\BitmaxEmpresarialGerencial\Backup"
-del /f /s /q "D:\Backup Bitmax"
 del /f /s /q "C:\Temp"
 
 mkdir "C:\Bitmax\BitmaxEmpresarial\Backup\Temp"
@@ -573,19 +483,6 @@ mkdir "C:\Bitmax\BitmaxEmpresarial\Backup\Temp\XML\NFe"
 
 IF not EXIST "C:\Temp" mkdir "C:\Temp"
 IF not EXIST "D:\Backup Bitmax" mkdir "D:\Backup Bitmax"
-
-forfiles -p "C:\Bitmax\BitmaxEmpresarial\Bin\Arquivos NFe\NFe"  -m *.rar -c "cmd /c del /f /q @path"
-forfiles -p "C:\Bitmax\BitmaxEmpresarial\Bin\Arquivos NFe\NFe"  -m *.zip -c "cmd /c del /f /q @path"
-forfiles -p "C:\Bitmax\BitmaxEmpresarial\Bin\Arquivos NFe\NFe"  -m *.pdf -c "cmd /c del /f /q @path"
-
-forfiles -p "C:\Bitmax\BitmaxEmpresarial\Bin\Arquivos NFCe\NFCe"  -m *.rar -c "cmd /c del /f /q @path"
-forfiles -p "C:\Bitmax\BitmaxEmpresarial\Bin\Arquivos NFCe\NFCe"  -m *.zip -c "cmd /c del /f /q @path"
-forfiles -p "C:\Bitmax\BitmaxEmpresarial\Bin\Arquivos NFCe\NFCe"  -m *.pdf -c "cmd /c del /f /q @path"
-
-forfiles -p "C:\Bitmax\BitmaxEmpresarial\Bin\Arquivos NFCe" -d -1 -m *.xml -c "cmd /c del /f /q @path"
-forfiles -p "C:\Bitmax\BitmaxEmpresarial\Bin\Arquivos NFe" -d -1 -m *.xml -c "cmd /c del /f /q @path"
-
-forfiles -p "C:\Bitmax\BitmaxEmpresarial\Bin"  -m *.pdf -c "cmd /c del /f /q @path"
 
 
 COPY C:\Bitmax\BitmaxEmpresarial\DB\BITMAX.FDB C:\Bitmax\BitmaxEmpresarial\Backup\Temp
@@ -647,19 +544,6 @@ if exist "C:\Bitmax\BitmaxEmpresarialGerencial\" (
     mkdir "C:\Bitmax\BitmaxEmpresarialGerencial\Backup\Temp\XML\NFCe"
     mkdir "C:\Bitmax\BitmaxEmpresarialGerencial\Backup\Temp\XML\NFe"
 )
-
-forfiles -p "C:\Bitmax\BitmaxEmpresarialGerencial\Bin\Arquivos NFe\NFe"  -m *.rar -c "cmd /c del /f /q @path"
-forfiles -p "C:\Bitmax\BitmaxEmpresarialGerencial\Bin\Arquivos NFe\NFe"  -m *.zip -c "cmd /c del /f /q @path"
-forfiles -p "C:\Bitmax\BitmaxEmpresarialGerencial\Bin\Arquivos NFe\NFe"  -m *.pdf -c "cmd /c del /f /q @path"
-
-forfiles -p "C:\Bitmax\BitmaxEmpresarialGerencial\Bin\Arquivos NFCe\NFCe"  -m *.rar -c "cmd /c del /f /q @path"
-forfiles -p "C:\Bitmax\BitmaxEmpresarialGerencial\Bin\Arquivos NFCe\NFCe"  -m *.zip -c "cmd /c del /f /q @path"
-forfiles -p "C:\Bitmax\BitmaxEmpresarialGerencial\Bin\Arquivos NFCe\NFCe"  -m *.pdf -c "cmd /c del /f /q @path"
-
-forfiles -p "C:\Bitmax\BitmaxEmpresarialGerencial\Bin\Arquivos NFCe" -d -1 -m *.xml -c "cmd /c del /f /q @path"
-forfiles -p "C:\Bitmax\BitmaxEmpresarialGerencial\Bin\Arquivos NFe" -d -1 -m *.xml -c "cmd /c del /f /q @path"
-
-forfiles -p "C:\Bitmax\BitmaxEmpresarialGerencial\Bin"  -m *.pdf -c "cmd /c del /f /q @path"
 
 
 if exist "C:\Bitmax\BitmaxEmpresarialGerencial\" (
@@ -741,9 +625,6 @@ exit
 
 del /f /s /q "C:\Bitmax\BitmaxEmpresarial\Backup\Temp"
 del /f /s /q "C:\Bitmax\BitmaxEmpresarialGerencial\Backup\Temp"
-del /f /s /q "C:\Bitmax\BitmaxEmpresarial\Backup"
-del /f /s /q "C:\Bitmax\BitmaxEmpresarialGerencial\Backup"
-del /f /s /q "D:\Backup Bitmax"
 del /f /s /q "C:\Temp"
 
 mkdir "C:\Bitmax\BitmaxEmpresarial\Backup\Temp"
@@ -753,19 +634,6 @@ mkdir "C:\Bitmax\BitmaxEmpresarial\Backup\Temp\XML\NFe"
 
 IF not EXIST "C:\Temp" mkdir "C:\Temp"
 IF not EXIST "D:\Backup Bitmax" mkdir "D:\Backup Bitmax"
-
-forfiles -p "C:\Bitmax\BitmaxEmpresarial\Bin\Arquivos NFe\NFe"  -m *.rar -c "cmd /c del /f /q @path"
-forfiles -p "C:\Bitmax\BitmaxEmpresarial\Bin\Arquivos NFe\NFe"  -m *.zip -c "cmd /c del /f /q @path"
-forfiles -p "C:\Bitmax\BitmaxEmpresarial\Bin\Arquivos NFe\NFe"  -m *.pdf -c "cmd /c del /f /q @path"
-
-forfiles -p "C:\Bitmax\BitmaxEmpresarial\Bin\Arquivos NFCe\NFCe"  -m *.rar -c "cmd /c del /f /q @path"
-forfiles -p "C:\Bitmax\BitmaxEmpresarial\Bin\Arquivos NFCe\NFCe"  -m *.zip -c "cmd /c del /f /q @path"
-forfiles -p "C:\Bitmax\BitmaxEmpresarial\Bin\Arquivos NFCe\NFCe"  -m *.pdf -c "cmd /c del /f /q @path"
-
-forfiles -p "C:\Bitmax\BitmaxEmpresarial\Bin\Arquivos NFCe" -d -1 -m *.xml -c "cmd /c del /f /q @path"
-forfiles -p "C:\Bitmax\BitmaxEmpresarial\Bin\Arquivos NFe" -d -1 -m *.xml -c "cmd /c del /f /q @path"
-
-forfiles -p "C:\Bitmax\BitmaxEmpresarial\Bin"  -m *.pdf -c "cmd /c del /f /q @path"
 
 
 COPY C:\Bitmax\BitmaxEmpresarial\DB\BITMAX.FDB C:\Bitmax\BitmaxEmpresarial\Backup\Temp
@@ -827,19 +695,6 @@ if exist "C:\Bitmax\BitmaxEmpresarialGerencial\" (
     mkdir "C:\Bitmax\BitmaxEmpresarialGerencial\Backup\Temp\XML\NFCe"
     mkdir "C:\Bitmax\BitmaxEmpresarialGerencial\Backup\Temp\XML\NFe"
 )
-
-forfiles -p "C:\Bitmax\BitmaxEmpresarialGerencial\Bin\Arquivos NFe\NFe"  -m *.rar -c "cmd /c del /f /q @path"
-forfiles -p "C:\Bitmax\BitmaxEmpresarialGerencial\Bin\Arquivos NFe\NFe"  -m *.zip -c "cmd /c del /f /q @path"
-forfiles -p "C:\Bitmax\BitmaxEmpresarialGerencial\Bin\Arquivos NFe\NFe"  -m *.pdf -c "cmd /c del /f /q @path"
-
-forfiles -p "C:\Bitmax\BitmaxEmpresarialGerencial\Bin\Arquivos NFCe\NFCe"  -m *.rar -c "cmd /c del /f /q @path"
-forfiles -p "C:\Bitmax\BitmaxEmpresarialGerencial\Bin\Arquivos NFCe\NFCe"  -m *.zip -c "cmd /c del /f /q @path"
-forfiles -p "C:\Bitmax\BitmaxEmpresarialGerencial\Bin\Arquivos NFCe\NFCe"  -m *.pdf -c "cmd /c del /f /q @path"
-
-forfiles -p "C:\Bitmax\BitmaxEmpresarialGerencial\Bin\Arquivos NFCe" -d -1 -m *.xml -c "cmd /c del /f /q @path"
-forfiles -p "C:\Bitmax\BitmaxEmpresarialGerencial\Bin\Arquivos NFe" -d -1 -m *.xml -c "cmd /c del /f /q @path"
-
-forfiles -p "C:\Bitmax\BitmaxEmpresarialGerencial\Bin"  -m *.pdf -c "cmd /c del /f /q @path"
 
 
 if exist "C:\Bitmax\BitmaxEmpresarialGerencial\" (
@@ -921,9 +776,6 @@ exit
 
 del /f /s /q "C:\Bitmax\BitmaxEmpresarial\Backup\Temp"
 del /f /s /q "C:\Bitmax\BitmaxEmpresarialGerencial\Backup\Temp"
-del /f /s /q "C:\Bitmax\BitmaxEmpresarial\Backup"
-del /f /s /q "C:\Bitmax\BitmaxEmpresarialGerencial\Backup"
-del /f /s /q "D:\Backup Bitmax"
 del /f /s /q "C:\Temp"
 
 mkdir "C:\Bitmax\BitmaxEmpresarial\Backup\Temp"
@@ -933,19 +785,6 @@ mkdir "C:\Bitmax\BitmaxEmpresarial\Backup\Temp\XML\NFe"
 
 IF not EXIST "C:\Temp" mkdir "C:\Temp"
 IF not EXIST "D:\Backup Bitmax" mkdir "D:\Backup Bitmax"
-
-forfiles -p "C:\Bitmax\BitmaxEmpresarial\Bin\Arquivos NFe\NFe"  -m *.rar -c "cmd /c del /f /q @path"
-forfiles -p "C:\Bitmax\BitmaxEmpresarial\Bin\Arquivos NFe\NFe"  -m *.zip -c "cmd /c del /f /q @path"
-forfiles -p "C:\Bitmax\BitmaxEmpresarial\Bin\Arquivos NFe\NFe"  -m *.pdf -c "cmd /c del /f /q @path"
-
-forfiles -p "C:\Bitmax\BitmaxEmpresarial\Bin\Arquivos NFCe\NFCe"  -m *.rar -c "cmd /c del /f /q @path"
-forfiles -p "C:\Bitmax\BitmaxEmpresarial\Bin\Arquivos NFCe\NFCe"  -m *.zip -c "cmd /c del /f /q @path"
-forfiles -p "C:\Bitmax\BitmaxEmpresarial\Bin\Arquivos NFCe\NFCe"  -m *.pdf -c "cmd /c del /f /q @path"
-
-forfiles -p "C:\Bitmax\BitmaxEmpresarial\Bin\Arquivos NFCe" -d -1 -m *.xml -c "cmd /c del /f /q @path"
-forfiles -p "C:\Bitmax\BitmaxEmpresarial\Bin\Arquivos NFe" -d -1 -m *.xml -c "cmd /c del /f /q @path"
-
-forfiles -p "C:\Bitmax\BitmaxEmpresarial\Bin"  -m *.pdf -c "cmd /c del /f /q @path"
 
 
 COPY C:\Bitmax\BitmaxEmpresarial\DB\BITMAX.FDB C:\Bitmax\BitmaxEmpresarial\Backup\Temp
@@ -1007,19 +846,6 @@ if exist "C:\Bitmax\BitmaxEmpresarialGerencial\" (
     mkdir "C:\Bitmax\BitmaxEmpresarialGerencial\Backup\Temp\XML\NFCe"
     mkdir "C:\Bitmax\BitmaxEmpresarialGerencial\Backup\Temp\XML\NFe"
 )
-
-forfiles -p "C:\Bitmax\BitmaxEmpresarialGerencial\Bin\Arquivos NFe\NFe"  -m *.rar -c "cmd /c del /f /q @path"
-forfiles -p "C:\Bitmax\BitmaxEmpresarialGerencial\Bin\Arquivos NFe\NFe"  -m *.zip -c "cmd /c del /f /q @path"
-forfiles -p "C:\Bitmax\BitmaxEmpresarialGerencial\Bin\Arquivos NFe\NFe"  -m *.pdf -c "cmd /c del /f /q @path"
-
-forfiles -p "C:\Bitmax\BitmaxEmpresarialGerencial\Bin\Arquivos NFCe\NFCe"  -m *.rar -c "cmd /c del /f /q @path"
-forfiles -p "C:\Bitmax\BitmaxEmpresarialGerencial\Bin\Arquivos NFCe\NFCe"  -m *.zip -c "cmd /c del /f /q @path"
-forfiles -p "C:\Bitmax\BitmaxEmpresarialGerencial\Bin\Arquivos NFCe\NFCe"  -m *.pdf -c "cmd /c del /f /q @path"
-
-forfiles -p "C:\Bitmax\BitmaxEmpresarialGerencial\Bin\Arquivos NFCe" -d -1 -m *.xml -c "cmd /c del /f /q @path"
-forfiles -p "C:\Bitmax\BitmaxEmpresarialGerencial\Bin\Arquivos NFe" -d -1 -m *.xml -c "cmd /c del /f /q @path"
-
-forfiles -p "C:\Bitmax\BitmaxEmpresarialGerencial\Bin"  -m *.pdf -c "cmd /c del /f /q @path"
 
 
 if exist "C:\Bitmax\BitmaxEmpresarialGerencial\" (
@@ -1101,9 +927,6 @@ exit
 
 del /f /s /q "C:\Bitmax\BitmaxEmpresarial\Backup\Temp"
 del /f /s /q "C:\Bitmax\BitmaxEmpresarialGerencial\Backup\Temp"
-del /f /s /q "C:\Bitmax\BitmaxEmpresarial\Backup"
-del /f /s /q "C:\Bitmax\BitmaxEmpresarialGerencial\Backup"
-del /f /s /q "D:\Backup Bitmax"
 del /f /s /q "C:\Temp"
 
 mkdir "C:\Bitmax\BitmaxEmpresarial\Backup\Temp"
@@ -1113,19 +936,6 @@ mkdir "C:\Bitmax\BitmaxEmpresarial\Backup\Temp\XML\NFe"
 
 IF not EXIST "C:\Temp" mkdir "C:\Temp"
 IF not EXIST "D:\Backup Bitmax" mkdir "D:\Backup Bitmax"
-
-forfiles -p "C:\Bitmax\BitmaxEmpresarial\Bin\Arquivos NFe\NFe"  -m *.rar -c "cmd /c del /f /q @path"
-forfiles -p "C:\Bitmax\BitmaxEmpresarial\Bin\Arquivos NFe\NFe"  -m *.zip -c "cmd /c del /f /q @path"
-forfiles -p "C:\Bitmax\BitmaxEmpresarial\Bin\Arquivos NFe\NFe"  -m *.pdf -c "cmd /c del /f /q @path"
-
-forfiles -p "C:\Bitmax\BitmaxEmpresarial\Bin\Arquivos NFCe\NFCe"  -m *.rar -c "cmd /c del /f /q @path"
-forfiles -p "C:\Bitmax\BitmaxEmpresarial\Bin\Arquivos NFCe\NFCe"  -m *.zip -c "cmd /c del /f /q @path"
-forfiles -p "C:\Bitmax\BitmaxEmpresarial\Bin\Arquivos NFCe\NFCe"  -m *.pdf -c "cmd /c del /f /q @path"
-
-forfiles -p "C:\Bitmax\BitmaxEmpresarial\Bin\Arquivos NFCe" -d -1 -m *.xml -c "cmd /c del /f /q @path"
-forfiles -p "C:\Bitmax\BitmaxEmpresarial\Bin\Arquivos NFe" -d -1 -m *.xml -c "cmd /c del /f /q @path"
-
-forfiles -p "C:\Bitmax\BitmaxEmpresarial\Bin"  -m *.pdf -c "cmd /c del /f /q @path"
 
 
 COPY C:\Bitmax\BitmaxEmpresarial\DB\BITMAX.FDB C:\Bitmax\BitmaxEmpresarial\Backup\Temp
@@ -1187,19 +997,6 @@ if exist "C:\Bitmax\BitmaxEmpresarialGerencial\" (
     mkdir "C:\Bitmax\BitmaxEmpresarialGerencial\Backup\Temp\XML\NFCe"
     mkdir "C:\Bitmax\BitmaxEmpresarialGerencial\Backup\Temp\XML\NFe"
 )
-
-forfiles -p "C:\Bitmax\BitmaxEmpresarialGerencial\Bin\Arquivos NFe\NFe"  -m *.rar -c "cmd /c del /f /q @path"
-forfiles -p "C:\Bitmax\BitmaxEmpresarialGerencial\Bin\Arquivos NFe\NFe"  -m *.zip -c "cmd /c del /f /q @path"
-forfiles -p "C:\Bitmax\BitmaxEmpresarialGerencial\Bin\Arquivos NFe\NFe"  -m *.pdf -c "cmd /c del /f /q @path"
-
-forfiles -p "C:\Bitmax\BitmaxEmpresarialGerencial\Bin\Arquivos NFCe\NFCe"  -m *.rar -c "cmd /c del /f /q @path"
-forfiles -p "C:\Bitmax\BitmaxEmpresarialGerencial\Bin\Arquivos NFCe\NFCe"  -m *.zip -c "cmd /c del /f /q @path"
-forfiles -p "C:\Bitmax\BitmaxEmpresarialGerencial\Bin\Arquivos NFCe\NFCe"  -m *.pdf -c "cmd /c del /f /q @path"
-
-forfiles -p "C:\Bitmax\BitmaxEmpresarialGerencial\Bin\Arquivos NFCe" -d -1 -m *.xml -c "cmd /c del /f /q @path"
-forfiles -p "C:\Bitmax\BitmaxEmpresarialGerencial\Bin\Arquivos NFe" -d -1 -m *.xml -c "cmd /c del /f /q @path"
-
-forfiles -p "C:\Bitmax\BitmaxEmpresarialGerencial\Bin"  -m *.pdf -c "cmd /c del /f /q @path"
 
 
 if exist "C:\Bitmax\BitmaxEmpresarialGerencial\" (
