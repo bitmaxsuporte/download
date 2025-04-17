@@ -5,6 +5,22 @@
 * Criado tabela enquadramento IPI.
 * Criado tabela para natureza da receita da PIS e da COFINS.
 * Criado tabela para CST da PIS e da COFINS.
+* Criado tabela EMP_TRIBUTACAO_FEDERAL com campos para definir alíquota de ST quando CST = 05.
+* Adicionado campo TRIB_PIS_ST_ALIQUOTA_SAIDA para alíquota de ST de PIS na saída.
+* Adicionado campo TRIB_COFINS_ST_ALIQUOTA_SAIDA para alíquota de ST de COFINS na saída.
+* Alterada tabela EMP_PRODUTO para armazenar alíquotas de ST por produto.
+* Adicionado campo PRD_PIS_ST_ALIQUOTA para alíquota de ST de PIS por produto.
+* Adicionado campo PRD_COFINS_ST_ALIQUOTA para alíquota de ST de COFINS por produto.
+* Aproveitados campos existentes na tabela EMP_NFSI para atender à tributação ST de PIS e COFINS.
+* Mantidos campos de alíquotas ST NFSI_PER_ALIQ_PISST e NFSI_PER_ALIQ_COFINSST.
+* Mantidos campos de base de cálculo ST NFSI_PIS_VALOR_BC_ST (ou NFSI_VL_BC_PISST) e NFSI_COFINS_VALOR_BC_ST (ou NFSI_VL_BC_COFINSST).
+* Mantidos campos de valor unitário da alíquota: NFSI_VL_ALIQ_PISST e NFSI_VL_ALIQ_COFINSST.
+* SPED - Correção Erro C110 não estava levando para o 0450 fiscal para saídas.
+* SPED - Correção Erro unidade de medida 0220.
+* SPED - Correção participante não estava indo para o registro C113.
+* SPED - Alterado versão da 18 para 19. 
+
+
 
 *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-**-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-.
 
