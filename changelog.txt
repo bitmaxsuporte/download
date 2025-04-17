@@ -1,5 +1,13 @@
 ÚLTIMAS ALTERAÇÕES:
 
+17/04/2025:
+
+* Criado tabela enquadramento IPI.
+* Criado tabela para natureza da receita da PIS e da COFINS.
+* Criado tabela para CST da PIS e da COFINS.
+
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-**-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-.
+
 16/04/2025:
 
 * Correção de falha ao buscar um título em contas a pagar correção em todas procedures do financeiro onde continha os nomes com tamanho 40 de cliente, fornecedor, vendedor e bancos.
@@ -57,11 +65,14 @@
 * Alteração rotina de backup para execução mais rápida.
 * Alteração no script de insert geral para alimentar a tabela de enquadramento do IPI.
 
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-**-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-.
 
 24/03/2025:
 
 * Correção de erro de troco quando tinha duas formas de pagamentos na NFCe.
 * Reimpressão de carta de correção e cancelamento.
+
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-**-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-.
 
 18/03/2025:
 
@@ -76,6 +87,8 @@
 * Correção Falha no acréscimo do item após ter dado um desconto e depois cancelar para aplicar o desconto O sistema usa o valor do desconto anterior que ficou armazenado Acontece o mesmo se fizer um novo pedido usa o valor do desconto anterior.
 * Falha ao fazer um novo pedido e aplicar um acréscimo nada acontece.
 
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-**-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-.
+
 14/02/2025:
 
 * Ordenação no NFe com ordem alfabética a lista de produtos.
@@ -83,6 +96,8 @@
 * Correção para concatenar mensagem padrão + mensagem digitada pelo usuário.
 * Correção para não sair duas mensagens que permite aproveitamento de crédito e que não permite.
 * Melhoria no app de consulta CNPJ.
+
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-**-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-.
 
 20/01/2025:
 
@@ -111,16 +126,21 @@
 * Correção do erro do PIX onde foi retirado a tag de cartão. 
 * Remoção dos valores aproximados do tributo do item e mantido apenas a soma no total da nfe.
 * Versão 2025.1
- 
 
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-**-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-.
+ 
 22/11/2024:
 
 * Correção falha do desconto que zerava quando selecionava o item pela lupa e ia direto para o ok.
+
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-**-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-.
 
 18/11/2024:
 
 * Correção valor total da nota R$ 0,00 na nfce.
 * Correção pis e sem percentual de saída estava saindo com 99.
+
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-**-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-.
 
 14/11/2024:
 
@@ -139,6 +159,7 @@
 * Alteração versão para 2411.1
 * Atualizacao IBPT 24 2D.
 
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-**-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-.
 
 15/10/2024:
 
