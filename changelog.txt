@@ -1,5 +1,21 @@
 ÚLTIMAS ALTERAÇÕES:
 
+16/05/2025:
+
+* Alterada validação do CTE para verificar se o CNPJ da licenciada está presente no destinatário, remetente ou emitente e permitir em qualquer um dos casos.
+* Alterada verificação do CTE para permitir importar se a chave de acesso da nota estiver na entrada ou na emp_retorno.
+* Adicionado atalho para os executáveis BitmaxUnificador e BitmaxStatus em ferramentas.
+* Adicionados novos executáveis de BitmaxUnificador e BitmaxStatus na pasta bin.
+* Alterado comportamento ao modificar a data do pedido para atualizar todos os campos de data no pedido: NFS_NF_DTENTREGA, NFS_PED_DTENTREGA ---> entrega; NFS_NF_DATA_EMISSAO, NFS_NF_DTEMISSAO, NFS_PED_DTEMISSAO ---> data pedido.
+* Adicionado filtro de somente com estoque, negativos ou todos no relatório de produtos sem vendas.
+* Adicionado filtro por tributação federal no relatório de PIS e COFINS por produto.
+* Acrescentado filtro NDF no informe de venda cartão quando não escolhe nem crédito e nem débito, englobando também no escopo do "todos".
+* Corrigido relatório de vendas por usuário que estava lento.
+* Criado relatório de venda por NCM.
+* Criado relatório de sugestão de compra.
+* Criado relatório de histórico e variação de custo.
+* Adicionado filtro no relatório de inconsistência de estoque para mostrar apenas quem tiver inconsistente.
+
 *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-**-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-.
 
 05/05/2025:
@@ -27,8 +43,6 @@
 * SPED - Correção Erro unidade de medida 0220.
 * SPED - Correção participante não estava indo para o registro C113.
 * SPED - Alterado versão da 18 para 19. 
-
-
 
 *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-**-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-.
 
