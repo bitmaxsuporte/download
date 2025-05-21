@@ -1,5 +1,13 @@
 ÚLTIMAS ALTERAÇÕES:
 
+21/05/2025:
+
+* Correção erro ao deletar pedido "Data ou hora em formato inválido".
+* Corrigido erro ao fechar tela de pesquisa de pedidos do faturamento na busca de pedidos antigos.
+
+
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-**-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-.
+
 16/05/2025:
 
 * Alterada validação do CTE para verificar se o CNPJ da licenciada está presente no destinatário, remetente ou emitente e permitir em qualquer um dos casos.
