@@ -1,6 +1,13 @@
 ÚLTIMAS ALTERAÇÕES:
 
+
 21/05/2025:
+
+* Adicionado recurso para filtrar a quantidade de dias a exibir os pedidos antigos no faturamento.
+
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-**-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-.
+
+20/05/2025:
 
 * Correção erro ao deletar pedido "Data ou hora em formato inválido".
 * Corrigido erro ao fechar tela de pesquisa de pedidos do faturamento na busca de pedidos antigos.
