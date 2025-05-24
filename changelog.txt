@@ -1,5 +1,26 @@
 ÚLTIMAS ALTERAÇÕES:
 
+24/05/2025:
+
+* Adicionado status dos pedidos por cores indicando se foi emitido, recebido ou nada feito na barras de pesquisa dos pedidos.
+* Corrigida a falhas que permitiam pedidos de serem editados após recebido ou emitidos.
+* Bloqueio total das ações da barras de faturamento para que pedidos recebidos ou emitidos não possam ser editados.
+* Alteração para que pedidos recebidos apareçam na listagem permitindo a reimpressão do pedido.
+* Correção de falha a digitar valor ou quantidade 0.
+* Correção de falha ao realizar um pedido, receber e retornar a tela do faturamento o pedido continuava em edição.
+
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-**-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-.
+
+23/05/2024:
+
+* Liberação de novos schemas.
+
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-**-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-.
+
+22/05/2025:
+
+* Adicionado filtro em outras saídas para escolher pedidos antigos com datas entre 60, 120, 180 dias ou todos.
+
 
 21/05/2025:
 
