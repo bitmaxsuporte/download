@@ -1,5 +1,9 @@
 ÚLTIMAS ALTERAÇÕES:
 
+27/05/2025:
+
+* Alterado a SP de ficha kardex para retirar a condição de data do estoque atual  /*AND SP_EMP_MOVIMENTOESTOQUE_2.DT_MOVIMENTO <= CURRENT_DATE*/ -- a condição acima foi comentada, pois foi identificado uma falha, onde o estoque lançado numa data futura não aparecia no estoque do cadastro--exemplo a data de hoje é 27/05/2025 e a nota foi data a entrada 31/05/2025 essa do dia 31/05 não entra por causa do current_date
+
 24/05/2025:
 
 * Adicionado status dos pedidos por cores indicando se foi emitido, recebido ou nada feito na barras de pesquisa dos pedidos.
