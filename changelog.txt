@@ -1,5 +1,10 @@
 ÚLTIMAS ALTERAÇÕES:
 
+28/05/2025:
+
+* Correção falha que não não somava quantidade e volume na aba de transportadora no faturamento.
+* Correção de falha ao dar um desconto fechava o pedido e precisava reabrir.
+
 27/05/2025:
 
 * Alterado a SP de ficha kardex para retirar a condição de data do estoque atual  /*AND SP_EMP_MOVIMENTOESTOQUE_2.DT_MOVIMENTO <= CURRENT_DATE*/ -- a condição acima foi comentada, pois foi identificado uma falha, onde o estoque lançado numa data futura não aparecia no estoque do cadastro--exemplo a data de hoje é 27/05/2025 e a nota foi data a entrada 31/05/2025 essa do dia 31/05 não entra por causa do current_date
