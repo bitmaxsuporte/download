@@ -1,5 +1,9 @@
 ÚLTIMAS ALTERAÇÕES:
 
+30/05/2025:
+
+* Correção falha trigger markup.
+
 28/05/2025:
 
 * Correção falha que não não somava quantidade e volume na aba de transportadora no faturamento.
