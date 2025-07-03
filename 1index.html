@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel do Suporte</title>
+    <script src="./src/js/info.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="./src/css/reset.css">
+    <link rel="stylesheet" href="./src/css/estilos.css">
+    <link rel="stylesheet" href="./src/css/scrollbar.css">
+</head>
+<body>
+    <header>
+        <a href="src/pages/changelog.html" target="_blank">
+            <img src="./src/imagens/rolagem.png" alt="pokebola" class="logo">
+        </a>
+        <button id="botao-alterar-tema">
+            <img src="./src/imagens/sun.png" alt="imagem do sol" class="imagem-botao">
+        </button>
+    </header>
+    <main>
+        <ul class="listagem-download">
+            <li class="cartao-download">
+                <div class="informacoes">
+                    <span>Instalador</span>
+                </div>
+                <img src="./src/imagens/instalar.png" alt="instalador" class="gif">
+                <ul class="tipos">
+                    <li class="tipo download"><a href="src/files/BitmaxInstall_Empresarial.rar" target="_blank">Download</a></li>
+                </ul>
+                <p class="descricao">Instalação do sistema.</p>
+            </li>
+            <li class="cartao-download">
+                <div class="informacoes">
+                    <span>Atualização</span>
+                    <span>03.07</span>
+                </div>
+                <img src="./src/imagens/atualizacao-do-sistema.png" alt="atualização" class="gif">
+                <ul class="tipos">
+                    <li class="tipo download"><a href="#" onclick="baixarArquivos()">Download</a></li>
+                </ul>
+                <p class="descricao">Versão 2504.1. Extraia o arquivo part1.rar</p>
+            </li>
+            <li class="cartao-download">
+                <div class="informacoes">
+                    <span>Firebird</span>
+                </div>
+                <img src="./src/imagens/armazenamento-de-banco-de-dados.png" alt="firebird" class="gif">
+                <ul class="tipos">
+                    <li class="tipo download"><a href="src/files/exe/Instalador_Firebird.exe" target="_blank">Download</a></li>
+                </ul>
+                <p class="descricao">Instalador do Firebird.</p>
+            </li>
+            <li class="cartao-download">
+                <div class="informacoes">
+                    <span>Versão beta</span>
+                    <span>14.11</span>
+                </div>
+                <img src="./src/imagens/atualizacao-do-sistema.png" alt="atualização" class="gif">
+                <ul class="tipos">
+                    <li class="tipo download"><a href="" target="_blank">Download</a></li>
+                </ul>
+                <p class="descricao">Nenhuma versão aqui.</p>
+            </li>
+            <li class="cartao-download">
+                <div class="informacoes">
+                    <span>IBExpert</span>
+                </div>
+                <img src="./src/imagens/tabela-de-banco-de-dados.png" alt="ibexpert" class="gif">
+                <ul class="tipos">
+                    <li class="tipo download"><a href="src/files/exe/ibexpert.exe" target="_blank">Download</a></li>
+                </ul>
+                <p class="descricao">Exe do IBExpert</p>
+            </li>
+            <li class="cartao-download">
+                <div class="informacoes">
+                    <span>BAT</span>
+                </div>
+                <img src="./src/imagens/prompt.png" alt="cmd" class="gif">
+                <ul class="tipos">
+                    <li class="tipo download"><a href="src/files/update.bat" target="_blank">Download</a></li>
+                </ul>
+                <p class="descricao">Atualizador bat.</p>
+            </li>
+            <li class="cartao-download">
+                <div class="informacoes">
+                    <span>Rotina Backup</span>
+                </div>
+                <img src="./src/imagens/copia-de-seguranca.png" alt="backup" class="gif">
+                <ul class="tipos">
+                    <li class="tipo download"><a href="src/files/Backup.rar" target="_blank">Download</a></li>
+                </ul>
+                <p class="descricao">Rotina de Backup.</p>
+            </li>
+            <li class="cartao-download">
+                <div class="informacoes">
+                    <span>Manual</span>
+                </div>
+                <img src="./src/imagens/manual.png" alt="manual" class="gif">
+                <ul class="tipos">
+                    <li class="tipo download"><a href="src/files/pdf/Manual Bitmax.chm" target="_blank">Download</a></li>
+                </ul>
+                <p class="descricao">Manual completo do sistema.</p>
+            </li>
+            <li class="cartao-download">
+                <div class="informacoes">
+                    <span>PDF</span>
+                </div>
+                <img src="./src/imagens/pdf.png" alt="pdf" class="gif">
+                <ul class="tipos">
+                    <li class="tipo download"><a href="src/pages/pdf.html">Ir para PDF</a></li>
+                </ul>
+                <p class="descricao">Tutoriais em PDF.</p>
+            </li>
+            <li class="cartao-download">
+                <div class="informacoes">
+                    <span>VIDEOS</span>
+                </div>
+                <img src="./src/imagens/aula-de-video.png" alt="videos" class="gif">
+                <ul class="tipos">
+                    <li class="tipo download"><a href="src/pages/videos.html">Ir para Vídeos</a></li>
+                </ul>
+                <p class="descricao">Tutoriais em vídeos.</p>
+            </li>
+        </ul>
+    </main>
+    <script src="./src/js/index.js"></script>
+    <script>
+    function baixarArquivos() {
+        const arquivos = [
+            'src/files/Atualizacao.part1.rar', 
+            'src/files/Atualizacao.part2.rar'
+        ];
+
+        arquivos.forEach((arquivo, index) => {
+        setTimeout(() => {
+            const link = document.createElement("a");
+            link.href = arquivo;
+            link.download = ""; // Força o download
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }, index * 1000); // Adiciona um atraso de 1 segundo entre os downloads
+    });
+    }
+    </script>
+</body>
+</html>
