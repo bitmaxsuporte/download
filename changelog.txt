@@ -1,8 +1,13 @@
 ÚLTIMAS ALTERAÇÕES:
 
+04/07/2025:
+
+* Correção unificador SPED.
+* Correção SPED Contribuições duplicando CFOP.
+
 03/07/2025:
 
-* Correção SPED Contribuições.
+* Correção SPED Contribuições erro código CTA.
 
 
 13/06/2025:
