@@ -1,14 +1,87 @@
 ÚLTIMAS ALTERAÇÕES:
 
+22/08/2025:
+
+* Criação de Tabela de log de vendas EMP_NFS_LOG.
+
+* Criação de relatório de log em analise e diagnóstico.
+
+* Criação de Tabela de log de vendas EMP_NFS_LOG.
+
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-**-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-.
+
+21/08/2025:
+
+* Criar triggers da tabela composição para Kit com a diferença de que os preços de venda dos itens que compõe o kit são o preço de venda final do kit.
+
+* Equalizar os mesmos campos da tabela EMP_NFSI, com EMP_NFSILX.
+
+* Produtos do tipo composição e kit validar no grid pela quantidade maxima de produção e não pelo estoque atual para regra de estoque negativo.
+
+* Identificar na emp_nfsi as movimentações que estava marcado para movimentar estoque no momento da venda baseado no grupo. Criado o campo NFSI_MOVIMENTA_ESTOQUE.
+
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-**-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-.
+
+20/08/2025:
+
+* Alteração relatório de outras saídas com filtro de canceladas.
+
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-**-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-.
+
+08/08/2025:
+
+* Opção montar composição automaticamente ao vender item.
+
+* Opção de movimenta estoque Nao no grupo não movimenta entrada ou saída de nota.
+
+* Módulo de Kit.
+
+* Verificar possibilidade de adicionar a rotina de reprocessar o estoque em ferramentas > Análise e diagnóstico.
+
+* Exibir custo e custo proporcional aba composição.
+
+* Gravar e exibir o custo do cadastro do produto no campo = prdc_custo_prd.
+
+* Gravar e exibir o custo proporcional prdc_custo_proporcional. O cálculo é: (C.prdc_qtdade_prd * C.prdc_custo_prd) AS CUSTO_PROPORCIONAL.
+
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-**-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-.
+
+02/08/2025:
+
+* Criar tabela tipo e subtipo.
+
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-**-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-.
+
+15/07/2025:
+
+* Possibilidade de identificar quem deletou a movimentação.
+
+* Aparecer notas de outras saidas/entradas canceladas.
+
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-**-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-.
+
+08/07/2025:
+
+* Na licenciada MEI quando da um desconto em um item com classificação susbtituido no PDV ele gera valores na tag 12.00 quando não deveria.
+
+* Revisa alteração do pedido antigo que muda pra data do dia automatico.
+
+* Erro ao dar dois cliques para editar um item já lançado depois de inserir um item o sistema só deixa editar se clicar no botão alterar de novo.
+
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-**-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-.
+
 04/07/2025:
 
 * Correção unificador SPED.
 * Correção SPED Contribuições duplicando CFOP.
 
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-**-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-.
+
 03/07/2025:
 
 * Correção SPED Contribuições erro código CTA.
 
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-**-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-.
 
 13/06/2025:
 
