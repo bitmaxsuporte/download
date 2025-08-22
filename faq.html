@@ -6,54 +6,63 @@
     <title>FAQ Simples e Dinâmico</title>
     <!-- Carrega Tailwind CSS via CDN para estilização -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Carrega a fonte Inter para uma tipografia moderna -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Inter', sans-serif; /* Fonte Inter, como um padrão */
+            font-family: 'Inter', sans-serif;
             background-color: #f5f5f4; /* stone-100 */
             color: #44403c; /* stone-800 */
         }
-        /* Estilo para a transição de altura da resposta */
+        /* Estilo para a transição suave de altura da resposta */
         .answer-content {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+            transition: max-height 0.5s ease-out, padding 0.5s ease-out;
         }
         .answer-content.open {
-            max-height: 5000px; /* Aumentado para acomodar mais conteúdo, incluindo imagens */
-            padding-top: 1rem; /* p-4 */
-            padding-bottom: 1rem; /* p-4 */
+            max-height: 5000px; /* Valor alto para acomodar qualquer quantidade de conteúdo */
+            padding-top: 1.5rem; /* p-6 */
+            padding-bottom: 1.5rem; /* p-6 */
         }
         /* Estilo para o ícone de seta */
         .arrow-icon {
-            transition: transform 0.3s ease-out;
+            transition: transform 0.3s ease-in-out;
         }
-        .arrow-icon.rotate-90 {
-            transform: rotate(90deg);
+        .arrow-icon.rotate-180 {
+            transform: rotate(180deg);
         }
     </style>
 </head>
 <body class="p-6 md:p-10 flex items-center justify-center min-h-screen">
 
-    <div class="max-w-3xl w-full bg-white rounded-lg shadow-xl p-6 md:p-8">
-        <h1 class="text-3xl md:text-4xl font-bold text-sky-700 text-center mb-8">Perguntas Frequentes (FAQ)</h1>
+    <div class="max-w-4xl w-full bg-white rounded-2xl shadow-2xl p-6 md:p-10">
+        <h1 class="text-3xl md:text-5xl font-bold text-center text-gray-800 mb-2">
+            Perguntas Frequentes
+        </h1>
+        <p class="text-center text-gray-500 mb-8 md:mb-12 text-lg">
+            Encontre respostas para suas dúvidas.
+        </p>
 
         <!-- Campo de busca e botão de filtro -->
-        <div class="mb-6 flex flex-col sm:flex-row gap-4">
+        <div class="mb-8 flex flex-col sm:flex-row gap-4">
             <input
                 type="text"
                 id="search-input"
                 placeholder="Buscar por termo ou frase..."
-                class="flex-grow p-3 border border-stone-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500"
+                class="flex-grow p-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-4 focus:ring-purple-200 focus:border-purple-500 transition-all shadow-sm"
             >
             <button
                 id="filter-button"
-                class="px-6 py-3 bg-sky-600 text-white font-semibold rounded-lg hover:bg-sky-700 transition-colors focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2"
+                class="px-8 py-4 bg-purple-600 text-white font-semibold rounded-xl hover:bg-purple-700 transition-colors duration-300 focus:outline-none focus:ring-4 focus:ring-purple-200 shadow-md hover:shadow-lg"
             >
                 Filtrar
             </button>
         </div>
 
-        <div id="faq-container" class="space-y-4">
+        <div id="faq-container" class="space-y-4 md:space-y-6">
             <!-- Os itens do FAQ serão carregados dinamicamente aqui pelo JavaScript -->
         </div>
     </div>
@@ -65,63 +74,164 @@
             const filterButton = document.getElementById('filter-button');
 
             // Simula o carregamento de um arquivo JSON local.
-            // A propriedade 'answer' agora é um ARRAY de objetos de conteúdo.
-            // Cada objeto tem 'type' (text/image) e 'value' (o texto ou URL da imagem).
             const faqData = [
                 {
                     id: 'answer1',
-                    question: 'Como faço para acessar minha conta?',
+                    question: 'Como desabilitar o controle de estoque de um produto?',
                     answer: [
-                        { type: 'text', value: '<strong>Passo 1:</strong> Localize o botão "Login". Ele geralmente fica no canto superior direito da página principal do nosso site.' },
-                        { type: 'image', value: 'https://placehold.co/400x100/FFDDC1/000000?text=Botao+Login' }, // Imagem para o Passo 1
-                        { type: 'text', value: '<strong>Passo 2:</strong> Insira suas credenciais. Na tela de login que aparecer, preencha seu nome de usuário no campo "Usuário" e sua senha no campo "Senha".' },
-                        { type: 'image', value: 'https://placehold.co/400x150/CCE5FF/000000?text=Campos+Login+e+Senha' }, // Imagem para o Passo 2
-                        { type: 'text', value: '<strong>Passo 3:</strong> Confirme o acesso. Após preencher ambos os campos, clique no botão "Entrar". Se as credenciais estiverem corretas, você será redirecionado para sua área de usuário.' }
+                        { type: 'text', value: 'Para desabilitar o controle de estoque de um produto, siga os passos abaixo:' },
+                        { type: 'text', value: '<strong>1. Acesse o cadastro do subgrupo do produto:</strong> Comece o processo de cadastro.' },
+                        { type: 'text', value: '<strong>2. Localize a opção "Controla Estoque":</strong> Encontre a configuração relacionada ao controle de estoque.' },
+                        { type: 'text', value: '<strong>3. Desmarque essa opção:</strong> Selecione "Não" para desativar o controle de estoque.' },
+                        { type: 'text', value: 'Ao realizar esses passos, o sistema não afetará o estoque do produto com entradas ou saídas. Assim, o estoque nunca ficará negativo, mesmo que a opção de estoque negativo esteja habilitada.' }
                     ]
                 },
                 {
                     id: 'answer2',
-                    question: 'Posso alterar minhas informações de perfil?',
+                    question: 'Como cadastrar um produto do tipo composição?',
                     answer: [
-                        { type: 'text', value: 'Sim, você pode alterar suas informações de perfil a qualquer momento. Siga os passos abaixo:' },
-                        { type: 'text', value: '<strong>1. Acessar Configurações:</strong> Após fazer login, procure pelo seu nome de usuário ou um ícone de perfil no canto superior da tela e clique nele. Geralmente, haverá uma opção como "Meu Perfil" ou "Configurações de Conta".' },
-                        { type: 'image', value: 'https://placehold.co/400x100/D1E7DD/000000?text=Menu+Perfil' },
-                        { type: 'text', value: '<strong>2. Editar Dados:</strong> Na página de perfil, você encontrará diferentes seções (por exemplo, "Informações Pessoais", "Endereço", "Preferências"). Clique no botão "Editar" ao lado da seção que deseja modificar.' },
-                        { type: 'image', value: 'https://placehold.co/400x150/FFECB3/000000?text=Secao+Editar+Perfil' },
-                        { type: 'text', value: '<strong>3. Salvar Alterações:</strong> Após realizar as modificações, role a página até o final e clique no botão "Salvar" ou "Atualizar" para que as alterações sejam efetivadas.' }
+                        { type: 'text', value: 'Para cadastrar um produto do tipo composição, siga estas etapas:' },
+                        { type: 'text', value: '<strong>1. Inicie o cadastro do produto:</strong> Comece o processo de cadastro.' },
+                        { type: 'text', value: '<strong>2. No campo "Tipo":</strong> Selecione a opção "Composição".' },
+                        { type: 'text', value: '<strong>3. Após essa seleção:</strong> A aba "5 - Composição" será ativada.' },
+                        { type: 'text', value: '<strong>4. Insira os componentes:</strong> Adicione os componentes e as quantidades necessárias dentro da composição.' }
                     ]
                 },
                 {
                     id: 'answer3',
-                    question: 'Esqueci minha senha, o que devo fazer?',
+                    question: 'Como cadastrar um produto do tipo kit?',
                     answer: [
-                        { type: 'text', value: 'Não se preocupe! O processo de recuperação de senha é simples:' },
-                        { type: 'text', value: '<strong>1. Link de Recuperação:</strong> Na página de login, localize e clique no link "Esqueci minha senha".' },
-                        { type: 'image', value: 'https://placehold.co/400x100/A7D9E0/000000?text=Link+Esqueci+Senha' },
-                        { type: 'text', value: '<strong>2. Informe seu E-mail:</strong> Você será redirecionado para uma nova página onde deverá inserir o endereço de e-mail cadastrado em sua conta. Certifique-se de que o e-mail está correto para receber as instruções.' },
-                        { type: 'image', value: 'https://placehold.co/400x100/FFCCCC/000000?text=Campo+Email+Recuperacao' },
-                        { type: 'text', value: '<strong>3. Verifique sua Caixa de Entrada:</strong> Um e-mail com um link para redefinir sua senha será enviado imediatamente. Verifique também sua pasta de spam ou lixo eletrônico, caso não o encontre na caixa de entrada.' },
-                        { type: 'text', value: '<strong>4. Crie uma Nova Senha:</strong> Clique no link recebido no e-mail e siga as instruções para criar uma nova senha forte. Após a redefinição, você poderá fazer login normalmente.' }
+                        { type: 'text', value: 'Para cadastrar um produto do tipo kit, siga os passos abaixo:' },
+                        { type: 'text', value: '<strong>1. Acesse o cadastro do produto:</strong> Inicie o processo de cadastro.' },
+                        { type: 'text', value: '<strong>2. No campo "Tipo":</strong> Escolha a opção "Kit".' },
+                        { type: 'text', value: '<strong>3. Com essa opção selecionada:</strong> A aba "6 - Kit" será ativada.' },
+                        { type: 'text', value: '<strong>4. Insira os componentes:</strong> Adicione os componentes e as quantidades que compõem o kit.' },
+                        { type: 'text', value: 'Lembre-se: ao realizar uma venda, não será vendido um único produto chamado Kit. Todos os produtos que fazem parte do kit serão listados individualmente na nota fiscal.' }
                     ]
                 },
                 {
                     id: 'answer4',
-                    question: 'Quais métodos de pagamento são aceitos?',
+                    question: 'Como cadastrar um produto do tipo componente?',
                     answer: [
-                        { type: 'text', value: 'Atualmente, aceitamos os seguintes métodos de pagamento para sua comodidade:' },
-                        { type: 'text', value: '<ul><li><strong>Cartão de Crédito:</strong> Visa, MasterCard, American Express.</li><li><strong>Pix:</strong> Pagamento instantâneo via QR Code ou chave.</li><li><strong>Boleto Bancário:</strong> Pagamento em até 3 dias úteis.</li></ul>' },
-                        { type: 'image', value: 'https://placehold.co/400x80/E0F2F7/000000?text=Bandeiras+Cartao' }
+                        { type: 'text', value: 'Para cadastrar um produto do tipo componente, siga os passos abaixo:' },
+                        { type: 'text', value: '<strong>1. Acesse o cadastro do produto:</strong> Inicie o processo de cadastro.' },
+                        { type: 'text', value: '<strong>2. No campo "Tipo":</strong> Selecione a opção "Produto".' },
+                        { type: 'text', value: '<strong>3. Selecione o "Subtipo":</strong> No campo "Subtipo", escolha a opção "Matéria-prima".' },
+                        { type: 'text', value: '<strong>4. Insira as informações necessárias:</strong> Complete os demais campos obrigatórios e salve o cadastro.' }
                     ]
                 },
                 {
                     id: 'answer5',
-                    question: 'Como entro em contato com o suporte?',
+                    question: 'Como ativar a montagem automática da composição?',
                     answer: [
-                        { type: 'text', value: 'Nossa equipe de suporte está pronta para ajudar! Você pode nos contatar das seguintes formas:' },
-                        { type: 'text', value: '<strong>1. Formulário de Contato:</strong> Acesse a seção "Contato" em nosso site e preencha o formulário com sua dúvida ou problema.' },
-                        { type: 'text', value: '<strong>2. E-mail:</strong> Envie um e-mail diretamente para <a href="mailto:suporte@exemplo.com" class="text-sky-600 hover:underline">suporte@exemplo.com</a>. Responderemos o mais breve possível.' },
-                        { type: 'text', value: '<strong>3. Telefone:</strong> Ligue para (XX) XXXX-XXXX durante nosso horário comercial (segunda a sexta, das 9h às 18h).'},
-                        { type: 'image', value: 'https://placehold.co/400x120/FFEDF0/000000?text=Suporte+Contato' }
+                        { type: 'text', value: 'Para ativar a montagem automática da composição, siga os passos abaixo:' },
+                        { type: 'text', value: '<strong>1. Vá em parâmetros do sistema:</strong> Acesse a aba "2 - Produtos".' },
+                        { type: 'text', value: '<strong>2. Marque a opção "Montar quantidade automaticamente":</strong> Assim, o sistema dará baixa na quantidade exata necessária para gerar a quantidade digitada na tela de vendas, de acordo com o que foi definido no cadastro da composição.' }
+                    ]
+                },
+                {
+                    id: 'answer6',
+                    question: 'Onde posso visualizar a capacidade de produção de um produto do tipo composição ou kit?',
+                    answer: [
+                        { type: 'text', value: 'No cadastro do produto, você encontrará o campo "Capacidade de Produção Máxima", que indica a quantidade máxima que é possível gerar com o estoque de matéria-prima disponível.' }
+                    ]
+                },
+                {
+                    id: 'answer7',
+                    question: 'É possível gerar estoque prévio para um produto do tipo composição?',
+                    answer: [
+                        { type: 'text', value: 'Não. Não é possível gerar estoque para produtos do tipo composição. O estoque da matéria-prima será dado baixa somente a cada venda realizada.' }
+                    ]
+                },
+                {
+                    id: 'answer8',
+                    question: 'Como posso vender uma composição sem ter estoque prévio?',
+                    answer: [
+                        { type: 'text', value: 'No subgrupo da composição, habilite a opção "Permitir negativo: Sim" e "Controla estoque: Não". Dessa forma, ao realizar uma venda, a mensagem de estoque negativo não aparecerá e o estoque não ficará negativo.' }
+                    ]
+                },
+                {
+                    id: 'answer9',
+                    question: 'O que é um Kit?',
+                    answer: [
+                        { type: 'text', value: 'O cadastro do tipo kit é uma coleção ou lista de itens pré-definidos que, ao ser selecionado na tela de vendas, importa todos os produtos que fazem parte dessa coleção.' }
+                    ]
+                },
+                {
+                    id: 'answer10',
+                    question: 'Como dar saída em mais de uma unidade de um Kit?',
+                    answer: [
+                        { type: 'text', value: 'Se for vender 10 unidades de um Kit, o sistema pegará esse valor e multiplicará pela quantidade que cada item "consome" dentro de cada kit. Por exemplo, se uma unidade de kit contém 1 vinho, ao digitar 10, o sistema multiplicará e a saída será de 10 vinhos.' }
+                    ]
+                },
+                {
+                    id: 'answer11',
+                    question: 'O nome do kit que eu cadastrei aparece na venda?',
+                    answer: [
+                        { type: 'text', value: 'Não. O cadastro do tipo kit é apenas um agrupamento de itens para facilitar a venda. Se você quiser que o produto final saia com o nome que você cadastrou, deve usar o tipo "Composição".' }
+                    ]
+                },
+                {
+                    id: 'answer12',
+                    question: 'Ao vender uma composição, os componentes aparecem na nota fiscal?',
+                    answer: [
+                        { type: 'text', value: 'Não. A baixa da matéria-prima é um processo interno do banco de dados. Apenas a descrição do produto acabado aparecerá no pedido ou na nota fiscal.' }
+                    ]
+                },
+                {
+                    id: 'answer13',
+                    question: 'Como o custo da matéria-prima do tipo Kit ou Composição é gerado?',
+                    answer: [
+                        { type: 'text', value: 'O cálculo do custo é feito proporcionalmente para cada ingrediente. Por exemplo: se a farinha de trigo custa R$ 4,00, mas a receita usa apenas 0,5 kg, o custo proporcional é R$2,00 para cada unidade produzida.' }
+                    ]
+                },
+                {
+                    id: 'answer14',
+                    question: 'Como o custo do Kit ou da composição acabada é gerado?',
+                    answer: [
+                        { type: 'text', value: 'É feita uma soma de todos os custos proporcionais das matérias-primas e o valor é atualizado no cadastro do produto principal. Se o custo da matéria-prima for atualizado, o custo do produto final também será atualizado dinamicamente.' }
+                    ]
+                },
+                {
+                    id: 'answer15',
+                    question: 'Como vendo um produto do tipo Kit?',
+                    answer: [
+                        { type: 'text', value: 'O produto do tipo Kit só é exibido no botão de pesquisa ao lado do botão de busca convencional. Este botão listará apenas os produtos do tipo "Kit".' }
+                    ]
+                },
+                {
+                    id: 'answer16',
+                    question: 'Posso vender as matérias-primas individualmente?',
+                    answer: [
+                        { type: 'text', value: 'Sim, você pode vender cada componente individualmente junto com os produtos acabados.' }
+                    ]
+                },
+                {
+                    id: 'answer17',
+                    question: 'Como ativar a auditoria ou o log do sistema?',
+                    answer: [
+                        { type: 'text', value: 'Acesse: Ferramentas > Análise e Diagnóstico > Ativar/Desativar Auditoria > Auditoria de Vendas.' }
+                    ]
+                },
+                {
+                    id: 'answer18',
+                    question: 'Como limpar meus logs?',
+                    answer: [
+                        { type: 'text', value: 'Acesse: Ferramentas > Análise e Diagnóstico > Ativar/Desativar Auditoria > Limpar Logs.' }
+                    ]
+                },
+                {
+                    id: 'answer19',
+                    question: 'Como consultar um log?',
+                    answer: [
+                        { type: 'text', value: 'Acesse: Ferramentas > Consultar Registro de Log (Vendas) e filtre por pedido.' }
+                    ]
+                },
+                {
+                    id: 'answer20',
+                    question: 'Como encontrar divergências de valores mensais entre pedidos e notas emitidas?',
+                    answer: [
+                        { type: 'text', value: 'Acesse: Ferramentas > Análise e Diagnóstico > Comparativo de Vendas: Digitação vs Autorização e utilize os filtros adequados.' }
                     ]
                 }
             ];
@@ -132,39 +242,37 @@
                 faqContainer.innerHTML = ''; 
 
                 if (dataToRender.length === 0) {
-                    faqContainer.innerHTML = '<p class="text-center text-stone-600">Nenhum resultado encontrado para o termo de busca.</p>';
+                    faqContainer.innerHTML = '<p class="text-center text-gray-500 font-medium py-8">Nenhum resultado encontrado para o termo de busca.</p>';
                     return;
                 }
 
                 dataToRender.forEach(item => {
                     const faqItemDiv = document.createElement('div');
-                    faqItemDiv.className = 'faq-item border border-stone-200 rounded-lg overflow-hidden';
+                    faqItemDiv.className = 'faq-item bg-gray-50 rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden border border-gray-200';
 
                     const questionButton = document.createElement('button');
-                    questionButton.className = 'faq-question w-full flex justify-between items-center p-4 md:p-5 text-left font-semibold text-lg text-stone-800 bg-stone-50 hover:bg-stone-100 transition-colors focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2';
+                    questionButton.className = 'faq-question w-full flex justify-between items-center p-5 md:p-6 text-left font-semibold text-lg md:text-xl text-gray-800 bg-white hover:bg-gray-100 transition-colors duration-300';
                     questionButton.setAttribute('aria-expanded', 'false');
                     questionButton.setAttribute('aria-controls', item.id);
-                    questionButton.innerHTML = `${item.question} <span class="arrow-icon text-sky-500">&#9658;</span>`;
+                    questionButton.innerHTML = `${item.question} <span class="arrow-icon text-purple-500 text-3xl transition-transform duration-300 transform-gpu">&raquo;</span>`;
 
                     const answerDiv = document.createElement('div');
                     answerDiv.id = item.id;
-                    answerDiv.className = 'answer-content bg-white px-4 md:px-5';
+                    answerDiv.className = 'answer-content px-5 md:px-6';
                     
-                    // Itera sobre o array 'answer' para adicionar múltiplos blocos de conteúdo
                     item.answer.forEach(contentBlock => {
                         if (contentBlock.type === 'text') {
                             const pElement = document.createElement('p');
-                            pElement.className = 'text-stone-700 mb-2'; // Adiciona margem inferior para separar blocos de texto
-                            pElement.innerHTML = contentBlock.value; // Usa innerHTML para permitir HTML (negrito, listas)
+                            pElement.className = 'text-gray-700 mb-2 leading-relaxed';
+                            pElement.innerHTML = contentBlock.value;
                             answerDiv.appendChild(pElement);
                         } else if (contentBlock.type === 'image') {
                             const imgElement = document.createElement('img');
                             imgElement.src = contentBlock.value;
                             imgElement.alt = `Ilustração para: ${item.question}`;
-                            // Classes Tailwind para responsividade, estilo e margem superior para separar da linha anterior
                             imgElement.className = 'my-4 md:my-6 max-w-full h-auto rounded-lg shadow-md mx-auto block'; 
                             imgElement.onerror = function() { 
-                                this.style.display = 'none'; // Esconde a imagem se não carregar
+                                this.style.display = 'none';
                                 console.error(`Falha ao carregar imagem: ${contentBlock.value}`);
                             };
                             answerDiv.appendChild(imgElement);
@@ -176,7 +284,6 @@
                     faqContainer.appendChild(faqItemDiv);
                 });
 
-                // Após renderizar os itens, anexar os event listeners
                 attachEventListeners();
             }
 
@@ -199,19 +306,20 @@
                             if (otherAnswerContent.classList.contains('open') && otherAnswerContent.id !== answerId) {
                                 otherAnswerContent.classList.remove('open');
                                 otherQuestion.setAttribute('aria-expanded', 'false');
-                                otherArrowIcon.classList.remove('rotate-90');
+                                otherArrowIcon.classList.remove('rotate-180');
                             }
                         });
 
                         // Alterna a visibilidade da resposta clicada
-                        if (answerContent.classList.contains('open')) {
+                        const isExpanded = question.getAttribute('aria-expanded') === 'true' || false;
+                        if (isExpanded) {
                             answerContent.classList.remove('open');
                             question.setAttribute('aria-expanded', 'false');
-                            arrowIcon.classList.remove('rotate-90');
+                            arrowIcon.classList.remove('rotate-180');
                         } else {
                             answerContent.classList.add('open');
                             question.setAttribute('aria-expanded', 'true');
-                            arrowIcon.classList.add('rotate-90');
+                            arrowIcon.classList.add('rotate-180');
                         }
                     });
                 });
@@ -223,10 +331,9 @@
                 let filteredData = [];
 
                 if (searchTerm === '') {
-                    filteredData = faqData; // Se o termo de busca estiver vazio, mostra todos os FAQs
+                    filteredData = faqData;
                 } else {
                     filteredData = faqData.filter(item => {
-                        // Concatena pergunta e todas as partes do texto da resposta para a busca
                         const searchableText = item.question.toLowerCase() + 
                                                item.answer.filter(block => block.type === 'text')
                                                            .map(block => block.value.toLowerCase())
@@ -234,16 +341,16 @@
                         return searchableText.includes(searchTerm);
                     });
                 }
-                renderFaqItems(filteredData); // Renderiza os resultados filtrados
+                renderFaqItems(filteredData);
             }
 
             // Event Listeners para o campo de busca e botão
             filterButton.addEventListener('click', filterFaqs);
             searchInput.addEventListener('keyup', (event) => {
-                if (event.key === 'Enter') { // Filtra também ao pressionar Enter no campo de busca
+                if (event.key === 'Enter') {
                     filterFaqs();
-                } else if (searchInput.value.trim() === '' && event.key !== 'Backspace' && event.key !== 'Delete') {
-                    // Opcional: Se quiser filtrar em tempo real para termo vazio
+                } else if (searchInput.value.trim() === '') {
+                    // Atualiza a lista em tempo real ao apagar o texto
                     filterFaqs();
                 }
             });
