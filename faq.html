@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FAQ Simples e Dinâmico</title>
-    <!-- Carrega Tailwind CSS via CDN para estilização -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Carrega a fonte Inter para uma tipografia moderna -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
@@ -46,7 +44,6 @@
             Encontre respostas para suas dúvidas.
         </p>
 
-        <!-- Campo de busca e botão de filtro -->
         <div class="mb-8 flex flex-col sm:flex-row gap-4">
             <input
                 type="text"
@@ -63,8 +60,7 @@
         </div>
 
         <div id="faq-container" class="space-y-4 md:space-y-6">
-            <!-- Os itens do FAQ serão carregados dinamicamente aqui pelo JavaScript -->
-        </div>
+            </div>
     </div>
 
     <script>
@@ -232,6 +228,1042 @@
                     question: 'Como encontrar divergências de valores mensais entre pedidos e notas emitidas?',
                     answer: [
                         { type: 'text', value: 'Acesse: Ferramentas > Análise e Diagnóstico > Comparativo de Vendas: Digitação vs Autorização e utilize os filtros adequados.' }
+                    ]
+                },
+                {
+                    id: 'answer21',
+                    question: 'Como identificar se o destinatário é ou não contribuinte do ICMS para preenchimento do campo “indIEDest”?',
+                    answer: [
+                        { type: 'text', value: 'Para identificar se o destinatário é contribuinte do ICMS, você deve considerar as seguintes combinações de informações:' },
+                        { type: 'text', value: '<table class="min-w-full border-collapse border border-gray-200"><thead><tr><th class="border border-gray-300 px-4 py-2">Simples</th><th class="border border-gray-300 px-4 py-2">Contribuinte</th><th class="border border-gray-300 px-4 py-2">Isento</th><th class="border border-gray-300 px-4 py-2">Código</th></tr></thead><tbody><tr><td class="border border-gray-300 px-4 py-2">N</td><td class="border border-gray-300 px-4 py-2">S</td><td class="border border-gray-300 px-4 py-2">S</td><td class="border border-gray-300 px-4 py-2">2</td></tr><tr><td class="border border-gray-300 px-4 py-2">N</td><td class="border border-gray-300 px-4 py-2">N</td><td class="border border-gray-300 px-4 py-2">S</td><td class="border border-gray-300 px-4 py-2">2</td></tr><tr><td class="border border-gray-300 px-4 py-2">N</td><td class="border border-gray-300 px-4 py-2">S</td><td class="border border-gray-300 px-4 py-2">N</td><td class="border border-gray-300 px-4 py-2">1</td></tr><tr><td class="border border-gray-300 px-4 py-2">N</td><td class="border border-gray-300 px-4 py-2">N</td><td class="border border-gray-300 px-4 py-2">N</td><td class="border border-gray-300 px-4 py-2">9</td></tr><tr><td class="border border-gray-300 px-4 py-2">S</td><td class="border border-gray-300 px-4 py-2">S</td><td class="border border-gray-300 px-4 py-2">S</td><td class="border border-gray-300 px-4 py-2">2</td></tr><tr><td class="border border-gray-300 px-4 py-2">S</td><td class="border border-gray-300 px-4 py-2">S</td><td class="border border-gray-300 px-4 py-2">N</td><td class="border border-gray-300 px-4 py-2">1</td></tr><tr><td class="border border-gray-300 px-4 py-2">S</td><td class="border border-gray-300 px-4 py-2">N</td><td class="border border-gray-300 px-4 py-2">S</td><td class="border border-gray-300 px-4 py-2">2</td></tr><tr><td class="border border-gray-300 px-4 py-2">S</td><td class="border border-gray-300 px-4 py-2">N</td><td class="border border-gray-300 px-4 py-2">N</td><td class="border border-gray-300 px-4 py-2">9</td></tr></tbody></table>' },
+                        { type: 'text', value: 'Se a finalidade do pedido/nota for igual a 1 - Contribuinte e possuir Inscrição Estadual, então indIEDest = 1 - Contribuinte de ICMS. É obrigatório ter a Inscrição Estadual para ser considerado contribuinte.' },
+                        { type: 'text', value: 'Quando a finalidade do pedido/nota for igual a 1 - Contribuinte ou 3 - Contribuinte Uso/Consumo e não possuir Inscrição Estadual, então indIEDest = 2 - Contribuinte Isento de Inscrição.' },
+                        { type: 'text', value: 'Se a finalidade do pedido/nota for igual a 2 - Não Contribuinte, então indIEDest = 9 - Não contribuinte.' }
+                    ]
+                },
+                {
+                    id: 'answer22',
+                    question: 'Como desabilitar chamada do e-mail ao emitir NFe ou NFCe?',
+                    answer: [
+                        { type: 'text', value: 'Vá em parâmetros do sistema -> 4 - Configurações para NF-e -> Ativar/Desativar chamada de Email.' },
+                        { type: 'text', value: 'Se a opção estiver marcada, a mensagem será exibida para cada nota emitida. Se desmarcada, a mensagem de e-mail será pulada.' }
+                    ]
+                },
+                {
+                    id: 'answer23',
+                    question: 'Como remover a coluna de desconto do PDF da NF-e?',
+                    answer: [
+                        { type: 'text', value: 'Nas configurações do NF-e, habilite ou desabilite na opção "Exibir Coluna Desconto/Acréscimo no item?".' }
+                    ]
+                },
+                {
+                    id: 'answer24',
+                    question: 'Por que o produto não está aparecendo na ficha kardex?',
+                    answer: [
+                        { type: 'text', value: 'Isso pode ocorrer porque a opção de controle de estoque para o subgrupo do produto não está ativada. Verifique as configurações do subgrupo e ative a opção de controle de estoque, se necessário.' }
+                    ]
+                },
+                {
+                    id: "answer25",
+                    question: "Posso instalar o software em mais de uma máquina com a mesma licença?",
+                    answer: [
+                        { type: "text", value: "Não. Conforme os termos de licença, para cada licença que você adquirir, o sistema poderá ser instalado em <strong>apenas uma máquina</strong>." }
+                    ]
+                },
+                {
+                    id: "answer26",
+                    question: "É permitido transferir, vender ou alugar minha licença do software?",
+                    answer: [
+                        { type: "text", value: "Não, é estritamente proibido transferir, ceder, alugar, doar, emprestar ou vender o programa para outro usuário ou empresa sem o consentimento prévio e expresso da BITMAX." }
+                    ]
+                },
+                {
+                    id: "answer27",
+                    question: "Qual é o horário de atendimento do suporte técnico?",
+                    answer: [
+                        { type: "text", value: "O suporte técnico está disponível de <strong>segunda a sexta-feira</strong>, nos seguintes horários:" },
+                        { type: "text", value: "• Manhã: das 8:00 às 12:00." },
+                        { type: "text", value: "• Tarde: das 14:00 às 18:00." }
+                    ]
+                },
+                {
+                    id: "answer28",
+                    question: "Como posso entrar em contato com o suporte técnico?",
+                    answer: [
+                        { type: "text", value: "Você pode entrar em contato com o suporte técnico através dos seguintes canais:" },
+                        { type: "text", value: "• <strong>Fone/Fax:</strong> (75) 3030-1577" },
+                        { type: "text", value: "• <strong>E-mail:</strong> suporte@bitmax.com.br" }
+                    ]
+                },
+                {
+                    id: "answer29",
+                    question: "O que devo verificar antes de ligar para o suporte técnico?",
+                    answer: [
+                        { type: "text", value: "Antes de contatar o suporte, é recomendado realizar as seguintes verificações para agilizar o atendimento:" },
+                        { type: "text", value: "• Averiguar se o equipamento e o sistema operacional atendem aos pré-requisitos." },
+                        { type: "text", value: "• Verificar o funcionamento geral dos equipamentos." },
+                        { type: "text", value: "• Conferir se a impressora fiscal (caso utilize) está ligada e se o cabo de dados está conectado." },
+                        { type: "text", value: "• Procurar a solução no manual do sistema ou na seção de Ajuda." },
+                        { type: "text", value: "• Acessar o site www.bitmax.com.br e ler as informações no link 'Perguntas Frequentes'." }
+                    ]
+                },
+                {
+                    id: "answer30",
+                    question: "Quais são os pré-requisitos para instalar o sistema Bitmax Empresarial?",
+                    answer: [
+                        { type: "text", value: "Para instalar o software, seu computador precisa atender aos seguintes requisitos mínimos:" },
+                        { type: "text", value: "• <strong>Sistema Operacional:</strong> Windows 7 ou Windows 10." },
+                        { type: "text", value: "• <strong>Memória RAM:</strong> 4 GB." },
+                        { type: "text", value: "• <strong>Processador:</strong> Core 2.0 GHz ou superior." },
+                        { type: "text", value: "• <strong>Espaço em Disco (HD):</strong> 512 MB de espaço livre." }
+                    ]
+                },
+                {
+                    id: "answer31",
+                    question: "Como faço a instalação do sistema em rede?",
+                    answer: [
+                        { type: "text", value: "Para a instalação em rede, siga estes passos:" },
+                        { type: "text", value: "<strong>1. Instalação no Servidor:</strong> Primeiramente, o Bitmax Empresarial deve ser instalado na máquina que funcionará como servidor." },
+                        { type: "text", value: "<strong>2. Compartilhamento:</strong> A pasta 'Bitmax' localizada no servidor deve ser compartilhada na rede." },
+                        { type: "text", value: "<strong>3. Configuração no Terminal:</strong> Na máquina terminal, localize a pasta compartilhada do servidor, acesse a subpasta 'Bin' e crie um atalho na área de trabalho para o executável 'BITMAXEMPRESARIAL'." }
+                    ]
+                },
+                {
+                    id: "answer32",
+                    question: "Como desinstalo o Bitmax Empresarial corretamente?",
+                    answer: [
+                        { type: "text", value: "O processo de desinstalação deve seguir os seguintes passos:" },
+                        { type: "text", value: "<strong>1. Backup:</strong> Antes de tudo, é <strong>essencial</strong> fazer um backup do sistema para garantir a segurança dos seus dados." },
+                        { type: "text", value: "<strong>2. Painel de Controle:</strong> Acesse o 'Painel de Controle' do Windows." },
+                        { type: "text", value: "<strong>3. Programas e Recursos:</strong> Clique na opção 'Programas e Recursos'." },
+                        { type: "text", value: "<strong>4. Desinstalar:</strong> Localize 'Bitmax Empresarial' na lista, clique com o botão direito do mouse sobre ele e selecione a opção 'Desinstalar'." }
+                    ]
+                },
+                {
+                    id: "answer33",
+                    question: "Posso alterar a Razão Social ou o CNPJ da minha empresa no sistema depois de configurado?",
+                    answer: [
+                        { type: "text", value: "Não. Após serem fornecidos durante a configuração inicial, os campos <strong>Razão Social e CNPJ/CPF não podem ser alterados</strong> posteriormente no sistema." }
+                    ]
+                },
+                {
+                    id: "answer34",
+                    question: "Para que serve a seção 'Configurações da Licenciada'?",
+                    answer: [
+                        { type: "text", value: "Este cadastro contém os dados da sua empresa (a usuária da licença). As informações preenchidas nesta seção são <strong>indispensáveis para a geração correta das obrigações fiscais</strong>, como Sintegra e Sped Fiscal." }
+                    ]
+                },
+                {
+                    id: "answer35",
+                    question: "Como o sistema calcula o 'Custo Médio' de um produto?",
+                    answer: [
+                        { type: "text", value: "O custo médio é calculado automaticamente pelo sistema com base nas entradas de notas de compra. A fórmula utilizada é:" },
+                        { type: "text", value: "<i>((Quantidade atual em estoque * Custo médio atual) + (Quantidade comprada * Preço de compra)) / (Quantidade atual em estoque + Quantidade comprada)</i>" }
+                    ]
+                },
+                {
+                    id: "answer36",
+                    question: "É possível adicionar uma foto ao cadastro do produto?",
+                    answer: [
+                        { type: "text", value: "Sim. Na tela de cadastro do produto, há uma seção chamada 'Foto do Produto'. Basta clicar no botão <strong>'Adicionar'</strong>, selecionar o arquivo de imagem no seu computador e salvá-lo para facilitar a identificação visual do item." }
+                    ]
+                },
+                {
+                    id: "answer37",
+                    question: "Qual a diferença entre os módulos 'Faturamento' e 'Venda Rápida'?",
+                    answer: [
+                        { type: "text", value: "O módulo <strong>'Faturamento'</strong> é mais completo, utilizado para gerar pedidos de venda detalhados que podem se tornar orçamentos ou documentos fiscais como NF-e. Já o módulo <strong>'Venda Rápida'</strong> é uma forma simplificada de realizar a venda, ideal para operações ágeis no ponto de venda (PDV)." }
+                    ]
+                },
+                {
+                    id: "answer38",
+                    question: "Como devo realizar o backup do sistema?",
+                    answer: [
+                        { type: "text", value: "Para fazer o backup, acesse o menu <strong>Ferramentas > Utilitários</strong> e clique em <strong>'Iniciar Backup'</strong>. É altamente recomendável que essa rotina seja feita diariamente, no final do expediente, para garantir a segurança de todas as movimentações da empresa." }
+                    ]
+                },
+                {
+                    id: "answer39",
+                    question: "Como gero os arquivos fiscais Sintegra e SPED Fiscal?",
+                    answer: [
+                        { type: "text", value: "Para gerar ambos os arquivos, você deve acessar o menu <strong>'Ferramentas'</strong>." },
+                        { type: "text", value: "• <strong>Sintegra:</strong> Vá em 'Gerar Sintegra' e siga as orientações. É crucial que você contate sua contabilidade para obter as informações corretas antes de gerar o arquivo." },
+                        { type: "text", value: "• <strong>SPED Fiscal:</strong> Vá em 'Gerar SPED Fiscal'. Da mesma forma, contate sua contabilidade para saber o período e os blocos obrigatórios. Depois, clique em 'Gerar o Arquivo do Sped Fiscal Completo'." }
+                    ]
+                },
+                {
+                    id: "answer40",
+                    question: "O que é necessário para emitir uma Nota Fiscal Eletrônica (NF-e)?",
+                    answer: [
+                        { type: "text", value: "Para a transmissão e validação jurídica da NF-e, é indispensável que sua empresa possua um <strong>Certificado Digital</strong> válido, que funciona como uma assinatura digital. Os modelos aceitos são A1 ou A3." }
+                    ]
+                },
+                {
+                    id: "answer41",
+                    question: "O que é um produto do tipo 'Composição'?",
+                    answer: [
+                        { type: "text", value: "É um tipo de cadastro para produtos que são fabricados ou montados a partir de outros itens (matéria-prima). Por exemplo, um computador montado a partir de peças individuais ou roupas feitas a partir de tecidos e aviamentos." }
+                    ]
+                },
+                {
+                    id: "answer42",
+                    question: "Como o sistema trata a venda de um produto do tipo 'Composição'?",
+                    answer: [
+                        { type: "text", value: "Quando um produto do tipo 'Composição' é vendido, o sistema automaticamente dá baixa no estoque dos seus componentes (matéria-prima) na proporção definida no cadastro." }
+                    ]
+                },
+                {
+                    id: "answer43",
+                    question: "Para que serve a 'Ficha Kardex'?",
+                    answer: [
+                        { type: "text", value: "A Ficha Kardex é um relatório que permite filtrar e analisar todas as entradas e saídas de um produto específico dentro de um período. É uma ferramenta muito útil para realizar auditorias de estoque e identificar inconsistências." }
+                    ]
+                },
+                {
+                    id: "answer44",
+                    question: "Como faço para registrar as compras de fornecedores no sistema?",
+                    answer: [
+                        { type: "text", value: "As compras são registradas no módulo <strong>'Entradas no Estoque'</strong>. Você pode fazer o lançamento de duas formas:" },
+                        { type: "text", value: "• <strong>Manual:</strong> Inserindo os dados da nota fiscal campo a campo." },
+                        { type: "text", value: "• <strong>Automática:</strong> Importando o arquivo XML da nota fiscal, o que agiliza o processo e reduz erros de digitação." }
+                    ]
+                },
+                {
+                    id: "answer45",
+                    question: "O que é preciso fazer ao importar um XML de compra pela primeira vez?",
+                    answer: [
+                        { type: "text", value: "Ao importar um XML, os produtos contidos nele precisam ser vinculados aos produtos já cadastrados no seu sistema. O sistema exibirá uma tela para que você faça essa associação, garantindo que o estoque seja atualizado corretamente." }
+                    ]
+                },
+                {
+                    id: "answer46",
+                    question: "Como funciona o módulo 'Contas a Pagar'?",
+                    answer: [
+                        { type: "text", value: "O módulo 'Contas a Pagar' gerencia todas as saídas financeiras da empresa, como títulos a pagar a fornecedores e outras despesas. Nele, é possível registrar, dar baixa e cancelar baixas de títulos." }
+                    ]
+                },
+                {
+                    id: "answer47",
+                    question: "Para que servem os 'Centros de Custo'?",
+                    answer: [
+                        { type: "text", value: "Os Centros de Custo são utilizados para delimitar e organizar os custos das diversas seções de uma empresa (ex: administrativo, vendas, produção). Isso permite uma análise mais detalhada de onde os recursos financeiros estão sendo aplicados." }
+                    ]
+                },
+                {
+                    id: "answer48",
+                    question: "Preciso fazer algo para que as movimentações financeiras sejam registradas?",
+                    answer: [
+                        { type: "text", value: "Sim. Para que toda a movimentação financeira seja registrada corretamente, é necessário primeiro realizar a <strong>abertura do livro caixa</strong>. Este passo é fundamental para o controle do fluxo de caixa." }
+                    ]
+                },
+                {
+                    id: "answer49",
+                    question: "Como posso criar diferentes níveis de acesso para os funcionários?",
+                    answer: [
+                        { type: "text", value: "No menu <strong>Ferramentas > Segurança > Usuários, Grupos e Permissões</strong>, você pode criar diferentes grupos (ex: Administradores, Vendedores, Caixa) e definir quais telas e funções cada grupo pode acessar. Depois, basta criar um usuário para cada funcionário e associá-lo ao grupo correspondente." }
+                    ]
+                },
+                {
+                    id: "answer50",
+                    question: "Como faço para ajustar o estoque de um produto manualmente?",
+                    answer: [
+                        { type: "text", value: "O ajuste de estoque pode ser feito através do módulo <strong>Balanço</strong>, localizado no menu 'Ferramentas'. Este módulo permite corrigir a quantidade de produtos em estoque, mas seu uso deve ser feito com cautela." }
+                    ]
+                },
+                {
+                    id: "answer51",
+                    question: "A Bitmax coleta minhas informações pessoais ou do meu computador?",
+                    answer: [
+                        { type: "text", value: "A Bitmax não coleta informações pessoais ou do seu sistema que possam identificá-lo sem o seu consentimento. No entanto, o software possui recursos que podem se conectar aos sistemas da Bitmax para o envio de possíveis erros e falhas, e ao utilizar o software você consente com a coleta dessas informações de serviço." }
+                    ]
+                },
+                {
+                    id: "answer52",
+                    question: "O que acontece se eu violar os termos de licença do software?",
+                    answer: [
+                        { type: "text", value: "A violação de qualquer termo do contrato acarreta na rescisão automática da licença, independente de notificação. Nesse caso, a licença de uso é suspensa e você deve destruir todos os materiais e cópias do programa. A Bitmax também poderá requerer judicialmente indenizações por prejuízos e violação de Direitos Autorais." }
+                    ]
+                },
+                {
+                    id: "answer53",
+                    question: "Sou obrigado a atualizar o software se utilizar ECF (Emissor de Cupom Fiscal)?",
+                    answer: [
+                        { type: "text", value: "Sim. O usuário que utiliza o software para operação de ECF está obrigado a adquirir e instalar as atualizações (novas versões) que forem disponibilizadas pela Bitmax para manter o sistema de acordo com a legislação vigente. A não atualização implicará na suspensão dos serviços de suporte técnico." }
+                    ]
+                },
+                {
+                    id: "answer54",
+                    question: "A garantia do software cobre danos no meu equipamento?",
+                    answer: [
+                        { type: "text", value: "Não. A garantia é contra defeitos de programação e está limitada à substituição do programa defeituoso. A Bitmax não se responsabiliza por danos causados a equipamentos, instalações elétricas ou programas de terceiros que trabalhem em conjunto com o software." }
+                    ]
+                },
+                {
+                    id: "answer55",
+                    question: "Quais são os passos de instalação do sistema?",
+                    answer: [
+                        { type: "text", value: "A instalação é dividida em dois passos principais:" },
+                        { type: "text", value: "<strong>Passo nº 1:</strong> Instalação do Servidor Firebird." },
+                        { type: "text", value: "<strong>Passo nº 2:</strong> Instalação do Sistema Bitmax Empresarial." }
+                    ]
+                },
+                {
+                    id: "answer56",
+                    question: "O que devo fazer se eu já tiver o Firebird instalado no meu computador?",
+                    answer: [
+                        { type: "text", value: "O manual recomenda desinstalar qualquer outra versão do Firebird antes de iniciar a instalação. Para isso, vá em <strong>Iniciar > Painel de Controle > Programas e Recursos</strong>, encontre o 'Firebird' na lista, clique com o botão direito e desinstale." }
+                    ]
+                },
+                {
+                    id: "answer57",
+                    question: "Posso testar o software antes de registrar?",
+                    answer: [
+                        { type: "text", value: "Sim. Após a instalação, na tela de registro, você pode clicar na opção <strong>'AVALIAR por 61 dias'</strong> para utilizar o software em um período de avaliação." }
+                    ]
+                },
+                {
+                    id: "answer58",
+                    question: "Como faço o registro do software após a instalação?",
+                    answer: [
+                        { type: "text", value: "Para receber o registro, você pode acessar o site <strong>www.bitmax.com.br</strong> e preencher o menu REGISTRO informando o número do 'Controle Interno'. Alternativamente, pode enviar os dados da empresa e o número do 'Controle Interno' por fax para (75) 3030-1577 ou para o e-mail suporte@bitmax.com.br." }
+                    ]
+                },
+                {
+                    id: "answer59",
+                    question: "O que preciso fazer na tela de 'Configurações da Licenciada' após a instalação?",
+                    answer: [
+                        { type: "text", value: "É necessário preencher os campos vazios e, principalmente, corrigir o campo da cidade, pois por padrão ele pode vir incorreto. Após selecionar a cidade e o estado corretos, você deve ir na aba <strong>'4 - Dados Complementares'</strong> e clicar no botão 'atualizar Endereço padrão'. Para emitir NF-e/NFC-e, os campos Reg. Municipal, CNAE e CRT devem ser preenchidos corretamente." }
+                    ]
+                },
+                {
+                    id: "answer60",
+                    question: "Para que serve o cadastro de 'Cobradores'?",
+                    answer: [
+                        { type: "text", value: "Este módulo é utilizado caso sua empresa trabalhe com terceirização para realizar cobranças. Ele também pode ser usado para controlar diferentes tipos de carteiras de cobrança, como 'Carteira Própria', 'Cobrança Bradesco', etc." }
+                    ]
+                },
+                {
+                    id: "answer61",
+                    question: "Por que é importante cadastrar o 'Contador' corretamente?",
+                    answer: [
+                        { type: "text", value: "O cadastro da contabilidade que presta serviços para sua empresa é fundamental, pois os dados informados, principalmente o número do registro CRC e o CPF/CNPJ, são utilizados na geração de obrigações fiscais como Sintegra e SPED Fiscal." }
+                    ]
+                },
+                {
+                    id: "answer62",
+                    question: "Como o sistema organiza os produtos?",
+                    answer: [
+                        { type: "text", value: "O sistema utiliza um sistema de <strong>'Grupos e Subgrupos'</strong> para categorizar os produtos. Por exemplo, você pode criar um grupo 'CALÇAS' e dentro dele subgrupos para cada marca ou tipo (ex: 'JEANS', 'SOCIAL')." }
+                    ]
+                },
+                {
+                    id: "answer63",
+                    question: "Qual a diferença entre 'Nome Compl.' e 'Nome Contábil' no cadastro de produtos?",
+                    answer: [
+                        { type: "text", value: "O <strong>'Nome Compl.'</strong> é a descrição ou referência que você usa internamente para o produto. O <strong>'Nome Contábil'</strong> é como o produto é referenciado na Nota Fiscal Eletrônica (NF-e)." }
+                    ]
+                },
+                {
+                    id: "answer64",
+                    question: "O que significam os status 'Ativo', 'Inativo' e 'Cancelado' no cadastro de produtos?",
+                    answer: [
+                        { type: "text", value: "• <strong>Ativo:</strong> Aplica-se a produtos que estão disponíveis para venda." },
+                        { type: "text", value: "• <strong>Inativo:</strong> Para produtos que não têm mais estoque ou que saíram de linha e não serão mais revendidos." },
+                        { type: "text", value: "• <strong>Cancelado:</strong> Utilizado para produtos que não são mais comercializados pela empresa de forma definitiva." }
+                    ]
+                },
+                {
+                    id: "answer65",
+                    question: "Para que serve a 'Tabela de Preços' (Preço venda 2, 3, 4) no cadastro de produtos?",
+                    answer: [
+                        { type: "text", value: "Esta funcionalidade permite que um mesmo produto tenha diferentes preços de venda. É útil para criar tabelas de preço diferenciadas por cliente ou para definir preços de varejo e atacado." }
+                    ]
+                },
+                {
+                    id: "answer66",
+                    question: "Onde devo cadastrar a Placa do Veículo da transportadora?",
+                    answer: [
+                        { type: "text", value: "No cadastro de <strong>'Transportadoras'</strong>, acesse a aba <strong>'4-Dados Complementares'</strong>. O preenchimento do campo 'Placa do Veículo' é essencial para o tratamento fiscal na emissão de NF-e." }
+                    ]
+                },
+                {
+                    id: "answer67",
+                    question: "Como posso definir comissões para os vendedores?",
+                    answer: [
+                        { type: "text", value: "No cadastro de <strong>'Vendedores'</strong>, acesse a aba <strong>'2-Dados complementares do Vendedor'</strong>. Nela, você pode definir os percentuais de 'Comissão a Vista' e 'Comissão a Prazo' para cada vendedor." }
+                    ]
+                },
+                {
+                    id: "answer68",
+                    question: "Para que serve o cadastro de 'Zona de Vendas'?",
+                    answer: [
+                        { type: "text", value: "Este módulo permite organizar as vendas por região. Se sua empresa possui filiais ou atua em diferentes localidades, você pode criar zonas para cada uma delas, descrevendo-as pelo nome da rua ou da cidade." }
+                    ]
+                },
+                {
+                    id: "answer69",
+                    question: "Como o sistema funciona para faturamento de madeireiras?",
+                    answer: [
+                        { type: "text", value: "O sistema possui uma função específica no módulo 'Faturamento' para o comércio de madeira. Ao lançar o produto, o sistema abre campos para inserir <strong>Quantidade, Comprimento, Largura e Espessura</strong>. Com base nessas medidas, ele calcula o volume em metros cúbicos (M3) e o valor final da venda automaticamente." }
+                    ]
+                },
+                {
+                    id: "answer70",
+                    question: "Como aplico um desconto no Faturamento?",
+                    answer: [
+                        { type: "text", value: "Você pode aplicar o desconto de duas formas:" },
+                        { type: "text", value: "• <strong>Por Item:</strong> Após lançar o produto, clique em 'Percentual', digite a porcentagem e clique em 'Aplicar'." },
+                        { type: "text", value: "• <strong>No Total da Nota:</strong> Após lançar todos os itens, no rodapé da tela, há um campo para inserir um desconto total, que pode ser em percentual (%) ou em valor (R$)." }
+                    ]
+                },
+                {
+                    id: "answer71",
+                    question: "Quais são as teclas de atalho para buscar produtos na 'Venda Rápida'?",
+                    answer: [
+                        { type: "text", value: "Na tela de Venda Rápida, você pode usar os seguintes atalhos:" },
+                        { type: "text", value: "• <strong>Ctrl + B:</strong> Busca por código de barras." },
+                        { type: "text", value: "• <strong>Ctrl + C:</strong> Busca por código do produto." },
+                        { type: "text", value: "• <strong>Ctrl + N:</strong> Busca por nome do produto." },
+                        { type: "text", value: "• <strong>Ctrl + P:</strong> Busca por produto pesado." },
+                        { type: "text", value: "• <strong>Ctrl + R:</strong> Busca por referência." }
+                    ]
+                },
+                {
+                    id: "answer72",
+                    question: "Como finalizo o pagamento e emito a nota na 'Venda Rápida'?",
+                    answer: [
+                        { type: "text", value: "• Para iniciar o recebimento, tecle <strong>F9</strong> e informe a forma de pagamento." },
+                        { type: "text", value: "• Para transmitir a nota (NFC-e), tecle <strong>CTRL + F9</strong>." },
+                        { type: "text", value: "• Para apenas imprimir o pedido (sem valor fiscal), tecle <strong>CTRL + F8</strong>." }
+                    ]
+                },
+                {
+                    id: "answer73",
+                    question: "Para que serve o relatório 'Curva ABC de Clientes'?",
+                    answer: [
+                        { type: "text", value: "Este relatório organiza os clientes com base no valor de compra em um determinado período, começando pelos que mais compraram. Ele ajuda a identificar seus clientes mais importantes e a criar ações de marketing e fidelização direcionadas." }
+                    ]
+                },
+                {
+                    id: "answer74",
+                    question: "O que o relatório 'Curva ABC de Produtos' mostra?",
+                    answer: [
+                        { type: "text", value: "Este relatório lista os produtos em ordem de maior movimentação (venda) em um período, mostrando a quantidade, o valor e a participação percentual de cada um. É uma ferramenta essencial para tomar decisões sobre compras, reposição e controle de estoque." }
+                    ]
+                },
+                {
+                    id: "answer75",
+                    question: "O que significa o status com círculo laranja ao vincular um item do XML?",
+                    answer: [
+                        { type: "text", value: "Um círculo laranja no status indica que o produto precisa ser atualizado ou que há campos obrigatórios não preenchidos no seu cadastro." }
+                    ]
+                },
+                {
+                    id: "answer76",
+                    question: "Posso fazer uma devolução parcial para um fornecedor?",
+                    answer: [
+                        { type: "text", value: "Sim. No módulo <strong>'Notas de Devolução/Retorno/Ajuste'</strong>, você tem a opção de realizar uma devolução total ou parcial de uma nota de compra." }
+                    ]
+                },
+                {
+                    id: "answer77",
+                    question: "O que é um 'Título a Receber'?",
+                    answer: [
+                        { type: "text", value: "É um documento que representa uma promessa de pagamento. Ele formaliza a obrigação do comprador de pagar, dentro de um prazo, a importância de uma fatura de venda de mercadoria ou serviço." }
+                    ]
+                },
+                {
+                    id: "answer78",
+                    question: "Como posso parcelar uma venda em vários títulos?",
+                    answer: [
+                        { type: "text", value: "Utilize o módulo <strong>'Gerar Títulos em Massa (a receber)'</strong>. Nele, você informa o cliente, o valor total, a quantidade de parcelas e a data de vencimento da primeira, e o sistema gera todos os títulos automaticamente." }
+                    ]
+                },
+                {
+                    id: "answer79",
+                    question: "O que fazer se eu dei baixa em um título por engano?",
+                    answer: [
+                        { type: "text", value: "O sistema possui o módulo <strong>'Cancelar Baixas de Títulos'</strong>. Basta localizar o cliente e o título em questão e clicar em 'Excluir Última Baixa do Título' para reverter a operação." }
+                    ]
+                },
+                {
+                    id: "answer80",
+                    question: "Quais tipos de despesas devo lançar diretamente no 'Movimento do Caixa'?",
+                    answer: [
+                        { type: "text", value: "Lançamentos que não são provenientes de compras de mercadorias ou vendas, como pagamento de salários, impostos, aluguel, contas de energia, água, telefone, material de escritório, entre outros, devem ser lançados diretamente neste módulo." }
+                    ]
+                },
+                {
+                    id: "answer81",
+                    question: "Como posso fechar o caixa do dia?",
+                    answer: [
+                        { type: "text", value: "Acesse <strong>Financeiro > Gerenciamento do Caixa > Ferramentas > Fechamento do Dia</strong>. Verifique se a data está correta e clique em 'Fechar Dia' para concluir a operação." }
+                    ]
+                },
+                {
+                    id: "answer82",
+                    question: "É possível fazer um lançamento financeiro em uma data passada?",
+                    answer: [
+                        { type: "text", value: "Sim. Utilize a ferramenta <strong>'Efetuar Lançamento em Data Retroativa'</strong>. Selecione a data desejada e clique em 'Abrir Dia' para poder registrar movimentações nessa data." }
+                    ]
+                },
+                {
+                    id: "answer83",
+                    question: "Para que serve a ferramenta 'Carga na Balança'?",
+                    answer: [
+                        { type: "text", value: "Este módulo permite realizar a atualização do preço de produtos que são vendidos por peso, enviando as informações para a balança." }
+                    ]
+                },
+                {
+                    id: "answer84",
+                    question: "Onde ficam salvos os arquivos ao usar a função 'Exportação de Cadastro'?",
+                    answer: [
+                        { type: "text", value: "Após a exportação, é criada uma pasta chamada <strong>'EXPORTAÇÃO DE CADASTRO'</strong> dentro do diretório de instalação do sistema (normalmente em C:\\Bitmax\\BitmaxEmpresarial\\Bin). Os arquivos exportados estarão nessa pasta no formato XML." }
+                    ]
+                },
+                {
+                    id: "answer85",
+                    question: "O que são os 'Parâmetros do Sistema'?",
+                    answer: [
+                        { type: "text", value: "É uma seção de configuração onde são definidas as regras e padrões de funcionamento do sistema. As configurações de tributos, compras, financeiro, faturamento e NF-e são feitas aqui e são determinantes para o cálculo correto de notas e relatórios." }
+                    ]
+                },
+                {
+                    id: "answer86",
+                    question: "Posso permitir que o vendedor altere o preço do produto na 'Venda Rápida' (PDV)?",
+                    answer: [
+                        { type: "text", value: "Sim. Essa permissão é configurável. Vá em <strong>Ferramentas > Parâmetros do Sistema > PDV</strong>, acesse a aba 'GERAL' e marque a opção 'Digitar preço na venda'. Grave as configurações e reinicie o sistema." }
+                    ]
+                },
+                {
+                    id: "answer87",
+                    question: "O que acontece se eu não aceitar os Termos de Licença?",
+                    answer: [
+                        { type: "text", value: "Se você não aceitar os termos, não deve usar o software. É preciso devolvê-lo ao revendedor para receber um reembolso ou crédito." }
+                    ]
+                },
+                {
+                    id: "answer88",
+                    question: "O software é vendido ou licenciado?",
+                    answer: [
+                        { type: "text", value: "O software é <strong>licenciado, não vendido</strong>. O contrato apenas oferece a você alguns direitos de uso, e a BITMAX se reserva todos os outros direitos." }
+                    ]
+                },
+                {
+                    id: "answer89",
+                    question: "Quais leis brasileiras protegem este software?",
+                    answer: [
+                        { type: "text", value: "Este software é protegido pela Lei dos Direitos Autorais (Lei 9.610/98) e pela Lei do Software (Lei 9.609/98)." }
+                    ]
+                },
+                {
+                    id: "answer90",
+                    question: "Por quanto tempo o contrato de licença é válido?",
+                    answer: [
+                        { type: "text", value: "O contrato permanecerá em vigor por prazo <strong>indeterminado</strong>, a menos que seja rescindido por violação dos termos." }
+                    ]
+                },
+                {
+                    id: "answer91",
+                    question: "Qual é o limite de indenização que posso receber da Bitmax por danos?",
+                    answer: [
+                        { type: "text", value: "Você pode recuperar da BITMAX e de seus revendedores apenas danos diretos, limitados ao <strong>valor efetivamente pago por você pelo software</strong>. Não é possível recuperar outros danos, como lucros cessantes ou danos incidentais." }
+                    ]
+                },
+                {
+                    id: "answer92",
+                    question: "A Bitmax garante o funcionamento do software em equipamentos inadequados?",
+                    answer: [
+                        { type: "text", value: "Não. A Bitmax não se responsabiliza pelo desempenho do software caso o usuário utilize equipamento/plataforma de software inadequada, hardware de origem duvidosa ou não atualize seu sistema operacional." }
+                    ]
+                },
+                {
+                    id: "answer93",
+                    question: "Quais equipamentos opcionais podem ser usados com o sistema?",
+                    answer: [
+                        { type: "text", value: "Você pode utilizar equipamentos opcionais como Impressora Matricial ou Térmica e Leitora óptica serial." }
+                    ]
+                },
+                {
+                    id: "answer94",
+                    question: "Onde devo colocar o arquivo de instalação antes de executá-lo?",
+                    answer: [
+                        { type: "text", value: "Você deve copiar e colar o arquivo 'Bitmaxinstall Empresarial' no <strong>disco local (C:)</strong> do seu computador antes de executar o instalador." }
+                    ]
+                },
+                {
+                    id: "answer95",
+                    question: "O que a instalação do Firebird cria no meu computador?",
+                    answer: [
+                        { type: "text", value: "Durante a instalação, o sistema cria uma pasta chamada 'Bitmax' que é responsável por armazenar todas as informações necessárias para o funcionamento do software." }
+                    ]
+                },
+                {
+                    id: "answer96",
+                    question: "Qual é o caminho de instalação padrão para o Bitmax Empresarial?",
+                    answer: [
+                        { type: "text", value: "O caminho de instalação padrão sugerido pelo instalador é <strong>C:\\Bitmax\\BitmaxEmpresarial</strong>." }
+                    ]
+                },
+                {
+                    id: "answer97",
+                    question: "O sistema cria um usuário padrão no primeiro acesso?",
+                    answer: [
+                        { type: "text", value: "Sim. Durante as configurações iniciais, o sistema cria um usuário padrão para o primeiro acesso. É importante que você anote o LOGIN e a SENHA criados neste momento para poder acessar o sistema." }
+                    ]
+                },
+                {
+                    id: "answer98",
+                    question: "Qual o grupo de permissões do primeiro usuário criado?",
+                    answer: [
+                        { type: "text", value: "O primeiro usuário é automaticamente incluído no grupo de <strong>ADMINISTRADORES</strong>, que permite realizar todas as operações do sistema." }
+                    ]
+                },
+                {
+                    id: "answer99",
+                    question: "Para que serve o botão 'Pesquisar' nas telas de cadastro?",
+                    answer: [
+                        { type: "text", value: "O botão <strong>'Pesquisar'</strong> permite buscar por registros (clientes, produtos, etc.) que já foram cadastrados anteriormente no sistema." }
+                    ]
+                },
+                {
+                    id: "answer100",
+                    question: "Para que serve o cadastro de 'Formas de Pagamento'?",
+                    answer: [
+                        { type: "text", value: "Neste módulo você cadastra todas as formas de pagamento que sua empresa aceita, como por exemplo: Cartão, Cheque, Dinheiro, Pix, etc.." }
+                    ]
+                },
+                {
+                    id: "answer101",
+                    question: "Onde posso registrar observações sobre um fornecedor?",
+                    answer: [
+                        { type: "text", value: "No cadastro de <strong>'Fornecedores'</strong>, você pode usar a aba <strong>'1-Anotações'</strong> para inserir qualquer observação relevante sobre o fornecedor." }
+                    ]
+                },
+                {
+                    id: "answer102",
+                    question: "Como vejo o histórico de compras de um fornecedor específico?",
+                    answer: [
+                        { type: "text", value: "Dentro do cadastro do fornecedor, acesse a aba <strong>'6-Compras'</strong>. Esta aba listará todas as compras que você já realizou com aquele fornecedor." }
+                    ]
+                },
+                {
+                    id: "answer103",
+                    question: "O que é a 'Alíquota de ICMS' no cadastro de produto?",
+                    answer: [
+                        { type: "text", value: "É o campo onde deve ser informada a alíquota de ICMS (Imposto sobre Circulação de Mercadorias e Serviços) do produto, que deve ser definida de acordo com o regime tributário da sua empresa. Esta informação deve ser fornecida pela sua contabilidade." }
+                    ]
+                },
+                {
+                    id: "answer104",
+                    question: "Para que serve o campo 'Estoque Mínimo' no cadastro de produtos?",
+                    answer: [
+                        { type: "text", value: "Serve para informar uma quantidade mínima de segurança para o produto em estoque. Isso ajuda a evitar que o estoque fique negativo e facilita a criação de relatórios para reposição de mercadorias." }
+                    ]
+                },
+                {
+                    id: "answer105",
+                    question: "O que é o 'Fornecedor Master' no cadastro de produtos?",
+                    answer: [
+                        { type: "text", value: "É o campo onde você deve informar o <strong>fornecedor principal</strong> do produto que está sendo cadastrado." }
+                    ]
+                },
+                {
+                    id: "answer106",
+                    question: "Para que serve o campo 'Mensagem p/ Nota' no cadastro de produtos?",
+                    answer: [
+                        { type: "text", value: "Serve para definir uma mensagem que aparecerá no rodapé da nota fiscal quando aquele produto for vendido, como 'Obrigado pela preferência!' ou informações sobre devolução." }
+                    ]
+                },
+                {
+                    id: "answer107",
+                    question: "O que significa a opção 'Item Pesado?' no cadastro de produtos?",
+                    answer: [
+                        { type: "text", value: "Esta opção deve ser marcada se o item cadastrado é vendido por peso (Kg), para integração com balanças." }
+                    ]
+                },
+                {
+                    id: "answer108",
+                    question: "O que são os campos 'Reg. NCM' e 'Reg. CEST' nos detalhes fiscais do produto?",
+                    answer: [
+                        { type: "text", value: "São campos para códigos de classificação fiscal. <strong>NCM</strong> (Nomenclatura Comum do Mercosul) e <strong>CEST</strong> (Código Especificador da Substituição Tributária) são informações obrigatórias para a emissão de notas fiscais e devem ser fornecidas pela sua contabilidade." }
+                    ]
+                },
+                {
+                    id: "answer109",
+                    question: "Para que serve o cadastro de 'Ramo de Atividade'?",
+                    answer: [
+                        { type: "text", value: "Neste campo deve ser cadastrado o ramo de atividade no qual a sua empresa atua, como 'INDÚSTRIA', 'COMÉRCIO', 'SERVIÇOS', etc.." }
+                    ]
+                },
+                {
+                    id: "answer110",
+                    question: "Onde registro o histórico de relacionamento com uma transportadora?",
+                    answer: [
+                        { type: "text", value: "No cadastro da transportadora, utilize a aba <strong>'5-Histórico de Relacionamento'</strong> para registrar observações importantes, como horários de entrega preferenciais ou formas de pagamento aceitas por ela." }
+                    ]
+                },
+                {
+                    id: "answer111",
+                    question: "Para que serve a aba 'Compras/Vendas' no menu de Cadastros?",
+                    answer: [
+                        { type: "text", value: "Esta aba agrupa cadastros auxiliares que são essenciais para as operações de compra e venda, como 'Alíquotas de ICMS', 'Classificação Fiscal', 'Natureza de Operação (CFOP)' e 'Unidades Físicas'." }
+                    ]
+                },
+                {
+                    id: "answer112",
+                    question: "Onde cadastro os motivos para devolução de produtos?",
+                    answer: [
+                        { type: "text", value: "Acesse <strong>Cadastros > Compras/Vendas > Motivos das Devoluções</strong>. É recomendado que os textos sejam padronizados com o auxílio da sua contabilidade para facilitar auditorias." }
+                    ]
+                },
+                {
+                    id: "answer113",
+                    question: "O que é 'Natureza de Operação'?",
+                    answer: [
+                        { type: "text", value: "É o cadastro dos códigos <strong>CFOP</strong> (Código Fiscal de Operações e Prestações), que definem o tipo de operação da nota (venda, compra, devolução, etc.). Este cadastro deve ser feito com base na legislação e com o auxílio da sua contabilidade." }
+                    ]
+                },
+                {
+                    id: "answer114",
+                    question: "Onde devo cadastrar as 'Unidades Físicas' como 'KG', 'LITRO', 'METRO'?",
+                    answer: [
+                        { type: "text", value: "Este cadastro é feito em <strong>Cadastros > Compras/Vendas > Unidades Físicas</strong>. É importante utilizar os padrões aceitos pelo SPED Fiscal, conforme orientação da sua contabilidade." }
+                    ]
+                },
+                {
+                    id: "answer115",
+                    question: "Qual a finalidade do cadastro de 'Agências Bancárias'?",
+                    answer: [
+                        { type: "text", value: "Neste módulo você cadastra os dados das agências bancárias com as quais sua empresa se relaciona, informação necessária para emissão de boletos ou controle de cheques, por exemplo." }
+                    ]
+                },
+                {
+                    id: "answer116",
+                    question: "O que é o cadastro de 'Emitentes de Cheques (Sacados)'?",
+                    answer: [
+                        { type: "text", value: "É um módulo para cadastrar as informações de cheques que sua empresa utiliza para pagamentos. Manter este cadastro atualizado é importante para rastrear cheques compensados e facilitar o controle financeiro." }
+                    ]
+                },
+                {
+                    id: "answer117",
+                    question: "O que o manual informa sobre o módulo 'Modelo de Bloqueto'?",
+                    answer: [
+                        { type: "text", value: "O manual informa que este módulo será retirado do sistema." }
+                    ]
+                },
+                {
+                    id: "answer118",
+                    question: "Posso usar o módulo 'Faturamento' para criar um orçamento?",
+                    answer: [
+                        { type: "text", value: "Sim. O módulo 'Faturamento' permite a emissão de um pedido de venda que pode ser utilizado como 'orçamento' antes de se tornar um documento fiscal." }
+                    ]
+                },
+                {
+                    id: "answer119",
+                    question: "O que acontece se eu aplicar um desconto geral na nota após já ter dado desconto em um item?",
+                    answer: [
+                        { type: "text", value: "O desconto geral será rateado entre todos os produtos da nota. Isso significa que o produto que já recebeu um desconto individual sofrerá um novo desconto (referente ao rateio do desconto geral)." }
+                    ]
+                },
+                {
+                    id: "answer120",
+                    question: "Para que serve o módulo 'Reajuste de Preços'?",
+                    answer: [
+                        { type: "text", value: "Este módulo permite reajustar o preço de venda dos produtos de forma organizada, aplicando o reajuste por subgrupo." }
+                    ]
+                },
+                {
+                    id: "answer121",
+                    question: "Como reverto um reajuste de preço que foi aplicado?",
+                    answer: [
+                        { type: "text", value: "Utilize o módulo <strong>'Cancelamento do Reajuste'</strong>, localizado no menu 'Vendas'. Você deve selecionar o mesmo subgrupo que sofreu o reajuste para cancelar a alteração." }
+                    ]
+                },
+                {
+                    id: "answer122",
+                    question: "Qual a diferença entre 'Outras Saídas' e 'Faturamento'?",
+                    answer: [
+                        { type: "text", value: "O módulo 'Outras Saídas' possui a mesma função do 'Faturamento', mas com opções fiscais adicionais para casos específicos, como NF-e Complementar, NF-e de Ajuste, Devolução, Exportação, entre outros." }
+                    ]
+                },
+                {
+                    id: "answer123",
+                    question: "Para que serve o relatório 'Clientes sem compras'?",
+                    answer: [
+                        { type: "text", value: "Este relatório permite identificar, a partir de um período determinado, quais clientes não estão comprando. Com base nele, você pode traçar um planejamento para reativar esses clientes." }
+                    ]
+                },
+                {
+                    id: "answer124",
+                    question: "Como o relatório de 'Comissão de Vendedores' funciona?",
+                    answer: [
+                        { type: "text", value: "Este relatório calcula e exibe o valor da comissão de cada vendedor dentro de um período especificado. Para que funcione corretamente, é necessário que o percentual de comissão esteja definido no cadastro do vendedor e que o vendedor seja identificado em cada pedido de venda." }
+                    ]
+                },
+                {
+                    id: "answer125",
+                    question: "Qual a utilidade do relatório 'Compras do Cliente'?",
+                    answer: [
+                        { type: "text", value: "Ele permite visualizar todo o histórico de compras de um cliente específico, incluindo quais produtos ele compra e com que frequência. Isso ajuda a identificar oportunidades de novas vendas e a direcionar ações de marketing." }
+                    ]
+                },
+                {
+                    id: "answer126",
+                    question: "O que o relatório de 'Posição do Estoque' permite analisar?",
+                    answer: [
+                        { type: "text", value: "Este relatório permite analisar o estoque com base em diversos critérios, como produtos com quantidade zerada, produtos com maior saída, entre outros." }
+                    ]
+                },
+                {
+                    id: "answer127",
+                    question: "O que é o 'Registro de Inventário'?",
+                    answer: [
+                        { type: "text", value: "É um relatório fiscal que corresponde ao livro de registro de inventário. Ele pode ser filtrado por produtos em estoque, zerados, negativos, etc." }
+                    ]
+                },
+                {
+                    id: "answer128",
+                    question: "Qual é a consequência de não tratar corretamente as trocas e devoluções no estoque?",
+                    answer: [
+                        { type: "text", value: "Segundo o manual, sem o tratamento adequado de trocas, devoluções e avarias, o fisco pode entender a situação como <strong>sonegação de saída e, por consequência, de entrada</strong>." }
+                    ]
+                },
+                {
+                    id: "answer129",
+                    question: "O que é a 'Baixa de Títulos em Lote'?",
+                    answer: [
+                        { type: "text", value: "É uma funcionalidade que permite que vários títulos a receber sejam baixados (marcados como pagos) ao mesmo tempo, agilizando o processo de conciliação financeira." }
+                    ]
+                },
+                {
+                    id: "answer130",
+                    question: "Como posso prorrogar o vencimento de um título a receber?",
+                    answer: [
+                        { type: "text", value: "Acesse <strong>Financeiro > Contas a Receber > Prorrogação de Vencimento de Títulos</strong>. Localize o cliente e o título, modifique a data para o novo vencimento e confirme a operação." }
+                    ]
+                },
+                {
+                    id: "answer131",
+                    question: "O que é um 'Carnê' e como emiti-lo?",
+                    answer: [
+                        { type: "text", value: "O carnê é um conjunto de boletos para pagamento parcelado. Para emiti-lo, vá em <strong>Financeiro > Contas a Receber > Consultas/Relatórios > Emissão de Carnê</strong>. Selecione o cliente, o período, e clique em 'OK' para gerar." }
+                    ]
+                },
+                {
+                    id: "answer132",
+                    question: "O que é uma 'Duplicata'?",
+                    answer: [
+                        { type: "text", value: "A duplicata é um título de crédito originado a partir de uma fatura de venda mercantil a prazo ou de prestação de serviços. Ela pode ser protestada por falta de pagamento quando vencida." }
+                    ]
+                },
+                {
+                    id: "answer133",
+                    question: "Qual a utilidade do relatório 'Analise Receitas X Despesas'?",
+                    answer: [
+                        { type: "text", value: "Este relatório é uma ferramenta de tomada de decisão que compara o faturamento/recebimento com os custos reais da empresa dentro de um período. Ele mostra a relação Receitas X Despesas em percentual (%) e em valor, indicando os maiores gastos do negócio." }
+                    ]
+                },
+                {
+                    id: "answer134",
+                    question: "Como faço para trocar de usuário sem fechar o sistema?",
+                    answer: [
+                        { type: "text", value: "Acesse o menu <strong>Ferramentas > Efetuar Login</strong>. Isso permitirá que outro colaborador entre com seu nome de usuário e senha, assumindo as permissões de acesso correspondentes." }
+                    ]
+                },
+                {
+                    id: "answer135",
+                    question: "É importante trocar a senha dos usuários periodicamente?",
+                    answer: [
+                        { type: "text", value: "Sim. O manual salienta a importância de criar uma rotina semanal ou mensal de troca de senha para evitar a quebra de sigilo do uso das senhas." }
+                    ]
+                },
+                {
+                    id: "answer136",
+                    question: "Para que serve a ferramenta 'Consulta Produto'?",
+                    answer: [
+                        { type: "text", value: "É uma ferramenta de acesso rápido que permite consultar informações dos seus produtos, como estoque disponível, preço de venda, etc., sem precisar entrar na tela completa de cadastro." }
+                    ]
+                },
+                {
+                    id: "answer137",
+                    question: "Onde devo inserir o CNAE e o CRT da minha empresa?",
+                    answer: [
+                        { type: "text", value: "Essas informações devem ser preenchidas na tela de <strong>Configurações da Licenciada</strong>. Acesse a aba <strong>'4-Dados Complementares'</strong> e insira os dados nos campos 'CNAE' e 'CRT'. Em caso de dúvida, verifique com seu contador." }
+                    ]
+                },
+                {
+                    id: "answer138",
+                    question: "Qual a função dos botões padronizados nas telas de cadastro (Novo, Alterar, Cancelar, etc.)?",
+                    answer: [
+                        { type: "text", value: "Esses botões têm funções comuns em todos os módulos de cadastro:" },
+                        { type: "text", value: "• <strong>Novo:</strong> Permite iniciar um novo registro." },
+                        { type: "text", value: "• <strong>Alterar:</strong> É usado para editar um cadastro que já está salvo na tela." },
+                        { type: "text", value: "• <strong>Cancelar:</strong> Cancela a operação de inclusão ou alteração que está em andamento." },
+                        { type: "text", value: "• <strong>Gravar:</strong> Salva as informações que foram inseridas ou alteradas." },
+                        { type: "text", value: "• <strong>Pesquisar:</strong> Abre uma tela para buscar cadastros já existentes." },
+                        { type: "text", value: "• <strong>Excluir:</strong> Permite eliminar o registro que está visível na tela." }
+                    ]
+                },
+                {
+                    id: "answer139",
+                    question: "Como edito um cadastro já existente?",
+                    answer: [
+                        { type: "text", value: "Primeiro, use o botão <strong>'Pesquisar'</strong> para localizar e carregar o cadastro na tela. Em seguida, clique no botão <strong>'Alterar'</strong> para habilitar a edição dos campos. Após fazer as modificações, clique em <strong>'Gravar'</strong>." }
+                    ]
+                },
+                {
+                    id: "answer140",
+                    question: "Para que serve a aba 'Histórico de Relacionamento' no cadastro de fornecedores?",
+                    answer: [
+                        { type: "text", value: "É um campo de edição livre para registrar particularidades sobre o fornecedor, como por exemplo: 'NA DATA 24/05/2015 O FORNECEDOR ENVIOU A NOTA FISCAL FALTANDO ALGUNS ITENS'. As informações aqui inseridas só podem ser visualizadas dentro do cadastro do fornecedor." }
+                    ]
+                },
+                {
+                    id: "answer141",
+                    question: "O que o campo 'A Utilização' no cadastro de produtos permite fazer?",
+                    answer: [
+                        { type: "text", value: "Neste campo, você pode referenciar o produto com suas propriedades específicas. Por exemplo, se sua empresa vende pneus, você pode definir para qual modelo de carro cada pneu é indicado." }
+                    ]
+                },
+                {
+                    id: "answer142",
+                    question: "Como o sistema lida com um produto do tipo 'Composição' no estoque?",
+                    answer: [
+                        { type: "text", value: "O sistema não gera estoque para o produto final do tipo 'Composição'. A baixa no estoque ocorre diretamente na matéria-prima (componentes) no momento em que a venda do produto final é realizada." }
+                    ]
+                },
+                {
+                    id: "answer143",
+                    question: "Como configuro um produto para que ele possa ter o estoque negativo?",
+                    answer: [
+                        { type: "text", value: "A configuração de estoque negativo é feita no subgrupo do produto. Habilite a opção 'Permitir negativo: Sim' para que as vendas não sejam bloqueadas por falta de estoque." }
+                    ]
+                },
+                {
+                    id: "answer144",
+                    question: "Como configuro uma mensagem padrão para aparecer na nota fiscal de um produto específico?",
+                    answer: [
+                        { type: "text", value: "No cadastro do produto, na aba <strong>'2-Detalhes Adm.II'</strong>, utilize o campo 'Mensagem p/Nota'. A mensagem selecionada aqui aparecerá no rodapé da nota fiscal sempre que este produto for vendido." }
+                    ]
+                },
+                {
+                    id: "answer145",
+                    question: "Qual a finalidade do relatório 'Totalizador por CFOP/Saídas'?",
+                    answer: [
+                        { type: "text", value: "Este relatório fornece um resumo das vendas agrupadas por CFOP (Código Fiscal de Operações e Prestações) dentro de um período, o que é útil para análises fiscais." }
+                    ]
+                },
+                {
+                    id: "answer146",
+                    question: "Para que serve o relatório 'Produtos sem Venda'?",
+                    answer: [
+                        { type: "text", value: "Este relatório lista os produtos que não tiveram nenhuma venda dentro do período que você especificar, ajudando a identificar itens parados no estoque." }
+                    ]
+                },
+                {
+                    id: "answer147",
+                    question: "O que significa o ícone com círculo verde na tela de importação de XML de compra?",
+                    answer: [
+                        { type: "text", value: "O círculo verde na barra de status informa que o item do XML foi cadastrado e vinculado com sucesso no sistema." }
+                    ]
+                },
+                {
+                    id: "answer148",
+                    question: "Como o sistema auxilia no controle do Livro Caixa?",
+                    answer: [
+                        { type: "text", value: "O Livro Caixa registra, de forma cronológica, todos os recebimentos e pagamentos da empresa. Ele se destina ao controle exclusivo das entradas e saídas da conta Caixa , auxiliando no controle financeiro e na declaração de impostos." }
+                    ]
+                },
+                {
+                    id: "answer149",
+                    question: "Posso lançar cheques pré-datados no Livro Caixa?",
+                    answer: [
+                        { type: "text", value: "Não. O manual orienta a não registrar rendimentos futuros, como notas que ainda não compensaram ou cheques pré-datados, pois o Livro Caixa deve refletir o controle real da empresa." }
+                    ]
+                },
+                {
+                    id: "answer150",
+                    question: "Como crio um novo caixa no sistema?",
+                    answer: [
+                        { type: "text", value: "Acesse <strong>Financeiro > Gerenciamento do Caixa > Caixas do Sistema</strong>. Na tela que se abre, você pode criar um novo caixa ou pesquisar por um já existente." }
+                    ]
+                },
+                {
+                    id: "answer151",
+                    question: "Como abro o livro de um caixa existente?",
+                    answer: [
+                        { type: "text", value: "Na tela 'Caixas do Sistema', selecione o caixa desejado e clique no botão <strong>'Abrir novo Livro de Caixa'</strong>. Em seguida, confirme a operação." }
+                    ]
+                },
+                {
+                    id: "answer152",
+                    question: "Para que serve o relatório 'Variação Diária'?",
+                    answer: [
+                        { type: "text", value: "Este relatório exibe os valores totais de entradas, saídas, saldo e o valor acumulado referentes a um dia específico, permitindo uma análise rápida da movimentação diária do caixa." }
+                    ]
+                },
+                {
+                    id: "answer153",
+                    question: "O que são 'Históricos Padronizados' no módulo financeiro?",
+                    answer: [
+                        { type: "text", value: "São descrições padrão para registrar fatos semelhantes (ex: 'Pagamento de Salário', 'Recebimento de Duplicata'). Cadastrá-los permite agilizar e uniformizar os lançamentos no Movimento do Caixa." }
+                    ]
+                },
+                {
+                    id: "answer154",
+                    question: "Como o sistema ajuda a proteger a segurança das informações?",
+                    answer: [
+                        { type: "text", value: "A segurança da informação é tratada através de um sistema de <strong>Usuários, Grupos e Permissões</strong>. Isso permite definir quais acessos e funções cada colaborador pode ter, preservando a confidencialidade e a integridade dos dados." }
+                    ]
+                },
+                {
+                    id: "answer155",
+                    question: "Onde devo guardar meu arquivo de backup?",
+                    answer: [
+                        { type: "text", value: "Além de salvar o backup no próprio computador, o manual recomenda colocar o arquivo em um <strong>pen drive</strong> e também em um <strong>armazenamento virtual na internet</strong> (nuvem) para maior segurança." }
+                    ]
+                },
+                {
+                    id: "answer156",
+                    question: "Para que serve a ferramenta 'Etiquetas'?",
+                    answer: [
+                        { type: "text", value: "Este módulo permite fazer a gestão, configuração e emissão de etiquetas para os produtos cadastrados no sistema." }
+                    ]
+                },
+                {
+                    id: "answer157",
+                    question: "Quais cadastros eu posso exportar do sistema?",
+                    answer: [
+                        { type: "text", value: "Você pode exportar os cadastros de CLIENTES, FORNECEDORES, TRANSPORTADORAS, GRUPOS, PRODUTOS e TIPOS DE DOCUMENTO." }
+                    ]
+                },
+                {
+                    id: "answer158",
+                    question: "O que devo fazer se ocorrer um erro ao gerar o arquivo Sintegra?",
+                    answer: [
+                        { type: "text", value: "Se ocorrer um erro, você deve verificar qual foi o tipo e a origem do problema para corrigi-lo. Após o ajuste, gere o arquivo novamente. É comum que os erros estejam relacionados a cadastros fora do padrão exigido." }
+                    ]
+                },
+                {
+                    id: "answer159",
+                    question: "O que é o PVA (Programa Validador e Assinador)?",
+                    answer: [
+                        { type: "text", value: "É um programa fornecido pelo SPED que deve ser usado para importar e validar o arquivo do SPED Fiscal gerado pelo sistema Bitmax. Ele também é usado para assinar digitalmente e transmitir o arquivo para o fisco." }
+                    ]
+                },
+                {
+                    id: "answer160",
+                    question: "O que acontece se eu não entregar o arquivo SPED Fiscal no prazo?",
+                    answer: [
+                        { type: "text", value: "A não entrega do arquivo no prazo pré-estabelecido implica em <strong>multas e sanções legais</strong>." }
+                    ]
+                },
+                {
+                    id: "answer161",
+                    question: "Como o sistema atualiza a lista de pedidos para emissão de NF-e?",
+                    answer: [
+                        { type: "text", value: "Na tela de 'Nota Eletrônica', você deve clicar no botão <strong>'Atualizar'</strong> para que todos os pedidos de venda pendentes de emissão apareçam na lista." }
                     ]
                 }
             ];
