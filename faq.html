@@ -69,7 +69,6 @@
             const searchInput = document.getElementById('search-input');
             const filterButton = document.getElementById('filter-button');
 
-            // Simula o carregamento de um arquivo JSON local.
             const faqData = [
                 {
                     id: 'answer1',
@@ -232,13 +231,15 @@
                 },
                 {
                     id: 'answer21',
-                    question: 'Como identificar se o destinatário é ou não contribuinte do ICMS para preenchimento do campo “indIEDest”?',
+                    question: 'Como identificar se o destinatário é ou não contribuinte do ICMS para preenchimento do campo “indIEDest” para calculo Difal? ',
                     answer: [
                         { type: 'text', value: 'Para identificar se o destinatário é contribuinte do ICMS, você deve considerar as seguintes combinações de informações:' },
                         { type: 'text', value: '<table class="min-w-full border-collapse border border-gray-200"><thead><tr><th class="border border-gray-300 px-4 py-2">Simples</th><th class="border border-gray-300 px-4 py-2">Contribuinte</th><th class="border border-gray-300 px-4 py-2">Isento</th><th class="border border-gray-300 px-4 py-2">Código</th></tr></thead><tbody><tr><td class="border border-gray-300 px-4 py-2">N</td><td class="border border-gray-300 px-4 py-2">S</td><td class="border border-gray-300 px-4 py-2">S</td><td class="border border-gray-300 px-4 py-2">2</td></tr><tr><td class="border border-gray-300 px-4 py-2">N</td><td class="border border-gray-300 px-4 py-2">N</td><td class="border border-gray-300 px-4 py-2">S</td><td class="border border-gray-300 px-4 py-2">2</td></tr><tr><td class="border border-gray-300 px-4 py-2">N</td><td class="border border-gray-300 px-4 py-2">S</td><td class="border border-gray-300 px-4 py-2">N</td><td class="border border-gray-300 px-4 py-2">1</td></tr><tr><td class="border border-gray-300 px-4 py-2">N</td><td class="border border-gray-300 px-4 py-2">N</td><td class="border border-gray-300 px-4 py-2">N</td><td class="border border-gray-300 px-4 py-2">9</td></tr><tr><td class="border border-gray-300 px-4 py-2">S</td><td class="border border-gray-300 px-4 py-2">S</td><td class="border border-gray-300 px-4 py-2">S</td><td class="border border-gray-300 px-4 py-2">2</td></tr><tr><td class="border border-gray-300 px-4 py-2">S</td><td class="border border-gray-300 px-4 py-2">S</td><td class="border border-gray-300 px-4 py-2">N</td><td class="border border-gray-300 px-4 py-2">1</td></tr><tr><td class="border border-gray-300 px-4 py-2">S</td><td class="border border-gray-300 px-4 py-2">N</td><td class="border border-gray-300 px-4 py-2">S</td><td class="border border-gray-300 px-4 py-2">2</td></tr><tr><td class="border border-gray-300 px-4 py-2">S</td><td class="border border-gray-300 px-4 py-2">N</td><td class="border border-gray-300 px-4 py-2">N</td><td class="border border-gray-300 px-4 py-2">9</td></tr></tbody></table>' },
                         { type: 'text', value: 'Se a finalidade do pedido/nota for igual a 1 - Contribuinte e possuir Inscrição Estadual, então indIEDest = 1 - Contribuinte de ICMS. É obrigatório ter a Inscrição Estadual para ser considerado contribuinte.' },
                         { type: 'text', value: 'Quando a finalidade do pedido/nota for igual a 1 - Contribuinte ou 3 - Contribuinte Uso/Consumo e não possuir Inscrição Estadual, então indIEDest = 2 - Contribuinte Isento de Inscrição.' },
-                        { type: 'text', value: 'Se a finalidade do pedido/nota for igual a 2 - Não Contribuinte, então indIEDest = 9 - Não contribuinte.' }
+                        { type: 'text', value: 'Se a finalidade do pedido/nota for igual a 2 - Não Contribuinte, então indIEDest = 9 - Não contribuinte.' },
+                        { type: 'text', value: '<strong>Se alguma das combinações resultar em 9, então o indicador da operação deve ser 2 - Consumidor Final. Na tela do empresarial, na aba 3, campo indicador da operação, deverá constar na tag indFinal = 1.</strong>' },
+                        { type: 'text', value: 'Não é necessário recolocar o cliente no pedido, basta apenas mudar o cadastro e tentar de novo.' }
                     ]
                 },
                 {
@@ -1265,31 +1266,90 @@
                     answer: [
                         { type: "text", value: "Na tela de 'Nota Eletrônica', você deve clicar no botão <strong>'Atualizar'</strong> para que todos os pedidos de venda pendentes de emissão apareçam na lista." }
                     ]
+                },
+                {
+                    id: "answer162",
+                    question: "O que é a Rejeição 695?",
+                    answer: [
+                        { type: "text", value: "Rejeição 695: Informado indevidamente o grupo de ICMS para a UF de destino. Os produtos tributados e substituídos devem estar com a configuração do DIFAL. Caso esteja configurado, as possíveis causas são:" },
+                        { type: "text", value: "1. Operação Estadual (idDest = 1) ou com Exterior (idDest = 3);" },
+                        { type: "text", value: "2. Operação com Consumidor Normal (indFinal = 0);" },
+                        { type: "text", value: "3. Operação com Contribuinte (indIEDest = 1) ou com Contribuinte Isento (indIEDest = 2);" },
+                        { type: "text", value: "4. Operação de prestação de serviços (ISSQN);" },
+                        { type: "text", value: "5. Operação com combustível (comb) derivado de petróleo. Código ANP diferente de: 820101001, 820101010, 810102001, 810102004, 810102002, 810102003, 810101002, 810101001, 810101003, 220101003, 220101004, 220101002, 220101001, 220101005, 220101006, 560101001;" }
+                    ]
+                },
+                {
+                    id: "answer163",
+                    question: "Como configurar o DIFAL?",
+                    answer: [
+                        { type: "text", value: "<strong>Condições para o cálculo do DIFAL:</strong>" },
+                        { type: "text", value: "• Venda de mercadoria interestadual." },
+                        { type: "text", value: "• Consumidor final e não contribuinte." },
+                        { type: "text", value: "• Para empresas no regime normal, o CST deve ser: <strong>00, 20, 40, 41 ou 60</strong>." },
+                        { type: "text", value: "• Para empresas enquadradas no Simples, o CSOSN deve ser: <strong>102, 103, 300, 400 ou 500</strong>." },
+                        { type: "text", value: "<strong>COMO CONFIGURAR?</strong>" },
+                        { type: "text", value: "<ol>" +
+                            "<li>Pegue o valor da tabela de ICMS para o estado de destino: exemplo NFe da BA para DF.</li>" +
+                            "<li>Coloque o valor no campo <strong>Percentual de ICMS</strong>, nesse caso BA -> DF = 12%.</li>" +
+                            "<li>Localize o valor do percentual Interno aplicado no destino. Exemplo: se a nota é para DF, localize na tabela o valor DF para DF. No nosso caso = 20%.</li>" +
+                            "<li>Com o valor obtido acima, coloque no campo <strong>Percentual de ICMS Interno</strong>.</li>" +
+                            "<li>O percentual do FCP deverá ser indicado pela contabilidade, normalmente <strong>2%</strong>.</li>" +
+                            "</ol>" },
+                        { type: "text", value: "<strong>Para mais detalhes, consulte o <a href='https://drive.google.com/file/d/18amdzk_egF_3SY6MWenb2cfFTt5CI50I/view?usp=sharing' target='_blank'>PDF do tutorial</a>.</strong>" }
+                    ]
+                },
+                {
+                    id: "answer164",
+                    question: "Como configurar ST(Substituição Tributária)?",
+                    answer: [
+                        { type: "text", value: "<strong>Passos para configurar a Substituição Tributária (ST):</strong>" },
+                        { type: "text", value: "<ol>" +
+                            "<li>Pegue o valor da tabela de ICMS para o estado de destino: exemplo NFe da BA para MG.</li>" +
+                            "<li>Coloque o valor no campo <strong>Percentual de ICMS</strong>.</li>" +
+                            "<li>Preencha os valores de MVA física e jurídica.</li>" +
+                            "<li>Localize o valor do percentual Interno aplicado no destino. Exemplo: se a nota é para MG, localize na tabela o valor MG para MG.</li>" +
+                            "<li>Com o valor obtido acima, coloque no campo <strong>Perc. Interno Subs.</strong>.</li>" +
+                            "<li>Para calcular o FCP, coloque o mesmo percentual obtido anteriormente no campo ICMS aplicado na FCP.</li>" +
+                            "<li>OBS: O percentual do FCP deverá ser indicado pela contabilidade, normalmente <strong>2%</strong>.</li>" +
+                            "</ol>" },
+                        { type: "text", value: "<strong>Para mais detalhes, consulte o <a href='https://drive.google.com/file/d/16yg37b4GZqUjtkp8SoChgp9tk3xc_biv/view?usp=sharing' target='_blank'>PDF do tutorial</a>.</strong>" }
+                    ]
+                },
+                {
+                    id: "answer165",
+                    question: "Como emitir nota para um cliente de fora do estado com CFOP de dentro do estado?",
+                    answer: [
+                        { type: "text", value: "<strong>Configurações necessárias:</strong>" },
+                        { type: "text", value: "<ol>" +
+                            "<li>Configure na aba 3 do faturamento:</li>" +
+                            "<li>Presença do comprador: 1</li>" +
+                            "<li>Destino da Operação: 1</li>" +
+                            "<li>Indicador da operação: 2</li>" +
+                            "</ol>" }
+                    ]
                 }
             ];
 
-            // Função para renderizar os itens do FAQ a partir dos dados (pode ser filtrado)
             function renderFaqItems(dataToRender) {
-                // Limpa o conteúdo atual do container FAQ
-                faqContainer.innerHTML = ''; 
-
+                faqContainer.innerHTML = '';
                 if (dataToRender.length === 0) {
                     faqContainer.innerHTML = '<p class="text-center text-gray-500 font-medium py-8">Nenhum resultado encontrado para o termo de busca.</p>';
                     return;
                 }
-
                 dataToRender.forEach(item => {
                     const faqItemDiv = document.createElement('div');
                     faqItemDiv.className = 'faq-item bg-gray-50 rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden border border-gray-200';
+                    faqItemDiv.id = item.id;
 
                     const questionButton = document.createElement('button');
                     questionButton.className = 'faq-question w-full flex justify-between items-center p-5 md:p-6 text-left font-semibold text-lg md:text-xl text-gray-800 bg-white hover:bg-gray-100 transition-colors duration-300';
                     questionButton.setAttribute('aria-expanded', 'false');
-                    questionButton.setAttribute('aria-controls', item.id);
+                    questionButton.setAttribute('aria-controls', `answer-content-${item.id}`);
                     questionButton.innerHTML = `${item.question} <span class="arrow-icon text-purple-500 text-3xl transition-transform duration-300 transform-gpu">&raquo;</span>`;
 
                     const answerDiv = document.createElement('div');
-                    answerDiv.id = item.id;
+                    answerDiv.id = `answer-content-${item.id}`;
                     answerDiv.className = 'answer-content px-5 md:px-6';
                     
                     item.answer.forEach(contentBlock => {
@@ -1319,7 +1379,6 @@
                 attachEventListeners();
             }
 
-            // Função para anexar os event listeners aos botões de pergunta
             function attachEventListeners() {
                 const faqQuestions = document.querySelectorAll('.faq-question');
 
@@ -1328,7 +1387,11 @@
                         const answerId = question.getAttribute('aria-controls');
                         const answerContent = document.getElementById(answerId);
                         const arrowIcon = question.querySelector('.arrow-icon');
-
+                        const parentFaqItem = question.closest('.faq-item');
+                        
+                        // Atualiza a URL com a âncora da pergunta
+                        history.pushState(null, '', `#${parentFaqItem.id}`);
+                        
                         // Fecha todas as outras respostas abertas, exceto a clicada
                         faqQuestions.forEach(otherQuestion => {
                             const otherAnswerId = otherQuestion.getAttribute('aria-controls');
@@ -1357,7 +1420,6 @@
                 });
             }
 
-            // Função para filtrar as FAQs
             function filterFaqs() {
                 const searchTerm = searchInput.value.toLowerCase().trim();
                 let filteredData = [];
@@ -1374,21 +1436,51 @@
                     });
                 }
                 renderFaqItems(filteredData);
+                openFaqFromHash(); // Tenta abrir a âncora após filtrar
             }
 
-            // Event Listeners para o campo de busca e botão
+            function openFaqFromHash() {
+                const hash = window.location.hash;
+                if (hash) {
+                    const targetElement = document.getElementById(hash.substring(1));
+                    if (targetElement) {
+                        const questionButton = targetElement.querySelector('.faq-question');
+                        const answerContent = targetElement.querySelector('.answer-content');
+                        const arrowIcon = questionButton.querySelector('.arrow-icon');
+                        
+                        // Fecha tudo antes de abrir o novo
+                        document.querySelectorAll('.answer-content.open').forEach(el => el.classList.remove('open'));
+                        document.querySelectorAll('.faq-question[aria-expanded="true"]').forEach(el => el.setAttribute('aria-expanded', 'false'));
+                        document.querySelectorAll('.arrow-icon.rotate-180').forEach(el => el.classList.remove('rotate-180'));
+                        
+                        if (questionButton && answerContent) {
+                            answerContent.classList.add('open');
+                            questionButton.setAttribute('aria-expanded', 'true');
+                            arrowIcon.classList.add('rotate-180');
+                            
+                            setTimeout(() => {
+                                targetElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                            }, 500);
+                        }
+                    }
+                }
+            }
+
+            renderFaqItems(faqData);
+            openFaqFromHash();
+            
+            window.addEventListener('hashchange', () => {
+                openFaqFromHash();
+            });
+
             filterButton.addEventListener('click', filterFaqs);
             searchInput.addEventListener('keyup', (event) => {
                 if (event.key === 'Enter') {
                     filterFaqs();
                 } else if (searchInput.value.trim() === '') {
-                    // Atualiza a lista em tempo real ao apagar o texto
                     filterFaqs();
                 }
             });
-
-            // Renderiza todos os itens do FAQ na carga inicial da página
-            renderFaqItems(faqData);
         });
     </script>
 </body>

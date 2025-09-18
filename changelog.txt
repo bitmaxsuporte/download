@@ -1,5 +1,41 @@
 ÚLTIMAS ALTERAÇÕES:
 
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-**-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-.
+
+18/09/2025:
+
+* Retirar do script de emissão de notas para ignorar os produtos 'filhos' componentes quando o produto é do tipo composição.
+
+* Correção Geração de NFe e NFCe cada tentativa de emissão pega uma nova numeração de nota.
+
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-**-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-.
+
+17/09/2025:
+
+* Criado opção dentro da tela de contador para adicionar vários documentos permitido a obter o xml da nfe.
+
+* Criado opção para adicionar um CNPJ/CPF autorizado a obter o XML na tela de faturamento, outras entradas e outras saídas.
+
+* Criação da tabela EMP_AUTXML E EMP_NFS_AUTORIZADOSXML.
+
+* Separação das funcionalidades de envio de email e reimpressão de PDF.
+
+* Correção ao reimprimir NF-e.
+
+* Correção de falha de preços de vendas ficando com 4 casas decimais.
+
+* Identificação na tabela de entrada as movimentações que tava marcado para não movimentar o estoque no momento baseado no cadastro do grupo NFEI_MOVIMENTA_ESTOQUE, na trigger EMP_ESTOQUE_ENTRADAI_AI0.
+
+* Opção síncrono/assíncrono na tela de BitmaxNFe.
+
+* Correção Falha no relatório de compras onde apareciam as notas de devoluções.
+
+* Correção base de IPI ficando negativo quando da um desconto quando e não existe base de IPI, O valor do IPI fica negativo por causa do desconto.
+
+* Alteração relatório de entradas no período para colocar filtro de finalidades.
+
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-**-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-.
+
 22/08/2025:
 
 * Criação de Tabela de log de vendas EMP_NFS_LOG.
