@@ -1,5 +1,15 @@
 ÚLTIMAS ALTERAÇÕES:
 
+23/09/2025:
+
+* Erro inutilização 202 - Rejeicao: Falha no reconhecimento da autoria ou integridade do arquivo digital Assinatura difere do calculado - Erro gerado por causa da msg padrão, deve colocar outra.
+
+* Permitir acrescentar mais de um CNPJ na tag do XML AuthXML além do cnpj da contabilidade.
+
+* Alterar a constrait da tabela EMP_AUTXML para colocar o cascade para evitar erro de violação ao deletar pedido.
+
+* Correção de falha ao remover um documento autorizado a obter XML e editar o cadastro do contador, caso não existisse mais na tabela EMP_AUTXML ele não inseria o documento novo. 
+
 *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-**-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-.
 
 18/09/2025:
