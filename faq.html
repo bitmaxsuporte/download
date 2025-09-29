@@ -1328,6 +1328,23 @@
                             "<li>Indicador da operação: 2</li>" +
                             "</ol>" }
                     ]
+                },
+                {
+                    id: "answer166",
+                    question: "Como configurar a tag IndIEDest no XML?",
+                    answer: [
+                        { type: "text", value: "Indicação de IE (Inscrição Estadual) do destinatário. Quando é 1, 2 ou 9?" },
+                        { type: "text", value: "Desejo configurar o cadastro do meu cliente mas não sei ao certo qual configuração corresponde à tag IndIEDest:" },
+                        { type: "text", value: "1 = Contribuinte ICMS (informar a IE do destinatário);" },
+                        { type: "text", value: "2 = Contribuinte isento de Inscrição no cadastro de Contribuintes do ICMS;" },
+                        { type: "text", value: "9 = Não Contribuinte, que pode ou não possuir Inscrição Estadual no Cadastro de Contribuintes do ICMS." },
+                        { type: "text", value: "<strong>Solução</strong>" },
+                        { type: "text", value: "A regra é definida da seguinte forma:" },
+                        { type: "text", value: "Se o cliente for do exterior (Sigla Estado = ‘EX’), a tag será = 9 (NÃO CONTRIBUINTE);" },
+                        { type: "text", value: "Se o cliente É CONTRIBUINTE DE ICMS e a Inscrição Estadual (IE) = ‘ISENTO’ ou ” (cadastro em branco), a tag será = 2 (CONTRIBUINTE SEM IE);" },
+                        { type: "text", value: "Se o cliente É CONTRIBUINTE DE ICMS e possui Inscrição Estadual (IE), a tag será = 1 (CONTRIBUINTE COM IE);" },
+                        { type: "text", value: "Se o cliente NÃO É CONTRIBUINTE DE ICMS, a tag será = 9 (NÃO CONTRIBUINTE);" }
+                    ]
                 }
             ];
 
