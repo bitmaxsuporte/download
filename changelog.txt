@@ -1,5 +1,21 @@
 ÚLTIMAS ALTERAÇÕES:
 
+30/09/2025:
+
+* Correção de troco.
+* Alterar o BitmaxNfe para levar o novo campo de TAR_TITVLR_RECEBIDO para gerar o bloco do troco.
+* Opção de mudar em parâmetros o número de série da NFe.
+* Alterar no faturamento o campo indicador da operação para gravar apenas 0 - normal e 1 - consumidor final de acordo ao cadastro do cliente E o Nfe ler o valor deste campo.
+* Separar em pastas diferentes os XML que ainda não foram autorizados em uma pasta 'emProcessamento' e depois que autorizar mover para a pasta autorizada.
+* Alterar forma de gerar o cDV Verificar formação do cNF: cNF não pode ser igual a 00000000, 11111111, 22222222, 33333333, 44444444, 55555555, 66666666, 77777777, 88888888, 99999999, 12345678, 23456789, 34567890, 45678901, 56789012, 67890123, 78901234, 89012345, 90123456, 01234567. cNF não pode ser igual a nNF (id: B08). (NT 2019.001 v1.00, v1.50).
+* Correção de geração de notas pegar o último numero da Nfe e somar +1 antes de vincular e saltar o parâmetro.
+* Cancelamento estava enviando o pdf ao invés do comprovante de cancelamento.
+* Correção Envio de email estava anexando dois PDF e dois XML.
+* Novos Schemas de Nota.
+* Alteração consultaCNPJ para usar Dll ACBR.
+* Novos IBPT liberado.
+
+
 23/09/2025:
 
 * Erro inutilização 202 - Rejeicao: Falha no reconhecimento da autoria ou integridade do arquivo digital Assinatura difere do calculado - Erro gerado por causa da msg padrão, deve colocar outra.
