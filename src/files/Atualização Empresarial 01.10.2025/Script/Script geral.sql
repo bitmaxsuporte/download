@@ -8197,11 +8197,11 @@ WHERE NOT EXISTS (
 
 ----------- FIM DO TRECHO QUE INSERE A NATUREZA DA RECEITA DA PIS E DA COFINS-------------------------------------------------------------
 
-
+/*
 ----------- INICIO DO TRECHO QUE ATUALIZA O MARKUP-------------------------------------------------------------
 SET TERM ^ ;
 UPDATE EMP_PRODUTO
-SET PRD_MARKUP_PRD = CAST(((PRD_PCOVENDA_EMB1 - PRD_CUSTOMEDIO) / PRD_CUSTOMEDIO) * 100 AS DECIMAL(18, 4))
+SET PRD_MARKUP_PRD = CAST(((PRD_PCOVENDA_EMB1 - PRD_CUSTOMEDIO) / PRD_CUSTOMEDIO) * 100 AS DECIMAL(18, 2))
 WHERE PRD_CUSTOMEDIO > 0
   AND PRD_PCOVENDA_EMB1 IS NOT NULL
   AND (PRD_MARKUP_PRD IS NULL OR PRD_MARKUP_PRD = 0);
@@ -8211,7 +8211,7 @@ SET TERM; ^
 
 COMMIT WORK;
 
------------ FIM DO TRECHO QUE ATUALIZA O MARKUP-------------------------------------------------------------
+----------- FIM DO TRECHO QUE ATUALIZA O MARKUP-------------------------------------------------------------    */
 
 ----------- INICIO DO TRECHO QUE INSERE O TIPO DO CADASTRO-------------------------------------------------------------
 INSERT INTO EMP_PRODUTO_TIPO (TIPO_DESCRICAO, TIPO_FKSIT_ID)
