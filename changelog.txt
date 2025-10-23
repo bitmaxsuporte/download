@@ -1,5 +1,34 @@
 ÚLTIMAS ALTERAÇÕES:
 
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-**-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-.
+
+23/10/2025:
+
+* Referente à Natureza da PIS e Cofins CST de PIS e COFINS ST para CST 05:
+
+- Criados campos na tabela emp_tributacao_federal
+- Criados campos na tabela emp_produto
+- Criados campos na tabela emp_nfsi
+- Criado campo na tela de tributação federal
+- Criado campo no cadastro de produto
+- Levados valores para o XML.
+
+* Corrigido erro em que cada tentativa de emissão de uma mesma nota gerava uma nova chave de acesso no banco de dados e um novo XML.
+* Corrigido bug em que o sistema não exibia os comprovantes corretos ao inutilizar vários pedidos em sequência.
+* Verificada e Corrigida a mudança na aba de inutilizados da NFe, pois versões anteriores listavam as inutilizações com vínculos, XML offline ou inutilizados pela faixa.
+* Corrigido erro em que, ao inutilizar uma faixa de número e não fechar o NFe, e em seguida inutilizar um pedido vinculado com erro, o sistema imprimia a pré-visualização da faixa e não da nova inutilização.
+* Alterado o mapeamento do tipo de consumidor (Normal ou Final) durante a emissão do XML, que ainda utilizava a lógica obsoleta de "Indicado pela IE". Agora, o valor é lido do banco de dados.
+* Corrigida falha na trigger de log oriunda da tabela de retorno: ao fazer uma inutilização pela faixa de numeração, ocasionava erro na trigger por não haver número do pedido a vincular.
+* Alterado no faturamento o campo indicador da operação para gravar apenas 0 (Normal) e 1 (Consumidor Final), de acordo com o cadastro do cliente. O NFe passou a ler o valor deste campo.
+* Adicionada opção para mudar o número de série da NFe nos parâmetros.
+* Corrigida a Rejeição 862 (referente ao Troco).
+* Corrigida a alteração do BitmaxNfe para levar o novo campo TAR_TITVLR_RECEBIDO, visando gerar o bloco do troco.
+* Corrigida falha na NFCe, que não estava gravando o lote na tabela emp_nfs_retorno, ocasionando o erro de '' (vazio) ao tentar cancelar a NFCe.
+* Adicionadas pastas "Em Processamento" e "Autorizadas" para a NFCe.
+* Criado campo na emp_nfs NFS_NF_CNF para guardar o valor de cDV e sempre utilizar o mesmo em caso de retentiva de emissão.
+
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-**-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-.
+
 30/09/2025:
 
 * Correção de troco.
@@ -14,6 +43,8 @@
 * Novos Schemas de Nota.
 * Alteração consultaCNPJ para usar Dll ACBR.
 * Novos IBPT liberado.
+
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-**-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-.
 
 
 23/09/2025:
