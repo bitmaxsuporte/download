@@ -2,30 +2,55 @@
 
 *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-**-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-.
 
+05/11/2025:
+
+* Ajuste no inventário para garantir correspondência com a ficha Kardex, respeitando a regra de controle de estoque e desconsiderando notas de substituição de NFC-e.
+* Corrigido erro nas “outras saídas”, onde o indicador da operação era registrado como 0 ou 2, ao invés de 0 ou 1.
+* Corrigido o filtro do relatório de apuração de estoque.
+
+31/10/2025:
+
+* Implementado recurso de correção de nota utilizando a opção “Consultar XML” em casos de duplicidade.
+* Liberada a opção de consultar XML na aba de pedidos.
+* Ajustado para que o XML em processamento seja salvo fora da pasta do mês, diretamente na rota C:\Bitmax\BitmaxEmpresarial\Bin\Arquivos NFe\NFe\EmProcessamento.
+
 23/10/2025:
 
-* Referente à Natureza da PIS e Cofins CST de PIS e COFINS ST para CST 05:
+* Liberado executável para correção de duplicidade, cancelamento ou inutilização.
+* Liberado executável gerador do movimento do mês.
+* Corrigida falha no BitmaxCNPJ.
+* Adicionado recurso para exibir a tela de adicionar e-mail na NFe ao acionar o botão “Reenviar E-mail”.
+* Corrigida falha que, em algumas situações, deixava o campo cDV vazio.
+* Implementado bloqueio para impedir homologação na NFC-e. Agora, é exigida a senha 'sisbitmax', e ela não é mais salva no BitmaxNFe, permanecendo somente em tempo de execução.
+* Implementado Qr-Code 3.0 para NFC-e.
 
-- Criados campos na tabela emp_tributacao_federal
-- Criados campos na tabela emp_produto
-- Criados campos na tabela emp_nfsi
-- Criado campo na tela de tributação federal
-- Criado campo no cadastro de produto
-- Levados valores para o XML.
+15/10/2025:
 
-* Corrigido erro em que cada tentativa de emissão de uma mesma nota gerava uma nova chave de acesso no banco de dados e um novo XML.
-* Corrigido bug em que o sistema não exibia os comprovantes corretos ao inutilizar vários pedidos em sequência.
-* Verificada e Corrigida a mudança na aba de inutilizados da NFe, pois versões anteriores listavam as inutilizações com vínculos, XML offline ou inutilizados pela faixa.
-* Corrigido erro em que, ao inutilizar uma faixa de número e não fechar o NFe, e em seguida inutilizar um pedido vinculado com erro, o sistema imprimia a pré-visualização da faixa e não da nova inutilização.
-* Alterado o mapeamento do tipo de consumidor (Normal ou Final) durante a emissão do XML, que ainda utilizava a lógica obsoleta de "Indicado pela IE". Agora, o valor é lido do banco de dados.
-* Corrigida falha na trigger de log oriunda da tabela de retorno: ao fazer uma inutilização pela faixa de numeração, ocasionava erro na trigger por não haver número do pedido a vincular.
-* Alterado no faturamento o campo indicador da operação para gravar apenas 0 (Normal) e 1 (Consumidor Final), de acordo com o cadastro do cliente. O NFe passou a ler o valor deste campo.
-* Adicionada opção para mudar o número de série da NFe nos parâmetros.
+* Sobre a Natureza da PIS e Cofins CST de PIS e COFINS ST para CST 05:
+- Novos campos criados nas tabelas emp_tributacao_federal, emp_produto e emp_nfsi.
+- Campo adicionado na tela de tributação federal.
+- Campo adicionado ao cadastro de produto.
+- Valores levados para o XML.
+
+* Corrigido erro onde cada tentativa de emissão de uma mesma nota gerava nova chave de acesso e novo XML.
+* Corrigido bug em que o sistema não exibia corretamente os comprovantes ao inutilizar vários pedidos em sequência.
+* Revisada e corrigida a funcionalidade da aba de inutilizados da NFe; versões anteriores listavam inutilizações com vínculos, XML offline ou inutilizados por faixa.
+* Corrigido erro em que, ao inutilizar uma faixa de números e não fechar o NFe, ao inutilizar um pedido vinculado com erro, era impressa a pré-visualização da faixa ao invés da nova inutilização.
+
+10/10/2025:
+
+* Atualizado o mapeamento do tipo de consumidor (Normal ou Final) durante a emissão do XML, deixando de usar a lógica obsoleta de “Indicado pela IE”. Agora, o valor é obtido do banco de dados.
+* Corrigida falha na trigger de log da tabela de retorno: ao fazer inutilização por faixa de numeração, ocorria erro devido à ausência de número de pedido associado.
+* No faturamento, o campo indicador da operação foi alterado para armazenar apenas 0 (Normal) e 1 (Consumidor Final), conforme cadastro do cliente. O NFe passa a ler esse valor.
+* Adicionada opção para alterar o número de série da NFe nos parâmetros.
+
+04/10/2025:
+
 * Corrigida a Rejeição 862 (referente ao Troco).
-* Corrigida a alteração do BitmaxNfe para levar o novo campo TAR_TITVLR_RECEBIDO, visando gerar o bloco do troco.
-* Corrigida falha na NFCe, que não estava gravando o lote na tabela emp_nfs_retorno, ocasionando o erro de '' (vazio) ao tentar cancelar a NFCe.
-* Adicionadas pastas "Em Processamento" e "Autorizadas" para a NFCe.
-* Criado campo na emp_nfs NFS_NF_CNF para guardar o valor de cDV e sempre utilizar o mesmo em caso de retentiva de emissão.
+* Ajustada a alteração do BitmaxNfe para considerar o novo campo TAR_TITVLR_RECEBIDO, possibilitando a geração do bloco de troco.
+* Corrigida falha na NFC-e, que não gravava o lote na tabela emp_nfs_retorno, ocasionando erro de campo vazio ao tentar cancelar a NFC-e.
+* Criadas as pastas “Em Processamento” e “Autorizadas” para a NFC-e.
+* Criado campo emp_nfs NFS_NF_CNF para armazenar o valor de cDV e garantir sua reutilização em tentativas posteriores de emissão.
 
 *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-**-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-.
 
