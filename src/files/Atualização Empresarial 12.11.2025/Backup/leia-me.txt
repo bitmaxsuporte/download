@@ -1,0 +1,24 @@
+Os horários de backup padrão são 12:00 e 17:00. 
+Para colocar um horário personalizado editar o bat "Configurar backup"
+
+ATENÇÃO: É NECESSÁRIO QUE O WINRAR ESTEJA INSTALADO
+
+Instruções:
+
+1: Os arquivos devem estar na rota: C:\Bitmax\Suporte\Backup
+
+2: Execute como administrador o arquivo "Configurar backup" para agendar a tarefa
+
+3: Para testar execute a tarefa dentro do agendador de tarefas do windows ou dê duplo clique no arquivo "Executar Backup" e aguarde o aviso de que foi finalizado com sucesso
+
+4: Verifique se a pasta C:\Bitmax\BitmaxEmpresarial\Backup contêm os dois arquivos de xml e de banco com o nome da semana.
+
+
+OBS: Se houver base gerencial e fiscal a pasta gerencial deve ser: C:\Bitmax\BitmaxEmpresarialGerencial caso contrário o script não irá funcionar.
+
+
+
+
+
+
+
