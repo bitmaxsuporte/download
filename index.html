@@ -130,6 +130,24 @@
             </li>
             <li class="cartao-download">
                 <div class="informacoes">
+                    <span>Movimento mês</span>
+                </div>
+                <img src="./src/imagens/atualizacao-do-sistema.png" alt="videos" class="gif">
+                <ul class="tipos">
+                    <li class="tipo download"><a onclick="baixarArquivosMovimentoMes()" target="_blank">Download</a></li>
+                </ul>
+            </li>
+            <li class="cartao-download">
+                <div class="informacoes">
+                    <span>Corretor</span>
+                </div>
+                <img src="./src/imagens/atualizacao-do-sistema.png" alt="videos" class="gif">
+                <ul class="tipos">
+                    <li class="tipo download"><a href="src/files/BitmaxCorretor.rar" target="_blank">Download</a></li>
+                </ul>
+            </li>
+            <li class="cartao-download">
+                <div class="informacoes">
                     <span>FAQ</span>
                 </div>
                 <img src="./src/imagens/aula-de-video.png" alt="videos" class="gif">
@@ -142,6 +160,22 @@
     </main>
     <script src="./src/js/index.js"></script>
     <script>
+    function baixarArquivosMovimentoMes() {
+        const arquivos = [
+            'src/files/BitmaxMovimento.part1.rar',
+            'src/files/BitmaxMovimento.part2.rar',
+        ];
+        arquivos.forEach((arquivo, index) => {
+            setTimeout(() => {
+                const link = document.createElement("a");
+                link.href = arquivo;
+                link.download = ""; // Força o download
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            }, index * 1000); // Adiciona um atraso de 1 segundo entre os downloads
+        });
+    }
     function baixarArquivos() {
         const arquivos = [
             'src/files/Atualizacao.part1.rar', 
