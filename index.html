@@ -1,78 +1,202 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Serviço Indisponível</title>
-    <!-- Inclui Tailwind CSS para estilização fácil e responsiva -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            /* Fundo gradiente moderno */
-            background: linear-gradient(135deg, #f97316, #f59e0b, #facc15); /* Tons de laranja e amarelo */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            padding: 1rem;
-        }
+    <title>Painel do Suporte</title>
+    <script src="./src/js/info.js"></script>
 
-        /* Estilização da caixa de alerta */
-        .alert-box {
-            transition: all 0.3s ease;
-            transform: translateY(0);
-        }
-        .alert-box:hover {
-            box-shadow: 0 25px 50px -12px rgba(255, 107, 0, 0.4); /* Sombra mais quente */
-            transform: translateY(-4px);
-        }
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;800&display=swap" rel="stylesheet">
 
-        /* Animação para o ícone de alerta */
-        @keyframes pulse-alert {
-            0%, 100% {
-                transform: scale(1);
-                opacity: 1;
-            }
-            50% {
-                transform: scale(1.05);
-                opacity: 0.8;
-            }
-        }
-        .animate-pulse-alert {
-            animation: pulse-alert 1.5s infinite alternate;
-        }
-    </style>
+    <link rel="stylesheet" href="./src/css/reset.css">
+    <link rel="stylesheet" href="./src/css/estilos.css">
+    <link rel="stylesheet" href="./src/css/scrollbar.css">
 </head>
 <body>
-    <div class="alert-box bg-white p-10 rounded-2xl shadow-2xl text-center max-w-sm md:max-w-md w-full border-b-8 border-orange-600">
-        
-        <!-- Ícone Personalizado e Estilizado -->
-        <div class="mx-auto h-24 w-24 bg-orange-100 rounded-full flex items-center justify-center mb-6 animate-pulse-alert">
-            <svg class="h-14 w-14 text-orange-600" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <!-- Ícone de medidor de capacidade ou carga -->
-                <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.85 3.375 2.757 3.375h14.414c1.907 0 3.623-1.875 2.757-3.375L15.375 6.223a2.031 2.031 0 00-3.654 0L4.643 12.003zM12 15.75h.007v.008H12v-.008z" />
-            </svg>
-        </div>
-
-        <h1 class="text-3xl md:text-4xl font-extrabold text-gray-800 mb-2">SERVIÇO INDISPONÍVEL</h1>
-        <p class="text-xl font-semibold text-orange-700 mb-4">
-            Limite de Capacidade Atingido
-        </p>
-
-        <p class="text-gray-600 mb-6 text-base leading-relaxed">
-            Neste momento, o sistema atingiu o seu limite máximo de requisições. 
-            Isso é temporário e visa garantir a estabilidade do serviço.
-        </p>
-        
-        <button class="w-full bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 px-6 rounded-lg transition duration-200 shadow-md hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-orange-500 focus:ring-opacity-50">
-            Tentar Novamente (30s)
+    <header>
+        <a href="src/pages/changelog.html" target="_blank">
+            <img src="./src/imagens/rolagem.png" alt="pokebola" class="logo">
+        </a>
+        <button id="botao-alterar-tema">
+            <img src="./src/imagens/sun.png" alt="imagem do sol" class="imagem-botao">
         </button>
+    </header>
+    <main>
+        <ul class="listagem-download">
+            <li class="cartao-download">
+                <div class="informacoes">
+                    <span>Instalador</span>
+                </div>
+                <img src="./src/imagens/instalar.png" alt="instalador" class="gif">
+                <ul class="tipos">
+                    <li class="tipo download"><a href="src/files/BitmaxInstall_Empresarial.rar" target="_blank">Download</a></li>
+                </ul>
+                <p class="descricao">Instalação do sistema.</p>
+            </li>
+            <li class="cartao-download">
+                <div class="informacoes">
+                    <span>Atualização</span>
+                    <span>13.11</span>
+                </div>
+                <img src="./src/imagens/atualizacao-do-sistema.png" alt="atualização" class="gif">
+                <ul class="tipos">
+                    <li class="tipo download"><a href="#" onclick="baixarArquivos()">Download</a></li>
+                </ul>
+                <p class="descricao">Versão 2504.1. Extraia o arquivo part1.rar</p>
+            </li>
+            <li class="cartao-download">
+                <div class="informacoes">
+                    <span>Firebird</span>
+                </div>
+                <img src="./src/imagens/armazenamento-de-banco-de-dados.png" alt="firebird" class="gif">
+                <ul class="tipos">
+                    <li class="tipo download"><a href="src/files/exe/Instalador_Firebird.exe" target="_blank">Download</a></li>
+                </ul>
+                <p class="descricao">Instalador do Firebird.</p>
+            </li>
+            <li class="cartao-download">
+                <div class="informacoes">
+                    <span>Versão beta</span>
+                    <span>14.11</span>
+                </div>
+                <img src="./src/imagens/atualizacao-do-sistema.png" alt="atualização" class="gif">
+                <ul class="tipos">
+                    <li class="tipo download"><a href="" target="_blank">Download</a></li>
+                </ul>
+                <p class="descricao">Nenhuma versão aqui.</p>
+            </li>
+            <li class="cartao-download">
+                <div class="informacoes">
+                    <span>IBExpert</span>
+                </div>
+                <img src="./src/imagens/tabela-de-banco-de-dados.png" alt="ibexpert" class="gif">
+                <ul class="tipos">
+                    <li class="tipo download"><a href="src/files/exe/ibexpert.exe" target="_blank">Download</a></li>
+                </ul>
+                <p class="descricao">Exe do IBExpert</p>
+            </li>
+            <li class="cartao-download">
+                <div class="informacoes">
+                    <span>BAT</span>
+                </div>
+                <img src="./src/imagens/prompt.png" alt="cmd" class="gif">
+                <ul class="tipos">
+                    <li class="tipo download"><a href="src/files/update.bat" target="_blank">Download</a></li>
+                </ul>
+                <p class="descricao">Atualizador bat.</p>
+            </li>
+            <li class="cartao-download">
+                <div class="informacoes">
+                    <span>Rotina Backup</span>
+                </div>
+                <img src="./src/imagens/copia-de-seguranca.png" alt="backup" class="gif">
+                <ul class="tipos">
+                    <li class="tipo download"><a href="src/files/Backup.rar" target="_blank">Download</a></li>
+                </ul>
+                <p class="descricao">Rotina de Backup.</p>
+            </li>
+            <li class="cartao-download">
+                <div class="informacoes">
+                    <span>Manual</span>
+                </div>
+                <img src="./src/imagens/manual.png" alt="manual" class="gif">
+                <ul class="tipos">
+                    <li class="tipo download"><a href="src/files/pdf/Manual Bitmax.chm" target="_blank">Download</a></li>
+                </ul>
+                <p class="descricao">Manual completo do sistema.</p>
+            </li>
+            <li class="cartao-download">
+                <div class="informacoes">
+                    <span>PDF</span>
+                </div>
+                <img src="./src/imagens/pdf.png" alt="pdf" class="gif">
+                <ul class="tipos">
+                    <li class="tipo download"><a href="src/pages/pdf.html">Ir para PDF</a></li>
+                </ul>
+                <p class="descricao">Tutoriais em PDF.</p>
+            </li>
+            <li class="cartao-download">
+                <div class="informacoes">
+                    <span>VIDEOS</span>
+                </div>
+                <img src="./src/imagens/aula-de-video.png" alt="videos" class="gif">
+                <ul class="tipos">
+                    <li class="tipo download"><a href="src/pages/videos.html">Ir para Vídeos</a></li>
+                </ul>
+                <p class="descricao">Tutoriais em vídeos.</p>
+            </li>
+            <li class="cartao-download">
+                <div class="informacoes">
+                    <span>Movimento mês</span>
+                </div>
+                <img src="./src/imagens/atualizacao-do-sistema.png" alt="videos" class="gif">
+                <ul class="tipos">
+                    <li class="tipo download"><a onclick="baixarArquivosMovimentoMes()" target="_blank">Download</a></li>
+                </ul>
+            </li>
+            <li class="cartao-download">
+                <div class="informacoes">
+                    <span>Corretor</span>
+                </div>
+                <img src="./src/imagens/atualizacao-do-sistema.png" alt="videos" class="gif">
+                <ul class="tipos">
+                    <li class="tipo download"><a href="src/files/BitmaxCorretor.rar" target="_blank">Download</a></li>
+                </ul>
+            </li>
+            <li class="cartao-download">
+                <div class="informacoes">
+                    <span>FAQ</span>
+                </div>
+                <img src="./src/imagens/aula-de-video.png" alt="videos" class="gif">
+                <ul class="tipos">
+                    <li class="tipo download"><a href="faq.html">Ir para FAQ</a></li>
+                </ul>
+                <p class="descricao">Perguntas frequentes.</p>
+            </li>
+        </ul>
+    </main>
+    <script src="./src/js/index.js"></script>
+    <script>
+    function baixarArquivosMovimentoMes() {
+        const arquivos = [
+            'src/files/BitmaxMovimento.part1.rar',
+            'src/files/BitmaxMovimento.part2.rar',
+        ];
+        arquivos.forEach((arquivo, index) => {
+            setTimeout(() => {
+                const link = document.createElement("a");
+                link.href = arquivo;
+                link.download = ""; // Força o download
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            }, index * 1000); // Adiciona um atraso de 1 segundo entre os downloads
+        });
+    }
+    function baixarArquivos() {
+        const arquivos = [
+            'src/files/Atualizacao.part1.rar', 
+            'src/files/Atualizacao.part2.rar',
+            'src/files/Atualizacao.part3.rar',
+            'src/files/Atualizacao.part4.rar',
+            'src/files/Atualizacao.part5.rar',
+		
+        ];
 
-        <div class="text-xs text-gray-400 mt-6">
-            O limite será redefinido em breve. Consulte o suporte para planos de maior capacidade.
-        </div>
-    </div>
+        arquivos.forEach((arquivo, index) => {
+        setTimeout(() => {
+            const link = document.createElement("a");
+            link.href = arquivo;
+            link.download = ""; // Força o download
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }, index * 1000); // Adiciona um atraso de 1 segundo entre os downloads
+    });
+    }
+    </script>
 </body>
 </html>

@@ -8812,7 +8812,7 @@ SELECT '410999', 'Operações não onerosas sem previsão de tributação, não especif
 
 /* INSERTS para CST 510 (CCLASSTRIB_IBSCBS_CODIGO = '510') */
 INSERT INTO EMP_CLASS_IBSCBS (CCLASSTRIB, CCLASSTRIB_DESCRICAO, IBCCLASS_DTCAD, CCLASSTRIB_IBSCBS_CODIGO, FK_SIT)
-SELECT '5100002', 'Operações, sujeitas a diferimento, com insumos agropecuários e aquícolas destinados a produtor rural não contribuinte, observado o art. 138 da Lei Complementar nº 214, de 2025.', 'NOW', '510', 1 FROM RDB$DATABASE WHERE NOT EXISTS (SELECT 1 FROM EMP_CLASS_IBSCBS WHERE CCLASSTRIB = '5100002');
+SELECT '510002', 'Operações, sujeitas a diferimento, com insumos agropecuários e aquícolas destinados a produtor rural não contribuinte, observado o art. 138 da Lei Complementar nº 214, de 2025.', 'NOW', '510', 1 FROM RDB$DATABASE WHERE NOT EXISTS (SELECT 1 FROM EMP_CLASS_IBSCBS WHERE CCLASSTRIB = '5100002');
 
 INSERT INTO EMP_CLASS_IBSCBS (CCLASSTRIB, CCLASSTRIB_DESCRICAO, IBCCLASS_DTCAD, CCLASSTRIB_IBSCBS_CODIGO, FK_SIT)
 SELECT '510001', 'Operações, sujeitas a diferimento, com energia elétrica ou com direitos a ela relacionados, relativas à geração, comercialização, distribuição e transmissão, observado o art. 28 da Lei Complementar nº 214, de 2025.', 'NOW', '510', 1 FROM RDB$DATABASE WHERE NOT EXISTS (SELECT 1 FROM EMP_CLASS_IBSCBS WHERE CCLASSTRIB = '510001');
