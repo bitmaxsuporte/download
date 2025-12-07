@@ -1,36 +1,48 @@
 import xml.etree.ElementTree as ET
-import json
+import openpyxl # Importa a biblioteca para Excel
 import os
 
-# Nome do arquivo de entrada
+# Nome do arquivo de entrada (XML da NFe)
 arquivo_xml = '29251129527713000190550010000002141676045580-nfe.xml'
-# Nome do arquivo de saída
-arquivo_json = 'produtos.json'
+# Nome do arquivo de saída (Excel)
+# ALTERADO: Mudando a extensão para .xlsx
+arquivo_excel = 'produtos_nfe.xlsx' 
 
 def formatar_2_casas(valor_texto):
     """
-    Retorna uma STRING formatada com ponto e 2 casas decimais.
-    Ex: '11.251' vira '11.25'
+    Retorna um FLOAT formatado com 2 casas decimais.
+    Ex: '11.251' vira 11.25
     """
     try:
-        valor_float = float(valor_texto)
-        return f"{valor_float:.2f}"
+        # Converte para float e arredonda/limita para 2 casas
+        return round(float(valor_texto), 2)
     except (ValueError, TypeError):
-        return valor_texto
+        # Retorna 0.00 ou trata o erro se o valor for crucial
+        return 0.00 
 
-def processar_nfe_json(xml_path, json_path):
+def processar_nfe_excel(xml_path, excel_path):
     if not os.path.exists(xml_path):
         print(f"Erro: Arquivo '{xml_path}' não encontrado.")
         return
 
     try:
+        # 1. Carrega o XML
         tree = ET.parse(xml_path)
         root = tree.getroot()
 
         # Namespace da NFe
         ns = {'nfe': 'http://www.portalfiscal.inf.br/nfe'}
 
-        lista_produtos = []
+        # 2. Configura o Excel (Workbook e Worksheet)
+        wb = openpyxl.Workbook()
+        ws = wb.active
+        ws.title = "Produtos NFe"
+
+        # Define os cabeçalhos
+        cabecalhos = ["Código", "Quantidade", "Valor Unitário"]
+        ws.append(cabecalhos) # Adiciona a linha de cabeçalho
+
+        # 3. Extrai os dados
         itens = root.findall('.//nfe:det', ns)
         
         for item in itens:
@@ -42,24 +54,29 @@ def processar_nfe_json(xml_path, json_path):
             qtd_xml = prod.find('nfe:qCom', ns).text
             vlr_xml = prod.find('nfe:vUnCom', ns).text
             
-            # Formata para garantir 2 casas decimais (mantendo o ponto por enquanto)
-            item_dict = {
-                "codigo": codigo,
-                "qtd": formatar_2_casas(qtd_xml),
-                "vlr": formatar_2_casas(vlr_xml)
-            }
+            # Formata para float com 2 casas decimais
+            qtd_formatada = formatar_2_casas(qtd_xml)
+            vlr_formatado = formatar_2_casas(vlr_xml)
             
-            lista_produtos.append(item_dict)
+            # Monta a linha de dados
+            linha_dados = [
+                codigo, 
+                qtd_formatada,
+                vlr_formatado
+            ]
+            
+            # Adiciona a linha ao Excel
+            ws.append(linha_dados)
 
-        # Salva em JSON com indentação para ficar legível
-        with open(json_path, 'w', encoding='utf-8') as f:
-            json.dump(lista_produtos, f, indent=4)
+        # 4. Salva o arquivo Excel
+        wb.save(excel_path)
 
-        print(f"Sucesso! {len(lista_produtos)} itens salvos em '{json_path}'.")
-        print("Abra o arquivo .json para conferir os dados.")
+        print(f"Sucesso! {len(itens)} itens salvos em '{excel_path}'.")
+        print("Abra o arquivo .xlsx para conferir os dados.")
 
     except Exception as e:
         print(f"Ocorreu um erro: {e}")
 
 if __name__ == "__main__":
-    processar_nfe_json(arquivo_xml, arquivo_json)
+    # ALTERADO: Usando o novo nome de arquivo de saída
+    processar_nfe_excel(arquivo_xml, arquivo_excel)
