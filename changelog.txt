@@ -2,6 +2,17 @@
 
 *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-**-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-.
 
+02/01/2026:
+
+* Implementado o preenchimento automático da tabela de usuários autorizados a obter o XML, utilizando dados do CNPJ/CPF da contabilidade e do contador.
+* Configurado o padrão da série da nota fiscal eletrônica como '001' quando o campo estiver vazio.
+* Estabelecida a padronização automática de documentos (CPF/CNPJ), definindo indicadores de contribuinte de ICMS, isenção e enquadramento em Simples/ME com base na estrutura do documento e presença de Inscrição Estadual.
+* Inseridas as novas tabelas de códigos de situação tributária (CST) referentes à reforma tributária, abrangendo situações do IBS e CBS conforme a Lei Complementar nº 214 de 2025.
+* Calculos de IBS e CST nas operações de saídas.
+* Opção de ativar ou não a reforma tributária PARAM_EMP_TRIBUTOS_ENCARGOS em PTBE_ATIVAR_REFORMA.
+* IBPT novo.
+
+
 05/11/2025:
 
 * Ajuste no inventário para garantir correspondência com a ficha Kardex, respeitando a regra de controle de estoque e desconsiderando notas de substituição de NFC-e.
