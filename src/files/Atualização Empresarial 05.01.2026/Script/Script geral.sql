@@ -762,7 +762,7 @@ WHERE NOT EXISTS (SELECT 1 FROM EMP_CST_IBSCBS WHERE IBSCBS_CODIGO = '011');
 
 /* CST 200: Alíquota zero */
 INSERT INTO EMP_CST_IBSCBS (IBSCBS_CODIGO, IBSCBS_NOME, IBSCBS_FINALIDADE, IBSCBS_DTCAD, CST_IBSCBS_FKSIT_ID)
-SELECT '200', 'Alíquota zero', 'Situação de emergência de saúde pública reconhecida pelo Poder público (Anexo XIV)', 'NOW', 1
+SELECT '200', 'Alíquota Reduzida', 'Situação de emergência de saúde pública reconhecida pelo Poder público (Anexo XIV)', 'NOW', 1
 FROM RDB$DATABASE
 WHERE NOT EXISTS (SELECT 1 FROM EMP_CST_IBSCBS WHERE IBSCBS_CODIGO = '200');
 
@@ -1166,7 +1166,7 @@ COMMIT WORK;
 
 SET TERM ^ ;
 update param_emp_tributos_encargos e
-set e.ptbe_ativar_reforma = 'F'
+set e.ptbe_ativar_reforma = 'T'
 where e.ptbe_ativar_reforma IS NULL
 ^
 SET TERM; ^
