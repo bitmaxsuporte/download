@@ -9384,5 +9384,14 @@ SET TERM; ^
 
 COMMIT WORK;
 
+SET TERM ^ ;
+update EMP_CST_IBSCBS
+set IBSCBS_NOME = 'Alíquota Reduzida'
+where IBSCBS_CODIGO = '200'
+^
+SET TERM; ^
+
+COMMIT WORK;
+
 
 
