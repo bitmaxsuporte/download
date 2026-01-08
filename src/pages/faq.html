@@ -1,178 +1,666 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR" class="scroll-smooth">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>FAQ</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ | Suporte Bitmax</title>
+    <meta name="description" content="Perguntas frequentes sobre o sistema Bitmax Empresarial">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;800&display=swap" rel="stylesheet" />
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
 
-    <link rel="stylesheet" href="../../src/css/reset.css">
-    <link rel="stylesheet" href="../../src/css/estilos.css">
-    <link rel="stylesheet" href="../../src/css/scrollbar.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'sans': ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        },
+                        accent: {
+                            50: '#fdf4ff',
+                            100: '#fae8ff',
+                            200: '#f5d0fe',
+                            300: '#f0abfc',
+                            400: '#e879f9',
+                            500: '#d946ef',
+                            600: '#c026d3',
+                            700: '#a21caf',
+                            800: '#86198f',
+                            900: '#701a75',
+                        }
+                    },
+                    animation: {
+                        'slide-up': 'slideUp 0.5s ease-out',
+                    },
+                    keyframes: {
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
 
     <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color:#5c718b;
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
         }
 
-        .faq-list {
-            list-style: none;
-            padding: 0;
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #0ea5e9, #d946ef);
+            border-radius: 4px;
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .dark .glass {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #0ea5e9, #d946ef);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* FAQ Styles */
+        .answer-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out, padding 0.5s ease-out;
+        }
+
+        .answer-content.open {
+            max-height: 5000px;
+            padding-top: 1.25rem;
+            padding-bottom: 1.25rem;
+        }
+
+        .arrow-icon {
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .arrow-icon.rotate-180 {
+            transform: rotate(180deg);
         }
 
         .faq-item {
-            border-bottom: 1px solid #ccc;
-            padding: 15px 0;
-            cursor: pointer;
+            transition: all 0.3s ease;
         }
 
         .faq-item:hover {
-            background-color: #f9f9f9;
-        }
-
-        .faq-item h3 {
-            margin: 0;
-            font-weight: 500;
-        }
-
-        .faq-item p {
-            display: none;
-            margin-top: 10px;
-            font-weight: 300;
-        }
-
-        .faq-item p img {
-            display: block;
-            margin: 20px auto;
-            max-width: 100%;
-            height: auto;
-        }
-
-        .active p {
-            display: block;
-        }
-
-        .faq-link {
-            color: #0066cc;
-            text-decoration: none;
-        }
-
-        .faq-link:hover {
-            text-decoration: underline;
-        }
-
-        /* Estilo para o campo de pesquisa */
-        .search-bar {
-            width: 100%;
-            padding: 10px;
-            margin: 20px 0;
-            font-size: 16px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-sizing: border-box;
+            transform: translateX(4px);
         }
     </style>
 </head>
 
-<body class="body-changelog1">
-    <header>
-        <a href="#">
-            <img src="../../src/imagens/ferramentas-de-reparacao.png" alt="pokebola" class="logo" />
-        </a>
-        <button id="botao-alterar-tema">
-            <img src="../../src/imagens/sun.png" alt="imagem do sol" class="imagem-botao" />
-        </button>
+<body
+    class="font-sans bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 min-h-screen transition-colors duration-500">
+
+    <!-- Navigation Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 glass shadow-lg">
+        <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 md:h-20">
+                <!-- Logo -->
+                <div class="flex items-center space-x-3">
+                    <div
+                        class="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-500 to-accent-500 flex items-center justify-center shadow-lg">
+                        <i data-lucide="headphones" class="w-6 h-6 text-white"></i>
+                    </div>
+                    <span class="text-xl font-bold gradient-text hidden sm:block">Suporte Bitmax</span>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-1">
+                    <a href="../../index.html"
+                        class="px-4 py-2 rounded-xl text-slate-700 dark:text-slate-200 hover:bg-primary-100 dark:hover:bg-slate-700 font-medium transition-all duration-300 flex items-center space-x-2">
+                        <i data-lucide="home" class="w-4 h-4"></i>
+                        <span>Home</span>
+                    </a>
+                    <a href="videos.html"
+                        class="px-4 py-2 rounded-xl text-slate-700 dark:text-slate-200 hover:bg-primary-100 dark:hover:bg-slate-700 font-medium transition-all duration-300 flex items-center space-x-2">
+                        <i data-lucide="video" class="w-4 h-4"></i>
+                        <span>Vídeos</span>
+                    </a>
+                    <a href="pdf.html"
+                        class="px-4 py-2 rounded-xl text-slate-700 dark:text-slate-200 hover:bg-primary-100 dark:hover:bg-slate-700 font-medium transition-all duration-300 flex items-center space-x-2">
+                        <i data-lucide="file-text" class="w-4 h-4"></i>
+                        <span>Manuais</span>
+                    </a>
+                    <a href="faq.html"
+                        class="px-4 py-2 rounded-xl bg-primary-100 dark:bg-slate-700 text-primary-700 dark:text-primary-300 font-medium transition-all duration-300 flex items-center space-x-2">
+                        <i data-lucide="help-circle" class="w-4 h-4"></i>
+                        <span>Suporte</span>
+                    </a>
+                </div>
+
+                <!-- Right Actions -->
+                <div class="flex items-center space-x-3">
+                    <!-- Theme Toggle -->
+                    <button id="botao-alterar-tema"
+                        class="p-2.5 rounded-xl bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-yellow-400 hover:bg-slate-300 dark:hover:bg-slate-600 transition-all duration-300 hover:scale-105"
+                        title="Alternar tema">
+                        <i data-lucide="sun" class="w-5 h-5 block dark:hidden"></i>
+                        <i data-lucide="moon" class="w-5 h-5 hidden dark:block"></i>
+                    </button>
+
+                    <!-- Mobile Menu Button -->
+                    <button id="mobile-menu-btn"
+                        class="md:hidden p-2.5 rounded-xl bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-300 dark:hover:bg-slate-600 transition-all duration-300">
+                        <i data-lucide="menu" class="w-5 h-5"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Navigation -->
+            <div id="mobile-menu" class="hidden md:hidden pb-4">
+                <div class="flex flex-col space-y-2">
+                    <a href="../../index.html"
+                        class="px-4 py-3 rounded-xl text-slate-700 dark:text-slate-200 hover:bg-primary-100 dark:hover:bg-slate-700 font-medium transition-all duration-300 flex items-center space-x-3">
+                        <i data-lucide="home" class="w-5 h-5"></i>
+                        <span>Home</span>
+                    </a>
+                    <a href="videos.html"
+                        class="px-4 py-3 rounded-xl text-slate-700 dark:text-slate-200 hover:bg-primary-100 dark:hover:bg-slate-700 font-medium transition-all duration-300 flex items-center space-x-3">
+                        <i data-lucide="video" class="w-5 h-5"></i>
+                        <span>Vídeos</span>
+                    </a>
+                    <a href="pdf.html"
+                        class="px-4 py-3 rounded-xl text-slate-700 dark:text-slate-200 hover:bg-primary-100 dark:hover:bg-slate-700 font-medium transition-all duration-300 flex items-center space-x-3">
+                        <i data-lucide="file-text" class="w-5 h-5"></i>
+                        <span>Manuais</span>
+                    </a>
+                    <a href="faq.html"
+                        class="px-4 py-3 rounded-xl text-slate-700 dark:text-slate-200 bg-primary-100 dark:bg-slate-700 font-medium transition-all duration-300 flex items-center space-x-3">
+                        <i data-lucide="help-circle" class="w-5 h-5"></i>
+                        <span>Suporte</span>
+                    </a>
+                </div>
+            </div>
+        </nav>
     </header>
 
-    <main>
-        <!-- Campo de pesquisa -->
-        <input type="text" id="searchInput" class="search-bar" placeholder="Pesquisar FAQ...">
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 pt-24 md:pt-28 pb-12">
 
-        <ul class="faq-list" id="faqList">
-            <li class="faq-item">
-                <h3>Como configurar o acesso TS?</h3>
-                <p>Primeiro faça o download do <a href="../files/exe/RDPW_Installer.exe" class="faq-link">RDP Wrapper</a>. <br>
-                    Execute o instalador como ADMIN, certifique-se de que o antivírus não está bloqueando a execução do instalador: 
-                    <br>
-                    Após a instalação, você verá uma tela igual a esta e que deve estar com tudo verde: 
-                    <img src="../../src/imagens/faq/rdpw/1.jpg" alt="Instalação rdpw">
+        <!-- Hero Section -->
+        <section class="text-center mb-12 md:mb-16">
+            <div class="animate-slide-up">
+                <div
+                    class="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 text-sm font-medium mb-4">
+                    <i data-lucide="message-circle-question" class="w-4 h-4"></i>
+                    <span>Central de Ajuda</span>
+                </div>
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-800 dark:text-white mb-4">
+                    Perguntas <span class="gradient-text">Frequentes</span>
+                </h1>
+                <p class="text-lg md:text-xl text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
+                    Encontre respostas para suas dúvidas sobre o sistema Bitmax Empresarial
+                </p>
+            </div>
+        </section>
 
-                    O próximo passo é criar usuários para cada estação no servidor no windows em "Gerenciador de usuários" e criar um usuário para cada estação.
-                    Depois de criar os usuários, você deve habilitar para "Todos" o acesso remoto no servidor em propriedade do computador e habilitar a opção "Permitir acesso remoto a este computador". 
-                    <img src="../../src/imagens/faq/rdpw/2.png" alt="Configuração acesso remoto">
-                </p>
-                <p> : 
-                    <br>
-                    
-                
-                </p>
-            </li>
-            <li class="faq-item">
-                <h3>Como colocar o departamento para balança no MGV6?</h3>
-                <p>Cadastre dentro do item uma localização chamada "GERAL" e aplique em todos os itens.
-                    Aqui está um exemplo da tela de alteração de senha:
-                    <br>
-                    <img src="../../src/imagens/faq/balança/1.png" alt="Tela cadastro localização">
-                    <br>
-                    
-                </p>
-            </li>
-            <li class="faq-item">
-                <h3>Como corrigir erro SPED 1300, 1310 e 1320?</h3>
-                <p>Primeiro faça o download do <a href="../files/exe/Reprocessar sped.zip" class="faq-link">Reprocessar sped</a>. <br>
-                    Execute o arquivo como ADMIN, você verá uma tela igual a esta: <br>
-                    <img src="../../src/imagens/faq/sped/1.png" alt="Reprocessar sped">
-                    <br>
-                    Clique em "Executar" e um novo txt será gerado com os erros corrigidos na pasta do executável.
-                </p>
-            </li>
-            <li class="faq-item">
-                <h3>Como é o calculo de custo médio do sistema?</h3>
-                <p>O cálculo é: novo_custo_medio = ((custo_medio_anterior * estoque_anterior) + (custo_atual * quantidade_comprada)) / novo_estoque</a>. <br>
-                    
-                </p>
-            </li>
-            <li class="faq-item">
-                <h3>Como gerar o novo IBPT?</h3>
-                <p>Primeiro faça o download do <a href="../files/exe/ibpt.exe" class="faq-link">Gerar IBPT</a>. <br>
-                Faça o download da nova versão do IBPT no site de olho no imposto, em seguida, renomeie o arquivo como 'ibpt.csv'. Execute o arquivo como ADMIN e selecione o arquivo 'ibpt.csv'.
-                
-                </p>
-            </li>
+        <!-- Search Section -->
+        <section class="mb-10">
+            <div class="glass rounded-2xl p-6 shadow-xl max-w-3xl mx-auto">
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <div class="relative flex-grow">
+                        <i data-lucide="search"
+                            class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400"></i>
+                        <input type="text" id="search-input" placeholder="Buscar por termo ou frase..."
+                            class="w-full pl-12 pr-4 py-4 rounded-xl border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-800 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 focus:border-primary-500 transition-all shadow-sm">
+                    </div>
+                    <button id="filter-button"
+                        class="px-8 py-4 bg-gradient-to-r from-primary-500 to-accent-500 text-white font-semibold rounded-xl hover:shadow-xl hover:scale-105 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-primary-200 flex items-center justify-center space-x-2">
+                        <i data-lucide="filter" class="w-5 h-5"></i>
+                        <span>Filtrar</span>
+                    </button>
+                </div>
+            </div>
+        </section>
 
-        </ul>
+        <!-- FAQ Container -->
+        <section class="max-w-4xl mx-auto">
+            <div id="faq-container" class="space-y-4">
+                <!-- FAQ items will be rendered here by JavaScript -->
+            </div>
+        </section>
+
+        <!-- Back to Home -->
+        <section class="text-center mt-12">
+            <a href="../../index.html"
+                class="inline-flex items-center space-x-2 px-6 py-3 rounded-xl bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-200 font-medium hover:bg-slate-300 dark:hover:bg-slate-600 transition-all duration-300">
+                <i data-lucide="arrow-left" class="w-5 h-5"></i>
+                <span>Voltar para Home</span>
+            </a>
+        </section>
+
     </main>
 
+    <!-- Footer -->
+    <footer class="glass border-t border-slate-200 dark:border-slate-700 py-6 mt-12">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
+                <div class="flex items-center space-x-3">
+                    <div
+                        class="w-8 h-8 rounded-lg bg-gradient-to-br from-primary-500 to-accent-500 flex items-center justify-center">
+                        <i data-lucide="star" class="w-4 h-4 text-white"></i>
+                    </div>
+                    <span class="text-slate-600 dark:text-slate-400 text-sm">© 2026 Bitmax - Todos os direitos
+                        reservados</span>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="mailto:suporte@bitmax.com.br"
+                        class="text-slate-600 dark:text-slate-400 hover:text-primary-500 dark:hover:text-primary-400 transition-colors flex items-center space-x-2">
+                        <i data-lucide="mail" class="w-4 h-4"></i>
+                        <span class="text-sm">suporte@bitmax.com.br</span>
+                    </a>
+                    <span class="text-slate-300 dark:text-slate-600">|</span>
+                    <a href="tel:7530301577"
+                        class="text-slate-600 dark:text-slate-400 hover:text-primary-500 dark:hover:text-primary-400 transition-colors flex items-center space-x-2">
+                        <i data-lucide="phone" class="w-4 h-4"></i>
+                        <span class="text-sm">(75) 3030-1577</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
     <script>
-        // Função para alternar exibição da resposta
-        document.querySelectorAll('.faq-item').forEach(function(item) {
-            item.addEventListener('click', function() {
-                this.classList.toggle('active');
-            });
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Theme Toggle
+        const botaoAlterarTema = document.getElementById("botao-alterar-tema");
+        const html = document.documentElement;
+
+        const savedTheme = localStorage.getItem('theme');
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+        if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+            html.classList.add('dark');
+        }
+
+        botaoAlterarTema.addEventListener("click", () => {
+            html.classList.toggle("dark");
+            localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+            lucide.createIcons();
         });
 
-        // Função para alterar tema (exemplo básico)
-        document.getElementById('botao-alterar-tema').addEventListener('click', function() {
-            document.body.classList.toggle('dark-mode');
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
         });
 
-        // Função de pesquisa
-        document.getElementById('searchInput').addEventListener('input', function() {
-            var searchTerm = this.value.toLowerCase();
-            var faqItems = document.querySelectorAll('.faq-item');
+        // FAQ Logic
+        document.addEventListener('DOMContentLoaded', () => {
+            const faqContainer = document.getElementById('faq-container');
+            const searchInput = document.getElementById('search-input');
+            const filterButton = document.getElementById('filter-button');
 
-            faqItems.forEach(function(item) {
-                var text = item.textContent.toLowerCase();
-                if (text.includes(searchTerm)) {
-                    item.style.display = "block";
+            // FAQ Data - Perguntas mais importantes
+            const faqData = [
+                {
+                    id: 'answer1',
+                    question: 'Como desabilitar o controle de estoque de um produto?',
+                    answer: [
+                        { type: 'text', value: 'Para desabilitar o controle de estoque de um produto, siga os passos abaixo:' },
+                        { type: 'text', value: '<strong>1. Acesse o cadastro do subgrupo do produto:</strong> Comece o processo de cadastro.' },
+                        { type: 'text', value: '<strong>2. Localize a opção "Controla Estoque":</strong> Encontre a configuração relacionada ao controle de estoque.' },
+                        { type: 'text', value: '<strong>3. Desmarque essa opção:</strong> Selecione "Não" para desativar o controle de estoque.' },
+                        { type: 'text', value: '<strong>4. Habilite a opção de estoque negativo:</strong> Selecione "Sim" para permitir que o estoque fique negativo.' }
+                    ]
+                },
+                {
+                    id: 'answer2',
+                    question: 'Como cadastrar um produto do tipo composição?',
+                    answer: [
+                        { type: 'text', value: 'Para cadastrar um produto do tipo composição, siga estas etapas:' },
+                        { type: 'text', value: '<strong>1. Inicie o cadastro do produto:</strong> Comece o processo de cadastro.' },
+                        { type: 'text', value: '<strong>2. No campo "Tipo":</strong> Selecione a opção "Composição".' },
+                        { type: 'text', value: '<strong>3. Após essa seleção:</strong> A aba "5 - Composição" será ativada.' },
+                        { type: 'text', value: '<strong>4. Insira os componentes:</strong> Adicione os componentes e as quantidades necessárias dentro da composição.' }
+                    ]
+                },
+                {
+                    id: 'answer3',
+                    question: 'Como cadastrar um produto do tipo kit?',
+                    answer: [
+                        { type: 'text', value: 'Para cadastrar um produto do tipo kit, siga os passos abaixo:' },
+                        { type: 'text', value: '<strong>1. Acesse o cadastro do produto:</strong> Inicie o processo de cadastro.' },
+                        { type: 'text', value: '<strong>2. No campo "Tipo":</strong> Escolha a opção "Kit".' },
+                        { type: 'text', value: '<strong>3. Com essa opção selecionada:</strong> A aba "6 - Kit" será ativada.' },
+                        { type: 'text', value: '<strong>4. Insira os componentes:</strong> Adicione os componentes e as quantidades que compõem o kit.' }
+                    ]
+                },
+                {
+                    id: 'answer21',
+                    question: 'Como identificar se o destinatário é contribuinte do ICMS para cálculo DIFAL?',
+                    answer: [
+                        { type: 'text', value: 'Para identificar se o destinatário é contribuinte do ICMS, você deve considerar as seguintes combinações:' },
+                        { type: 'text', value: '<strong>1 = Contribuinte ICMS</strong> - informar a IE do destinatário' },
+                        { type: 'text', value: '<strong>2 = Contribuinte isento</strong> - de Inscrição no cadastro de Contribuintes do ICMS' },
+                        { type: 'text', value: '<strong>9 = Não Contribuinte</strong> - que pode ou não possuir Inscrição Estadual' },
+                        { type: 'text', value: 'Não é necessário recolocar o cliente no pedido, basta apenas mudar o cadastro e tentar de novo.' }
+                    ]
+                },
+                {
+                    id: 'answer22',
+                    question: 'Como desabilitar chamada do e-mail ao emitir NFe ou NFCe?',
+                    answer: [
+                        { type: 'text', value: 'Vá em parâmetros do sistema -> 4 - Configurações para NF-e -> Ativar/Desativar chamada de Email.' },
+                        { type: 'text', value: 'Se a opção estiver marcada, a mensagem será exibida para cada nota emitida. Se desmarcada, a mensagem de e-mail será pulada.' }
+                    ]
+                },
+                {
+                    id: 'answer27',
+                    question: 'Qual é o horário de atendimento do suporte técnico?',
+                    answer: [
+                        { type: 'text', value: 'O suporte técnico está disponível de <strong>segunda a sexta-feira</strong>, nos seguintes horários:' },
+                        { type: 'text', value: '• Manhã: das 8:00 às 12:00.' },
+                        { type: 'text', value: '• Tarde: das 14:00 às 18:00.' }
+                    ]
+                },
+                {
+                    id: 'answer28',
+                    question: 'Como posso entrar em contato com o suporte técnico?',
+                    answer: [
+                        { type: 'text', value: 'Você pode entrar em contato com o suporte técnico através dos seguintes canais:' },
+                        { type: 'text', value: '• <strong>Fone/Fax:</strong> (75) 3030-1577' },
+                        { type: 'text', value: '• <strong>E-mail:</strong> suporte@bitmax.com.br' }
+                    ]
+                },
+                {
+                    id: 'answer30',
+                    question: 'Quais são os pré-requisitos para instalar o sistema Bitmax Empresarial?',
+                    answer: [
+                        { type: 'text', value: 'Para instalar o software, seu computador precisa atender aos seguintes requisitos mínimos:' },
+                        { type: 'text', value: '• <strong>Sistema Operacional:</strong> Windows 7 ou Windows 10.' },
+                        { type: 'text', value: '• <strong>Memória RAM:</strong> 4 GB.' },
+                        { type: 'text', value: '• <strong>Processador:</strong> Core 2.0 GHz ou superior.' },
+                        { type: 'text', value: '• <strong>Espaço em Disco (HD):</strong> 512 MB de espaço livre.' }
+                    ]
+                },
+                {
+                    id: 'answer31',
+                    question: 'Como faço a instalação do sistema em rede?',
+                    answer: [
+                        { type: 'text', value: 'Para a instalação em rede, siga estes passos:' },
+                        { type: 'text', value: '<strong>1. Instalação no Servidor:</strong> Primeiramente, o Bitmax Empresarial deve ser instalado na máquina que funcionará como servidor.' },
+                        { type: 'text', value: '<strong>2. Compartilhamento:</strong> A pasta "Bitmax" localizada no servidor deve ser compartilhada na rede.' },
+                        { type: 'text', value: '<strong>3. Configuração no Terminal:</strong> Na máquina terminal, localize a pasta compartilhada do servidor, acesse a subpasta "Bin" e crie um atalho na área de trabalho.' }
+                    ]
+                },
+                {
+                    id: 'answer37',
+                    question: 'Qual a diferença entre os módulos "Faturamento" e "Venda Rápida"?',
+                    answer: [
+                        { type: 'text', value: 'O módulo <strong>"Faturamento"</strong> é mais completo, utilizado para gerar pedidos de venda detalhados que podem se tornar orçamentos ou documentos fiscais como NF-e.' },
+                        { type: 'text', value: 'Já o módulo <strong>"Venda Rápida"</strong> é uma forma simplificada de realizar a venda, ideal para operações ágeis no ponto de venda (PDV).' }
+                    ]
+                },
+                {
+                    id: 'answer38',
+                    question: 'Como devo realizar o backup do sistema?',
+                    answer: [
+                        { type: 'text', value: 'Para fazer o backup, acesse o menu <strong>Ferramentas > Utilitários</strong> e clique em <strong>"Iniciar Backup"</strong>.' },
+                        { type: 'text', value: 'É altamente recomendável que essa rotina seja feita diariamente, no final do expediente, para garantir a segurança de todas as movimentações da empresa.' }
+                    ]
+                },
+                {
+                    id: 'answer40',
+                    question: 'O que é necessário para emitir uma Nota Fiscal Eletrônica (NF-e)?',
+                    answer: [
+                        { type: 'text', value: 'Para a transmissão e validação jurídica da NF-e, é indispensável que sua empresa possua um <strong>Certificado Digital</strong> válido, que funciona como uma assinatura digital.' },
+                        { type: 'text', value: 'Os modelos aceitos são A1 ou A3.' }
+                    ]
+                },
+                {
+                    id: 'answer43',
+                    question: 'Para que serve a "Ficha Kardex"?',
+                    answer: [
+                        { type: 'text', value: 'A Ficha Kardex é um relatório que permite filtrar e analisar todas as entradas e saídas de um produto específico dentro de um período.' },
+                        { type: 'text', value: 'É uma ferramenta muito útil para realizar auditorias de estoque e identificar inconsistências.' }
+                    ]
+                },
+                {
+                    id: 'answer49',
+                    question: 'Como posso criar diferentes níveis de acesso para os funcionários?',
+                    answer: [
+                        { type: 'text', value: 'No menu <strong>Ferramentas > Segurança > Usuários, Grupos e Permissões</strong>, você pode criar diferentes grupos (ex: Administradores, Vendedores, Caixa).' },
+                        { type: 'text', value: 'Defina quais telas e funções cada grupo pode acessar. Depois, basta criar um usuário para cada funcionário e associá-lo ao grupo correspondente.' }
+                    ]
+                },
+                {
+                    id: 'answer71',
+                    question: 'Quais são as teclas de atalho para buscar produtos na "Venda Rápida"?',
+                    answer: [
+                        { type: 'text', value: 'Na tela de Venda Rápida, você pode usar os seguintes atalhos:' },
+                        { type: 'text', value: '• <strong>Ctrl + B:</strong> Busca por código de barras.' },
+                        { type: 'text', value: '• <strong>Ctrl + C:</strong> Busca por código do produto.' },
+                        { type: 'text', value: '• <strong>Ctrl + N:</strong> Busca por nome do produto.' },
+                        { type: 'text', value: '• <strong>Ctrl + P:</strong> Busca por produto pesado.' },
+                        { type: 'text', value: '• <strong>Ctrl + R:</strong> Busca por referência.' }
+                    ]
+                },
+                {
+                    id: 'answer72',
+                    question: 'Como finalizo o pagamento e emito a nota na "Venda Rápida"?',
+                    answer: [
+                        { type: 'text', value: '• Para iniciar o recebimento, tecle <strong>F9</strong> e informe a forma de pagamento.' },
+                        { type: 'text', value: '• Para transmitir a nota (NFC-e), tecle <strong>CTRL + F9</strong>.' },
+                        { type: 'text', value: '• Para apenas imprimir o pedido (sem valor fiscal), tecle <strong>CTRL + F8</strong>.' }
+                    ]
+                }
+            ];
+
+            function renderFaqItems(dataToRender) {
+                faqContainer.innerHTML = '';
+                if (dataToRender.length === 0) {
+                    faqContainer.innerHTML = `
+                        <div class="text-center py-12">
+                            <div class="w-16 h-16 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center mx-auto mb-4">
+                                <i data-lucide="search-x" class="w-8 h-8 text-slate-400"></i>
+                            </div>
+                            <p class="text-slate-500 dark:text-slate-400 font-medium">Nenhum resultado encontrado</p>
+                            <p class="text-slate-400 dark:text-slate-500 text-sm mt-2">Tente buscar por outros termos</p>
+                        </div>
+                    `;
+                    lucide.createIcons();
+                    return;
+                }
+
+                dataToRender.forEach((item, index) => {
+                    const faqItemDiv = document.createElement('div');
+                    faqItemDiv.className = 'faq-item glass rounded-2xl shadow-lg overflow-hidden border border-slate-200 dark:border-slate-700';
+                    faqItemDiv.id = item.id;
+                    faqItemDiv.style.animationDelay = `${index * 0.05}s`;
+
+                    const questionButton = document.createElement('button');
+                    questionButton.className = 'faq-question w-full flex justify-between items-center p-5 md:p-6 text-left font-semibold text-base md:text-lg text-slate-800 dark:text-white bg-white/50 dark:bg-slate-800/50 hover:bg-primary-50 dark:hover:bg-slate-700/50 transition-all duration-300';
+                    questionButton.setAttribute('aria-expanded', 'false');
+                    questionButton.setAttribute('aria-controls', `answer-content-${item.id}`);
+                    questionButton.innerHTML = `
+                        <span class="flex items-start space-x-3 pr-4">
+                            <i data-lucide="help-circle" class="w-5 h-5 text-primary-500 mt-0.5 flex-shrink-0"></i>
+                            <span>${item.question}</span>
+                        </span>
+                        <span class="arrow-icon text-primary-500 flex-shrink-0">
+                            <i data-lucide="chevron-down" class="w-5 h-5"></i>
+                        </span>
+                    `;
+
+                    const answerDiv = document.createElement('div');
+                    answerDiv.id = `answer-content-${item.id}`;
+                    answerDiv.className = 'answer-content px-5 md:px-6 bg-slate-50/50 dark:bg-slate-900/30 border-t border-slate-100 dark:border-slate-700';
+
+                    item.answer.forEach(contentBlock => {
+                        if (contentBlock.type === 'text') {
+                            const pElement = document.createElement('p');
+                            pElement.className = 'text-slate-600 dark:text-slate-300 mb-2 leading-relaxed text-sm md:text-base';
+                            pElement.innerHTML = contentBlock.value;
+                            answerDiv.appendChild(pElement);
+                        } else if (contentBlock.type === 'image') {
+                            const imgElement = document.createElement('img');
+                            imgElement.src = contentBlock.value;
+                            imgElement.alt = `Ilustração para: ${item.question}`;
+                            imgElement.className = 'my-4 md:my-6 max-w-full h-auto rounded-lg shadow-md mx-auto block';
+                            imgElement.onerror = function () {
+                                this.style.display = 'none';
+                            };
+                            answerDiv.appendChild(imgElement);
+                        }
+                    });
+
+                    faqItemDiv.appendChild(questionButton);
+                    faqItemDiv.appendChild(answerDiv);
+                    faqContainer.appendChild(faqItemDiv);
+                });
+
+                attachEventListeners();
+                lucide.createIcons();
+            }
+
+            function attachEventListeners() {
+                const faqQuestions = document.querySelectorAll('.faq-question');
+
+                faqQuestions.forEach(question => {
+                    question.addEventListener('click', () => {
+                        const answerId = question.getAttribute('aria-controls');
+                        const answerContent = document.getElementById(answerId);
+                        const arrowIcon = question.querySelector('.arrow-icon');
+                        const parentFaqItem = question.closest('.faq-item');
+
+                        history.pushState(null, '', `#${parentFaqItem.id}`);
+
+                        // Close other open answers
+                        faqQuestions.forEach(otherQuestion => {
+                            const otherAnswerId = otherQuestion.getAttribute('aria-controls');
+                            const otherAnswerContent = document.getElementById(otherAnswerId);
+                            const otherArrowIcon = otherQuestion.querySelector('.arrow-icon');
+
+                            if (otherAnswerContent.classList.contains('open') && otherAnswerContent.id !== answerId) {
+                                otherAnswerContent.classList.remove('open');
+                                otherQuestion.setAttribute('aria-expanded', 'false');
+                                otherArrowIcon.classList.remove('rotate-180');
+                            }
+                        });
+
+                        // Toggle current answer
+                        const isExpanded = question.getAttribute('aria-expanded') === 'true' || false;
+                        if (isExpanded) {
+                            answerContent.classList.remove('open');
+                            question.setAttribute('aria-expanded', 'false');
+                            arrowIcon.classList.remove('rotate-180');
+                        } else {
+                            answerContent.classList.add('open');
+                            question.setAttribute('aria-expanded', 'true');
+                            arrowIcon.classList.add('rotate-180');
+                        }
+                    });
+                });
+            }
+
+            function filterFaqs() {
+                const searchTerm = searchInput.value.toLowerCase().trim();
+                let filteredData = [];
+
+                if (searchTerm === '') {
+                    filteredData = faqData;
                 } else {
-                    item.style.display = "none";
+                    filteredData = faqData.filter(item => {
+                        const searchableText = item.question.toLowerCase() +
+                            item.answer.filter(block => block.type === 'text')
+                                .map(block => block.value.toLowerCase())
+                                .join(' ');
+                        return searchableText.includes(searchTerm);
+                    });
+                }
+                renderFaqItems(filteredData);
+                openFaqFromHash();
+            }
+
+            function openFaqFromHash() {
+                const hash = window.location.hash;
+                if (hash) {
+                    const targetElement = document.getElementById(hash.substring(1));
+                    if (targetElement) {
+                        const questionButton = targetElement.querySelector('.faq-question');
+                        const answerContent = targetElement.querySelector('.answer-content');
+                        const arrowIcon = questionButton.querySelector('.arrow-icon');
+
+                        document.querySelectorAll('.answer-content.open').forEach(el => el.classList.remove('open'));
+                        document.querySelectorAll('.faq-question[aria-expanded="true"]').forEach(el => el.setAttribute('aria-expanded', 'false'));
+                        document.querySelectorAll('.arrow-icon.rotate-180').forEach(el => el.classList.remove('rotate-180'));
+
+                        if (questionButton && answerContent) {
+                            answerContent.classList.add('open');
+                            questionButton.setAttribute('aria-expanded', 'true');
+                            arrowIcon.classList.add('rotate-180');
+
+                            setTimeout(() => {
+                                targetElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                            }, 500);
+                        }
+                    }
+                }
+            }
+
+            renderFaqItems(faqData);
+            openFaqFromHash();
+
+            window.addEventListener('hashchange', () => {
+                openFaqFromHash();
+            });
+
+            filterButton.addEventListener('click', filterFaqs);
+            searchInput.addEventListener('keyup', (event) => {
+                if (event.key === 'Enter') {
+                    filterFaqs();
+                } else if (searchInput.value.trim() === '') {
+                    filterFaqs();
                 }
             });
         });

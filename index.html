@@ -1,202 +1,953 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" class="scroll-smooth">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Painel do Suporte</title>
-    <script src="./src/js/info.js"></script>
+    <title>Painel do Suporte | Bitmax</title>
+    <meta name="description"
+        content="Portal de Suporte Bitmax - Downloads, Manuais, Vídeos e FAQ para o sistema Bitmax Empresarial">
 
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
 
-    <link rel="stylesheet" href="./src/css/reset.css">
-    <link rel="stylesheet" href="./src/css/estilos.css">
-    <link rel="stylesheet" href="./src/css/scrollbar.css">
-</head>
-<body>
-    <header>
-        <a href="src/pages/changelog.html" target="_blank">
-            <img src="./src/imagens/rolagem.png" alt="pokebola" class="logo">
-        </a>
-        <button id="botao-alterar-tema">
-            <img src="./src/imagens/sun.png" alt="imagem do sol" class="imagem-botao">
-        </button>
-    </header>
-    <main>
-        <ul class="listagem-download">
-            <li class="cartao-download">
-                <div class="informacoes">
-                    <span>Instalador</span>
-                </div>
-                <img src="./src/imagens/instalar.png" alt="instalador" class="gif">
-                <ul class="tipos">
-                    <li class="tipo download"><a href="src/files/BitmaxInstall_Empresarial.rar" target="_blank">Download</a></li>
-                </ul>
-                <p class="descricao">Instalação do sistema.</p>
-            </li>
-            <li class="cartao-download">
-                <div class="informacoes">
-                    <span>Atualização</span>
-                    <span>07.01</span>
-                </div>
-                <img src="./src/imagens/atualizacao-do-sistema.png" alt="atualização" class="gif">
-                <ul class="tipos">
-                    <li class="tipo download"><a href="#" onclick="baixarArquivos()">Download</a></li>
-                </ul>
-                <p class="descricao">Versão 2504.1. Extraia o arquivo part1.rar</p>
-            </li>
-            <li class="cartao-download">
-                <div class="informacoes">
-                    <span>Firebird</span>
-                </div>
-                <img src="./src/imagens/armazenamento-de-banco-de-dados.png" alt="firebird" class="gif">
-                <ul class="tipos">
-                    <li class="tipo download"><a href="src/files/exe/Instalador_Firebird.exe" target="_blank">Download</a></li>
-                </ul>
-                <p class="descricao">Instalador do Firebird.</p>
-            </li>
-            <li class="cartao-download">
-                <div class="informacoes">
-                    <span>Versão beta</span>
-                    <span>14.11</span>
-                </div>
-                <img src="./src/imagens/atualizacao-do-sistema.png" alt="atualização" class="gif">
-                <ul class="tipos">
-                    <li class="tipo download"><a href="" target="_blank">Download</a></li>
-                </ul>
-                <p class="descricao">Nenhuma versão aqui.</p>
-            </li>
-            <li class="cartao-download">
-                <div class="informacoes">
-                    <span>IBExpert</span>
-                </div>
-                <img src="./src/imagens/tabela-de-banco-de-dados.png" alt="ibexpert" class="gif">
-                <ul class="tipos">
-                    <li class="tipo download"><a href="src/files/exe/ibexpert.exe" target="_blank">Download</a></li>
-                </ul>
-                <p class="descricao">Exe do IBExpert</p>
-            </li>
-            <li class="cartao-download">
-                <div class="informacoes">
-                    <span>BAT</span>
-                </div>
-                <img src="./src/imagens/prompt.png" alt="cmd" class="gif">
-                <ul class="tipos">
-                    <li class="tipo download"><a href="src/files/update.bat" target="_blank">Download</a></li>
-                </ul>
-                <p class="descricao">Atualizador bat.</p>
-            </li>
-            <li class="cartao-download">
-                <div class="informacoes">
-                    <span>Rotina Backup</span>
-                </div>
-                <img src="./src/imagens/copia-de-seguranca.png" alt="backup" class="gif">
-                <ul class="tipos">
-                    <li class="tipo download"><a href="src/files/Backup.rar" target="_blank">Download</a></li>
-                </ul>
-                <p class="descricao">Rotina de Backup.</p>
-            </li>
-            <li class="cartao-download">
-                <div class="informacoes">
-                    <span>Manual</span>
-                </div>
-                <img src="./src/imagens/manual.png" alt="manual" class="gif">
-                <ul class="tipos">
-                    <li class="tipo download"><a href="src/files/pdf/Manual Bitmax.chm" target="_blank">Download</a></li>
-                </ul>
-                <p class="descricao">Manual completo do sistema.</p>
-            </li>
-            <li class="cartao-download">
-                <div class="informacoes">
-                    <span>PDF</span>
-                </div>
-                <img src="./src/imagens/pdf.png" alt="pdf" class="gif">
-                <ul class="tipos">
-                    <li class="tipo download"><a href="src/pages/pdf.html">Ir para PDF</a></li>
-                </ul>
-                <p class="descricao">Tutoriais em PDF.</p>
-            </li>
-            <li class="cartao-download">
-                <div class="informacoes">
-                    <span>VIDEOS</span>
-                </div>
-                <img src="./src/imagens/aula-de-video.png" alt="videos" class="gif">
-                <ul class="tipos">
-                    <li class="tipo download"><a href="src/pages/videos.html">Ir para Vídeos</a></li>
-                </ul>
-                <p class="descricao">Tutoriais em vídeos.</p>
-            </li>
-            <li class="cartao-download">
-                <div class="informacoes">
-                    <span>Movimento mês</span>
-                </div>
-                <img src="./src/imagens/atualizacao-do-sistema.png" alt="videos" class="gif">
-                <ul class="tipos">
-                    <li class="tipo download"><a onclick="baixarArquivosMovimentoMes()" target="_blank">Download</a></li>
-                </ul>
-            </li>
-            <li class="cartao-download">
-                <div class="informacoes">
-                    <span>Corretor</span>
-                </div>
-                <img src="./src/imagens/atualizacao-do-sistema.png" alt="videos" class="gif">
-                <ul class="tipos">
-                    <li class="tipo download"><a href="src/files/BitmaxCorretor.rar" target="_blank">Download</a></li>
-                </ul>
-            </li>
-            <li class="cartao-download">
-                <div class="informacoes">
-                    <span>FAQ</span>
-                </div>
-                <img src="./src/imagens/aula-de-video.png" alt="videos" class="gif">
-                <ul class="tipos">
-                    <li class="tipo download"><a href="faq.html">Ir para FAQ</a></li>
-                </ul>
-                <p class="descricao">Perguntas frequentes.</p>
-            </li>
-        </ul>
-    </main>
-    <script src="./src/js/index.js"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
     <script>
-    function baixarArquivosMovimentoMes() {
-        const arquivos = [
-            'src/files/BitmaxMovimento.part1.rar',
-            'src/files/BitmaxMovimento.part2.rar',
-        ];
-        arquivos.forEach((arquivo, index) => {
-            setTimeout(() => {
-                const link = document.createElement("a");
-                link.href = arquivo;
-                link.download = ""; // Força o download
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-            }, index * 1000); // Adiciona um atraso de 1 segundo entre os downloads
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'sans': ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        },
+                        accent: {
+                            50: '#fdf4ff',
+                            100: '#fae8ff',
+                            200: '#f5d0fe',
+                            300: '#f0abfc',
+                            400: '#e879f9',
+                            500: '#d946ef',
+                            600: '#c026d3',
+                            700: '#a21caf',
+                            800: '#86198f',
+                            900: '#701a75',
+                        }
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'glow': 'glow 2s ease-in-out infinite alternate',
+                        'slide-up': 'slideUp 0.5s ease-out',
+                        'fade-in': 'fadeIn 0.3s ease-out',
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        glow: {
+                            '0%': { boxShadow: '0 0 5px rgba(14, 165, 233, 0.5)' },
+                            '100%': { boxShadow: '0 0 20px rgba(14, 165, 233, 0.8)' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #0ea5e9, #d946ef);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(180deg, #0284c7, #c026d3);
+        }
+
+        /* Glass Effect */
+        .glass {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .dark .glass {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Gradient Text */
+        .gradient-text {
+            background: linear-gradient(135deg, #0ea5e9, #d946ef);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Card Hover Effect */
+        .card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .card-hover:hover {
+            transform: translateY(-8px) scale(1.02);
+        }
+
+        /* Modal Styles */
+        .modal-backdrop {
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(4px);
+        }
+
+        /* Download Progress Animation */
+        @keyframes downloadPulse {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.5;
+            }
+        }
+
+        .downloading {
+            animation: downloadPulse 1.5s ease-in-out infinite;
+        }
+    </style>
+</head>
+
+<body
+    class="font-sans bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 min-h-screen transition-colors duration-500">
+
+    <!-- Navigation Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 glass shadow-lg">
+        <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 md:h-20">
+                <!-- Logo -->
+                <div class="flex items-center space-x-3">
+                    <div
+                        class="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-500 to-accent-500 flex items-center justify-center shadow-lg">
+                        <i data-lucide="headphones" class="w-6 h-6 text-white"></i>
+                    </div>
+                    <span class="text-xl font-bold gradient-text hidden sm:block">Suporte Bitmax</span>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-1">
+                    <a href="index.html"
+                        class="px-4 py-2 rounded-xl text-slate-700 dark:text-slate-200 hover:bg-primary-100 dark:hover:bg-slate-700 font-medium transition-all duration-300 flex items-center space-x-2">
+                        <i data-lucide="home" class="w-4 h-4"></i>
+                        <span>Home</span>
+                    </a>
+                    <a href="src/pages/videos.html"
+                        class="px-4 py-2 rounded-xl text-slate-700 dark:text-slate-200 hover:bg-primary-100 dark:hover:bg-slate-700 font-medium transition-all duration-300 flex items-center space-x-2">
+                        <i data-lucide="video" class="w-4 h-4"></i>
+                        <span>Vídeos</span>
+                    </a>
+                    <a href="src/pages/pdf.html"
+                        class="px-4 py-2 rounded-xl text-slate-700 dark:text-slate-200 hover:bg-primary-100 dark:hover:bg-slate-700 font-medium transition-all duration-300 flex items-center space-x-2">
+                        <i data-lucide="file-text" class="w-4 h-4"></i>
+                        <span>Manuais</span>
+                    </a>
+                    <a href="src/pages/faq.html"
+                        class="px-4 py-2 rounded-xl text-slate-700 dark:text-slate-200 hover:bg-primary-100 dark:hover:bg-slate-700 font-medium transition-all duration-300 flex items-center space-x-2">
+                        <i data-lucide="help-circle" class="w-4 h-4"></i>
+                        <span>Suporte</span>
+                    </a>
+                </div>
+
+                <!-- Right Actions -->
+                <div class="flex items-center space-x-3">
+                    <!-- Changelog/Novidades Button -->
+                    <button id="btn-changelog"
+                        class="relative p-2.5 rounded-xl bg-gradient-to-br from-amber-400 to-orange-500 text-white shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
+                        title="Novidades">
+                        <i data-lucide="sparkles" class="w-5 h-5"></i>
+                        <span class="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full animate-pulse"></span>
+                    </button>
+
+                    <!-- Theme Toggle -->
+                    <button id="botao-alterar-tema"
+                        class="p-2.5 rounded-xl bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-yellow-400 hover:bg-slate-300 dark:hover:bg-slate-600 transition-all duration-300 hover:scale-105"
+                        title="Alternar tema">
+                        <i data-lucide="sun" class="w-5 h-5 block dark:hidden"></i>
+                        <i data-lucide="moon" class="w-5 h-5 hidden dark:block"></i>
+                    </button>
+
+                    <!-- Mobile Menu Button -->
+                    <button id="mobile-menu-btn"
+                        class="md:hidden p-2.5 rounded-xl bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-300 dark:hover:bg-slate-600 transition-all duration-300">
+                        <i data-lucide="menu" class="w-5 h-5"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Navigation -->
+            <div id="mobile-menu" class="hidden md:hidden pb-4">
+                <div class="flex flex-col space-y-2">
+                    <a href="index.html"
+                        class="px-4 py-3 rounded-xl text-slate-700 dark:text-slate-200 bg-primary-100 dark:bg-slate-700 font-medium transition-all duration-300 flex items-center space-x-3">
+                        <i data-lucide="home" class="w-5 h-5"></i>
+                        <span>Home</span>
+                    </a>
+                    <a href="src/pages/videos.html"
+                        class="px-4 py-3 rounded-xl text-slate-700 dark:text-slate-200 hover:bg-primary-100 dark:hover:bg-slate-700 font-medium transition-all duration-300 flex items-center space-x-3">
+                        <i data-lucide="video" class="w-5 h-5"></i>
+                        <span>Vídeos</span>
+                    </a>
+                    <a href="src/pages/pdf.html"
+                        class="px-4 py-3 rounded-xl text-slate-700 dark:text-slate-200 hover:bg-primary-100 dark:hover:bg-slate-700 font-medium transition-all duration-300 flex items-center space-x-3">
+                        <i data-lucide="file-text" class="w-5 h-5"></i>
+                        <span>Manuais</span>
+                    </a>
+                    <a href="src/pages/faq.html"
+                        class="px-4 py-3 rounded-xl text-slate-700 dark:text-slate-200 hover:bg-primary-100 dark:hover:bg-slate-700 font-medium transition-all duration-300 flex items-center space-x-3">
+                        <i data-lucide="help-circle" class="w-5 h-5"></i>
+                        <span>Suporte</span>
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 pt-24 md:pt-28 pb-12">
+
+        <!-- Hero Section -->
+        <section class="text-center mb-12 md:mb-16">
+            <div class="animate-slide-up">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-800 dark:text-white mb-4">
+                    Portal de <span class="gradient-text">Suporte</span>
+                </h1>
+                <p class="text-lg md:text-xl text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
+                    Acesse downloads, manuais, tutoriais e ferramentas para o sistema Bitmax Empresarial
+                </p>
+            </div>
+        </section>
+
+        <!-- Main Download Card - Atualização -->
+        <section class="mb-12 md:mb-16">
+            <div
+                class="glass rounded-3xl p-6 md:p-8 card-hover shadow-2xl border border-primary-200 dark:border-primary-800 bg-gradient-to-br from-primary-50/80 to-accent-50/80 dark:from-primary-900/30 dark:to-accent-900/30">
+                <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                    <div class="flex items-center space-x-6">
+                        <div
+                            class="w-20 h-20 md:w-24 md:h-24 rounded-2xl bg-gradient-to-br from-primary-500 to-accent-500 flex items-center justify-center shadow-xl animate-float">
+                            <i data-lucide="cloud-download" class="w-10 h-10 md:w-12 md:h-12 text-white"></i>
+                        </div>
+                        <div>
+                            <div class="flex items-center space-x-3 mb-2">
+                                <h2 class="text-2xl md:text-3xl font-bold text-slate-800 dark:text-white">Atualização
+                                </h2>
+                                <span
+                                    class="px-3 py-1 rounded-full bg-gradient-to-r from-green-400 to-emerald-500 text-white text-sm font-semibold shadow-lg">07.01</span>
+                            </div>
+                            <p class="text-slate-600 dark:text-slate-300 text-sm md:text-base">Versão 2504.1 - Extraia o
+                                arquivo part1.rar</p>
+                            <p class="text-slate-500 dark:text-slate-400 text-xs mt-1">Download em 5 partes
+                                (aproximadamente 350MB total)</p>
+                        </div>
+                    </div>
+                    <button onclick="baixarArquivos()" id="btn-download-principal"
+                        class="group w-full md:w-auto px-8 py-4 rounded-2xl bg-gradient-to-r from-primary-500 to-accent-500 text-white font-semibold text-lg shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 flex items-center justify-center space-x-3">
+                        <i data-lucide="download-cloud" class="w-6 h-6 group-hover:animate-bounce"></i>
+                        <span>Download Principal</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Download Cards Grid -->
+        <section class="mb-12">
+            <h2 class="text-2xl md:text-3xl font-bold text-slate-800 dark:text-white mb-8 flex items-center space-x-3">
+                <i data-lucide="download" class="w-7 h-7 text-primary-500"></i>
+                <span>Downloads Disponíveis</span>
+            </h2>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+
+                <!-- Card: Instalador -->
+                <div class="glass rounded-2xl p-6 card-hover shadow-xl group">
+                    <div
+                        class="w-14 h-14 rounded-xl bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                        <i data-lucide="package" class="w-7 h-7 text-white"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-800 dark:text-white mb-2">Instalador</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm mb-4">Instalação do sistema.</p>
+                    <a href="src/files/BitmaxInstall_Empresarial.rar" target="_blank"
+                        class="inline-flex items-center space-x-2 px-4 py-2 rounded-xl bg-blue-100 dark:bg-blue-900/50 text-blue-600 dark:text-blue-300 font-medium hover:bg-blue-200 dark:hover:bg-blue-800/50 transition-all duration-300">
+                        <i data-lucide="download" class="w-4 h-4"></i>
+                        <span>Download</span>
+                    </a>
+                </div>
+
+                <!-- Card: Firebird -->
+                <div class="glass rounded-2xl p-6 card-hover shadow-xl group">
+                    <div
+                        class="w-14 h-14 rounded-xl bg-gradient-to-br from-orange-400 to-red-500 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                        <i data-lucide="database" class="w-7 h-7 text-white"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-800 dark:text-white mb-2">Firebird</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm mb-4">Instalador do Firebird.</p>
+                    <a href="src/files/exe/Instalador_Firebird.exe" target="_blank"
+                        class="inline-flex items-center space-x-2 px-4 py-2 rounded-xl bg-orange-100 dark:bg-orange-900/50 text-orange-600 dark:text-orange-300 font-medium hover:bg-orange-200 dark:hover:bg-orange-800/50 transition-all duration-300">
+                        <i data-lucide="download" class="w-4 h-4"></i>
+                        <span>Download</span>
+                    </a>
+                </div>
+
+                <!-- Card: Versão Beta -->
+                <div class="glass rounded-2xl p-6 card-hover shadow-xl group opacity-60">
+                    <div
+                        class="w-14 h-14 rounded-xl bg-gradient-to-br from-purple-400 to-purple-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                        <i data-lucide="flask-conical" class="w-7 h-7 text-white"></i>
+                    </div>
+                    <div class="flex items-center space-x-2 mb-2">
+                        <h3 class="text-lg font-bold text-slate-800 dark:text-white">Versão Beta</h3>
+                        <span
+                            class="px-2 py-0.5 rounded-full bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-400 text-xs">14.11</span>
+                    </div>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm mb-4">Nenhuma versão aqui.</p>
+                    <span
+                        class="inline-flex items-center space-x-2 px-4 py-2 rounded-xl bg-slate-200 dark:bg-slate-700 text-slate-500 dark:text-slate-400 font-medium cursor-not-allowed">
+                        <i data-lucide="circle-off" class="w-4 h-4"></i>
+                        <span>Indisponível</span>
+                    </span>
+                </div>
+
+                <!-- Card: IBExpert -->
+                <div class="glass rounded-2xl p-6 card-hover shadow-xl group">
+                    <div
+                        class="w-14 h-14 rounded-xl bg-gradient-to-br from-emerald-400 to-teal-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                        <i data-lucide="table-2" class="w-7 h-7 text-white"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-800 dark:text-white mb-2">IBExpert</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm mb-4">Exe do IBExpert</p>
+                    <a href="src/files/exe/ibexpert.exe" target="_blank"
+                        class="inline-flex items-center space-x-2 px-4 py-2 rounded-xl bg-emerald-100 dark:bg-emerald-900/50 text-emerald-600 dark:text-emerald-300 font-medium hover:bg-emerald-200 dark:hover:bg-emerald-800/50 transition-all duration-300">
+                        <i data-lucide="download" class="w-4 h-4"></i>
+                        <span>Download</span>
+                    </a>
+                </div>
+
+                <!-- Card: BAT -->
+                <div class="glass rounded-2xl p-6 card-hover shadow-xl group">
+                    <div
+                        class="w-14 h-14 rounded-xl bg-gradient-to-br from-slate-500 to-slate-700 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                        <i data-lucide="terminal" class="w-7 h-7 text-white"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-800 dark:text-white mb-2">BAT</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm mb-4">Atualizador bat.</p>
+                    <a href="src/files/update.bat" target="_blank"
+                        class="inline-flex items-center space-x-2 px-4 py-2 rounded-xl bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-300 font-medium hover:bg-slate-300 dark:hover:bg-slate-600 transition-all duration-300">
+                        <i data-lucide="download" class="w-4 h-4"></i>
+                        <span>Download</span>
+                    </a>
+                </div>
+
+                <!-- Card: Rotina Backup -->
+                <div class="glass rounded-2xl p-6 card-hover shadow-xl group">
+                    <div
+                        class="w-14 h-14 rounded-xl bg-gradient-to-br from-cyan-400 to-blue-500 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                        <i data-lucide="hard-drive-upload" class="w-7 h-7 text-white"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-800 dark:text-white mb-2">Rotina Backup</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm mb-4">Rotina de Backup.</p>
+                    <a href="src/files/Backup.rar" target="_blank"
+                        class="inline-flex items-center space-x-2 px-4 py-2 rounded-xl bg-cyan-100 dark:bg-cyan-900/50 text-cyan-600 dark:text-cyan-300 font-medium hover:bg-cyan-200 dark:hover:bg-cyan-800/50 transition-all duration-300">
+                        <i data-lucide="download" class="w-4 h-4"></i>
+                        <span>Download</span>
+                    </a>
+                </div>
+
+                <!-- Card: Manual -->
+                <div class="glass rounded-2xl p-6 card-hover shadow-xl group">
+                    <div
+                        class="w-14 h-14 rounded-xl bg-gradient-to-br from-amber-400 to-yellow-500 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                        <i data-lucide="book-open" class="w-7 h-7 text-white"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-800 dark:text-white mb-2">Manual</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm mb-4">Manual completo do sistema.</p>
+                    <a href="src/files/pdf/Manual Bitmax.chm" target="_blank"
+                        class="inline-flex items-center space-x-2 px-4 py-2 rounded-xl bg-amber-100 dark:bg-amber-900/50 text-amber-600 dark:text-amber-300 font-medium hover:bg-amber-200 dark:hover:bg-amber-800/50 transition-all duration-300">
+                        <i data-lucide="download" class="w-4 h-4"></i>
+                        <span>Download</span>
+                    </a>
+                </div>
+
+                <!-- Card: Movimento Mês -->
+                <div class="glass rounded-2xl p-6 card-hover shadow-xl group">
+                    <div
+                        class="w-14 h-14 rounded-xl bg-gradient-to-br from-indigo-400 to-violet-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                        <i data-lucide="calendar-days" class="w-7 h-7 text-white"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-800 dark:text-white mb-2">Movimento Mês</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm mb-4">Download em partes.</p>
+                    <button onclick="baixarArquivosMovimentoMes()"
+                        class="inline-flex items-center space-x-2 px-4 py-2 rounded-xl bg-indigo-100 dark:bg-indigo-900/50 text-indigo-600 dark:text-indigo-300 font-medium hover:bg-indigo-200 dark:hover:bg-indigo-800/50 transition-all duration-300">
+                        <i data-lucide="download" class="w-4 h-4"></i>
+                        <span>Download</span>
+                    </button>
+                </div>
+
+                <!-- Card: Corretor -->
+                <div class="glass rounded-2xl p-6 card-hover shadow-xl group">
+                    <div
+                        class="w-14 h-14 rounded-xl bg-gradient-to-br from-rose-400 to-pink-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                        <i data-lucide="wrench" class="w-7 h-7 text-white"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-800 dark:text-white mb-2">Corretor</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm mb-4">Bitmax Corretor.</p>
+                    <a href="src/files/BitmaxCorretor.rar" target="_blank"
+                        class="inline-flex items-center space-x-2 px-4 py-2 rounded-xl bg-rose-100 dark:bg-rose-900/50 text-rose-600 dark:text-rose-300 font-medium hover:bg-rose-200 dark:hover:bg-rose-800/50 transition-all duration-300">
+                        <i data-lucide="download" class="w-4 h-4"></i>
+                        <span>Download</span>
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Quick Links Section -->
+        <section class="mb-12">
+            <h2 class="text-2xl md:text-3xl font-bold text-slate-800 dark:text-white mb-8 flex items-center space-x-3">
+                <i data-lucide="link" class="w-7 h-7 text-accent-500"></i>
+                <span>Acesso Rápido</span>
+            </h2>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                <!-- Link: PDFs -->
+                <a href="src/pages/pdf.html"
+                    class="glass rounded-2xl p-6 card-hover shadow-xl group flex items-center space-x-5">
+                    <div
+                        class="w-16 h-16 rounded-xl bg-gradient-to-br from-red-400 to-red-600 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
+                        <i data-lucide="file-type-2" class="w-8 h-8 text-white"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold text-slate-800 dark:text-white mb-1">Manuais PDF</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm">Tutoriais em PDF.</p>
+                    </div>
+                    <i data-lucide="chevron-right"
+                        class="w-6 h-6 text-slate-400 ml-auto group-hover:translate-x-2 transition-transform duration-300"></i>
+                </a>
+
+                <!-- Link: Vídeos -->
+                <a href="src/pages/videos.html"
+                    class="glass rounded-2xl p-6 card-hover shadow-xl group flex items-center space-x-5">
+                    <div
+                        class="w-16 h-16 rounded-xl bg-gradient-to-br from-red-500 to-rose-600 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
+                        <i data-lucide="youtube" class="w-8 h-8 text-white"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold text-slate-800 dark:text-white mb-1">Vídeo Tutoriais</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm">Tutoriais em vídeos.</p>
+                    </div>
+                    <i data-lucide="chevron-right"
+                        class="w-6 h-6 text-slate-400 ml-auto group-hover:translate-x-2 transition-transform duration-300"></i>
+                </a>
+
+                <!-- Link: FAQ -->
+                <a href="src/pages/faq.html"
+                    class="glass rounded-2xl p-6 card-hover shadow-xl group flex items-center space-x-5">
+                    <div
+                        class="w-16 h-16 rounded-xl bg-gradient-to-br from-green-400 to-emerald-600 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
+                        <i data-lucide="message-circle-question" class="w-8 h-8 text-white"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold text-slate-800 dark:text-white mb-1">FAQ</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm">Perguntas frequentes.</p>
+                    </div>
+                    <i data-lucide="chevron-right"
+                        class="w-6 h-6 text-slate-400 ml-auto group-hover:translate-x-2 transition-transform duration-300"></i>
+                </a>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="glass border-t border-slate-200 dark:border-slate-700 py-6">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
+                <div class="flex items-center space-x-3">
+                    <div
+                        class="w-8 h-8 rounded-lg bg-gradient-to-br from-primary-500 to-accent-500 flex items-center justify-center">
+                        <i data-lucide="star" class="w-4 h-4 text-white"></i>
+                    </div>
+                    <span class="text-slate-600 dark:text-slate-400 text-sm">© 2026 Bitmax - Todos os direitos
+                        reservados</span>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="mailto:suporte@bitmax.com.br"
+                        class="text-slate-600 dark:text-slate-400 hover:text-primary-500 dark:hover:text-primary-400 transition-colors flex items-center space-x-2">
+                        <i data-lucide="mail" class="w-4 h-4"></i>
+                        <span class="text-sm">suporte@bitmax.com.br</span>
+                    </a>
+                    <span class="text-slate-300 dark:text-slate-600">|</span>
+                    <a href="tel:7530301577"
+                        class="text-slate-600 dark:text-slate-400 hover:text-primary-500 dark:hover:text-primary-400 transition-colors flex items-center space-x-2">
+                        <i data-lucide="phone" class="w-4 h-4"></i>
+                        <span class="text-sm">(75) 3030-1577</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Changelog Modal -->
+    <div id="changelog-modal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4">
+        <!-- Backdrop -->
+        <div class="modal-backdrop absolute inset-0" id="modal-backdrop"></div>
+
+        <!-- Modal Content -->
+        <div
+            class="relative bg-white dark:bg-slate-800 rounded-3xl shadow-2xl w-full max-w-3xl max-h-[85vh] flex flex-col animate-slide-up overflow-hidden">
+            <!-- Modal Header -->
+            <div
+                class="flex items-center justify-between px-6 py-4 border-b border-slate-200 dark:border-slate-700 bg-gradient-to-r from-primary-500/10 to-accent-500/10 flex-shrink-0">
+                <div class="flex items-center space-x-3">
+                    <div
+                        class="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center">
+                        <i data-lucide="sparkles" class="w-5 h-5 text-white"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-slate-800 dark:text-white">Novidades & Atualizações</h3>
+                        <p class="text-sm text-slate-500 dark:text-slate-400">Changelog do Sistema</p>
+                    </div>
+                </div>
+                <button id="close-modal"
+                    class="p-2 rounded-xl hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
+                    <i data-lucide="x" class="w-6 h-6 text-slate-500 dark:text-slate-400"></i>
+                </button>
+            </div>
+
+            <!-- Modal Body -->
+            <div class="flex-1 overflow-y-auto p-6">
+                <div id="changelog-content" class="prose prose-slate dark:prose-invert max-w-none">
+                    <div class="flex items-center justify-center py-12">
+                        <div
+                            class="animate-spin rounded-full h-12 w-12 border-4 border-primary-500 border-t-transparent">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal Footer -->
+            <div
+                class="flex items-center justify-end px-6 py-4 border-t border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/50 flex-shrink-0">
+                <button id="close-modal-btn"
+                    class="px-6 py-2.5 rounded-xl bg-gradient-to-r from-primary-500 to-accent-500 text-white font-medium hover:shadow-lg transition-all duration-300">
+                    Fechar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 hidden">
+        <div class="glass rounded-xl p-4 shadow-2xl flex items-center space-x-3 animate-slide-up">
+            <div
+                class="w-10 h-10 rounded-lg bg-gradient-to-br from-green-400 to-emerald-500 flex items-center justify-center">
+                <i data-lucide="download" class="w-5 h-5 text-white"></i>
+            </div>
+            <div>
+                <p class="font-medium text-slate-800 dark:text-white" id="toast-title">Download Iniciado</p>
+                <p class="text-sm text-slate-500 dark:text-slate-400" id="toast-message">Preparando arquivos...</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // ============================================
+        // THEME TOGGLE (Preservando ID botao-alterar-tema)
+        // ============================================
+        const botaoAlterarTema = document.getElementById("botao-alterar-tema");
+        const html = document.documentElement;
+
+        // Check for saved theme preference or system preference
+        const savedTheme = localStorage.getItem('theme');
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+        if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+            html.classList.add('dark');
+        }
+
+        botaoAlterarTema.addEventListener("click", () => {
+            html.classList.toggle("dark");
+            localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+            lucide.createIcons();
         });
-    }
-    function baixarArquivos() {
-        const arquivos = [
-            'src/files/Atualizacao.part1.rar', 
-            'src/files/Atualizacao.part2.rar',
-            'src/files/Atualizacao.part3.rar',
-            'src/files/Atualizacao.part4.rar',
-            'src/files/Atualizacao.part5.rar',
-		
+
+        // ============================================
+        // MOBILE MENU TOGGLE
+        // ============================================
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // ============================================
+        // CHANGELOG MODAL
+        // ============================================
+        const changelogBtn = document.getElementById('btn-changelog');
+        const changelogModal = document.getElementById('changelog-modal');
+        const modalBackdrop = document.getElementById('modal-backdrop');
+        const closeModalBtn = document.getElementById('close-modal');
+        const closeModalBtnFooter = document.getElementById('close-modal-btn');
+        const changelogContent = document.getElementById('changelog-content');
+
+        function openModal() {
+            changelogModal.classList.remove('hidden');
+            changelogModal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+            loadChangelog();
+        }
+
+        function closeModal() {
+            changelogModal.classList.add('hidden');
+            changelogModal.classList.remove('flex');
+            document.body.style.overflow = '';
+        }
+
+        // Changelog data embutido para funcionar localmente (file://)
+        const changelogData = [
+            {
+                date: "02/01/2026",
+                items: [
+                    "Implementado o preenchimento automático da tabela de usuários autorizados a obter o XML, utilizando dados do CNPJ/CPF da contabilidade e do contador.",
+                    "Configurado o padrão da série da nota fiscal eletrônica como '001' quando o campo estiver vazio.",
+                    "Estabelecida a padronização automática de documentos (CPF/CNPJ), definindo indicadores de contribuinte de ICMS, isenção e enquadramento em Simples/ME.",
+                    "Inseridas as novas tabelas de códigos de situação tributária (CST) referentes à reforma tributária.",
+                    "Cálculos de IBS e CST nas operações de saídas.",
+                    "Opção de ativar ou não a reforma tributária PARAM_EMP_TRIBUTOS_ENCARGOS.",
+                    "IBPT novo."
+                ]
+            },
+            {
+                date: "05/11/2025",
+                items: [
+                    "Ajuste no inventário para garantir correspondência com a ficha Kardex.",
+                    "Corrigido erro nas 'outras saídas', onde o indicador da operação era registrado incorretamente.",
+                    "Corrigido o filtro do relatório de apuração de estoque."
+                ]
+            },
+            {
+                date: "31/10/2025",
+                items: [
+                    "Implementado recurso de correção de nota utilizando a opção 'Consultar XML' em casos de duplicidade.",
+                    "Liberada a opção de consultar XML na aba de pedidos.",
+                    "Ajustado para que o XML em processamento seja salvo fora da pasta do mês."
+                ]
+            },
+            {
+                date: "23/10/2025",
+                items: [
+                    "Liberado executável para correção de duplicidade, cancelamento ou inutilização.",
+                    "Liberado executável gerador do movimento do mês.",
+                    "Corrigida falha no BitmaxCNPJ.",
+                    "Adicionado recurso para exibir a tela de adicionar e-mail na NFe ao acionar o botão 'Reenviar E-mail'.",
+                    "Implementado Qr-Code 3.0 para NFC-e."
+                ]
+            },
+            {
+                date: "15/10/2025",
+                items: [
+                    "Sobre a Natureza da PIS e Cofins CST de PIS e COFINS ST para CST 05 - Novos campos criados.",
+                    "Corrigido erro onde cada tentativa de emissão gerava nova chave de acesso.",
+                    "Revisada e corrigida a funcionalidade da aba de inutilizados da NFe."
+                ]
+            },
+            {
+                date: "10/10/2025",
+                items: [
+                    "Atualizado o mapeamento do tipo de consumidor durante a emissão do XML.",
+                    "No faturamento, o campo indicador da operação foi alterado para armazenar apenas 0 (Normal) e 1 (Consumidor Final).",
+                    "Adicionada opção para alterar o número de série da NFe nos parâmetros."
+                ]
+            },
+            {
+                date: "30/09/2025",
+                items: [
+                    "Correção de troco.",
+                    "Separar em pastas diferentes os XML autorizados e em processamento.",
+                    "Novos Schemas de Nota.",
+                    "Alteração consultaCNPJ para usar Dll ACBR.",
+                    "Novos IBPT liberado."
+                ]
+            },
+            {
+                date: "17/09/2025",
+                items: [
+                    "Criado opção dentro da tela de contador para adicionar vários documentos permitido a obter o xml da nfe.",
+                    "Separação das funcionalidades de envio de email e reimpressão de PDF.",
+                    "Correção de falha de preços de vendas ficando com 4 casas decimais."
+                ]
+            }
         ];
 
-        arquivos.forEach((arquivo, index) => {
-        setTimeout(() => {
-            const link = document.createElement("a");
-            link.href = arquivo;
-            link.download = ""; // Força o download
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-        }, index * 1000); // Adiciona um atraso de 1 segundo entre os downloads
-    });
-    }
+        function loadChangelog() {
+            let html = `
+                <div class="text-center pb-4 mb-4 border-b border-slate-200 dark:border-slate-700">
+                    <h3 class="text-2xl font-bold gradient-text">ÚLTIMAS ALTERAÇÕES</h3>
+                </div>
+                <div class="space-y-6">
+            `;
+
+            changelogData.forEach(section => {
+                html += `
+                    <div class="bg-slate-50 dark:bg-slate-900/50 rounded-xl p-5 border-l-4 border-primary-500">
+                        <div class="flex items-center space-x-3 mb-3">
+                            <i data-lucide="calendar" class="w-5 h-5 text-primary-500"></i>
+                            <h4 class="font-bold text-lg text-slate-800 dark:text-white">${section.date}</h4>
+                        </div>
+                        <ul class="space-y-2">
+                `;
+
+                section.items.forEach(item => {
+                    html += `
+                        <li class="flex items-start space-x-2">
+                            <i data-lucide="check-circle-2" class="w-4 h-4 text-green-500 mt-1 flex-shrink-0"></i>
+                            <span class="text-slate-600 dark:text-slate-300 text-sm">${escapeHtml(item)}</span>
+                        </li>
+                    `;
+                });
+
+                html += '</ul></div>';
+            });
+
+            html += '</div>';
+
+            changelogContent.innerHTML = html;
+            setTimeout(() => lucide.createIcons(), 100);
+        }
+
+        function formatChangelog(text) {
+            // Split by the separator line
+            const sections = text.split(/\*-\*-\*-\*-\*-\*-\*-\*-\*-\*[-\*\.]+/);
+
+            let html = '<div class="space-y-6">';
+            let hasContent = false;
+
+            sections.forEach(section => {
+                section = section.trim();
+                if (!section) return;
+
+                const lines = section.split('\n').filter(line => line.trim());
+                if (lines.length === 0) return;
+
+                // Check if first line is a date
+                const dateMatch = lines[0].match(/^(\d{2}\/\d{2}\/\d{4}):?$/);
+
+                if (dateMatch) {
+                    hasContent = true;
+                    html += `
+                        <div class="bg-slate-50 dark:bg-slate-900/50 rounded-xl p-5 border-l-4 border-primary-500">
+                            <div class="flex items-center space-x-3 mb-3">
+                                <i data-lucide="calendar" class="w-5 h-5 text-primary-500"></i>
+                                <h4 class="font-bold text-lg text-slate-800 dark:text-white">${dateMatch[1]}</h4>
+                            </div>
+                            <ul class="space-y-2">
+                    `;
+
+                    for (let i = 1; i < lines.length; i++) {
+                        let line = lines[i].trim();
+                        if (line.startsWith('* ')) {
+                            line = line.substring(2);
+                        } else if (line.startsWith('- ')) {
+                            line = line.substring(2);
+                        }
+
+                        if (line) {
+                            html += `
+                                <li class="flex items-start space-x-2">
+                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-green-500 mt-1 flex-shrink-0"></i>
+                                    <span class="text-slate-600 dark:text-slate-300 text-sm">${escapeHtml(line)}</span>
+                                </li>
+                            `;
+                        }
+                    }
+
+                    html += '</ul></div>';
+                } else if (lines[0].includes('ÚLTIMAS ALTERAÇÕES')) {
+                    hasContent = true;
+                    html += `
+                        <div class="text-center pb-4 mb-4 border-b border-slate-200 dark:border-slate-700">
+                            <h3 class="text-2xl font-bold gradient-text">${lines[0]}</h3>
+                        </div>
+                    `;
+                }
+            });
+
+            html += '</div>';
+
+            // Update Lucide icons after inserting HTML
+            setTimeout(() => lucide.createIcons(), 100);
+
+            return hasContent ? html : '<p class="text-center text-slate-500">Nenhuma atualização disponível.</p>';
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        changelogBtn.addEventListener('click', openModal);
+        modalBackdrop.addEventListener('click', closeModal);
+        closeModalBtn.addEventListener('click', closeModal);
+        closeModalBtnFooter.addEventListener('click', closeModal);
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !changelogModal.classList.contains('hidden')) {
+                closeModal();
+            }
+        });
+
+        // ============================================
+        // TOAST NOTIFICATIONS
+        // ============================================
+        function showToast(title, message, duration = 3000) {
+            const toast = document.getElementById('toast');
+            const toastTitle = document.getElementById('toast-title');
+            const toastMessage = document.getElementById('toast-message');
+
+            toastTitle.textContent = title;
+            toastMessage.textContent = message;
+
+            toast.classList.remove('hidden');
+
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, duration);
+        }
+
+        // ============================================
+        // DOWNLOAD FUNCTIONS (Preservando lógica original)
+        // ============================================
+        function baixarArquivosMovimentoMes() {
+            const arquivos = [
+                'src/files/BitmaxMovimento.part1.rar',
+                'src/files/BitmaxMovimento.part2.rar',
+            ];
+
+            showToast('Download Iniciado', `Baixando ${arquivos.length} arquivos...`, 5000);
+
+            arquivos.forEach((arquivo, index) => {
+                setTimeout(() => {
+                    const link = document.createElement("a");
+                    link.href = arquivo;
+                    link.download = "";
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+
+                    if (index === arquivos.length - 1) {
+                        showToast('Download Completo', 'Todos os arquivos foram baixados!');
+                    }
+                }, index * 1000);
+            });
+        }
+
+        function baixarArquivos() {
+            const arquivos = [
+                'src/files/Atualizacao.part1.rar',
+                'src/files/Atualizacao.part2.rar',
+                'src/files/Atualizacao.part3.rar',
+                'src/files/Atualizacao.part4.rar',
+                'src/files/Atualizacao.part5.rar',
+            ];
+
+            const btn = document.getElementById('btn-download-principal');
+            btn.classList.add('downloading');
+            btn.innerHTML = '<i data-lucide="loader-2" class="w-6 h-6 animate-spin"></i><span>Baixando...</span>';
+            lucide.createIcons();
+
+            showToast('Download Iniciado', `Baixando ${arquivos.length} partes da atualização...`, 6000);
+
+            arquivos.forEach((arquivo, index) => {
+                setTimeout(() => {
+                    const link = document.createElement("a");
+                    link.href = arquivo;
+                    link.download = "";
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+
+                    if (index === arquivos.length - 1) {
+                        btn.classList.remove('downloading');
+                        btn.innerHTML = '<i data-lucide="download-cloud" class="w-6 h-6 group-hover:animate-bounce"></i><span>Download Principal</span>';
+                        lucide.createIcons();
+                        showToast('Download Completo', 'Extraia o arquivo part1.rar!');
+                    }
+                }, index * 1000);
+            });
+        }
+
+        // ============================================
+        // SCROLL HEADER EFFECT
+        // ============================================
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('shadow-xl');
+            } else {
+                header.classList.remove('shadow-xl');
+            }
+        });
     </script>
 </body>
+
 </html>
