@@ -1,0 +1,2047 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Central de Ajuda | BitMAX Empresarial</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --red: #C8102E;
+  --red-dark: #A00D24;
+  --red-light: #E8192E;
+  --red-muted: #F5E6E9;
+  --red-border: #F0C8D0;
+  --white: #FFFFFF;
+  --off-white: #FAFAFA;
+  --gray-50: #F6F6F7;
+  --gray-100: #EEEEF0;
+  --gray-200: #DDDDE0;
+  --gray-300: #C4C4C9;
+  --gray-400: #9A9AA5;
+  --gray-500: #6B6B78;
+  --gray-600: #4A4A56;
+  --gray-700: #2E2E38;
+  --gray-800: #1C1C24;
+  --sidebar-w: 280px;
+  --header-h: 60px;
+  --font: 'DM Sans', sans-serif;
+  --mono: 'DM Mono', monospace;
+  --radius: 6px;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.10);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,0.12);
+  --transition: 0.18s cubic-bezier(0.4,0,0.2,1);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 15px; scroll-behavior: smooth; }
+body {
+  font-family: var(--font);
+  background: var(--off-white);
+  color: var(--gray-700);
+  min-height: 100vh;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── HEADER ── */
+.header {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  height: var(--header-h);
+  background: var(--white);
+  border-bottom: 1px solid var(--gray-200);
+  display: flex; align-items: center; padding: 0 20px;
+  gap: 16px;
+  box-shadow: var(--shadow-sm);
+}
+.header-logo {
+  display: flex; align-items: center; gap: 10px;
+  text-decoration: none; flex-shrink: 0;
+}
+.logo-mark {
+  width: 36px; height: 36px; background: var(--red); border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+}
+.logo-mark svg { width: 20px; height: 20px; fill: white; }
+.logo-text { font-size: 17px; font-weight: 700; color: var(--gray-800); letter-spacing: -0.3px; }
+.logo-text span { color: var(--red); }
+.header-divider { width: 1px; height: 24px; background: var(--gray-200); }
+.header-subtitle { font-size: 12px; color: var(--gray-400); font-weight: 500; letter-spacing: 0.5px; text-transform: uppercase; }
+.header-search-wrap { flex: 1; max-width: 420px; margin-left: auto; position: relative; }
+.header-search {
+  width: 100%; padding: 8px 14px 8px 38px;
+  border: 1px solid var(--gray-200); border-radius: var(--radius);
+  background: var(--gray-50); font-family: var(--font); font-size: 13.5px;
+  color: var(--gray-700); outline: none; transition: var(--transition);
+}
+.header-search:focus { border-color: var(--red); background: var(--white); box-shadow: 0 0 0 3px rgba(200,16,46,0.08); }
+.search-icon-header {
+  position: absolute; left: 11px; top: 50%; transform: translatéY(-50%);
+  color: var(--gray-400); pointer-events: none;
+}
+.burger-btn {
+  display: none; background: none; border: none; cursor: pointer;
+  padding: 6px; border-radius: var(--radius); color: var(--gray-600);
+  margin-right: 4px;
+}
+.burger-btn:hover { background: var(--gray-100); }
+
+/* ── LAYOUT ── */
+.layout { display: flex; padding-top: var(--header-h); min-height: 100vh; }
+
+/* ── SIDEBAR ── */
+.sidebar {
+  width: var(--sidebar-w); flex-shrink: 0;
+  position: fixed; top: var(--header-h); left: 0; bottom: 0;
+  background: var(--white); border-right: 1px solid var(--gray-200);
+  overflow-y: auto; overflow-x: hidden;
+  scrollbar-width: thin; scrollbar-color: var(--gray-200) transparent;
+  transition: transform var(--transition);
+  z-index: 90;
+}
+.sidebar::-webkit-scrollbar { width: 4px; }
+.sidebar::-webkit-scrollbar-track { background: transparent; }
+.sidebar::-webkit-scrollbar-thumb { background: var(--gray-200); border-radius: 2px; }
+.sidebar-overlay {
+  display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.35);
+  z-index: 85; top: var(--header-h);
+}
+.sidebar-nav { padding: 16px 0 32px; }
+.nav-section { margin-bottom: 4px; }
+.nav-section-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 9px 18px; cursor: pointer; user-select: none;
+  border-radius: 0; transition: background var(--transition);
+  gap: 10px;
+}
+.nav-section-header:hover { background: var(--gray-50); }
+.nav-section-header.active { background: var(--red-muted); }
+.nav-section-label {
+  display: flex; align-items: center; gap: 9px;
+  font-size: 12.5px; font-weight: 600; color: var(--gray-600);
+  letter-spacing: 0.3px; text-transform: uppercase; flex: 1;
+}
+.nav-section-label svg { flex-shrink: 0; }
+.nav-section-header.active .nav-section-label { color: var(--red-dark); }
+.nav-chevron { transition: transform var(--transition); color: var(--gray-400); flex-shrink: 0; }
+.nav-section-header.open .nav-chevron { transform: rotaté(90deg); }
+.nav-items { display: none; }
+.nav-items.open { display: block; }
+.nav-item {
+  display: block; padding: 7px 18px 7px 42px;
+  font-size: 13px; color: var(--gray-500); cursor: pointer;
+  transition: color var(--transition), background var(--transition);
+  position: relative; border-left: 3px solid transparent;
+  text-decoration: none;
+}
+.nav-item::before {
+  content: ''; position: absolute; left: 26px; top: 50%; transform: translatéY(-50%);
+  width: 4px; height: 4px; background: var(--gray-300); border-radius: 50%;
+}
+.nav-item:hover { color: var(--red); background: var(--red-muted); }
+.nav-item.active {
+  color: var(--red); font-weight: 600; background: var(--red-muted);
+  border-left-color: var(--red);
+}
+.nav-item.active::before { background: var(--red); }
+.nav-sub-group { padding: 0; }
+.nav-sub-label {
+  padding: 5px 18px 3px 30px;
+  font-size: 11px; font-weight: 600; color: var(--gray-400);
+  letter-spacing: 0.6px; text-transform: uppercase;
+}
+
+/* ── MAIN ── */
+.main { margin-left: var(--sidebar-w); flex: 1; min-width: 0; }
+.content-area { max-width: 860px; margin: 0 auto; padding: 40px 40px 80px; }
+
+/* ── HOME ── */
+.home-hero {
+  background: linear-gradient(135deg, var(--red) 0%, var(--red-dark) 100%);
+  border-radius: 12px; padding: 48px 48px 52px;
+  color: white; margin-bottom: 40px; position: relative; overflow: hidden;
+}
+.home-hero::before {
+  content: ''; position: absolute; right: -60px; top: -60px;
+  width: 280px; height: 280px; border-radius: 50%;
+  background: rgba(255,255,255,0.05);
+}
+.home-hero::after {
+  content: ''; position: absolute; right: 60px; bottom: -80px;
+  width: 200px; height: 200px; border-radius: 50%;
+  background: rgba(255,255,255,0.04);
+}
+.home-hero h1 { font-size: 26px; font-weight: 700; margin-bottom: 10px; letter-spacing: -0.5px; position: relative; z-index: 1; }
+.home-hero p { font-size: 14.5px; opacity: 0.85; max-width: 480px; position: relative; z-index: 1; line-height: 1.65; }
+.home-hero-badge {
+  display: inline-block; background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 4px; font-size: 11px; font-weight: 600; letter-spacing: 0.8px;
+  text-transform: uppercase; padding: 3px 10px; margin-bottom: 18px; position: relative; z-index: 1;
+}
+.module-grid { display: grid; grid-templaté-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; margin-bottom: 40px; }
+.module-card {
+  background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius);
+  padding: 20px 18px; cursor: pointer; transition: all var(--transition);
+  display: flex; align-items: center; gap: 14px; text-decoration: none;
+}
+.module-card:hover { border-color: var(--red); box-shadow: var(--shadow-md); transform: translatéY(-1px); }
+.module-card:hover .module-card-icon { background: var(--red); color: white; }
+.module-card-icon {
+  width: 40px; height: 40px; border-radius: 8px; background: var(--red-muted);
+  color: var(--red); display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; transition: var(--transition);
+}
+.module-card-info h3 { font-size: 13.5px; font-weight: 600; color: var(--gray-700); margin-bottom: 2px; }
+.module-card-info span { font-size: 11.5px; color: var(--gray-400); }
+
+/* ── ARTICLE ── */
+.article-page { animation: fadeUp 0.22s ease both; }
+@keyframes fadeUp { from { opacity: 0; transform: translatéY(8px); } to { opacity: 1; transform: translatéY(0); } }
+.breadcrumb {
+  display: flex; align-items: center; gap: 6px; margin-bottom: 24px;
+  font-size: 12.5px; color: var(--gray-400);
+}
+.breadcrumb-sep { color: var(--gray-300); }
+.breadcrumb span:last-child { color: var(--gray-600); }
+.breadcrumb span:first-child { color: var(--red); cursor: pointer; }
+.breadcrumb span:first-child:hover { text-decoration: underline; }
+.article-header { margin-bottom: 32px; padding-bottom: 24px; border-bottom: 1px solid var(--gray-200); }
+.article-module-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: var(--red-muted); color: var(--red-dark); border: 1px solid var(--red-border);
+  font-size: 11px; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase;
+  padding: 3px 10px; border-radius: 4px; margin-bottom: 12px;
+}
+.article-title { font-size: 22px; font-weight: 700; color: var(--gray-800); letter-spacing: -0.4px; line-height: 1.3; margin-bottom: 8px; }
+.article-desc { font-size: 14px; color: var(--gray-500); line-height: 1.7; }
+
+/* CONTENT STYLES */
+.doc-section { margin-bottom: 36px; }
+.doc-section h2 {
+  font-size: 15px; font-weight: 700; color: var(--gray-800); margin-bottom: 16px;
+  display: flex; align-items: center; gap: 8px;
+  padding-bottom: 10px; border-bottom: 2px solid var(--gray-100);
+}
+.doc-section h2 .section-num {
+  width: 24px; height: 24px; background: var(--red); color: white;
+  border-radius: 50%; font-size: 11px; display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; font-weight: 700;
+}
+.doc-section h3 {
+  font-size: 13.5px; font-weight: 600; color: var(--gray-700); margin: 20px 0 10px;
+}
+.doc-section p { font-size: 13.5px; color: var(--gray-600); line-height: 1.75; margin-bottom: 12px; }
+.steps-list { list-style: none; counter-reset: steps; }
+.steps-list li {
+  counter-increment: steps; padding: 10px 14px 10px 46px; position: relative;
+  border-left: 2px solid var(--gray-100); margin-bottom: 4px; font-size: 13.5px;
+  color: var(--gray-600); line-height: 1.65; border-radius: 0 var(--radius) var(--radius) 0;
+  transition: background var(--transition);
+}
+.steps-list li:hover { background: var(--gray-50); }
+.steps-list li::before {
+  content: counter(steps); position: absolute; left: 12px; top: 10px;
+  width: 20px; height: 20px; background: var(--red); color: white;
+  border-radius: 50%; font-size: 10px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+}
+.steps-list li strong { color: var(--gray-800); }
+.bullet-list { list-style: none; padding-left: 0; }
+.bullet-list li {
+  padding: 5px 0 5px 18px; position: relative; font-size: 13.5px;
+  color: var(--gray-600); line-height: 1.65;
+}
+.bullet-list li::before {
+  content: ''; position: absolute; left: 0; top: 14px;
+  width: 6px; height: 6px; border-radius: 50%; background: var(--red);
+}
+.info-box {
+  border: 1px solid var(--red-border); background: var(--red-muted);
+  border-radius: var(--radius); padding: 14px 16px; margin: 20px 0;
+  display: flex; gap: 12px; align-items: flex-start;
+}
+.info-box-icon { color: var(--red); flex-shrink: 0; margin-top: 1px; }
+.info-box-text { font-size: 13px; color: var(--red-dark); line-height: 1.65; }
+.info-box-text strong { display: block; font-weight: 700; margin-bottom: 3px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.3px; }
+.warn-box {
+  border: 1px solid #FDE3A7; background: #FFFBF0;
+  border-radius: var(--radius); padding: 14px 16px; margin: 20px 0;
+  display: flex; gap: 12px; align-items: flex-start;
+}
+.warn-box-icon { color: #C68A00; flex-shrink: 0; margin-top: 1px; }
+.warn-box-text { font-size: 13px; color: #7A5500; line-height: 1.65; }
+.warn-box-text strong { display: block; font-weight: 700; margin-bottom: 3px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.3px; }
+.kbd {
+  display: inline-block; background: var(--gray-100); border: 1px solid var(--gray-300);
+  border-radius: 4px; padding: 1px 7px; font-family: var(--mono); font-size: 12px;
+  color: var(--gray-700); box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+}
+.path-chip {
+  display: inline-flex; align-items: center; gap: 0; background: var(--gray-50);
+  border: 1px solid var(--gray-200); border-radius: var(--radius); padding: 5px 12px;
+  font-family: var(--mono); font-size: 12px; color: var(--red-dark); margin: 8px 0;
+  font-weight: 500;
+}
+.field-list { border: 1px solid var(--gray-200); border-radius: var(--radius); overflow: hidden; margin: 12px 0; }
+.field-row {
+  display: flex; gap: 0; border-bottom: 1px solid var(--gray-100);
+  font-size: 13px;
+}
+.field-row:last-child { border-bottom: none; }
+.field-name {
+  width: 200px; flex-shrink: 0; padding: 9px 14px; background: var(--gray-50);
+  font-weight: 600; color: var(--gray-700); border-right: 1px solid var(--gray-200);
+  font-size: 12.5px;
+}
+.field-desc { padding: 9px 14px; color: var(--gray-600); flex: 1; }
+.sub-article-list { display: flex; flex-direction: column; gap: 8px; margin-top: 8px; }
+.sub-article-item {
+  background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius);
+  padding: 14px 16px; cursor: pointer; transition: all var(--transition);
+  display: flex; align-items: center; justify-content: space-between;
+}
+.sub-article-item:hover { border-color: var(--red); background: var(--red-muted); }
+.sub-article-item:hover .sub-arrow { color: var(--red); transform: translatéX(3px); }
+.sub-article-name { font-size: 13.5px; font-weight: 600; color: var(--gray-700); }
+.sub-article-desc { font-size: 12px; color: var(--gray-400); margin-top: 2px; }
+.sub-arrow { color: var(--gray-300); transition: all var(--transition); flex-shrink: 0; }
+.tag-row { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0; }
+.tag {
+  background: var(--gray-100); border-radius: 4px; padding: 3px 10px;
+  font-size: 12px; color: var(--gray-600); font-weight: 500;
+}
+.tag.red { background: var(--red-muted); color: var(--red-dark); }
+.divider { border: none; border-top: 1px solid var(--gray-100); margin: 28px 0; }
+
+/* SEARCH RESULTS */
+.search-results { animation: fadeUp 0.2s ease both; }
+.search-query { font-size: 13px; color: var(--gray-400); margin-bottom: 20px; }
+.search-query strong { color: var(--red); }
+.result-item {
+  background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius);
+  padding: 16px 18px; margin-bottom: 10px; cursor: pointer; transition: all var(--transition);
+}
+.result-item:hover { border-color: var(--red); box-shadow: var(--shadow-sm); }
+.result-title { font-size: 14px; font-weight: 600; color: var(--red); margin-bottom: 4px; }
+.result-excerpt { font-size: 13px; color: var(--gray-500); line-height: 1.6; }
+.result-path { font-size: 11.5px; color: var(--gray-400); margin-top: 6px; font-family: var(--mono); }
+.no-results { text-align: center; padding: 60px 20px; color: var(--gray-400); }
+.no-results svg { width: 48px; height: 48px; margin: 0 auto 16px; display: block; opacity: 0.4; }
+.no-results p { font-size: 14px; }
+
+/* STRUCTURE MAP */
+.struct-tree { font-size: 13px; }
+.struct-module {
+  margin-bottom: 12px; border: 1px solid var(--gray-200); border-radius: var(--radius); overflow: hidden;
+}
+.struct-module-header {
+  background: var(--gray-50); padding: 10px 14px;
+  font-weight: 700; color: var(--gray-700); font-size: 13px;
+  display: flex; align-items: center; gap: 8px; border-bottom: 1px solid var(--gray-200);
+}
+.struct-items { padding: 10px 14px; display: flex; flex-wrap: wrap; gap: 6px; }
+.struct-tag {
+  background: var(--gray-100); border-radius: 4px; padding: 3px 9px;
+  font-size: 12px; color: var(--gray-600);
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  :root { --sidebar-w: 260px; }
+  .content-area { padding: 28px 24px 60px; }
+  .home-hero { padding: 32px 28px 36px; }
+  .home-hero h1 { font-size: 22px; }
+}
+@media (max-width: 700px) {
+  .burger-btn { display: flex; }
+  .sidebar { transform: translatéX(-100%); }
+  .sidebar.open { transform: translatéX(0); }
+  .sidebar-overlay.open { display: block; }
+  .main { margin-left: 0; }
+  .content-area { padding: 24px 16px 60px; }
+  .home-hero { padding: 28px 20px 30px; border-radius: 8px; }
+  .home-hero h1 { font-size: 20px; }
+  .module-grid { grid-templaté-columns: 1fr 1fr; gap: 10px; }
+  .module-card { padding: 14px 12px; }
+  .header-search-wrap { max-width: 180px; }
+  .field-name { width: 130px; }
+}
+@media (max-width: 420px) {
+  .module-grid { grid-templaté-columns: 1fr; }
+  .header-search-wrap { max-width: 140px; }
+  .header-subtitle { display: none; }
+  .header-divider { display: none; }
+}
+
+/* FAQ ACCORDION */
+.faq-item {
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius);
+  margin-bottom: 8px;
+  overflow: hidden;
+  transition: all var(--transition);
+}
+.faq-item:hover { border-color: var(--gray-300); box-shadow: var(--shadow-sm); }
+.faq-question-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 18px;
+  background: var(--white);
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-family: var(--font);
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--gray-700);
+  gap: 12px;
+  transition: background var(--transition);
+}
+.faq-question-btn:hover { background: var(--gray-50); }
+.faq-question-btn.active { background: var(--red-muted); color: var(--red-dark); }
+.faq-question-btn .faq-chevron {
+  flex-shrink: 0;
+  color: var(--gray-400);
+  transition: transform var(--transition);
+}
+.faq-question-btn.active .faq-chevron { transform: rotaté(90deg); color: var(--red); }
+.faq-answer {
+  display: none;
+  padding: 0 18px 16px;
+  font-size: 13px;
+  color: var(--gray-600);
+  line-height: 1.75;
+  border-top: 1px solid var(--gray-100);
+}
+.faq-answer.open { display: block; padding-top: 14px; }
+.faq-answer p { margin-bottom: 8px; }
+.faq-answer strong { color: var(--gray-800); }
+.faq-answer ol, .faq-answer ul { padding-left: 20px; margin-bottom: 8px; }
+.faq-answer li { margin-bottom: 4px; }
+.faq-answer table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 8px 0;
+  font-size: 12.5px;
+}
+.faq-answer table th, .faq-answer table td {
+  border: 1px solid var(--gray-200);
+  padding: 6px 10px;
+  text-align: left;
+}
+.faq-answer table th {
+  background: var(--gray-50);
+  font-weight: 600;
+  color: var(--gray-700);
+}
+.faq-answer a {
+  color: var(--red);
+  text-decoration: underline;
+}
+.faq-answer a:hover { color: var(--red-dark); }
+.faq-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--red);
+  color: white;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 10px;
+  margin-left: 6px;
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <button class="burger-btn" onclick="toggleSidebar()" aria-label="Menu">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+      <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+    </svg>
+  </button>
+  <a class="header-logo" href="#" onclick="goHome()">
+    <div class="logo-mark">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M3 3h8v8H3zM13 3h8v8h-8zM3 13h8v8H3zM17 13h4v4h-4zM13 17h4v4h-4z"/>
+      </svg>
+    </div>
+    <span class="logo-text">BIT<span>MAX</span></span>
+  </a>
+  <div class="header-divider"></div>
+  <span class="header-subtitle">Central de Ajuda</span>
+  <div class="header-search-wrap">
+    <svg class="search-icon-header" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+      <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+    </svg>
+    <input class="header-search" type="text" placeholder="Buscar artigos..." id="mainSearch" oninput="handleSearch(this.value)" onkeydown="if(event.key==='Enter')doSearch()">
+  </div>
+</header>
+
+<!-- SIDEBAR OVERLAY -->
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+
+<!-- LAYOUT -->
+<div class="layout">
+  <!-- SIDEBAR -->
+  <nav class="sidebar" id="sidebar">
+    <div class="sidebar-nav">
+      <!-- Home -->
+      <div class="nav-section">
+        <div class="nav-section-header" onclick="goHome()">
+          <span class="nav-section-label">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            Início
+          </span>
+        </div>
+      </div>
+
+      <!-- CADASTRO -->
+      <div class="nav-section" id="nav-cadastro">
+        <div class="nav-section-header" onclick="toggleNav('cadastro')">
+          <span class="nav-section-label" style="color:var(--red-dark)">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            Cadastro
+          </span>
+          <svg class="nav-chevron" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </div>
+        <div class="nav-items" id="items-cadastro">
+          <a class="nav-item" onclick="showArticle('cargos')">Cargos</a>
+          <a class="nav-item" onclick="showArticle('clientes')">Clientes</a>
+          <a class="nav-item" onclick="showArticle('colaboradores')">Colaboradores</a>
+          <a class="nav-item" onclick="showArticle('contadores')">Contadores</a>
+          <a class="nav-item" onclick="showArticle('formas-pagamento')">Formas de Pagamento</a>
+          <a class="nav-item" onclick="showArticle('fornecedores')">Fornecedores</a>
+          <a class="nav-item" onclick="showArticle('produtos')">Produtos</a>
+          <a class="nav-item" onclick="showArticle('transportadoras')">Transportadoras</a>
+          <a class="nav-item" onclick="showArticle('vendedores')">Vendedores</a>
+          <span class="nav-sub-label">Compras e Vendas</span>
+          <a class="nav-item" onclick="showArticle('classificação-fiscal')">Classificação Fiscal</a>
+          <a class="nav-item" onclick="showArticle('mensagem-nf')">Mensagem na Nota Fiscal</a>
+          <a class="nav-item" onclick="showArticle('natureza-operacoes')">Natureza de Operações</a>
+          <a class="nav-item" onclick="showArticle('tributacoes-federais')">Tributações Federais</a>
+          <span class="nav-sub-label">Financeiro</span>
+          <a class="nav-item" onclick="showArticle('agencias-bancarias')">Agências Bancárias</a>
+          <a class="nav-item" onclick="showArticle('contas-correntes')">Contas Correntes</a>
+        </div>
+      </div>
+
+      <!-- VENDAS -->
+      <div class="nav-section" id="nav-vendas">
+        <div class="nav-section-header" onclick="toggleNav('vendas')">
+          <span class="nav-section-label">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            Vendas
+          </span>
+          <svg class="nav-chevron" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </div>
+        <div class="nav-items" id="items-vendas">
+          <a class="nav-item" onclick="showArticle('faturamento')">Faturamento (NF-e)</a>
+          <a class="nav-item" onclick="showArticle('venda-rapida')">Venda Rápida</a>
+          <a class="nav-item" onclick="showArticle('outras-saídas')">Outras Saídas</a>
+          <a class="nav-item" onclick="showArticle('recebimento-venda')">Recebimento de Venda</a>
+          <a class="nav-item" onclick="showArticle('reajuste-preço')">Reajuste de Preço</a>
+          <a class="nav-item" onclick="showArticle('cancelamento-reajuste')">Cancelamento de Reajuste</a>
+          <a class="nav-item" onclick="showArticle('reajuste-unitário')">Reajuste Unitário</a>
+          <span class="nav-sub-label">Oficina</span>
+          <a class="nav-item" onclick="showArticle('ordem-serviço')">Ordem de Serviço</a>
+          <span class="nav-sub-label">Relatórios</span>
+          <a class="nav-item" onclick="showArticle('relatórios-vendas')">Relatórios de Vendas</a>
+        </div>
+      </div>
+
+      <!-- COMPRAS -->
+      <div class="nav-section" id="nav-compras">
+        <div class="nav-section-header" onclick="toggleNav('compras')">
+          <span class="nav-section-label">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+            Compras
+          </span>
+          <svg class="nav-chevron" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </div>
+        <div class="nav-items" id="items-compras">
+          <a class="nav-item" onclick="showArticle('entrada-estoque')">Entrada no Estoque (XML)</a>
+          <a class="nav-item" onclick="showArticle('entrada-manual')">Entrada Manual de Produtos</a>
+          <a class="nav-item" onclick="showArticle('outras-entradas')">Outras Entradas</a>
+          <a class="nav-item" onclick="showArticle('entrada-cte')">Entrada de CT-e</a>
+          <a class="nav-item" onclick="showArticle('relatórios-compras')">Relatórios de Compras</a>
+        </div>
+      </div>
+
+      <!-- FINANCEIRO -->
+      <div class="nav-section" id="nav-financeiro">
+        <div class="nav-section-header" onclick="toggleNav('financeiro')">
+          <span class="nav-section-label">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+            Financeiro
+          </span>
+          <svg class="nav-chevron" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </div>
+        <div class="nav-items" id="items-financeiro">
+          <span class="nav-sub-label">Contas a Receber</span>
+          <a class="nav-item" onclick="showArticle('títulos-receber')">Registro de Títulos</a>
+          <a class="nav-item" onclick="showArticle('baixa-títulos')">Baixa de Títulos</a>
+          <a class="nav-item" onclick="showArticle('títulos-massa')">Gerar Títulos em Massa</a>
+          <a class="nav-item" onclick="showArticle('prorrogação')">Prorrogação e Bloquetes</a>
+          <span class="nav-sub-label">Contas a Pagar</span>
+          <a class="nav-item" onclick="showArticle('títulos-pagar')">Registro e Baixa (Fornec.)</a>
+          <span class="nav-sub-label">Caixa</span>
+          <a class="nav-item" onclick="showArticle('movimento-caixa')">Movimento do Caixa</a>
+          <a class="nav-item" onclick="showArticle('ferramentas-caixa')">Ferramentas de Caixa</a>
+          <span class="nav-sub-label">Cheques</span>
+          <a class="nav-item" onclick="showArticle('cadastro-cheques')">Cadastro de Cheques</a>
+        </div>
+      </div>
+
+      <!-- FERRAMENTAS -->
+      <div class="nav-section" id="nav-ferramentas">
+        <div class="nav-section-header" onclick="toggleNav('ferramentas')">
+          <span class="nav-section-label">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+            Ferramentas
+          </span>
+          <svg class="nav-chevron" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </div>
+        <div class="nav-items" id="items-ferramentas">
+          <a class="nav-item" onclick="showArticle('usuários')">Usuários e Permissões</a>
+          <a class="nav-item" onclick="showArticle('análise-diagnóstico')">Análise e Diagnóstico</a>
+          <a class="nav-item" onclick="showArticle('balanço-estoque')">Balanço de Estoque</a>
+          <a class="nav-item" onclick="showArticle('boletos')">Gestão de Boletos</a>
+          <a class="nav-item" onclick="showArticle('consulta-produto')">Consulta de Produto</a>
+          <a class="nav-item" onclick="showArticle('cancelamento-nf')">Cancelamento de NF/NFC-e</a>
+        </div>
+      </div>
+
+      <!-- ESTRUTURA DO SISTEMA -->
+      <div class="nav-section">
+        <div class="nav-section-header" onclick="showArticle('estrutura-sistema')">
+          <span class="nav-section-label">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+            Estrutura do Sistema
+          </span>
+        </div>
+      </div>
+
+      <!-- FAQ -->
+      <div class="nav-section">
+        <div class="nav-section-header" onclick="showArticle('faq')">
+          <span class="nav-section-label">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            Perguntas Frequentes
+          </span>
+        </div>
+      </div>
+
+    </div>
+  </nav>
+
+  <!-- MAIN CONTENT -->
+  <main class="main">
+    <div class="content-area" id="contentArea"></div>
+  </main>
+</div>
+
+<script>
+// ── DATA ──────────────────────────────────────────────────────────────────────
+const faqData = [
+  { id: 'faq1', q: 'Como desabilitar o controle de estoque de um produto?', a: ['Para desabilitar o controle de estoque de um produto, siga os passos abaixo:', '<strong>1. Acesse o cadastro do subgrupo do produto:</strong> Comece o processo de cadastro.', '<strong>2. Localize a opção "Controla Estoque":</strong> Encontre a configuração relacionada ao controle de estoque.', '<strong>3. Desmarque essa opção:</strong> Selecione "Não" para desativar o controle de estoque.', '<strong>4. Habilite a opção de estoque negativo:</strong> Selecione "Sim" para permitir que o estoque fique negativo.', 'Ao realizar esses passos, o sistema não afetará o estoque do produto com entradas ou saídas. Assim, o estoque poderá ficar negativo, mesmo que a opção de estoque negativo esteja habilitada.'] },
+  { id: 'faq2', q: 'Como cadastrar um produto do tipo composição?', a: ['Para cadastrar um produto do tipo composição, siga estas etapas:', '<strong>1. Inicie o cadastro do produto:</strong> Comece o processo de cadastro.', '<strong>2. No campo "Tipo":</strong> Selecione a opção "Composição".', '<strong>3. Após essa seleção:</strong> A aba "5 - Composição" será ativada.', '<strong>4. Insira os componentes:</strong> Adicione os componentes e as quantidades necessárias dentro da composição.'] },
+  { id: 'faq3', q: 'Como cadastrar um produto do tipo kit?', a: ['Para cadastrar um produto do tipo kit, siga os passos abaixo:', '<strong>1. Acesse o cadastro do produto:</strong> Inicie o processo de cadastro.', '<strong>2. No campo "Tipo":</strong> Escolha a opção "Kit".', '<strong>3. Com essa opção selecionada:</strong> A aba "6 - Kit" será ativada.', '<strong>4. Insira os componentes:</strong> Adicione os componentes e as quantidades que compõem o kit.', 'Lembre-se: ao realizar uma venda, não será vendido um único produto chamado Kit. Todos os produtos que fazem parte do kit serão listados individualmente na nota fiscal.'] },
+  { id: 'faq4', q: 'Como cadastrar um produto do tipo componente?', a: ['Para cadastrar um produto do tipo componente, siga os passos abaixo:', '<strong>1. Acesse o cadastro do produto:</strong> Inicie o processo de cadastro.', '<strong>2. No campo "Tipo":</strong> Selecione a opção "Produto".', '<strong>3. Selecione o "Subtipo":</strong> No campo "Subtipo", escolha a opção "Matéria-prima".', '<strong>4. Insira as informações necessárias:</strong> Complete os demais campos obrigatórios e salve o cadastro.'] },
+  { id: 'faq5', q: 'Como ativar a montagem automática da composição?', a: ['Para ativar a montagem automática da composição, siga os passos abaixo:', '<strong>1. Vá em parâmetros do sistema:</strong> Acesse a aba "2 - Produtos".', '<strong>2. Marque a opção "Montar quantidade automaticamente":</strong> Assim, o sistema dará baixa na quantidade exata necessária para gerar a quantidade digitada na tela de vendas, de acordo com o que foi definido no cadastro da composição.'] },
+  { id: 'faq6', q: 'Onde posso visualizar a capacidade de produção de um produto do tipo composição ou kit?', a: ['No cadastro do produto, você encontrará o campo "Capacidade de Produção Máxima", que indica a quantidade máxima que é possível gerar com o estoque de matéria-prima disponível.'] },
+  { id: 'faq7', q: 'É possível gerar estoque prévio para um produto do tipo composição?', a: ['Não. Não é possível gerar estoque para produtos do tipo composição. O estoque da matéria-prima será dado baixa somente a cada venda realizada.'] },
+  { id: 'faq8', q: 'Como posso vender uma composição sem ter estoque prévio?', a: ['No subgrupo da composição, habilite a opção "Permitir negativo: Sim" e "Controla estoque: Não". Dessa forma, ao realizar uma venda, a mensagem de estoque negativo não aparecerá e o estoque não ficará negativo.'] },
+  { id: 'faq9', q: 'O que é um Kit?', a: ['O cadastro do tipo kit é uma coleção ou lista de itens pré-definidos que, ao ser selecionado na tela de vendas, importa todos os produtos que fazem parte dessa coleção.'] },
+  { id: 'faq10', q: 'Como dar saída em mais de uma unidade de um Kit?', a: ['Se for vender 10 unidades de um Kit, o sistema pegará esse valor e multiplicará pela quantidade que cada item "consome" dentro de cada kit. Por exemplo, se uma unidade de kit contém 1 vinho, ao digitar 10, o sistema multiplicará e a saída será de 10 vinhos.'] },
+  { id: 'faq11', q: 'O nome do kit que eu cadastrei aparece na venda?', a: ['Não. O cadastro do tipo kit é apenas um agrupamento de itens para facilitar a venda. Se você quiser que o produto final saia com o nome que você cadastrou, deve usar o tipo "Composição".'] },
+  { id: 'faq12', q: 'Ao vender uma composição, os componentes aparecem na nota fiscal?', a: ['Não. A baixa da matéria-prima é um processo interno do banco de dados. Apenas a descrição do produto acabado aparecerá no pedido ou na nota fiscal.'] },
+  { id: 'faq13', q: 'Como o custo da matéria-prima do tipo Kit ou Composição é gerado?', a: ['O cálculo do custo é feito proporcionalmente para cada ingrediente. Por exemplo: se a farinha de trigo custa R$ 4,00, mas a receita usa apenas 0,5 kg, o custo proporcional é R$2,00 para cada unidade produzida.'] },
+  { id: 'faq14', q: 'Como o custo do Kit ou da composição acabada é gerado?', a: ['É feita uma soma de todos os custos proporcionais das matérias-primas e o valor é atualizado no cadastro do produto principal. Se o custo da matéria-prima for atualizado, o custo do produto final também será atualizado dinamicamente.'] },
+  { id: 'faq15', q: 'Como vendo um produto do tipo Kit?', a: ['O produto do tipo Kit só é exibido no botão de pesquisa ao lado do botão de busca convencional. Este botão listará apenas os produtos do tipo "Kit".'] },
+  { id: 'faq16', q: 'Posso vender as matérias-primas individualmente?', a: ['Sim, você pode vender cada componente individualmente junto com os produtos acabados.'] },
+  { id: 'faq17', q: 'Como ativar a auditoria ou o log do sistema?', a: ['Acesse: Ferramentas > Análise e Diagnóstico > Ativar/Desativar Auditoria > Auditoria de Vendas.'] },
+  { id: 'faq18', q: 'Como limpar meus logs?', a: ['Acesse: Ferramentas > Análise e Diagnóstico > Ativar/Desativar Auditoria > Limpar Logs.'] },
+  { id: 'faq19', q: 'Como consultar um log?', a: ['Acesse: Ferramentas > Consultar Registro de Log (Vendas) e filtre por pedido.'] },
+  { id: 'faq20', q: 'Como encontrar divergências de valores mensais entre pedidos e notas emitidas?', a: ['Acesse: Ferramentas > Análise e Diagnóstico > Comparativo de Vendas: Digitação vs Autorização e utilize os filtros adequados.'] },
+  { id: 'faq21', q: 'Como identificar se o destinatário é contribuinte do ICMS para cálculo DIFAL?', a: ['Para identificar se o destinatário é contribuinte do ICMS, você deve considerar as seguintes combinações:', '<strong>1 = Contribuinte ICMS</strong> - informar a IE do destinatário', '<strong>2 = Contribuinte isento</strong> - de Inscrição no cadastro de Contribuintes do ICMS', '<strong>9 = Não Contribuinte</strong> - que pode ou não possuir Inscrição Estadual', 'Não é necessário recolocar o cliente no pedido, basta apenas mudar o cadastro e tentar de novo.'] },
+  { id: 'faq22', q: 'Como desabilitar chamada do e-mail ao emitir NFe ou NFCe?', a: ['Vá em parâmetros do sistema -> 4 - Configurações para NF-e -> Ativar/Desativar chamada de Email.', 'Se a opção estiver marcada, a mensagem será exibida para cada nota emitida. Se desmarcada, a mensagem de e-mail será pulada.'] },
+  { id: 'faq23', q: 'Como remover a coluna de desconto do PDF da NF-e?', a: ['Nas configurações do NF-e, habilite ou desabilite na opção "Exibir Coluna Desconto/Acréscimo no item?".'] },
+  { id: 'faq24', q: 'Por que o produto não está aparecendo na ficha kardex?', a: ['Isso pode ocorrer porque a opção de controle de estoque para o subgrupo do produto não está ativada. Verifique as configurações do subgrupo e ative a opção de controle de estoque, se necessário.'] },
+  { id: 'faq25', q: 'Posso instalar o software em mais de uma máquina com a mesma licença?', a: ['Não. Conforme os termos de licença, para cada licença que você adquirir, o sistema poderá ser instalado em <strong>apenas uma máquina</strong>.'] },
+  { id: 'faq26', q: 'É permitido transferir, vender ou alugar minha licença do software?', a: ['Não, é estritamente proibido transferir, ceder, alugar, doar, emprestar ou vender o programa para outro usuário ou empresa sem o consentimento prévio e expresso da BITMAX.'] },
+  { id: 'faq27', q: 'Qual é o horário de aténdimento do suporte técnico?', a: ['O suporte técnico está disponível de <strong>segunda a sexta-feira</strong>, nos seguintes horários:', '• Manhã: das 8:00 às 12:00.', '• Tarde: das 14:00 às 18:00.'] },
+  { id: 'faq28', q: 'Como posso entrar em contato com o suporte técnico?', a: ['Você pode entrar em contato com o suporte técnico através dos seguintes canais:', '• <strong>Fone/Fax:</strong> (75) 3030-1577', '• <strong>E-mail:</strong> suporte@bitmax.com.br'] },
+  { id: 'faq29', q: 'O que devo verificar antes de ligar para o suporte técnico?', a: ['Antes de contatar o suporte, é recomendado realizar as seguintes verificações para agilizar o aténdimento:', '• Averiguar se o equipamento e o sistema operacional aténdem aos pré-requisitos.', '• Verificar o funcionamento geral dos equipamentos.', '• Conferir se a impressora fiscal (caso utilize) está ligada e se o cabo de dados está conectado.', '• Procurar a solução no manual do sistema ou na seção de Ajuda.', '• Acessar o site www.bitmax.com.br e ler as informações no link Perguntas Frequentes.'] },
+  { id: 'faq30', q: 'Quais são os pré-requisitos para instalar o sistema Bitmax Empresarial?', a: ['Para instalar o software, seu computador precisa aténder aos seguintes requisitos mínimos:', '• <strong>Sistema Operacional:</strong> Windows 7 ou Windows 10.', '• <strong>Memória RAM:</strong> 4 GB.', '• <strong>Processador:</strong> Core 2.0 GHz ou superior.', '• <strong>Espaço em Disco (HD):</strong> 512 MB de espaço livre.'] },
+  { id: 'faq31', q: 'Como faço a instalação do sistema em rede?', a: ['Para a instalação em rede, siga estes passos:', '<strong>1. Instalação no Servidor:</strong> Primeiramente, o Bitmax Empresarial deve ser instalado na máquina que funcionará como servidor.', '<strong>2. Compartilhamento:</strong> A pasta Bitmax localizada no servidor deve ser compartilhada na rede.', '<strong>3. Configuração no Terminal:</strong> Na máquina terminal, localize a pasta compartilhada do servidor, acesse a subpasta Bin e crie um atalho na área de trabalho.'] },
+  { id: 'faq32', q: 'Como desinstalo o Bitmax Empresarial corretamente?', a: ['O processo de desinstalação deve seguir os seguintes passos:', '<strong>1. Backup:</strong> Antes de tudo, é essencial fazer um backup do sistema para garantir a segurança dos seus dados.', '<strong>2. Painel de Controle:</strong> Acesse o Painel de Controle do Windows.', '<strong>3. Programas e Recursos:</strong> Clique na opção Programas e Recursos.', '<strong>4. Desinstalar:</strong> Localize Bitmax Empresarial na lista, clique com o botão direito do mouse sobre ele e selecione a opção Desinstalar.'] },
+  { id: 'faq33', q: 'Posso alterar a Razão Social ou o CNPJ da minha empresa no sistema depois de configurado?', a: ['Não. Após serem fornecidos durante a configuração inicial, os campos <strong>Razão Social e CNPJ/CPF não podem ser alterados</strong> posteriormente no sistema.'] },
+  { id: 'faq34', q: 'Para que serve a seção Configurações da Licenciada?', a: ['Este cadastro contém os dados da sua empresa (a usuária da licença). As informações preenchidas nesta seção são <strong>indispensáveis para a geração correta das obrigações fiscais</strong>, como Sintegra e Sped Fiscal.'] },
+  { id: 'faq35', q: 'Como o sistema calcula o Custo Médio de um produto?', a: ['O custo médio é calculado automaticamente pelo sistema com base nas entradas de notas de compra. A fórmula utilizada é:', '<i>((Quantidade atual em estoque * Custo médio atual) + (Quantidade comprada * Preço de compra)) / (Quantidade atual em estoque + Quantidade comprada)</i>'] },
+  { id: 'faq36', q: 'É possível adicionar uma foto ao cadastro do produto?', a: ['Sim. Na tela de cadastro do produto, há uma seção chamada Foto do Produto. Basta clicar no botão <strong>Adicionar</strong>, selecionar o arquivo de imagem no seu computador e salvá-lo para facilitar a identificação visual do item.'] },
+  { id: 'faq37', q: 'Qual a diferença entre os módulos Faturamento e Venda Rápida?', a: ['O módulo <strong>Faturamento</strong> é mais completo, utilizado para gerar pedidos de venda detalhados que podem se tornar orçamentos ou documentos fiscais como NF-e. Já o módulo <strong>Venda Rápida</strong> é uma forma simplificada de realizar a venda, ideal para operações ágeis no ponto de venda (PDV).'] },
+  { id: 'faq38', q: 'Como devo realizar o backup do sistema?', a: ['Para fazer o backup, acesse o menu <strong>Ferramentas > Utilitários</strong> e clique em <strong>Iniciar Backup</strong>. É altamente recomendável que essa rotina seja feita diariamente, no final do expediente, para garantir a segurança de todas as movimentações da empresa.'] },
+  { id: 'faq39', q: 'Como gero os arquivos fiscais Sintegra e SPED Fiscal?', a: ['Para gerar ambos os arquivos, você deve acessar o menu <strong>Ferramentas</strong>.', '• <strong>Sintegra:</strong> Vá em Gerar Sintegra e siga as orientações. É crucial que você contaté sua contabilidade para obter as informações corretas antes de gerar o arquivo.', '• <strong>SPED Fiscal:</strong> Vá em Gerar SPED Fiscal. Da mesma forma, contaté sua contabilidade para saber o período e os blocos obrigatórios. Depois, clique em Gerar o Arquivo do Sped Fiscal Completo.'] },
+  { id: 'faq40', q: 'O que é necessário para emitir uma Nota Fiscal Eletrônica (NF-e)?', a: ['Para a transmissão e validação jurídica da NF-e, é indispensável que sua empresa possua um <strong>Certificado Digital</strong> válido, que funciona como uma assinatura digital. Os modelos aceitos são A1 ou A3.'] },
+  { id: 'faq41', q: 'O que é um produto do tipo Composição?', a: ['É um tipo de cadastro para produtos que são fabricados ou montados a partir de outros itens (matéria-prima). Por exemplo, um computador montado a partir de peças individuais ou roupas feitas a partir de tecidos e aviamentos.'] },
+  { id: 'faq42', q: 'Como o sistema trata a venda de um produto do tipo Composição?', a: ['Quando um produto do tipo Composição é vendido, o sistema automaticamente dá baixa no estoque dos seus componentes (matéria-prima) na proporção definida no cadastro.'] },
+  { id: 'faq43', q: 'Para que serve a Ficha Kardex?', a: ['A Ficha Kardex é um relatório que permite filtrar e analisar todas as entradas e saídas de um produto específico dentro de um período. É uma ferramenta muito útil para realizar auditorias de estoque e identificar inconsistências.'] },
+  { id: 'faq44', q: 'Como faço para registrar as compras de fornecedores no sistema?', a: ['As compras são registradas no módulo <strong>Entradas no Estoque</strong>. Você pode fazer o lançamento de duas formas:', '• <strong>Manual:</strong> Inserindo os dados da nota fiscal campo a campo.', '• <strong>Automática:</strong> Importando o arquivo XML da nota fiscal, o que agiliza o processo e reduz erros de digitação.'] },
+  { id: 'faq45', q: 'O que é preciso fazer ao importar um XML de compra pela primeira vez?', a: ['Ao importar um XML, os produtos contidos nele precisam ser vinculados aos produtos já cadastrados no seu sistema. O sistema exibirá uma tela para que você faça essa associação, garantindo que o estoque seja atualizado corretamente.'] },
+  { id: 'faq46', q: 'Como funciona o módulo Contas a Pagar?', a: ['O módulo Contas a Pagar gerencia todas as saídas financeiras da empresa, como títulos a pagar a fornecedores e outras despesas. Nele, é possível registrar, dar baixa e cancelar baixas de títulos.'] },
+  { id: 'faq47', q: 'Para que servem os Centros de Custo?', a: ['Os Centros de Custo são utilizados para delimitar e organizar os custos das diversas seções de uma empresa (ex: administrativo, vendas, produção). Isso permite uma análise mais detalhada de onde os recursos financeiros estão sendo aplicados.'] },
+  { id: 'faq48', q: 'Preciso fazer algo para que as movimentações financeiras sejam registradas?', a: ['Sim. Para que toda a movimentação financeira seja registrada corretamente, é necessário primeiro realizar a <strong>abertura do livro caixa</strong>. Este passo é fundamental para o controle do fluxo de caixa.'] },
+  { id: 'faq49', q: 'Como posso criar diferentes níveis de acesso para os funcionários?', a: ['No menu <strong>Ferramentas > Segurança > Usuários, Grupos e Permissões</strong>, você pode criar diferentes grupos (ex: Administradores, Vendedores, Caixa) e definir quais telas e funções cada grupo pode acessar. Depois, basta criar um usuário para cada funcionário e associá-lo ao grupo correspondente.'] },
+  { id: 'faq50', q: 'Como faço para ajustar o estoque de um produto manualmente?', a: ['O ajuste de estoque pode ser feito através do módulo <strong>Balanço</strong>, localizado no menu Ferramentas. Este módulo permite corrigir a quantidade de produtos em estoque, mas seu uso deve ser feito com cautela.'] },
+  { id: 'faq51', q: 'A Bitmax coleta minhas informações pessoais ou do meu computador?', a: ['A Bitmax não coleta informações pessoais ou do seu sistema que possam identificá-lo sem o seu consentimento. No entanto, o software possui recursos que podem se conectar aos sistemas da Bitmax para o envio de possíveis erros e falhas, e ao utilizar o software você consente com a coleta dessas informações de serviço.'] },
+  { id: 'faq52', q: 'O que acontece se eu violar os termos de licença do software?', a: ['A violação de qualquer termo do contrato acarreta na rescisão automática da licença, independente de notificação. Nesse caso, a licença de uso é suspensa e você deve destruir todos os matériais e cópias do programa. A Bitmax também poderá requerer judicialmente indenizações por prejuízos e violação de Direitos Autorais.'] },
+  { id: 'faq53', q: 'Sou obrigado a atualizar o software se utilizar ECF?', a: ['Sim. O usuário que utiliza o software para operação de ECF está obrigado a adquirir e instalar as atualizações (novas versões) que forem disponibilizadas pela Bitmax para manter o sistema de acordo com a legislação vigente. A não atualização implicará na suspensão dos serviços de suporte técnico.'] },
+  { id: 'faq54', q: 'A garantia do software cobre danos no meu equipamento?', a: ['Não. A garantia é contra defeitos de programação e está limitada à substituição do programa defeituoso. A Bitmax não se responsabiliza por danos causados a equipamentos, instalações elétricas ou programas de terceiros que trabalhem em conjunto com o software.'] },
+  { id: 'faq55', q: 'Quais são os passos de instalação do sistema?', a: ['A instalação é dividida em dois passos principais:', '<strong>Passo nº 1:</strong> Instalação do Servidor Firebird.', '<strong>Passo nº 2:</strong> Instalação do Sistema Bitmax Empresarial.'] },
+  { id: 'faq56', q: 'O que devo fazer se eu já tiver o Firebird instalado no meu computador?', a: ['O manual recomenda desinstalar qualquer outra versão do Firebird antes de iniciar a instalação. Para isso, vá em <strong>Iniciar > Painel de Controle > Programas e Recursos</strong>, encontre o Firebird na lista, clique com o botão direito e desinstale.'] },
+  { id: 'faq57', q: 'Posso testar o software antes de registrar?', a: ['Sim. Após a instalação, na tela de registro, você pode clicar na opção <strong>AVALIAR por 61 dias</strong> para utilizar o software em um período de avaliação.'] },
+  { id: 'faq58', q: 'Como faço o registro do software após a instalação?', a: ['Para receber o registro, você pode acessar o site <strong>www.bitmax.com.br</strong> e preencher o menu REGISTRO informando o número do Controle Interno. Alternativamente, pode enviar os dados da empresa e o número do Controle Interno por fax para (75) 3030-1577 ou para o e-mail suporte@bitmax.com.br.'] },
+  { id: 'faq59', q: 'O que preciso fazer na tela de Configurações da Licenciada após a instalação?', a: ['É necessário preencher os campos vazios e, principalmente, corrigir o campo da cidade, pois por padrão ele pode vir incorreto. Após selecionar a cidade e o estado corretos, você deve ir na aba <strong>4 - Dados Complementares</strong> e clicar no botão atualizar Endereço padrão. Para emitir NF-e/NFC-e, os campos Reg. Municipal, CNAE e CRT devem ser preenchidos corretamente.'] },
+  { id: 'faq60', q: 'Para que serve o cadastro de Cobradores?', a: ['Este módulo é utilizado caso sua empresa trabalhe com terceirização para realizar cobranças. Ele também pode ser usado para controlar diferentes tipos de carteiras de cobrança, como Carteira Própria, Cobrança Bradesco, etc.'] },
+  { id: 'faq61', q: 'Por que é importante cadastrar o Contador corretamente?', a: ['O cadastro da contabilidade que presta serviços para sua empresa é fundamental, pois os dados informados, principalmente o número do registro CRC e o CPF/CNPJ, são utilizados na geração de obrigações fiscais como Sintegra e SPED Fiscal.'] },
+  { id: 'faq62', q: 'Como o sistema organiza os produtos?', a: ['O sistema utiliza um sistema de <strong>Grupos e Subgrupos</strong> para catégorizar os produtos. Por exemplo, você pode criar um grupo CALÇAS e dentro dele subgrupos para cada marca ou tipo (ex: JEANS, SOCIAL).'] },
+  { id: 'faq63', q: 'Qual a diferença entre Nome Compl. e Nome Contábil no cadastro de produtos?', a: ['O <strong>Nome Compl.</strong> é a descrição ou referência que você usa internamente para o produto. O <strong>Nome Contábil</strong> é como o produto é referênciado na Nota Fiscal Eletrônica (NF-e).'] },
+  { id: 'faq64', q: 'O que significam os status Ativo, Inativo e Cancelado no cadastro de produtos?', a: ['• <strong>Ativo:</strong> Aplica-se a produtos que estão disponíveis para venda.', '• <strong>Inativo:</strong> Para produtos que não têm mais estoque ou que saíram de linha e não serão mais revendidos.', '• <strong>Cancelado:</strong> Utilizado para produtos que não são mais comercializados pela empresa de forma definitiva.'] },
+  { id: 'faq65', q: 'Para que serve a Tabela de Preços no cadastro de produtos?', a: ['Esta funcionalidade permite que um mesmo produto tenha diferentes preços de venda. É útil para criar tabelas de preço diferenciadas por cliente ou para definir preços de varejo e atacado.'] },
+  { id: 'faq66', q: 'Onde devo cadastrar a Placa do Veículo da transportadora?', a: ['No cadastro de <strong>Transportadoras</strong>, acesse a aba <strong>4-Dados Complementares</strong>. O preenchimento do campo Placa do Veículo é essencial para o tratamento fiscal na emissão de NF-e.'] },
+  { id: 'faq67', q: 'Como posso definir comissões para os vendedores?', a: ['No cadastro de <strong>Vendedores</strong>, acesse a aba <strong>2-Dados complementares do Vendedor</strong>. Nela, você pode definir os percentuais de Comissão a Vista e Comissão a Prazo para cada vendedor.'] },
+  { id: 'faq68', q: 'Para que serve o cadastro de Zona de Vendas?', a: ['Este módulo permite organizar as vendas por região. Se sua empresa possui filiais ou atua em diferentes localidades, você pode criar zonas para cada uma delas, descrevendo-as pelo nome da rua ou da cidade.'] },
+  { id: 'faq69', q: 'Como o sistema funciona para faturamento de madeireiras?', a: ['O sistema possui uma função específica no módulo Faturamento para o comércio de madeira. Ao lançar o produto, o sistema abre campos para inserir <strong>Quantidade, Comprimento, Largura e Espessura</strong>. Com base nessas medidas, ele calcula o volume em metros cúbicos (M3) e o valor final da venda automaticamente.'] },
+  { id: 'faq70', q: 'Como aplico um desconto no Faturamento?', a: ['Você pode aplicar o desconto de duas formas:', '• <strong>Por Item:</strong> Após lançar o produto, clique em Percentual, digite a porcentagem e clique em Aplicar.', '• <strong>No Total da Nota:</strong> Após lançar todos os itens, no rodapé da tela, há um campo para inserir um desconto total, que pode ser em percentual (%) ou em valor (R$).'] },
+  { id: 'faq71', q: 'Quais são as teclas de atalho para buscar produtos na Venda Rápida?', a: ['Na tela de Venda Rápida, você pode usar os seguintes atalhos:', '• <strong>Ctrl + B:</strong> Busca por código de barras.', '• <strong>Ctrl + C:</strong> Busca por código do produto.', '• <strong>Ctrl + N:</strong> Busca por nome do produto.', '• <strong>Ctrl + P:</strong> Busca por produto pesado.', '• <strong>Ctrl + R:</strong> Busca por referência.'] },
+  { id: 'faq72', q: 'Como finalizo o pagamento e emito a nota na Venda Rápida?', a: ['• Para iniciar o recebimento, tecle <strong>F9</strong> e informe a forma de pagamento.', '• Para transmitir a nota (NFC-e), tecle <strong>CTRL + F9</strong>.', '• Para apenas imprimir o pedido (sem valor fiscal), tecle <strong>CTRL + F8</strong>.'] },
+  { id: 'faq73', q: 'Para que serve o relatório Curva ABC de Clientes?', a: ['Este relatório organiza os clientes com base no valor de compra em um determinado período, começando pelos que mais compraram. Ele ajuda a identificar seus clientes mais importantes e a criar ações de marketing e fidelização direcionadas.'] },
+  { id: 'faq74', q: 'O que o relatório Curva ABC de Produtos mostra?', a: ['Este relatório lista os produtos em ordem de maior movimentação (venda) em um período, mostrando a quantidade, o valor e a participação percentual de cada um. É uma ferramenta essencial para tomar decisões sobre compras, reposição e controle de estoque.'] },
+  { id: 'faq75', q: 'O que significa o status com círculo laranja ao vincular um item do XML?', a: ['Um círculo laranja no status indica que o produto precisa ser atualizado ou que há campos obrigatórios não preenchidos no seu cadastro.'] },
+  { id: 'faq76', q: 'Posso fazer uma devolução parcial para um fornecedor?', a: ['Sim. No módulo <strong>Notas de Devolução/Retorno/Ajuste</strong>, você tem a opção de realizar uma devolução total ou parcial de uma nota de compra.'] },
+  { id: 'faq77', q: 'O que é um Título a Receber?', a: ['É um documento que representa uma promessa de pagamento. Ele formaliza a obrigação do comprador de pagar, dentro de um prazo, a importância de uma fatura de venda de mercadoria ou serviço.'] },
+  { id: 'faq78', q: 'Como posso parcelar uma venda em vários títulos?', a: ['Utilize o módulo <strong>Gerar Títulos em Massa (a receber)</strong>. Nele, você informa o cliente, o valor total, a quantidade de parcelas e a data de vencimento da primeira, e o sistema gera todos os títulos automaticamente.'] },
+  { id: 'faq79', q: 'O que fazer se eu dei baixa em um título por engano?', a: ['O sistema possui o módulo <strong>Cancelar Baixas de Títulos</strong>. Basta localizar o cliente e o título em questão e clicar em Excluir Última Baixa do Título para reverter a operação.'] },
+  { id: 'faq80', q: 'Quais tipos de despesas devo lançar diretamente no Movimento do Caixa?', a: ['Lançamentos que não são provenientes de compras de mercadorias ou vendas, como pagamento de salários, impostos, aluguel, contas de energia, água, telefone, matérial de escritório, entre outros, devem ser lançados diretamente neste módulo.'] },
+  { id: 'faq81', q: 'Como posso fechar o caixa do dia?', a: ['Acesse <strong>Financeiro > Gerenciamento do Caixa > Ferramentas > Fechamento do Dia</strong>. Verifique se a data está correta e clique em Fechar Dia para concluir a operação.'] },
+  { id: 'faq82', q: 'É possível fazer um lançamento financeiro em uma data passada?', a: ['Sim. Utilize a ferramenta <strong>Efetuar Lançamento em Data Retroativa</strong>. Selecione a data desejada e clique em Abrir Dia para poder registrar movimentações nessa data.'] },
+  { id: 'faq83', q: 'Para que serve a ferramenta Carga na Balança?', a: ['Este módulo permite realizar a atualização do preço de produtos que são vendidos por peso, enviando as informações para a balança.'] },
+  { id: 'faq84', q: 'Onde ficam salvos os arquivos ao usar a função Exportação de Cadastro?', a: ['Após a exportação, é criada uma pasta chamada <strong>EXPORTAÇÃO DE CADASTRO</strong> dentro do diretório de instalação do sistema (normalmente em C:\\Bitmax\\BitmaxEmpresarial\\Bin). Os arquivos exportados estarão nessa pasta no formato XML.'] },
+  { id: 'faq85', q: 'O que são os Parâmetros do Sistema?', a: ['É uma seção de configuração onde são definidas as regras e padrões de funcionamento do sistema. As configurações de tributos, compras, financeiro, faturamento e NF-e são feitas aqui e são determinantes para o cálculo correto de notas e relatórios.'] },
+  { id: 'faq86', q: 'Posso permitir que o vendedor altere o preço do produto na Venda Rápida (PDV)?', a: ['Sim. Essa permissão é configurável. Vá em <strong>Ferramentas > Parâmetros do Sistema > PDV</strong>, acesse a aba GERAL e marque a opção Digitar preço na venda. Grave as configurações e reinicie o sistema.'] },
+  { id: 'faq87', q: 'O que acontece se eu não aceitar os Termos de Licença?', a: ['Se você não aceitar os termos, não deve usar o software. É preciso devolvê-lo ao revendedor para receber um reembolso ou crédito.'] },
+  { id: 'faq88', q: 'O software é vendido ou licenciado?', a: ['O software é <strong>licenciado, não vendido</strong>. O contrato apenas oferece a você alguns direitos de uso, e a BITMAX se reserva todos os outros direitos.'] },
+  { id: 'faq89', q: 'Quais leis brasileiras protegem este software?', a: ['Este software é protegido pela Lei dos Direitos Autorais (Lei 9.610/98) e pela Lei do Software (Lei 9.609/98).'] },
+  { id: 'faq90', q: 'Por quanto tempo o contrato de licença é válido?', a: ['O contrato permanecerá em vigor por prazo <strong>indeterminado</strong>, a menos que seja rescindido por violação dos termos.'] },
+  { id: 'faq91', q: 'Qual é o limite de indenização que posso receber da Bitmax por danos?', a: ['Você pode recuperar da BITMAX e de seus revendedores apenas danos diretos, limitados ao <strong>valor efetivamente pago por você pelo software</strong>. Não é possível recuperar outros danos, como lucros cessantes ou danos incidentais.'] },
+  { id: 'faq92', q: 'A Bitmax garante o funcionamento do software em equipamentos inadequados?', a: ['Não. A Bitmax não se responsabiliza pelo desempenho do software caso o usuário utilize equipamento/plataforma de software inadequada, hardware de origem duvidosa ou não atualize seu sistema operacional.'] },
+  { id: 'faq93', q: 'Quais equipamentos opcionais podem ser usados com o sistema?', a: ['Você pode utilizar equipamentos opcionais como Impressora Matricial ou Térmica e Leitora óptica serial.'] },
+  { id: 'faq94', q: 'Onde devo colocar o arquivo de instalação antes de executá-lo?', a: ['Você deve copiar e colar o arquivo Bitmaxinstall Empresarial no <strong>disco local (C:)</strong> do seu computador antes de executar o instalador.'] },
+  { id: 'faq95', q: 'O que a instalação do Firebird cria no meu computador?', a: ['Durante a instalação, o sistema cria uma pasta chamada Bitmax que é responsável por armazenar todas as informações necessárias para o funcionamento do software.'] },
+  { id: 'faq96', q: 'Qual é o caminho de instalação padrão para o Bitmax Empresarial?', a: ['O caminho de instalação padrão sugerido pelo instalador é <strong>C:\\Bitmax\\BitmaxEmpresarial</strong>.'] },
+  { id: 'faq97', q: 'O sistema cria um usuário padrão no primeiro acesso?', a: ['Sim. Durante as configurações iniciais, o sistema cria um usuário padrão para o primeiro acesso. É importante que você anote o LOGIN e a SENHA criados neste momento para poder acessar o sistema.'] },
+  { id: 'faq98', q: 'Qual o grupo de permissões do primeiro usuário criado?', a: ['O primeiro usuário é automaticamente incluído no grupo de <strong>ADMINISTRADORES</strong>, que permite realizar todas as operações do sistema.'] },
+  { id: 'faq99', q: 'Para que serve o botão Pesquisar nas telas de cadastro?', a: ['O botão <strong>Pesquisar</strong> permite buscar por registros (clientes, produtos, etc.) que já foram cadastrados anteriormente no sistema.'] },
+  { id: 'faq100', q: 'Para que serve o cadastro de Formas de Pagamento?', a: ['Neste módulo você cadastra todas as formas de pagamento que sua empresa aceita, como por exemplo: Cartão, Cheque, Dinheiro, Pix, etc.'] },
+  { id: 'faq101', q: 'Onde posso registrar observações sobre um fornecedor?', a: ['No cadastro de <strong>Fornecedores</strong>, você pode usar a aba <strong>1-Anotações</strong> para inserir qualquer observação relevante sobre o fornecedor.'] },
+  { id: 'faq102', q: 'Como vejo o histórico de compras de um fornecedor específico?', a: ['Dentro do cadastro do fornecedor, acesse a aba <strong>6-Compras</strong>. Esta aba listará todas as compras que você já realizou com aquele fornecedor.'] },
+  { id: 'faq103', q: 'O que é a Alíquota de ICMS no cadastro de produto?', a: ['É o campo onde deve ser informada a alíquota de ICMS (Imposto sobre Circulação de Mercadorias e Serviços) do produto, que deve ser definida de acordo com o regime tributário da sua empresa. Esta informação deve ser fornecida pela sua contabilidade.'] },
+  { id: 'faq104', q: 'Para que serve o campo Estoque Mínimo no cadastro de produtos?', a: ['Serve para informar uma quantidade mínima de segurança para o produto em estoque. Isso ajuda a evitar que o estoque fique negativo e facilita a criação de relatórios para reposição de mercadorias.'] },
+  { id: 'faq105', q: 'O que é o Fornecedor Master no cadastro de produtos?', a: ['É o campo onde você deve informar o <strong>fornecedor principal</strong> do produto que está sendo cadastrado.'] },
+  { id: 'faq106', q: 'Para que serve o campo Mensagem p/ Nota no cadastro de produtos?', a: ['Serve para definir uma mensagem que aparecerá no rodapé da nota fiscal quando aquele produto for vendido, como Obrigado pela preferência! ou informações sobre devolução.'] },
+  { id: 'faq107', q: 'O que significa a opção Item Pesado? no cadastro de produtos?', a: ['Esta opção deve ser marcada se o item cadastrado é vendido por peso (Kg), para integração com balanças.'] },
+  { id: 'faq108', q: 'O que são os campos Reg. NCM e Reg. CEST nos detalhes fiscais do produto?', a: ['São campos para códigos de classificação fiscal. <strong>NCM</strong> (Nomenclatura Comum do Mercosul) e <strong>CEST</strong> (Código Especificador da Substituição Tributária) são informações obrigatórias para a emissão de notas fiscais e devem ser fornecidas pela sua contabilidade.'] },
+  { id: 'faq109', q: 'Para que serve o cadastro de Ramo de Atividade?', a: ['Neste campo deve ser cadastrado o ramo de atividade no qual a sua empresa atua, como INDÚSTRIA, COMÉRCIO, SERVIÇOS, etc.'] },
+  { id: 'faq110', q: 'Onde registro o histórico de relacionamento com uma transportadora?', a: ['No cadastro da transportadora, utilize a aba <strong>5-Histórico de Relacionamento</strong> para registrar observações importantes, como horários de entrega preferênciais ou formas de pagamento aceitas por ela.'] },
+  { id: 'faq111', q: 'Para que serve a aba Compras/Vendas no menu de Cadastros?', a: ['Esta aba agrupa cadastros auxiliares que são essenciais para as operações de compra e venda, como Alíquotas de ICMS, Classificação Fiscal, Natureza de Operação (CFOP) e Unidades Físicas.'] },
+  { id: 'faq112', q: 'Onde cadastro os motivos para devolução de produtos?', a: ['Acesse <strong>Cadastros > Compras/Vendas > Motivos das Devoluções</strong>. É recomendado que os textos sejam padronizados com o auxílio da sua contabilidade para facilitar auditorias.'] },
+  { id: 'faq113', q: 'O que é Natureza de Operação?', a: ['É o cadastro dos códigos <strong>CFOP</strong> (Código Fiscal de Operações e Prestações), que definem o tipo de operação da nota (venda, compra, devolução, etc.). Este cadastro deve ser feito com base na legislação e com o auxílio da sua contabilidade.'] },
+  { id: 'faq114', q: 'Onde devo cadastrar as Unidades Físicas como KG, LITRO, METRO?', a: ['Este cadastro é feito em <strong>Cadastros > Compras/Vendas > Unidades Físicas</strong>. É importante utilizar os padrões aceitos pelo SPED Fiscal, conforme orientação da sua contabilidade.'] },
+  { id: 'faq115', q: 'Qual a finalidade do cadastro de Agências Bancárias?', a: ['Neste módulo você cadastra os dados das agências bancárias com as quais sua empresa se relaciona, informação necessária para emissão de boletos ou controle de cheques, por exemplo.'] },
+  { id: 'faq116', q: 'O que é o cadastro de Emitentes de Cheques (Sacados)?', a: ['É um módulo para cadastrar as informações de cheques que sua empresa utiliza para pagamentos. Manter este cadastro atualizado é importante para rastrear cheques compensados e facilitar o controle financeiro.'] },
+  { id: 'faq117', q: 'O que o manual informa sobre o módulo Modelo de Bloqueto?', a: ['O manual informa que este módulo será retirado do sistema.'] },
+  { id: 'faq118', q: 'Posso usar o módulo Faturamento para criar um orçamento?', a: ['Sim. O módulo Faturamento permite a emissão de um pedido de venda que pode ser utilizado como orçamento antes de se tornar um documento fiscal.'] },
+  { id: 'faq119', q: 'O que acontece se eu aplicar um desconto geral na nota após já ter dado desconto em um item?', a: ['O desconto geral será ratéado entre todos os produtos da nota. Isso significa que o produto que já recebeu um desconto individual sofrerá um novo desconto (referente ao ratéio do desconto geral).'] },
+  { id: 'faq120', q: 'Para que serve o módulo Reajuste de Preços?', a: ['Este módulo permite reajustar o preço de venda dos produtos de forma organizada, aplicando o reajuste por subgrupo.'] },
+  { id: 'faq121', q: 'Como reverto um reajuste de preço que foi aplicado?', a: ['Utilize o módulo <strong>Cancelamento do Reajuste</strong>, localizado no menu Vendas. Você deve selecionar o mesmo subgrupo que sofreu o reajuste para cancelar a alteração.'] },
+  { id: 'faq122', q: 'Qual a diferença entre Outras Saídas e Faturamento?', a: ['O módulo Outras Saídas possui a mesma função do Faturamento, mas com opções fiscais adicionais para casos específicos, como NF-e Complementar, NF-e de Ajuste, Devolução, Exportação, entre outros.'] },
+  { id: 'faq123', q: 'Para que serve o relatório Clientes sem compras?', a: ['Este relatório permite identificar, a partir de um período determinado, quais clientes não estão comprando. Com base nele, você pode traçar um planejamento para reativar esses clientes.'] },
+  { id: 'faq124', q: 'Como o relatório de Comissão de Vendedores funciona?', a: ['Este relatório calcula e exibe o valor da comissão de cada vendedor dentro de um período especificado. Para que funcione corretamente, é necessário que o percentual de comissão esteja definido no cadastro do vendedor e que o vendedor seja identificado em cada pedido de venda.'] },
+  { id: 'faq125', q: 'Qual a utilidade do relatório Compras do Cliente?', a: ['Ele permite visualizar todo o histórico de compras de um cliente específico, incluindo quais produtos ele compra e com que frequência. Isso ajuda a identificar oportunidades de novas vendas e a direcionar ações de marketing.'] },
+  { id: 'faq126', q: 'O que o relatório de Posição do Estoque permite analisar?', a: ['Este relatório permite analisar o estoque com base em diversos critérios, como produtos com quantidade zerada, produtos com maior saída, entre outros.'] },
+  { id: 'faq127', q: 'O que é o Registro de Inventário?', a: ['É um relatório fiscal que corresponde ao livro de registro de inventário. Ele pode ser filtrado por produtos em estoque, zerados, negativos, etc.'] },
+  { id: 'faq128', q: 'Qual é a consequência de não tratar corretamente as trocas e devoluções no estoque?', a: ['Segundo o manual, sem o tratamento adequado de trocas, devoluções e avarias, o fisco pode entender a situação como <strong>sonegação de saída e, por consequência, de entrada</strong>.'] },
+  { id: 'faq129', q: 'O que é a Baixa de Títulos em Lote?', a: ['É uma funcionalidade que permite que vários títulos a receber sejam baixados (marcados como pagos) ao mesmo tempo, agilizando o processo de conciliação financeira.'] },
+  { id: 'faq130', q: 'Como posso prorrogar o vencimento de um título a receber?', a: ['Acesse <strong>Financeiro > Contas a Receber > Prorrogação de Vencimento de Títulos</strong>. Localize o cliente e o título, modifique a data para o novo vencimento e confirme a operação.'] },
+  { id: 'faq131', q: 'O que é um Carnê e como emiti-lo?', a: ['O carnê é um conjunto de boletos para pagamento parcelado. Para emiti-lo, vá em <strong>Financeiro > Contas a Receber > Consultas/Relatórios > Emissão de Carnê</strong>. Selecione o cliente, o período, e clique em OK para gerar.'] },
+  { id: 'faq132', q: 'O que é uma Duplicata?', a: ['A duplicata é um título de crédito originado a partir de uma fatura de venda mercantil a prazo ou de prestação de serviços. Ela pode ser protestada por falta de pagamento quando vencida.'] },
+  { id: 'faq133', q: 'Qual a utilidade do relatório Análise Receitas X Despesas?', a: ['Este relatório é uma ferramenta de tomada de decisão que compara o faturamento/recebimento com os custos reais da empresa dentro de um período. Ele mostra a relação Receitas X Despesas em percentual (%) e em valor, indicando os maiores gastos do negócio.'] },
+  { id: 'faq134', q: 'Como faço para trocar de usuário sem fechar o sistema?', a: ['Acesse o menu <strong>Ferramentas > Efetuar Login</strong>. Isso permitirá que outro colaborador entre com seu nome de usuário e senha, assumindo as permissões de acesso correspondentes.'] },
+  { id: 'faq135', q: 'É importante trocar a senha dos usuários periodicamente?', a: ['Sim. O manual salienta a importância de criar uma rotina semanal ou mensal de troca de senha para evitar a quebra de sigilo do uso das senhas.'] },
+  { id: 'faq136', q: 'Para que serve a ferramenta Consulta Produto?', a: ['É uma ferramenta de acesso rápido que permite consultar informações dos seus produtos, como estoque disponível, preço de venda, etc., sem precisar entrar na tela completa de cadastro.'] },
+  { id: 'faq137', q: 'Onde devo inserir o CNAE e o CRT da minha empresa?', a: ['Essas informações devem ser preenchidas na tela de <strong>Configurações da Licenciada</strong>. Acesse a aba <strong>4-Dados Complementares</strong> e insira os dados nos campos CNAE e CRT. Em caso de dúvida, verifique com seu contador.'] },
+  { id: 'faq138', q: 'Qual a função dos botões padronizados nas telas de cadastro?', a: ['Esses botões têm funções comuns em todos os módulos de cadastro:', '• <strong>Novo:</strong> Permite iniciar um novo registro.', '• <strong>Alterar:</strong> É usado para editar um cadastro que já está salvo na tela.', '• <strong>Cancelar:</strong> Cancela a operação de inclusão ou alteração que está em andamento.', '• <strong>Gravar:</strong> Salva as informações que foram inseridas ou alteradas.', '• <strong>Pesquisar:</strong> Abre uma tela para buscar cadastros já existentes.', '• <strong>Excluir:</strong> Permite eliminar o registro que está visível na tela.'] },
+  { id: 'faq139', q: 'Como edito um cadastro já existente?', a: ['Primeiro, use o botão <strong>Pesquisar</strong> para localizar e carregar o cadastro na tela. Em seguida, clique no botão <strong>Alterar</strong> para habilitar a edição dos campos. Após fazer as modificações, clique em <strong>Gravar</strong>.'] },
+  { id: 'faq140', q: 'Para que serve a aba Histórico de Relacionamento no cadastro de fornecedores?', a: ['É um campo de edição livre para registrar particularidades sobre o fornecedor, como por exemplo: NA DATA 24/05/2015 O FORNECEDOR ENVIOU A NOTA FISCAL FALTANDO ALGUNS ITENS. As informações aqui inseridas só podem ser visualizadas dentro do cadastro do fornecedor.'] },
+  { id: 'faq141', q: 'O que o campo A Utilização no cadastro de produtos permite fazer?', a: ['Neste campo, você pode referênciar o produto com suas propriedades específicas. Por exemplo, se sua empresa vende pneus, você pode definir para qual modelo de carro cada pneu é indicado.'] },
+  { id: 'faq142', q: 'Como o sistema lida com um produto do tipo Composição no estoque?', a: ['O sistema não gera estoque para o produto final do tipo Composição. A baixa no estoque ocorre diretamente na matéria-prima (componentes) no momento em que a venda do produto final é realizada.'] },
+  { id: 'faq143', q: 'Como configuro um produto para que ele possa ter o estoque negativo?', a: ['A configuração de estoque negativo é feita no subgrupo do produto. Habilite a opção Permitir negativo: Sim para que as vendas não sejam bloqueadas por falta de estoque.'] },
+  { id: 'faq144', q: 'Como configuro uma mensagem padrão para aparecer na nota fiscal de um produto específico?', a: ['No cadastro do produto, na aba <strong>2-Detalhes Adm.II</strong>, utilize o campo Mensagem p/Nota. A mensagem selecionada aqui aparecerá no rodapé da nota fiscal sempre que este produto for vendido.'] },
+  { id: 'faq145', q: 'Qual a finalidade do relatório Totalizador por CFOP/Saídas?', a: ['Este relatório fornece um resumo das vendas agrupadas por CFOP (Código Fiscal de Operações e Prestações) dentro de um período, o que é útil para análises fiscais.'] },
+  { id: 'faq146', q: 'Para que serve o relatório Produtos sem Venda?', a: ['Este relatório lista os produtos que não tiveram nenhuma venda dentro do período que você especificar, ajudando a identificar itens parados no estoque.'] },
+  { id: 'faq147', q: 'O que significa o ícone com círculo verde na tela de importação de XML de compra?', a: ['O círculo verde na barra de status informa que o item do XML foi cadastrado e vinculado com sucesso no sistema.'] },
+  { id: 'faq148', q: 'Como o sistema auxilia no controle do Livro Caixa?', a: ['O Livro Caixa registra, de forma cronológica, todos os recebimentos e pagamentos da empresa. Ele se destina ao controle exclusivo das entradas e saídas da conta Caixa, auxiliando no controle financeiro e na declaração de impostos.'] },
+  { id: 'faq149', q: 'Posso lançar cheques pré-datados no Livro Caixa?', a: ['Não. O manual orienta a não registrar rendimentos futuros, como notas que ainda não compensaram ou cheques pré-datados, pois o Livro Caixa deve refletir o controle real da empresa.'] },
+  { id: 'faq150', q: 'Como crio um novo caixa no sistema?', a: ['Acesse <strong>Financeiro > Gerenciamento do Caixa > Caixas do Sistema</strong>. Na tela que se abre, você pode criar um novo caixa ou pesquisar por um já existente.'] },
+  { id: 'faq151', q: 'Como abro o livro de um caixa existente?', a: ['Na tela Caixas do Sistema, selecione o caixa desejado e clique no botão <strong>Abrir novo Livro de Caixa</strong>. Em seguida, confirme a operação.'] },
+  { id: 'faq152', q: 'Para que serve o relatório Variação Diária?', a: ['Este relatório exibe os valores totais de entradas, saídas, saldo e o valor acumulado referentes a um dia específico, permitindo uma análise rápida da movimentação diária do caixa.'] },
+  { id: 'faq153', q: 'O que são Históricos Padronizados no módulo financeiro?', a: ['São descrições padrão para registrar fatos semelhantes (ex: Pagamento de Salário, Recebimento de Duplicata). Cadastrá-los permite agilizar e uniformizar os lançamentos no Movimento do Caixa.'] },
+  { id: 'faq154', q: 'Como o sistema ajuda a proteger a segurança das informações?', a: ['A segurança da informação é tratada através de um sistema de <strong>Usuários, Grupos e Permissões</strong>. Isso permite definir quais acessos e funções cada colaborador pode ter, preservando a confidencialidade e a integridade dos dados.'] },
+  { id: 'faq155', q: 'Onde devo guardar meu arquivo de backup?', a: ['Além de salvar o backup no próprio computador, o manual recomenda colocar o arquivo em um <strong>pen drive</strong> e também em um <strong>armazenamento virtual na internet</strong> (nuvem) para maior segurança.'] },
+  { id: 'faq156', q: 'Para que serve a ferramenta Etiquetas?', a: ['Este módulo permite fazer a gestão, configuração e emissão de etiquetas para os produtos cadastrados no sistema.'] },
+  { id: 'faq157', q: 'Quais cadastros eu posso exportar do sistema?', a: ['Você pode exportar os cadastros de CLIENTES, FORNECEDORES, TRANSPORTADORAS, GRUPOS, PRODUTOS e TIPOS DE DOCUMENTO.'] },
+  { id: 'faq158', q: 'O que devo fazer se ocorrer um erro ao gerar o arquivo Sintegra?', a: ['Se ocorrer um erro, você deve verificar qual foi o tipo e a origem do problema para corrigi-lo. Após o ajuste, gere o arquivo novamente. É comum que os erros estejam relacionados a cadastros fora do padrão exigido.'] },
+  { id: 'faq159', q: 'O que é o PVA (Programa Validador e Assinador)?', a: ['É um programa fornecido pelo SPED que deve ser usado para importar e validar o arquivo do SPED Fiscal gerado pelo sistema Bitmax. Ele também é usado para assinar digitalmente e transmitir o arquivo para o fisco.'] },
+  { id: 'faq160', q: 'O que acontece se eu não entregar o arquivo SPED Fiscal no prazo?', a: ['A não entrega do arquivo no prazo pré-estabelecido implica em <strong>multas e sanções legais</strong>.'] },
+  { id: 'faq161', q: 'Como o sistema atualiza a lista de pedidos para emissão de NF-e?', a: ['Na tela de Nota Eletrônica, você deve clicar no botão <strong>Atualizar</strong> para que todos os pedidos de venda pendentes de emissão apareçam na lista.'] },
+  { id: 'faq162', q: 'O que é a Rejeição 695?', a: ['Rejeição 695: Informado indevidamente o grupo de ICMS para a UF de destino. Os produtos tributados e substituídos devem estar com a configuração do DIFAL. Caso esteja configurado, as possíveis causas são:', '1. Operação Estadual (idDest = 1) ou com Exterior (idDest = 3);', '2. Operação com Consumidor Normal (indFinal = 0);', '3. Operação com Contribuinte (indIEDest = 1) ou com Contribuinte Isento (indIEDest = 2);', '4. Operação de prestação de serviços (ISSQN);', '5. Operação com combustível derivado de petróleo.'] },
+  { id: 'faq163', q: 'Como configurar o DIFAL?', a: ['<strong>Condições para o cálculo do DIFAL:</strong>', '• Venda de mercadoria interestadual.', '• Consumidor final e não contribuinte.', '• Para empresas no regime normal, o CST deve ser: <strong>00, 20, 40, 41 ou 60</strong>.', '• Para empresas enquadradas no Simples, o CSOSN deve ser: <strong>102, 103, 300, 400 ou 500</strong>.', '<strong>COMO CONFIGURAR?</strong>', '<ol><li>Pegue o valor da tabela de ICMS para o estado de destino.</li><li>Coloque o valor no campo <strong>Percentual de ICMS</strong>.</li><li>Localize o valor do percentual Interno aplicado no destino.</li><li>Com o valor obtido, coloque no campo <strong>Percentual de ICMS Interno</strong>.</li><li>O percentual do FCP deverá ser indicado pela contabilidade, normalmente <strong>2%</strong>.</li></ol>'] },
+  { id: 'faq164', q: 'Como configurar ST (Substituição Tributária)?', a: ['<strong>Passos para configurar a Substituição Tributária (ST):</strong>', '<ol><li>Pegue o valor da tabela de ICMS para o estado de destino.</li><li>Coloque o valor no campo <strong>Percentual de ICMS</strong>.</li><li>Preencha os valores de MVA física e jurídica.</li><li>Localize o valor do percentual Interno aplicado no destino.</li><li>Com o valor obtido, coloque no campo <strong>Perc. Interno Subs.</strong>.</li><li>Para calcular o FCP, coloque o mesmo percentual obtido anteriormente no campo ICMS aplicado na FCP.</li><li>OBS: O percentual do FCP deverá ser indicado pela contabilidade, normalmente <strong>2%</strong>.</li></ol>'] },
+  { id: 'faq165', q: 'Como emitir nota para um cliente de fora do estado com CFOP de dentro do estado?', a: ['<strong>Configurações necessárias:</strong>', '<ol><li>Configure na aba 3 do faturamento:</li><li>Presença do comprador: 1</li><li>Destino da Operação: 1</li><li>Indicador da operação: 1</li></ol>', '<strong>Exceção:</strong> Se a tag modFrete foi informada com 9 - Sem frete: CFOP iniciado com 5 é válido.'] },
+  { id: 'faq166', q: 'Como configurar a tag IndIEDest no XML?', a: ['Indicação de IE (Inscrição Estadual) do destinatário. Quando é 1, 2 ou 9?', '1 = Contribuinte ICMS (informar a IE do destinatário);', '2 = Contribuinte isento de Inscrição no cadastro de Contribuintes do ICMS;', '9 = Não Contribuinte, que pode ou não possuir Inscrição Estadual.', '<strong>Solução:</strong>', 'Se o cliente for do exterior (Sigla Estado = EX), a tag será = 9;', 'Se o cliente é contribuinte de ICMS e a IE = ISENTO ou em branco, a tag será = 2;', 'Se o cliente é contribuinte de ICMS e possui IE, a tag será = 1;', 'Se o cliente não é contribuinte de ICMS, a tag será = 9;'] }
+];
+
+function renderFaqBody() {
+  let html = '<div class="doc-section"><p>Encontre respostas para as duvidas mais comuns sobre o sistema Bitmax Empresarial. Clique em uma pergunta para ver a resposta.</p></div>';
+  faqData.forEach(item => {
+    const answerHtml = item.a.map(p => '<p>' + p + '</p>').join('');
+    html += '<div class="faq-item" id="' + item.id + '">';
+    html += '<button class="faq-question-btn" onclick="toggleFaq(this)">';
+    html += '<span>' + item.q + '</span>';
+    html += '<svg class="faq-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>';
+    html += '</button>';
+    html += '<div class="faq-answer">' + answerHtml + '</div>';
+    html += '</div>';
+  });
+  return html;
+}
+
+function toggleFaq(btn) {
+  const answer = btn.nextElementSibling;
+  const isOpen = answer.classList.contains('open');
+  // Close all
+  document.querySelectorAll('.faq-answer.open').forEach(el => el.classList.remove('open'));
+  document.querySelectorAll('.faq-question-btn.active').forEach(el => el.classList.remove('active'));
+  // Toggle current
+  if (!isOpen) {
+    answer.classList.add('open');
+    btn.classList.add('active');
+  }
+}
+
+function showFaqItem(faqId) {
+  showArticle('faq');
+  setTimeout(() => {
+    const el = document.getElementById(faqId);
+    if (el) {
+      // Close all first
+      document.querySelectorAll('.faq-answer.open').forEach(e => e.classList.remove('open'));
+      document.querySelectorAll('.faq-question-btn.active').forEach(e => e.classList.remove('active'));
+      // Open this one
+      const btn = el.querySelector('.faq-question-btn');
+      const answer = el.querySelector('.faq-answer');
+      if (btn && answer) {
+        answer.classList.add('open');
+        btn.classList.add('active');
+      }
+      el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  }, 100);
+}
+
+const articles = {
+
+'home': {
+  type: 'home'
+},
+
+'estrutura-sistema': {
+  module: 'Sistema',
+  title: 'Estrutura do BitMAX Empresarial',
+  desc: 'Visão geral de todos os módulos e funcionalidades disponíveis no sistema.',
+  body: `
+  <div class="doc-section">
+    <p>O BitMAX Empresarial organiza suas funcionalidades em seis menus principais localizados na parte superior do sistema.</p>
+    <div class="struct-tree">
+      <div class="struct-module">
+        <div class="struct-module-header"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg> CADASTRO</div>
+        <div class="struct-items">
+          <span class="struct-tag">Cargos</span><span class="struct-tag">Clientes</span><span class="struct-tag">Colaboradores</span><span class="struct-tag">Contadores</span><span class="struct-tag">Formas de Pagamento</span><span class="struct-tag">Fornecedores</span><span class="struct-tag">Grupos</span><span class="struct-tag">Produtos</span><span class="struct-tag">Ramo de Atividade</span><span class="struct-tag">Transportadoras</span><span class="struct-tag">Vendedores</span><span class="struct-tag">Zona de Vendas</span>
+          <span class="struct-tag" style="background:var(--red-muted);color:var(--red-dark)">Compras e Vendas: Alíquotas ICMS / Classificação Fiscal / Compradores / Mensagem do Produto / Motivos de Devolução / Natureza de Operação / Unidades Físicas / Tributação Federal / ANP / Class. Fiscal IBS e CBS</span>
+          <span class="struct-tag" style="background:var(--red-muted);color:var(--red-dark)">Financeiro: Agências Bancárias / Contas Correntes / Emitentes de Cheques / Modelo de Bloqueto</span>
+        </div>
+      </div>
+      <div class="struct-module">
+        <div class="struct-module-header"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg> VENDAS</div>
+        <div class="struct-items">
+          <span class="struct-tag">Faturamento</span><span class="struct-tag">Outras Saídas</span><span class="struct-tag">Recebimento de Vendas</span><span class="struct-tag">Venda Rápida</span><span class="struct-tag">Cancelamento do Reajuste</span><span class="struct-tag">Reajuste de Preços</span><span class="struct-tag">Reajuste de Preço Unitário</span>
+          <span class="struct-tag" style="background:var(--red-muted);color:var(--red-dark)">Oficina: Abertura de OS / Cadastro de Veículos / Posição de Serviços</span>
+          <span class="struct-tag" style="background:var(--red-muted);color:var(--red-dark)">Relatórios: Curva ABC / Fechamento do Dia / Histórico de Compras / Posição do Faturamento / Tabela de Preços / Vendas em Cartão / Vendas por Produto / Vendas por Vendedor / Pedidos Excluídos / Vendas por NCM e muitos outros</span>
+        </div>
+      </div>
+      <div class="struct-module">
+        <div class="struct-module-header"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/></svg> COMPRAS</div>
+        <div class="struct-items">
+          <span class="struct-tag">Entrada no Estoque</span><span class="struct-tag">Outras Entradas</span><span class="struct-tag">Entrada de CT-e</span>
+          <span class="struct-tag" style="background:var(--red-muted);color:var(--red-dark)">Relatórios: Entradas no Período / Ficha de Balanço / Ficha Kardex / Posição do Estoque / Registro de Inventário / Resumo PIS/COFINS / Sugestão de Compra e outros</span>
+        </div>
+      </div>
+      <div class="struct-module">
+        <div class="struct-module-header"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg> FINANCEIRO</div>
+        <div class="struct-items">
+          <span class="struct-tag" style="background:var(--red-muted);color:var(--red-dark)">Contas a Receber: Registro de Títulos / Baixa / Baixa em Lote / Cancelar Baixas / Prorrogação / Gerar Títulos em Massa / Bloquete / Borderôs / Relatórios</span>
+          <span class="struct-tag" style="background:var(--red-muted);color:var(--red-dark)">Contas a Pagar: Registro / Baixa / Cancelar Baixas / Prorrogação / Substituição / Relatórios</span>
+          <span class="struct-tag" style="background:var(--red-muted);color:var(--red-dark)">Caixa: Movimento / Contador / Históricos Padronizados / Centro de Custo / Consultas / Ferramentas de Caixa</span>
+          <span class="struct-tag">Cheques</span>
+        </div>
+      </div>
+      <div class="struct-module">
+        <div class="struct-module-header"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg> FERRAMENTAS</div>
+        <div class="struct-items">
+          <span class="struct-tag">Efetuar Login</span><span class="struct-tag">Seguranca (Usuários e Permissões)</span><span class="struct-tag">Utilitarios</span><span class="struct-tag">Análise e Diagnóstico</span><span class="struct-tag">Balanço</span><span class="struct-tag">Boleto</span><span class="struct-tag">Carga na Balanca</span><span class="struct-tag">Consulta Produto</span><span class="struct-tag">Etiquetas</span><span class="struct-tag">Exportação de Cadastros</span><span class="struct-tag">Gerar Sintegra</span><span class="struct-tag">Gerar Sped Fiscal</span><span class="struct-tag">Nota Eletronica</span><span class="struct-tag">Parâmetros do Sistema</span><span class="struct-tag">Unificador Sped Contribuicoes</span><span class="struct-tag">Verificar Status do Sefaz</span>
+        </div>
+      </div>
+    </div>
+  </div>`
+},
+
+// ── CADASTRO ──────────────────────────────────────────────────────────────
+'cargos': {
+  module: 'Cadastro',
+  title: 'Cadastro de Cargos',
+  desc: 'Registre os cargos dos colaboradores no sistema.',
+  body: `
+  <div class="doc-section">
+    <div class="path-chip">Cadastros > Cargos</div>
+    <ol class="steps-list">
+      <li>Acesse o menu <strong>Cadastros > Cargos</strong>.</li>
+      <li>Clique em <strong>Novo</strong>.</li>
+      <li>Digite o nome do cargo.</li>
+      <li>Preencha os campos de <strong>Registro</strong> e <strong>CAD</strong>.</li>
+      <li>Clique em <strong>Gravar</strong> para salvar.</li>
+    </ol>
+    <div class="info-box"><div class="info-box-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div><div class="info-box-text"><strong>Resultado</strong>O cargo ficará cadastrado e disponível para vinculação com colaboradores do sistema.</div></div>
+  </div>`
+},
+
+'clientes': {
+  module: 'Cadastro',
+  title: 'Cadastro de Clientes',
+  desc: 'Cadastre clientes com todos os dados fiscais, de entrega e financeiros.',
+  body: `
+  <div class="doc-section">
+    <div class="path-chip">Cadastros > Clientes</div>
+    <ol class="steps-list">
+      <li>Acesse <strong>Cadastros > Clientes</strong>.</li>
+      <li>Clique em <strong>Novo</strong>.</li>
+      <li>Se o cliente possuir CNPJ, clique em <strong>Consultar CNPJ</strong> para preencher os dados automaticamente.</li>
+      <li>Caso não utilize a consulta, preencha manualmente:<br>Nome, Apelido, CPF ou CNPJ, Inscrição Estadual, Ramo de Atividade.</li>
+      <li>Informe também: se e Simples Nacional, se e contribuinte, se e isento.</li>
+      <li>Preencha os dados basicos: Endereco completo, Bairro, Cidade, Numero, CEP, Telefone, E-mail.</li>
+      <li>Se necessário, complete as outras abas: Dados de entrega, Dados de cobrança, Histórico, Financeiro, Compras, Dados fiscais.</li>
+      <li>Apos finalizar, clique em <strong>Gravar</strong>.</li>
+    </ol>
+  </div>
+  <div class="doc-section">
+    <h2><div class="section-num">2</div>Abas Complementares</h2>
+    <div class="field-list">
+      <div class="field-row"><div class="field-name">Dados de entrega</div><div class="field-desc">Endereco e contato para entrega diferente do cadastro principal.</div></div>
+      <div class="field-row"><div class="field-name">Dados de cobrança</div><div class="field-desc">Informacoes para cobrança e títulos financeiros.</div></div>
+      <div class="field-row"><div class="field-name">Histórico</div><div class="field-desc">Observações e histórico de relacionamento com o cliente.</div></div>
+      <div class="field-row"><div class="field-name">Financeiro</div><div class="field-desc">Limite de crédito e condicoes financeiras especificas.</div></div>
+      <div class="field-row"><div class="field-name">Compras</div><div class="field-desc">Histórico e dados de compras do cliente.</div></div>
+      <div class="field-row"><div class="field-name">Dados fiscais</div><div class="field-desc">Configurações tributárias e fiscais do cliente.</div></div>
+    </div>
+  </div>`
+},
+
+'colaboradores': {
+  module: 'Cadastro',
+  title: 'Cadastro de Colaboradores',
+  desc: 'Registre os funcionarios e colaboradores da empresa.',
+  body: `
+  <div class="doc-section">
+    <div class="path-chip">Cadastros > Colaboradores</div>
+    <ol class="steps-list">
+      <li>Acesse <strong>Cadastros > Colaboradores</strong>.</li>
+      <li>Clique em <strong>Novo</strong>.</li>
+      <li>Informe: <strong>Nome</strong>, Apelido ou contato, CPF ou CNPJ, Registro, CAD.</li>
+      <li>Escolha o status: <strong>Ativo</strong>, Inativo ou Cancelado.</li>
+      <li>Preencha o endereço: Rua, Bairro, Cidade, Numero, CEP, Estado, Telefone.</li>
+      <li>Caso necessário, preencha: Tipo de cartão, Tipo de terminal, Dados complementares.</li>
+      <li>Clique em <strong>Gravar</strong>.</li>
+    </ol>
+  </div>`
+},
+
+'contadores': {
+  module: 'Cadastro',
+  title: 'Cadastro de Contadores',
+  desc: 'Registre o contador ou escritorio contabil responsavel pela empresa.',
+  body: `
+  <div class="doc-section">
+    <div class="path-chip">Cadastros > Contadores</div>
+    <ol class="steps-list">
+      <li>Acesse <strong>Cadastros > Contadores</strong>.</li>
+      <li>Clique em <strong>Novo</strong>.</li>
+      <li>Informe: Nome, Apelido, CRC, CPF ou CNPJ.</li>
+      <li>Preencha: Endereco completo, Numero, CEP, Estado.</li>
+      <li>Caso necessário, informe: Telefone, E-mail, Razão social, Documentos adicionais, Observações.</li>
+      <li>Escolha o status: Ativo, Inativo ou Cancelado.</li>
+      <li>Clique em <strong>Gravar</strong>.</li>
+    </ol>
+  </div>`
+},
+
+'formas-pagamento': {
+  module: 'Cadastro',
+  title: 'Formas de Pagamento',
+  desc: 'Cadastre as formas de pagamento aceitas pela empresa.',
+  body: `
+  <div class="doc-section">
+    <div class="path-chip">Cadastros > Formas de Pagamento</div>
+    <ol class="steps-list">
+      <li>Acesse <strong>Cadastros > Formas de Pagamento</strong>.</li>
+      <li>Clique em <strong>Novo</strong>.</li>
+      <li>Preencha: Nome da forma de pagamento, Nome reduzido, Registro, CAD.</li>
+      <li>Clique em <strong>Gravar</strong>.</li>
+    </ol>
+  </div>`
+},
+
+'fornecedores': {
+  module: 'Cadastro',
+  title: 'Cadastro de Fornecedores',
+  desc: 'Registre os fornecedores com dados fiscais e de contato.',
+  body: `
+  <div class="doc-section">
+    <div class="path-chip">Cadastros > Fornecedores</div>
+    <ol class="steps-list">
+      <li>Acesse <strong>Cadastros > Fornecedores</strong>.</li>
+      <li>Clique em <strong>Novo</strong>.</li>
+      <li>Se desejar, consulte pelo CNPJ para preencher automaticamente.</li>
+      <li>Caso contrário, preencha: Nome, Apelido, CPF ou CNPJ, Inscrição Estadual, Inscrição Municipal, Ramo de Atividade.</li>
+      <li>Escolha: Unidade e Status (Ativo, Inativo ou Cancelado).</li>
+      <li>Informe: Endereco completo, Numero, CEP, Estado, Telefone, E-mail.</li>
+      <li>Se necessário, complete: Dados de entrega, Dados de cobrança, Histórico, Financeiro.</li>
+      <li>Clique em <strong>Gravar</strong>.</li>
+    </ol>
+  </div>`
+},
+
+'produtos': {
+  module: 'Cadastro',
+  title: 'Cadastro de Produtos',
+  desc: 'Registre produtos com grupo, tributação, NCM, ICMS e classificação fiscal.',
+  body: `
+  <div class="doc-section">
+    <div class="path-chip">Cadastros > Produtos</div>
+    <ol class="steps-list">
+      <li>Acesse <strong>Cadastros > Produtos</strong>.</li>
+      <li>Clique em <strong>Novo</strong>.</li>
+      <li>Digite o nome do produto.</li>
+      <li>No campo <strong>Grupo do Produto</strong>, clique na lupa e escolha o grupo correto. Exemplo: Bolacha → "Biscoitos"; Shampoo → "Higiene".</li>
+      <li>Informe: Preço do produto, Situação (Ativo, Inativo ou Cancelado).</li>
+      <li>Preencha a <strong>Unidade de Venda</strong>: clique na lupa e escolha (Unidade, Quilograma, Litro, Metro, etc.).</li>
+      <li>Faca o mesmo em <strong>Unidade de Compra</strong>.</li>
+      <li>Informe a alíquota de ICMS (na Bahia, normalmente 19% ou 20,5%).</li>
+      <li>Acesse <strong>Classificação Fiscal</strong>, verifique na nota fiscal qual tributação o produto utiliza e clique na lupa para selecionar o CST correto.</li>
+      <li>Acesse <strong>Detalhes Fiscais</strong> e pesquise o NCM do produto pela lupa.</li>
+      <li>Apos preencher todas as informações, clique em <strong>Gravar</strong>.</li>
+    </ol>
+  </div>
+  <div class="doc-section">
+    <h2><div class="section-num">2</div>Alíquotas de ICMS por Origem (Bahia)</h2>
+    <div class="field-list">
+      <div class="field-row"><div class="field-name">Dentro da Bahia</div><div class="field-desc">Normalmente 20,5%</div></div>
+      <div class="field-row"><div class="field-name">SP, PR, SC, RS, MG, RJ</div><div class="field-desc">Normalmente 7%</div></div>
+      <div class="field-row"><div class="field-name">PE, CE, GO, ES</div><div class="field-desc">Normalmente 12%</div></div>
+    </div>
+  </div>
+  <div class="warn-box"><div class="warn-box-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div><div class="warn-box-text"><strong>Aviso Fiscal Importante</strong>Ao colocar tributacoes, NCM ou CEST em produtos, sempre consulte seu contador antes de realizar qualquer alteração. Nunca altere tributacoes sem orientacao contabil.</div></div>`
+},
+
+'transportadoras': {
+  module: 'Cadastro',
+  title: 'Cadastro de Transportadoras',
+  desc: 'Registre as transportadoras utilizadas nas operacoes de compra e venda.',
+  body: `
+  <div class="doc-section">
+    <div class="path-chip">Cadastros > Transportadoras</div>
+    <ol class="steps-list">
+      <li>Acesse <strong>Cadastros > Transportadoras</strong>.</li>
+      <li>Clique em <strong>Novo</strong>.</li>
+      <li>Informe: Nome, Apelido, CPF ou CNPJ, Inscrição Estadual.</li>
+      <li>Escolha o status: Ativo, Inativo ou Cancelado.</li>
+      <li>Preencha: Endereco completo, Numero, CEP, Estado.</li>
+      <li>Caso necessário, adicione: Dados de entrega, Dados de cobrança, Placa do veículo, Histórico.</li>
+      <li>Clique em <strong>Gravar</strong>.</li>
+    </ol>
+  </div>`
+},
+
+'vendedores': {
+  module: 'Cadastro',
+  title: 'Cadastro de Vendedores',
+  desc: 'Registre os vendedores com comissoes e dados de equipe.',
+  body: `
+  <div class="doc-section">
+    <div class="path-chip">Cadastros > Vendedores</div>
+    <ol class="steps-list">
+      <li>Acesse <strong>Cadastros > Vendedores</strong>.</li>
+      <li>Clique em <strong>Novo</strong>.</li>
+      <li>Digite: Nome do vendedor, Endereco completo.</li>
+      <li>Escolha o status: Ativo, Inativo ou Cancelado.</li>
+      <li>Preencha: Numero, CEP, Estado.</li>
+      <li>Nos dados complementares, informe: Unidade, Equipe de vendas, Comissão a vista, Comissão a prazo.</li>
+      <li>Clique em <strong>Gravar</strong>.</li>
+    </ol>
+  </div>`
+},
+
+'classificação-fiscal': {
+  module: 'Cadastro > Compras e Vendas',
+  title: 'Classificação Fiscal',
+  desc: 'Cadastre as classificações fiscais (CST, IPI, origem) utilizadas nos produtos.',
+  body: `
+  <div class="doc-section">
+    <div class="path-chip">Cadastros > Compras e Vendas > Classificação Fiscal</div>
+    <ol class="steps-list">
+      <li>Acesse <strong>Cadastros > Compras e Vendas > Classificação Fiscal</strong>.</li>
+      <li>Clique em <strong>Novo</strong>.</li>
+      <li>Digite o código da classificação.</li>
+      <li>Clique na lupa para escolher a origem.</li>
+      <li>Escolha o CST correspondente.</li>
+      <li>Informe: Alíquota de IPI, Codigo federal.</li>
+      <li>Escolha a situação tributária: Normal, Reduzida, Substituída ou Nao incidência.</li>
+      <li>Clique em <strong>Gravar</strong>.</li>
+    </ol>
+    <div class="warn-box"><div class="warn-box-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div><div class="warn-box-text"><strong>Consulte seu Contador</strong>Ao trabalhar com tributacoes, sempre verifique com seu contador qual CST utilizar.</div></div>
+  </div>`
+},
+
+'mensagem-nf': {
+  module: 'Cadastro > Compras e Vendas',
+  title: 'Mensagem na Nota Fiscal',
+  desc: 'Crie mensagens padronizadas para incluir nas notas fiscais emitidas.',
+  body: `
+  <div class="doc-section">
+    <div class="path-chip">Cadastros > Compras e Vendas > Mensagem na Nota</div>
+    <ol class="steps-list">
+      <li>Acesse <strong>Cadastros > Compras e Vendas > Mensagem na Nota</strong>.</li>
+      <li>Clique em <strong>Novo</strong>.</li>
+      <li>Digite um titulo identificador para a mensagem.</li>
+      <li>Escreva a mensagem que aparecera impressa na nota fiscal.</li>
+      <li>Clique em <strong>Gravar</strong>.</li>
+    </ol>
+  </div>`
+},
+
+'natureza-operacoes': {
+  module: 'Cadastro > Compras e Vendas',
+  title: 'Natureza de Operações',
+  desc: 'Registre as naturezas de operação (CFOP) para classificar entradas e saídas.',
+  body: `
+  <div class="doc-section">
+    <div class="path-chip">Cadastros > Compras e Vendas > Natureza de Operações</div>
+    <ol class="steps-list">
+      <li>Acesse <strong>Cadastros > Compras e Vendas > Natureza de Operações</strong>.</li>
+      <li>Clique em <strong>Novo</strong>.</li>
+      <li>Informe: Codigo, Nome, Apelido.</li>
+      <li>Escolha o motivo da operação: Entrada por compra, Entrada por devolução, Outras entradas.</li>
+      <li>Caso necessário, escreva uma mensagem complementar.</li>
+      <li>Clique em <strong>Gravar</strong>.</li>
+    </ol>
+  </div>`
+},
+
+'tributacoes-federais': {
+  module: 'Cadastro > Compras e Vendas',
+  title: 'Tributações Federais',
+  desc: 'Configure as situações de PIS, COFINS e alíquotas federais dos produtos.',
+  body: `
+  <div class="doc-section">
+    <div class="path-chip">Cadastros > Compras e Vendas > Tributações Federais</div>
+    <ol class="steps-list">
+      <li>Acesse <strong>Cadastros > Compras e Vendas > Tributações Federais</strong>.</li>
+      <li>Clique em <strong>Novo</strong>.</li>
+      <li>Digite o nome da tributação.</li>
+      <li>Clique na lupa e escolha a Situação do PIS e a Situação do COFINS.</li>
+      <li>Informe: Alíquota, Natureza da receita.</li>
+      <li>Clique em <strong>Gravar</strong>.</li>
+    </ol>
+    <div class="warn-box"><div class="warn-box-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div><div class="warn-box-text"><strong>Consulte seu Contador</strong>Ao trabalhar com tributacoes, sempre verifique com seu contador o que utilizar.</div></div>
+  </div>`
+},
+
+'agencias-bancarias': {
+  module: 'Cadastro > Financeiro',
+  title: 'Agências Bancárias',
+  desc: 'Registre as agencias bancarias utilizadas pela empresa.',
+  body: `
+  <div class="doc-section">
+    <div class="path-chip">Cadastros > Financeiro > Agências Bancárias</div>
+    <ol class="steps-list">
+      <li>Acesse <strong>Cadastros > Financeiro > Agências Bancárias</strong>.</li>
+      <li>Clique em <strong>Novo</strong>.</li>
+      <li>Preencha: Nome, Apelido, Numero da agencia.</li>
+      <li>Clique na lupa para selecionar o banco.</li>
+      <li>Informe: Endereco, CEP, Estado.</li>
+      <li>Escolha o status: Ativo, Inativo ou Cancelado.</li>
+      <li>Clique em <strong>Gravar</strong>.</li>
+    </ol>
+  </div>`
+},
+
+'contas-correntes': {
+  module: 'Cadastro > Financeiro',
+  title: 'Contas Correntes',
+  desc: 'Registre as contas correntes bancarias da empresa.',
+  body: `
+  <div class="doc-section">
+    <div class="path-chip">Cadastros > Financeiro > Contas Correntes</div>
+    <ol class="steps-list">
+      <li>Acesse <strong>Cadastros > Financeiro > Contas Correntes</strong>.</li>
+      <li>Clique em <strong>Novo</strong>.</li>
+      <li>Informe: Apelido da conta, Numero da conta corrente.</li>
+      <li>Clique na lupa para escolher a agencia correspondente.</li>
+      <li>Clique em <strong>Gravar</strong>.</li>
+    </ol>
+  </div>`
+},
+
+// ── VENDAS ──────────────────────────────────────────────────────────────
+'faturamento': {
+  module: 'Vendas',
+  title: 'Emissão de Nota Fiscal (Faturamento)',
+  desc: 'Emita NF-e com seleção de cliente, produtos, pagamento e transportadora.',
+  body: `
+  <div class="doc-section">
+    <div class="path-chip">Vendas > Faturamento</div>
+    <ol class="steps-list">
+      <li>Acesse <strong>Vendas > Faturamento</strong> e clique em <strong>Novo</strong>.</li>
+      <li>Selecione o cliente clicando na <strong>lupa</strong>. Caso não esteja cadastrado, pressione <kbd class="kbd">F2</kbd>, va em Clientes, clique em Novo e cadastre.</li>
+      <li>Na aba de produtos, clique na lupa, escolha o produto, informe quantidade e preço unitário e clique em OK.</li>
+      <li>Para adicionar mensagem na nota: clique na lupa da mensagem e escolha uma cadastrada, ou clique nos três pontinhos para criar uma nova.</li>
+      <li>Va em <strong>Recebimento de Venda</strong>, clique em Sim, depois em Novo.</li>
+      <li>Clique na lupa do pedido, de dois cliques no pedido desejado.</li>
+      <li>Escolha a forma de pagamento (Dinheiro, PIX, Cartão, Duplicata), clique em Adicionar e depois em Gravar.</li>
+      <li>Para transportadora: clique na lupa, escolha a transportadora e informe Placa, Tipo de frete, Espécie, Marca e valor do frete.</li>
+      <li>Selecione o vendedor pela lupa. Caso não esteja cadastrado, pressione <kbd class="kbd">F2</kbd>.</li>
+      <li>Clique em <strong>Emitir Documento Fiscal</strong> para gerar a NF-e.</li>
+    </ol>
+  </div>`
+},
+
+'venda-rapida': {
+  module: 'Vendas',
+  title: 'Venda Rápida',
+  desc: 'Realize vendas ageis no balcão com atalhos de teclado.',
+  body: `
+  <div class="doc-section">
+    <div class="path-chip">Vendas > Venda Rápida &nbsp;|&nbsp; Atalho: F3</div>
+    <ol class="steps-list">
+      <li>Acesse <strong>Vendas > Venda Rápida</strong> ou pressione <kbd class="kbd">F3</kbd>.</li>
+      <li>Escolha se deseja informar CPF na nota. Se sim, digite o CPF/CNPJ ou pesquise pela lupa. Confirme com <kbd class="kbd">Ctrl + S</kbd>.</li>
+      <li>Para pesquisar produtos, pressione <kbd class="kbd">F6</kbd> ou clique na lupa superior direita. Localize o produto e de dois cliques para adicionar.</li>
+      <li>Para receber o pagamento, pressione <kbd class="kbd">F9</kbd>.</li>
+      <li>Escolha a forma de pagamento. Para cartão, preencha: Administradora, Bandeira, Tipo (Debito/Credito) e parcelas.</li>
+      <li>Clique em <strong>OK</strong> e depois em <strong>Adicionar</strong>.</li>
+    </ol>
+  </div>
+  <div class="doc-section">
+    <h2><div class="section-num">2</div>Atalhos de Teclado</h2>
+    <div class="field-list">
+      <div class="field-row"><div class="field-name"><kbd class="kbd">F3</kbd></div><div class="field-desc">Abrir Venda Rápida</div></div>
+      <div class="field-row"><div class="field-name"><kbd class="kbd">F6</kbd></div><div class="field-desc">Pesquisar produtos</div></div>
+      <div class="field-row"><div class="field-name"><kbd class="kbd">F9</kbd></div><div class="field-desc">Efetuar pagamento</div></div>
+      <div class="field-row"><div class="field-name"><kbd class="kbd">Ctrl + F9</kbd></div><div class="field-desc">Imprimir cupom fiscal</div></div>
+      <div class="field-row"><div class="field-name"><kbd class="kbd">Ctrl + F8</kbd></div><div class="field-desc">Imprimir pedido</div></div>
+      <div class="field-row"><div class="field-name"><kbd class="kbd">Ctrl + S</kbd></div><div class="field-desc">Confirmar cliente/CPF e prosseguir</div></div>
+    </div>
+  </div>`
+},
+
+'outras-saídas': {
+  module: 'Vendas',
+  title: 'Outras Saídas',
+  desc: 'Lance complementos, ajustes, devoluções e outros tipos de saida.',
+  body: `
+  <div class="doc-section">
+    <div class="path-chip">Vendas > Outras Saídas</div>
+    <p>Utilize este menu para emitir saídas que não são vendas normais.</p>
+    <ol class="steps-list">
+      <li>Acesse <strong>Vendas > Outras Saídas</strong>.</li>
+      <li>Escolha o tipo: Complementar, Ajuste, Devolução, Substituição, NFC-e, Nota de crédito ou Nota de débito.</li>
+      <li>Clique em <strong>Novo</strong>.</li>
+      <li>Escolha o destinatario pela lupa.</li>
+      <li>Informe: Nota fiscal, Data da compra, CFOP.</li>
+      <li>Adicione uma mensagem na nota fiscal, se necessário.</li>
+      <li>Na aba de pagamento, informe a forma: Dinheiro, Debito, Credito, PIX ou outros.</li>
+      <li>Para transportadora: clique na lupa, escolha e informe Placa, Tipo de frete, Espécie (Caixa, Pacote, Fardo, Galao), Marca e valor do frete.</li>
+      <li>Clique na lupa do vendedor e selecione.</li>
+      <li>Clique em <strong>Emitir Documento Fiscal</strong>.</li>
+    </ol>
+    <div class="info-box"><div class="info-box-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div><div class="info-box-text"><strong>Dica sobre CFOP</strong>O CFOP pode ser consultado na propria nota fiscal ou com o seu contador.</div></div>
+  </div>`
+},
+
+'recebimento-venda': {
+  module: 'Vendas',
+  title: 'Recebimento de Venda',
+  desc: 'Registre o recebimento de vendas ja lancadas no sistema.',
+  body: `
+  <div class="doc-section">
+    <div class="path-chip">Vendas > Recebimento de Vendas</div>
+    <ol class="steps-list">
+      <li>Acesse <strong>Vendas > Recebimento de Vendas</strong>.</li>
+      <li>Clique em <strong>Novo</strong>.</li>
+      <li>Clique na lupa e escolha a venda desejada.</li>
+      <li>Escolha o modelo: Nota Fiscal, Nota Fiscal Avulsa ou Cupom Fiscal.</li>
+      <li>Escolha a forma de pagamento: Dinheiro, PIX, Cartão ou Duplicata.</li>
+      <li>Clique em <strong>Adicionar</strong> e depois em <strong>Gravar</strong>.</li>
+    </ol>
+    <div class="info-box"><div class="info-box-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div><div class="info-box-text"><strong>Resultado</strong>O pedido ficará registrado como recebido no sistema.</div></div>
+  </div>`
+},
+
+'reajuste-preço': {
+  module: 'Vendas',
+  title: 'Reajuste de Preços',
+  desc: 'Atualize preços de grupos de produtos por percentual.',
+  body: `
+  <div class="doc-section">
+    <h2><div class="section-num">1</div>Reajuste Geral por Grupo</h2>
+    <div class="path-chip">Vendas > Reajuste de Preço</div>
+    <ol class="steps-list">
+      <li>Acesse <strong>Vendas > Reajuste de Preço</strong>.</li>
+      <li>Escolha: Subgrupo ou Grupo, Percentual, Tipo de ordenação e a Tabela de preço (principal, segunda, terceira, quarta).</li>
+      <li>Clique em <strong>OK</strong>. O sistema mostrara o preço anterior e o novo preço.</li>
+      <li>Feche a tela e clique em <strong>Sim</strong> para confirmar.</li>
+    </ol>
+  </div>
+  <hr class="divider">
+  <div class="doc-section">
+    <h2><div class="section-num">2</div>Cancelamento de Reajuste</h2>
+    <div class="path-chip">Vendas > Cancelamento de Reajuste</div>
+    <ol class="steps-list">
+      <li>Acesse <strong>Vendas > Cancelamento de Reajuste</strong>.</li>
+      <li>Filtre por Subgrupo e Gerador do reajuste.</li>
+      <li>De dois cliques no reajuste e clique em <strong>OK</strong>.</li>
+      <li>Feche a tela e clique em <strong>Sim</strong> para confirmar o cancelamento.</li>
+    </ol>
+  </div>`
+},
+
+'cancelamento-reajuste': {
+  module: 'Vendas',
+  title: 'Cancelamento de Reajuste',
+  desc: 'Desfaça um reajuste de preços aplicado anteriormente.',
+  body: `
+  <div class="doc-section">
+    <div class="path-chip">Vendas > Cancelamento de Reajuste</div>
+    <ol class="steps-list">
+      <li>Acesse <strong>Vendas > Cancelamento de Reajuste</strong>.</li>
+      <li>Filtre por Subgrupo e Gerador do reajuste.</li>
+      <li>De dois cliques no reajuste desejado e clique em <strong>OK</strong>.</li>
+      <li>Feche a tela e clique em <strong>Sim</strong> para confirmar o cancelamento.</li>
+    </ol>
+  </div>`
+},
+
+'reajuste-unitário': {
+  module: 'Vendas',
+  title: 'Reajuste de Preço Unitário',
+  desc: 'Altere o preço de um produto especifico.',
+  body: `
+  <div class="doc-section">
+    <div class="path-chip">Vendas > Reajuste Unitário</div>
+    <ol class="steps-list">
+      <li>Acesse <strong>Vendas > Reajuste de Preço Unitário</strong>.</li>
+      <li>Pesquise o produto desejado.</li>
+      <li>De dois cliques no produto.</li>
+      <li>Faca a alteração desejada no preço.</li>
+      <li>Clique em <strong>Confirmar</strong>.</li>
+    </ol>
+  </div>`
+},
+
+'ordem-serviço': {
+  module: 'Vendas > Oficina',
+  title: 'Ordem de Serviço',
+  desc: 'Abra e gerencie ordens de serviço na oficina.',
+  body: `
+  <div class="doc-section">
+    <div class="path-chip">Vendas > Oficina > Abertura de Ordem de Serviço</div>
+    <ol class="steps-list">
+      <li>Acesse <strong>Vendas > Oficina > Abertura de Ordem de Serviço</strong> e clique em <strong>Novo</strong>.</li>
+      <li>Clique na lupa do vistoriador/cliente. Caso não tenha cadastro, pressione <kbd class="kbd">F2</kbd> para cadastrar.</li>
+      <li>Para veículo não cadastrado: clique nos três pontinhos ao lado da lupa, clique em Novo e preencha: Placa, Fabricante, Modelo, Cliente, Status, Telefone, Renavam, Chassi, Exercício, Proprietário, CPF ou CNPJ, Placa anterior. Clique em Gravar.</li>
+      <li>Preencha as informações da OS: Tipo de combustível, Tipo de cliente (Particular, Cooperativa, Seguradora), Total de serviços, Total dos itens, Valor total, Data de chegada, Data prevista de entrega, Descrição do problema técnico e Parecer técnico.</li>
+    </ol>
+  </div>
+  <div class="doc-section">
+    <h2><div class="section-num">2</div>Impressão da OS</h2>
+    <div class="field-list">
+      <div class="field-row"><div class="field-name"><kbd class="kbd">F5</kbd></div><div class="field-desc">Imprimir conferencia</div></div>
+      <div class="field-row"><div class="field-name"><kbd class="kbd">F10</kbd></div><div class="field-desc">Imprimir pedido (normal, bobina, pre-nota, código de barras, referência, dados do veículo)</div></div>
+    </div>
+  </div>
+  <div class="doc-section">
+    <h2><div class="section-num">3</div>Relatórios de Oficina</h2>
+    <div class="path-chip">Oficina > Relatorio de Ordem de Serviço</div>
+    <p>Filtre por: Numero da OS, Cliente, Mecanico, Data inicial, Data final. Escolha a ordenação e clique em <strong>OK</strong>.</p>
+  </div>`
+},
+
+'relatórios-vendas': {
+  module: 'Vendas',
+  title: 'Relatórios de Vendas',
+  desc: 'Emita relatórios de desempenho de vendas, comissoes, curva ABC e muito mais.',
+  body: `
+  <div class="doc-section">
+    <div class="path-chip">Vendas > Relatórios</div>
+    <p>Acesse <strong>Vendas > Relatórios</strong>, escolha o relatorio, informe as datas e clique em <strong>OK</strong>. Use os botoes no canto superior para imprimir ou salvar em PDF.</p>
+    <div class="tag-row">
+      <span class="tag red">Clientes sem compras</span><span class="tag red">Comissão de Vendedores</span><span class="tag red">Compras do Cliente</span><span class="tag red">Curva ABC de Clientes</span><span class="tag red">Curva ABC de Produtos</span><span class="tag red">Curva ABC por Vendedor</span><span class="tag red">Fechamento do Dia</span><span class="tag red">Histórico de Compras</span><span class="tag red">Posição do Faturamento</span><span class="tag red">Posição do Faturamento Detalhado</span><span class="tag red">Posição de Outras Entradas e Saídas</span><span class="tag red">Produtos sem Venda</span><span class="tag red">Tabela de Preços</span><span class="tag red">Totalizador por CFOP/Saídas</span><span class="tag red">Vendas em Cartão</span><span class="tag red">Vendas no Período</span><span class="tag red">Vendas por Grupos</span><span class="tag red">Vendas por Produto</span><span class="tag red">Vendas por Vendedores</span><span class="tag red">Pedidos Excluídos</span><span class="tag red">Saídas de Itens no Período</span><span class="tag red">Vendas por Usuários</span><span class="tag red">Informe de Vendas a Cartão</span><span class="tag red">Vendas por Zona</span><span class="tag red">Vendas por NCM</span>
+    </div>
+  </div>`
+},
+
+// ── COMPRAS ──────────────────────────────────────────────────────────────
+'entrada-estoque': {
+  module: 'Compras',
+  title: 'Entrada no Estoque por XML',
+  desc: 'Importe o XML da nota fiscal para dar entrada no estoque automaticamente.',
+  body: `
+  <div class="doc-section">
+    <h2><div class="section-num">1</div>Baixando o XML da Nota</h2>
+    <ol class="steps-list">
+      <li>Pesquise no navegador pelo <strong>Portal da Nota Fiscal</strong> ou acesse o FSist.</li>
+      <li>Digite a chave da nota fiscal (44 digitos).</li>
+      <li>Clique em <strong>Consultar Nota</strong> ou <strong>Baixar XML</strong>.</li>
+      <li>Salve o arquivo XML no computador.</li>
+    </ol>
+  </div>
+  <div class="doc-section">
+    <h2><div class="section-num">2</div>Importando no Sistema</h2>
+    <div class="path-chip">Compras > Entrada no Estoque</div>
+    <ol class="steps-list">
+      <li>Acesse <strong>Compras > Entrada no Estoque</strong>.</li>
+      <li>Clique em <strong>Novo > Importar XML</strong>.</li>
+      <li>Selecione o arquivo XML salvo e confirme a importação.</li>
+    </ol>
+    <div class="warn-box"><div class="warn-box-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div><div class="warn-box-text"><strong>Importante</strong>Ao trabalhar com tributacoes em produtos (CST, NCM, CEST), sempre verifique com seu contador qual código utilizar.</div></div>
+  </div>`
+},
+
+'entrada-manual': {
+  module: 'Compras',
+  title: 'Entrada Manual de Produtos',
+  desc: 'Lance compras manualmente, inclusive com desmembramento de kits em unidades.',
+  body: `
+  <div class="doc-section">
+    <h2><div class="section-num">1</div>Cadastro Previo do Produto</h2>
+    <p>Antes de lançar a compra, cadastre o produto em <strong>Cadastros > Produtos</strong> com tributação, CFOP e CST corretos (consulte sempre o contador).</p>
+  </div>
+  <div class="doc-section">
+    <h2><div class="section-num">2</div>Lançando a Entrada</h2>
+    <div class="path-chip">Compras > Entrada de Estoque</div>
+    <ol class="steps-list">
+      <li>Acesse <strong>Compras > Entrada de Estoque</strong>.</li>
+      <li>Procure o emitente/fornecedor. Caso não cadastrado, pressione <kbd class="kbd">F2</kbd> e cadastre (Nome, Apelido, Endereco, Telefone, CPF/CNPJ, IE, Ramo de atividade, Status).</li>
+      <li>Informe o emitente e clique na seta inferior para adicionar a compra.</li>
+      <li>Preencha: Numero da nota, Serie, Modelo, Subserie, Data de emissão, Data de chegada, Chave da nota fiscal.</li>
+      <li>Pesquise o produto e informe a quantidade.</li>
+      <li>Se for um kit (ex: kit com 6 cadeiras que você quer entrar como 6 unidades): informe quantidade 6 e calcule o valor unitário dividindo o total por 6. Exemplo: R$ 600,00 ÷ 6 = R$ 100,00 cada.</li>
+      <li>Clique em <strong>Gravar Item</strong>.</li>
+    </ol>
+  </div>`
+},
+
+'outras-entradas': {
+  module: 'Compras',
+  title: 'Outras Entradas',
+  desc: 'Lance complementos, ajustes, devoluções e outros tipos de entrada no estoque.',
+  body: `
+  <div class="doc-section">
+    <div class="path-chip">Compras > Outras Entradas</div>
+    <p>Permite lançar: Complementar, Ajuste, Devolução, Substituição, NFC-e, Cupom Fiscal, Nota de crédito, Nota de débito.</p>
+    <ol class="steps-list">
+      <li>Acesse <strong>Compras > Outras Entradas</strong> e clique em <strong>Novo</strong>.</li>
+      <li>Preencha: Destinatario, Numero do pedido, Data da compra, Modelo, Serie, Subserie, CFOP, Dados da entrega.</li>
+      <li>Adicione os produtos desejados.</li>
+      <li>Informe: Mensagem da nota fiscal, Forma de pagamento (clique na lupa e escolha).</li>
+      <li>Preencha também: Indicador operacional, Presenca do comprador, Operação.</li>
+      <li>Na aba da transportadora: clique na coluna, depois na lupa e informe Placa, Tipo de frete, Espécie, Marca e outros dados.</li>
+      <li>Voce também pode importar o XML do portal da nota pela aba correspondente.</li>
+      <li>Faca sempre a conferencia e clique em <strong>Gravar</strong>.</li>
+    </ol>
+  </div>`
+},
+
+'entrada-cte': {
+  module: 'Compras',
+  title: 'Entrada de CT-e',
+  desc: 'Importe o XML do Conhecimento de Transporte Eletronico.',
+  body: `
+  <div class="doc-section">
+    <div class="path-chip">Compras > CTe > Entrada de CTe</div>
+    <ol class="steps-list">
+      <li>Acesse o <strong>Portal da Nota Fiscal</strong> e digite a chave de 44 digitos do CT-e.</li>
+      <li>Baixe o arquivo XML do CT-e.</li>
+      <li>No sistema, acesse <strong>Compras > CTe > Entrada de CTe</strong>.</li>
+      <li>Importe o XML do CT-e.</li>
+    </ol>
+  </div>`
+},
+
+'relatórios-compras': {
+  module: 'Compras',
+  title: 'Relatórios de Compras',
+  desc: 'Emita relatórios de estoque, entradas, ficha Kardex, sugestão de compra e mais.',
+  body: `
+  <div class="doc-section">
+    <div class="path-chip">Compras > Relatórios</div>
+    <p>Acesse <strong>Compras > Relatórios</strong>, escolha o relatorio, informe a data inicial e final, escolha o tipo (Sintetico ou Analitico) e clique em <strong>OK</strong>.</p>
+    <div class="tag-row">
+      <span class="tag red">Entradas no Período</span><span class="tag red">Ficha de Balanço</span><span class="tag red">Ficha Kardex</span><span class="tag red">Posição do Estoque</span><span class="tag red">Registro de Inventário</span><span class="tag red">Resumo PIS/COFINS</span><span class="tag red">Totalizador por CFOP/Entradas</span><span class="tag red">Entrada de Itens no Período</span><span class="tag red">CT-e por Período</span><span class="tag red">CFOP por Notas de Entrada</span><span class="tag red">Histórico e Variacao de Custo</span><span class="tag red">Sugestão de Compra</span>
+    </div>
+  </div>`
+},
+
+// ── FINANCEIRO ──────────────────────────────────────────────────────────
+'títulos-receber': {
+  module: 'Financeiro > Contas a Receber',
+  title: 'Registro de Títulos a Receber',
+  desc: 'Cadastre manualmente títulos financeiros a receber de clientes.',
+  body: `
+  <div class="doc-section">
+    <div class="path-chip">Financeiro > Gerenciamento de Títulos > Contas a Receber > Registro de Títulos a Receber</div>
+    <ol class="steps-list">
+      <li>Acesse o caminho acima e clique em <strong>Novo</strong>.</li>
+      <li>Selecione o <strong>cliente</strong> pela lupa. Caso não exista, pressione <kbd class="kbd">F2</kbd> para cadastrar.</li>
+      <li>Preencha: Numero do titulo, Unidade, Vendedor (use <kbd class="kbd">F2</kbd> para cadastrar novo).</li>
+      <li>Informe o <strong>Cobrador</strong> (ex: Carteira, Deposito). Use <kbd class="kbd">F2</kbd> para cadastrar novos cobradores.</li>
+      <li>Classifique o <strong>Centro de Custo</strong> (Receita, Venda, Comissão, etc.).</li>
+      <li>Insira: Data de emissão, Vencimento, Valor. Configure juros ao dia, carencia e multa, se houver.</li>
+      <li>Clique em <strong>Gravar</strong>.</li>
+    </ol>
+  </div>`
+},
+
+'baixa-títulos': {
+  module: 'Financeiro > Contas a Receber',
+  title: 'Baixa de Títulos',
+  desc: 'Registre o recebimento de títulos individualmente ou em lote.',
+  body: `
+  <div class="doc-section">
+    <h2><div class="section-num">1</div>Baixa Individual</h2>
+    <div class="path-chip">Financeiro > Gerenciamento de Títulos > Contas a Receber > Baixa de Títulos</div>
+    <p>Pesquise pelo cliente e pelo titulo na lupa. O sistema trara o valor corrigido com juros automaticamente.</p>
+  </div>
+  <div class="doc-section">
+    <h2><div class="section-num">2</div>Baixa em Lote</h2>
+    <div class="path-chip">Financeiro > Gerenciamento de Títulos > Contas a Receber > Baixa de Títulos em Lote</div>
+    <ol class="steps-list">
+      <li>Clique em <strong>Novo</strong>.</li>
+      <li>Adicione os títulos filtrando por portador ou cliente.</li>
+      <li>Selecione os títulos desejados.</li>
+      <li>Confirme a baixa e a emissão do recibo.</li>
+    </ol>
+  </div>
+  <div class="doc-section">
+    <h2><div class="section-num">3</div>Cancelamento de Baixa</h2>
+    <div class="path-chip">Financeiro > Gerenciamento de Títulos > Contas a Receber > Cancelar Baixa de Títulos</div>
+    <p>Pesquise o cliente e o titulo. Clique em <strong>Excluir ultima baixa de titulo</strong>.</p>
+  </div>`
+},
+
+'títulos-massa': {
+  module: 'Financeiro > Contas a Receber',
+  title: 'Gerar Títulos em Massa',
+  desc: 'Gere multiplas parcelas ou títulos de uma vez para um cliente.',
+  body: `
+  <div class="doc-section">
+    <div class="path-chip">Financeiro > Gerenciamento de Títulos > Contas a Receber > Gerar Titulo em Massa</div>
+    <ol class="steps-list">
+      <li>Acesse o caminho acima e clique em <strong>Novo Lote</strong>.</li>
+      <li>Selecione o cliente.</li>
+      <li>Preencha os dados padrão: Vendedor, Cobrador, Documento, Centro de custo.</li>
+      <li>Informe a periodicidade das parcelas e a quantidade de vencimentos.</li>
+      <li>Defina se deve considerar feriados.</li>
+      <li>Clique em <strong>Gerar</strong>.</li>
+    </ol>
+  </div>`
+},
+
+'prorrogação': {
+  module: 'Financeiro > Contas a Receber',
+  title: 'Prorrogação e Bloquetes',
+  desc: 'Altere datas de vencimento e gerencie documentos de cobrança.',
+  body: `
+  <div class="doc-section">
+    <h2><div class="section-num">1</div>Prorrogação de Vencimento</h2>
+    <div class="path-chip">Financeiro > Gerenciamento de Títulos > Contas a Receber > Prorrogação de Vencimento de Títulos</div>
+    <p>Pesquise o titulo do cliente e digite a nova data de vencimento.</p>
+  </div>
+  <div class="doc-section">
+    <h2><div class="section-num">2</div>Bloquete</h2>
+    <div class="path-chip">Financeiro > Gerenciamento de Títulos > Contas a Receber > Bloquete</div>
+    <p>Gerencie os dados da fatura e emita o documento de cobrança baseado nos títulos existentes.</p>
+  </div>`
+},
+
+'títulos-pagar': {
+  module: 'Financeiro > Contas a Pagar',
+  title: 'Contas a Pagar',
+  desc: 'Registre, baixe, cancele e prorrogue títulos de fornecedores.',
+  body: `
+  <div class="doc-section">
+    <h2><div class="section-num">1</div>Registrar Titulo a Pagar</h2>
+    <div class="path-chip">Financeiro > Registro de Títulos > Contas a Pagar > Registro de Títulos a Pagar</div>
+    <p>Preencha: Fornecedor, Numero do titulo, Documento, Centro de custo, Vencimento e Valor. Clique em <strong>Gravar</strong>.</p>
+  </div>
+  <div class="doc-section">
+    <h2><div class="section-num">2</div>Baixar Titulo</h2>
+    <div class="path-chip">Financeiro > Gerenciamento de Títulos > Contas a Pagar > Baixa de Títulos</div>
+    <p>Localize o titulo pelo fornecedor e confirme o pagamento.</p>
+  </div>
+  <div class="doc-section">
+    <h2><div class="section-num">3</div>Cancelar Baixa</h2>
+    <div class="path-chip">Financeiro > Gerenciamento de Títulos > Contas a Pagar > Cancelar Baixa de Títulos</div>
+    <p>Localize o titulo pago e clique em <strong>Excluir ultima baixa</strong>.</p>
+  </div>
+  <div class="doc-section">
+    <h2><div class="section-num">4</div>Prorrogar Vencimento</h2>
+    <p>Utilize a opção <strong>Prorrogação de Vencimento de Títulos</strong> para alterar datas de compromissos com fornecedores.</p>
+  </div>`
+},
+
+'movimento-caixa': {
+  module: 'Financeiro > Caixa',
+  title: 'Movimento do Caixa',
+  desc: 'Controle entradas e saídas diárias no caixa da empresa.',
+  body: `
+  <div class="doc-section">
+    <div class="path-chip">Financeiro > Gerenciamento do Caixa > Movimento do Caixa</div>
+    <ol class="steps-list">
+      <li>Acesse <strong>Financeiro > Gerenciamento do Caixa > Movimento do Caixa</strong>.</li>
+      <li>Clique em <strong>Novo</strong>.</li>
+      <li>Informe a natureza: <strong>Entrada</strong> ou <strong>Saída</strong>.</li>
+      <li>Informe o Centro de custo e o Histórico (Pagamento, Estorno, etc.).</li>
+      <li>O sistema mostrara o saldo do dia e o histórico de movimentacoes.</li>
+    </ol>
+  </div>
+  <div class="doc-section">
+    <h2><div class="section-num">2</div>Area do Contador</h2>
+    <div class="path-chip">Financeiro > Gerenciamento de Caixa > Contador</div>
+    <p>Preencha Razão Social, CNPJ/CPF, endereço completo e contatos. Clique em <strong>Gravar</strong>.</p>
+  </div>
+  <div class="doc-section">
+    <h2><div class="section-num">3</div>Consultas e Relatórios do Caixa</h2>
+    <div class="tag-row">
+      <span class="tag red">Consulta por data</span><span class="tag red">Consulta por Centro de Custo</span><span class="tag red">Consulta por histórico</span><span class="tag red">Consulta seletiva</span><span class="tag red">Variacao Mensal</span><span class="tag red">Variacao Diaria</span><span class="tag red">Análise Receitas X Despesas</span><span class="tag red">Centros de Custos</span><span class="tag red">Conferencia dos Lançamentos</span><span class="tag red">Emissão do Livro Caixa</span><span class="tag red">Extrato do centro de custo</span><span class="tag red">Termos de Abertura/Fechamento</span>
+    </div>
+  </div>`
+},
+
+'ferramentas-caixa': {
+  module: 'Financeiro > Caixa',
+  title: 'Ferramentas de Caixa',
+  desc: 'Selecione caixa ativo, realize fechamento e lançamentos retroativos.',
+  body: `
+  <div class="doc-section">
+    <div class="path-chip">Financeiro > Gerenciamento de Caixa > Ferramentas</div>
+    <div class="field-list">
+      <div class="field-row"><div class="field-name">Selecionar Caixa Ativo</div><div class="field-desc">Define qual caixa esta operando no momento.</div></div>
+      <div class="field-row"><div class="field-name">Fechamento do Caixa</div><div class="field-desc">Realiza o encerramento das atividades do dia.</div></div>
+      <div class="field-row"><div class="field-name">Lançamento Retroativo</div><div class="field-desc">Permite lançar dados em datas passadas. Atenção: ao abrir data retroativa, todos os caixas seguintes serão abertos e sera necessária nova impressão dos livros diários.</div></div>
+      <div class="field-row"><div class="field-name">Limpeza de arquivos</div><div class="field-desc">Remove arquivos temporarios de dados do caixa.</div></div>
+      <div class="field-row"><div class="field-name">Exportação</div><div class="field-desc">Exporta dados do caixa para outros sistemas.</div></div>
+    </div>
+    <div class="warn-box"><div class="warn-box-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div><div class="warn-box-text"><strong>Atenção - Lançamento Retroativo</strong>Ao abrir uma data retroativa, todos os caixas seguintes serão abertos e sera necessária uma nova impressão dos livros diários.</div></div>
+  </div>`
+},
+
+'cadastro-cheques': {
+  module: 'Financeiro > Cheques',
+  title: 'Cadastro de Cheques',
+  desc: 'Registre cheques recebidos com todos os dados necessários.',
+  body: `
+  <div class="doc-section">
+    <div class="path-chip">Financeiro > Gerenciamento de Cheque > Cadastro de Cheque</div>
+    <ol class="steps-list">
+      <li>Acesse o caminho acima e clique em <strong>Novo</strong>.</li>
+      <li>Preencha: Banco, Agencia, Numero do cheque, Valor e Vencimento.</li>
+      <li>Vincule o emitente, cliente, unidade e centro de custo.</li>
+      <li>Clique em <strong>Gravar</strong>.</li>
+    </ol>
+  </div>`
+},
+
+// ── FERRAMENTAS ──────────────────────────────────────────────────────────
+'usuários': {
+  module: 'Ferramentas',
+  title: 'Usuários e Permissões',
+  desc: 'Crie novos usuários e configure grupos de permissões de acesso ao sistema.',
+  body: `
+  <div class="doc-section">
+    <h2><div class="section-num">1</div>Criar Novo Usuario</h2>
+    <div class="path-chip">Ferramentas > Seguranca > Usuários e Grupos de Permissões > Usuários</div>
+    <ol class="steps-list">
+      <li>Acesse o caminho acima e clique em <strong>Novo</strong>.</li>
+      <li>Preencha o <strong>Nome</strong> completo do colaborador.</li>
+      <li>Crie o <strong>Login</strong> (ex: joao.vendas).</li>
+      <li>Digite e confirme a <strong>Senha</strong>. Clique em <strong>Gravar</strong>.</li>
+      <li>Saia do seu usuario e tente entrar com o novo login para confirmar o funcionamento.</li>
+    </ol>
+  </div>
+  <div class="doc-section">
+    <h2><div class="section-num">2</div>Grupos de Permissões</h2>
+    <div class="path-chip">Ferramentas > Seguranca > Grupo de Permissões para Usuários</div>
+    <ol class="steps-list">
+      <li>Clique em <strong>Novo Grupo</strong> (ex: "Vendedores" ou "Caixa").</li>
+      <li>Marque apenas as caixas das funções que esse grupo tem permissão para acessar.</li>
+    </ol>
+    <div class="info-box"><div class="info-box-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div><div class="info-box-text"><strong>Dica de uso</strong>Se você quer que um vendedor não visualize o modulo financeiro, basta não marcar as permissões financeiras no grupo do vendedor.</div></div>
+  </div>`
+},
+
+'análise-diagnóstico': {
+  module: 'Ferramentas',
+  title: 'Análise e Diagnóstico',
+  desc: 'Raio-X da empresa para identificar erros, pendencias e auditoria de vendas.',
+  body: `
+  <div class="doc-section">
+    <div class="path-chip">Ferramentas > Análise de Diagnóstico</div>
+    <p>Funciona como um painel de auditoria e controle da empresa.</p>
+    <div class="field-list">
+      <div class="field-row"><div class="field-name">NCM por Produtos</div><div class="field-desc">Verifique produtos com NCM incorreto ou ausente.</div></div>
+      <div class="field-row"><div class="field-name">Clientes com Pendencias Cadastrais</div><div class="field-desc">Lista clientes com dados incompletos no cadastro.</div></div>
+      <div class="field-row"><div class="field-name">Pedidos não recebidos</div><div class="field-desc">Pedidos que ainda não tiveram recebimento financeiro.</div></div>
+      <div class="field-row"><div class="field-name">Pedidos Sem NF</div><div class="field-desc">Pedidos que não geraram nota fiscal.</div></div>
+      <div class="field-row"><div class="field-name">Posição de Balanço</div><div class="field-desc">Balanço geral de estoque e valores.</div></div>
+      <div class="field-row"><div class="field-name">Apuração de Estoque</div><div class="field-desc">Calcula e verifica o estoque atual do sistema.</div></div>
+      <div class="field-row"><div class="field-name">Reprocessar Estoques e Custos</div><div class="field-desc">Recalcula os saldos e custos de estoque.</div></div>
+      <div class="field-row"><div class="field-name">Comparativo Digitação vs Autorização</div><div class="field-desc">Compara vendas digitadas com as autorizadas pela SEFAZ.</div></div>
+      <div class="field-row"><div class="field-name">Ativar/Desativar Auditoria (Log)</div><div class="field-desc">Liga ou desliga o registro de auditoria do sistema.</div></div>
+      <div class="field-row"><div class="field-name">Registro de Log de Vendas</div><div class="field-desc">Histórico detalhado de quem vendeu, quando e se houve alteração.</div></div>
+    </div>
+    <p>Para gerar qualquer análise: selecione o filtro no menu latéral, organize por ordem alfabetica ou período de data, e clique em <strong>OK</strong>.</p>
+  </div>`
+},
+
+'balanço-estoque': {
+  module: 'Ferramentas',
+  title: 'Balanço de Estoque',
+  desc: 'Corrija divergências entre o estoque físico e o sistema.',
+  body: `
+  <div class="doc-section">
+    <div class="path-chip">Ferramentas > Balanço</div>
+    <ol class="steps-list">
+      <li>Acesse <strong>Ferramentas > Balanço</strong> e clique em <strong>Novo</strong>.</li>
+      <li>Informe o Cliente ou Fornecedor responsavel pela conferencia.</li>
+      <li>Pesquise o produto desejado.</li>
+      <li>Na aba <strong>Quantidade</strong>, digite o número exato que você tem em mãos (estoque real).</li>
+      <li>Se precisar, utilize a opção de imprimir para conferir os itens antes de finalizar.</li>
+      <li>Clique em <strong>Gravar</strong>. O sistema atualizará o estoque automaticamente para o novo valor digitado.</li>
+    </ol>
+    <div class="info-box"><div class="info-box-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div><div class="info-box-text"><strong>Importante</strong>Use esta função para corrigir o estoque físico que não baté com o sistema após uma contagem manual.</div></div>
+  </div>`
+},
+
+'boletos': {
+  module: 'Ferramentas',
+  title: 'Gestão de Boletos',
+  desc: 'Emita boletos, gere remessas e processe retornos bancarios.',
+  body: `
+  <div class="doc-section">
+    <div class="path-chip">Ferramentas > Boletos</div>
+    <div class="field-list">
+      <div class="field-row"><div class="field-name">Títulos</div><div class="field-desc">Contas a receber que podem ser convertidas em boletos.</div></div>
+      <div class="field-row"><div class="field-name">Remessa</div><div class="field-desc">Arquivo enviado ao banco para registrar os boletos.</div></div>
+      <div class="field-row"><div class="field-name">Retorno</div><div class="field-desc">Arquivo baixado do banco para dar baixa automatica nos boletos pagos.</div></div>
+    </div>
+    <h3>Como gerar boletos</h3>
+    <ol class="steps-list">
+      <li>Marque a caixinha (checkbox) no canto esquerdo do titulo desejado.</li>
+      <li>Escolha: <strong>Gerar Remessa</strong> para enviar ao banco, ou <strong>Gerar PDF</strong> para imprimir ou enviar por e-mail ao cliente.</li>
+    </ol>
+  </div>`
+},
+
+'consulta-produto': {
+  module: 'Ferramentas',
+  title: 'Consulta Rápida de Produto',
+  desc: 'Consulte preços, NCM e código de barras sem abrir o cadastro.',
+  body: `
+  <div class="doc-section">
+    <div class="path-chip">Ferramentas > Consulta de Produto</div>
+    <p>Acesse <strong>Ferramentas > Consulta de Produto</strong> para visualizar rapidamente a lista mestre de produtos com:</p>
+    <div class="tag-row">
+      <span class="tag red">NCM</span><span class="tag red">Preço de Venda</span><span class="tag red">Codigo de Barras</span><span class="tag red">Codigo Interno</span>
+    </div>
+    <div class="info-box"><div class="info-box-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div><div class="info-box-text"><strong>Dica de uso</strong>Util para passar preços por telefone ou conferir tributação rapidamente sem abrir o cadastro completo do produto.</div></div>
+  </div>`
+},
+
+'cancelamento-nf': {
+  module: 'Ferramentas',
+  title: 'Cancelamento de NF-e e NFC-e',
+  desc: 'Cancele notas fiscais e cupons fiscais eletrônicos junto a SEFAZ.',
+  body: `
+  <div class="doc-section">
+    <h2><div class="section-num">1</div>Cancelamento de Nota Fiscal (NF-e)</h2>
+    <div class="path-chip">Ferramentas > Nota Eletronica</div>
+    <ol class="steps-list">
+      <li>Acesse <strong>Ferramentas > Nota Eletronica</strong>.</li>
+      <li>Localize e clique sobre a nota desejada.</li>
+      <li>Clique no botão <strong>Cancelar com XML</strong>. Isso enviara o comando de cancelamento para a SEFAZ.</li>
+    </ol>
+  </div>
+  <div class="doc-section">
+    <h2><div class="section-num">2</div>Cancelamento de Cupom Fiscal (NFC-e)</h2>
+    <ol class="steps-list">
+      <li>Primeiro acesse <strong>Configurações > NFC-e > Salvar Configuração</strong>.</li>
+      <li>Em seguida, va em <strong>Pedidos</strong>, selecione o cupom que deseja anular.</li>
+      <li>Clique em <strong>Cancelar com XML</strong>.</li>
+    </ol>
+  </div>
+  <div class="warn-box"><div class="warn-box-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div><div class="warn-box-text"><strong>Aviso Fiscal</strong>Ao trabalhar com tributacoes em produtos (CST, NCM ou CEST), sempre verifique com seu contador qual código exato utilizar. Nunca altere tributacoes sem orientacao contabil.</div></div>
+  </div>`
+},
+
+// ── FAQ ──────────────────────────────────────────────────────────────────
+'faq': {
+  module: 'Suporte',
+  title: 'Perguntas Frequentes (FAQ)',
+  desc: 'Encontre respostas para as duvidas mais comuns sobre o sistema Bitmax Empresarial.',
+  body: renderFaqBody()
+}
+
+};
+
+// ── SEARCH INDEX ──────────────────────────────────────────────────────────────
+const searchIndex = Object.entries(articles)
+  .filter(([k]) => k !== 'home')
+  .map(([key, art]) => ({
+    key,
+    title: art.title || '',
+    module: art.module || '',
+    desc: art.desc || '',
+    body: (art.body || '').replace(/<[^>]+>/g, ' ').replace(/\s+/g,' ')
+  }));
+
+// Add FAQ items to search index
+faqData.forEach(item => {
+  searchIndex.push({
+    key: 'faq',
+    faqId: item.id,
+    title: item.q,
+    module: 'FAQ',
+    desc: '',
+    body: item.a.join(' ').replace(/<[^>]+>/g, ' ')
+  });
+});
+
+// ── STATE ──────────────────────────────────────────────────────────────────────
+let currentArticle = 'home';
+let searchTimeout = null;
+
+// ── RENDER ─────────────────────────────────────────────────────────────────────
+function render() {
+  const area = document.getElementById('contentArea');
+  const art = articles[currentArticle];
+
+  if (!art || art.type === 'home') {
+    area.innerHTML = renderHome();
+  } else if (currentArticle === '__search__') {
+    // handled by doSearch
+  } else {
+    area.innerHTML = renderArticle(art);
+  }
+  window.scrollTo(0, 0);
+  updatéActiveNav();
+}
+
+function renderHome() {
+  const modules = [
+    { key:'cadastro', label:'Cadastro', sub:'Cargos, Clientes, Produtos...', icon:'<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>' },
+    { key:'vendas', label:'Vendas', sub:'Faturamento, NF-e, Venda Rápida...', icon:'<line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>' },
+    { key:'compras', label:'Compras', sub:'Entrada de estoque, CT-e...', icon:'<path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/>' },
+    { key:'financeiro', label:'Financeiro', sub:'Contas a Receber/Pagar, Caixa...', icon:'<rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>' },
+    { key:'ferramentas', label:'Ferramentas', sub:'Usuários, Boletos, Diagnóstico...', icon:'<path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>' },
+    { key:'estrutura-sistema', label:'Estrutura do Sistema', sub:'Visão geral de todos os módulos', icon:'<rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/>' }
+  ];
+
+  const cards = modules.map(m => `
+    <div class="module-card" onclick="${m.key.includes('-') ? "showArticle('"+m.key+"')" : "toggleNav('"+m.key+"')"}">
+      <div class="module-card-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${m.icon}</svg>
+      </div>
+      <div class="module-card-info">
+        <h3>${m.label}</h3>
+        <span>${m.sub}</span>
+      </div>
+    </div>`).join('');
+
+  return `
+  <div class="article-page">
+    <div class="home-hero">
+      <div class="home-hero-badge">BitMAX Empresarial</div>
+      <h1>Central de Ajuda</h1>
+      <p>Documentação tecnica e operacional completa do sistema BitMAX Empresarial. Utilize o menu latéral ou a busca para localizar o procedimento desejado.</p>
+    </div>
+    <div class="module-grid">${cards}</div>
+  </div>`;
+}
+
+function renderArticle(art) {
+  const breadModule = art.module || 'Sistema';
+  return `
+  <div class="article-page">
+    <div class="breadcrumb">
+      <span onclick="goHome()">Inicio</span>
+      <svg class="breadcrumb-sep" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      <span>${breadModule}</span>
+      <svg class="breadcrumb-sep" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      <span>${art.title}</span>
+    </div>
+    <div class="article-header">
+      <div class="article-module-badge">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+        ${breadModule}
+      </div>
+      <h1 class="article-title">${art.title}</h1>
+      ${art.desc ? `<p class="article-desc">${art.desc}</p>` : ''}
+    </div>
+    ${art.body || ''}
+  </div>`;
+}
+
+// ── NAVIGATION ─────────────────────────────────────────────────────────────────
+function showArticle(key) {
+  currentArticle = key;
+  render();
+  closeSidebarMobile();
+}
+
+function goHome() {
+  currentArticle = 'home';
+  document.getElementById('mainSearch').value = '';
+  render();
+}
+
+function toggleNav(section) {
+  const header = document.querySelector(`#nav-${section} .nav-section-header`);
+  const items = document.getElementById(`items-${section}`);
+  if (!header || !items) return;
+  const isOpen = items.classList.contains('open');
+  if (isOpen) {
+    items.classList.remove('open');
+    header.classList.remove('open');
+  } else {
+    items.classList.add('open');
+    header.classList.add('open');
+  }
+}
+
+function updatéActiveNav() {
+  document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+  const attr = `onclick="showArticle('${currentArticle}')"`;
+  const active = document.querySelector(`.nav-item[onclick="showArticle('${currentArticle}')"]`);
+  if (active) {
+    active.classList.add('active');
+    const section = active.closest('.nav-section');
+    if (section) {
+      const id = section.id?.replace('nav-','');
+      if (id) {
+        const items = document.getElementById(`items-${id}`);
+        const hdr = document.querySelector(`#nav-${id} .nav-section-header`);
+        if (items) items.classList.add('open');
+        if (hdr) hdr.classList.add('open');
+      }
+    }
+  }
+}
+
+// ── SEARCH ─────────────────────────────────────────────────────────────────────
+function handleSearch(val) {
+  clearTimeout(searchTimeout);
+  if (!val.trim()) return;
+  searchTimeout = setTimeout(() => doSearch(val), 200);
+}
+
+function doSearch(query) {
+  const q = (query || document.getElementById('mainSearch').value).toLowerCase().trim();
+  if (!q) { goHome(); return; }
+
+  const results = searchIndex.filter(item =>
+    item.title.toLowerCase().includes(q) ||
+    item.module.toLowerCase().includes(q) ||
+    item.desc.toLowerCase().includes(q) ||
+    item.body.toLowerCase().includes(q)
+  );
+
+  const area = document.getElementById('contentArea');
+  if (!results.length) {
+    area.innerHTML = `
+      <div class="search-results">
+        <div class="no-results">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <p>Nenhum resultado encontrado para <strong>"${q}"</strong>.</p>
+        </div>
+      </div>`;
+    return;
+  }
+
+  const items = results.map(r => {
+    const excerpt = r.desc || r.body.slice(0, 120) + '...';
+    const clickAction = r.faqId ? `showFaqItem('${r.faqId}')` : `showArticle('${r.key}')`;
+    return `<div class="result-item" onclick="${clickAction}">
+      <div class="result-title">${r.title}</div>
+      <div class="result-excerpt">${excerpt}</div>
+      <div class="result-path">${r.module}</div>
+    </div>`;
+  }).join('');
+
+  area.innerHTML = `
+    <div class="search-results">
+      <p class="search-query">${results.length} resultado(s) para <strong>"${q}"</strong></p>
+      ${items}
+    </div>`;
+  currentArticle = '__search__';
+}
+
+// ── SIDEBAR MOBILE ─────────────────────────────────────────────────────────────
+function toggleSidebar() {
+  document.getElementById('sidebar').classList.toggle('open');
+  document.getElementById('sidebarOverlay').classList.toggle('open');
+}
+function closeSidebarMobile() {
+  document.getElementById('sidebar').classList.remove('open');
+  document.getElementById('sidebarOverlay').classList.remove('open');
+}
+
+// ── INIT ──────────────────────────────────────────────────────────────────────
+render();
+</script>
+</body>
+</html>
