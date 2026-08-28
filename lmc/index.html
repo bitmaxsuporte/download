@@ -1,0 +1,1366 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LMC - Livro de Movimentação de Combustível</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        input[type="number"] { -moz-appearance: textfield; }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            background: #f0f2f5;
+            color: #333;
+            padding: 20px;
+        }
+
+        h1 { text-align: center; color: #1a5276; margin-bottom: 8px; font-size: 1.8rem; }
+        .subtitle { text-align: center; color: #666; margin-bottom: 24px; font-size: 0.95rem; }
+
+        /* Navegação */
+        .nav-principal {
+            display: flex; justify-content: center; gap: 10px; margin-bottom: 24px;
+        }
+        .nav-btn {
+            padding: 10px 24px; border: 2px solid #1a5276; border-radius: 8px;
+            background: #fff; color: #1a5276; font-size: 0.95rem; font-weight: 600;
+            cursor: pointer; transition: all 0.2s;
+        }
+        .nav-btn:hover { background: #eaf2f8; }
+        .nav-btn.active { background: #1a5276; color: #fff; }
+
+        .secao { display: none; }
+        .secao.ativa { display: block; }
+
+        /* Cards */
+        .card {
+            background: #fff; border: 2px solid #ddd; border-radius: 12px;
+            padding: 20px; margin-bottom: 16px;
+        }
+        .card h2 { color: #1a5276; margin-bottom: 12px; font-size: 1.2rem; }
+
+        /* Caixa status */
+        .caixa-header {
+            display: flex; justify-content: space-between; align-items: center;
+            flex-wrap: wrap; gap: 12px; margin-bottom: 16px;
+        }
+        .caixa-status {
+            padding: 8px 16px; border-radius: 20px; font-weight: 600; font-size: 0.9rem;
+        }
+        .status-aberto { background: #fdecea; color: #e74c3c; }
+        .status-fechado { background: #e8f8f0; color: #27ae60; }
+
+        .caixa-info { font-size: 0.9rem; color: #555; }
+        .caixa-info strong { color: #1a5276; }
+
+        /* Botões */
+        .btn {
+            padding: 10px 20px; border: none; border-radius: 8px;
+            font-size: 0.9rem; font-weight: 600; cursor: pointer; transition: opacity 0.2s;
+        }
+        .btn:hover { opacity: 0.85; }
+        .btn-abrir { background: #27ae60; color: #fff; }
+        .btn-fechar { background: #e74c3c; color: #fff; }
+        .btn-editar { background: #e67e22; color: #fff; }
+        .btn-excluir { background: #c0392b; color: #fff; }
+        .btn-cancelar { background: #95a5a6; color: #fff; }
+        .btn-salvar { background: #27ae60; color: #fff; }
+        .btn-filtrar { background: #1a5276; color: #fff; padding: 8px 16px; border-radius: 6px; }
+        .btn-imprimir { background: #27ae60; color: #fff; padding: 8px 16px; border-radius: 6px; }
+        .btn-sm { padding: 4px 10px; font-size: 0.8rem; }
+
+        .btn:disabled { background: #ccc; cursor: not-allowed; opacity: 1; }
+
+        /* Tabs */
+        .tabs { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; margin-bottom: 20px; }
+        .tab {
+            padding: 8px 14px; border: 2px solid #ccc; border-radius: 8px;
+            background: #fff; cursor: pointer; font-size: 0.85rem; font-weight: 600;
+        }
+        .tab:hover { border-color: #1a5276; }
+        .tab.active { background: #1a5276; color: #fff; border-color: #1a5276; }
+
+        /* Bicos grid */
+        .bicos-grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 12px; margin-bottom: 16px;
+        }
+        .bico-card {
+            background: #fff; border: 2px solid #ddd; border-radius: 10px; padding: 14px;
+        }
+        .bico-card.preenchido { border-color: #27ae60; background: #f9fff9; }
+        .bico-card.pendente { border-color: #f39c12; }
+
+        .bico-header {
+            display: flex; justify-content: space-between; align-items: center;
+            margin-bottom: 10px; flex-wrap: wrap; gap: 4px;
+        }
+        .bico-num { font-size: 1.1rem; font-weight: 700; color: #1a5276; }
+        .bico-tipo {
+            font-size: 0.75rem; padding: 3px 8px; border-radius: 12px;
+            font-weight: 600; color: #fff;
+        }
+        .tipo-gcv { background: #2ecc71; }
+        .tipo-gcp { background: #e67e22; }
+        .tipo-etanol { background: #3498db; }
+        .tipo-aditivada { background: #9b59b6; }
+        .tipo-s500v { background: #e74c3c; }
+        .tipo-s500p { background: #c0392b; }
+        .tipo-s10v { background: #1abc9c; }
+        .tipo-s10p { background: #16a085; }
+
+        .bico-row {
+            display: flex; align-items: center; gap: 6px; margin-bottom: 6px;
+        }
+        .bico-row label {
+            width: 110px; font-size: 0.8rem; font-weight: 600; color: #555;
+        }
+        .bico-row input {
+            flex: 1; padding: 6px 8px; border: 2px solid #ddd; border-radius: 6px;
+            font-size: 0.9rem; text-align: right;
+        }
+        .bico-row input:disabled { background: #f5f5f5; color: #999; }
+        .bico-row .valor {
+            flex: 1; padding: 6px 8px; background: #f0f7ff; border-radius: 6px;
+            text-align: right; font-weight: 600; color: #1a5276; font-size: 0.9rem;
+        }
+
+        /* Tabelas */
+        .tabela-wrap { overflow-x: auto; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { padding: 8px 10px; border: 1px solid #ddd; text-align: right; font-size: 0.85rem; }
+        th { background: #1a5276; color: #fff; text-align: center; }
+        td:first-child { text-align: left; font-weight: 600; }
+        tr:nth-child(even) { background: #f9f9f9; }
+        .total-row { background: #eaf2f8 !important; font-weight: 700; }
+        .total-row td { color: #1a5276; }
+
+        /* Filtros */
+        .filtros {
+            display: flex; align-items: flex-end; gap: 12px; flex-wrap: wrap;
+            margin-bottom: 16px;
+        }
+        .filtro-group label {
+            display: block; font-weight: 600; color: #1a5276;
+            margin-bottom: 4px; font-size: 0.85rem;
+        }
+        .filtro-group input, .filtro-group select {
+            padding: 8px 10px; border: 2px solid #ccc; border-radius: 6px; font-size: 0.9rem;
+        }
+
+        /* Caixa lista */
+        .caixa-item {
+            background: #fff; border: 2px solid #ddd; border-radius: 10px;
+            padding: 14px; margin-bottom: 10px; cursor: pointer;
+            transition: border-color 0.2s;
+        }
+        .caixa-item:hover { border-color: #1a5276; }
+        .caixa-item.aberto { border-color: #e74c3c; }
+        .caixa-item.fechado { border-color: #27ae60; }
+
+        .caixa-item-header {
+            display: flex; justify-content: space-between; align-items: center;
+            flex-wrap: wrap; gap: 8px;
+        }
+        .caixa-item-titulo { font-weight: 700; color: #1a5276; font-size: 1rem; }
+        .caixa-item-resumo { font-size: 0.85rem; color: #666; margin-top: 6px; }
+
+        /* Modal */
+        .modal-overlay {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.5); z-index: 1000; justify-content: center; align-items: center;
+        }
+        .modal-overlay.ativo { display: flex; }
+        .modal {
+            background: #fff; border-radius: 12px; padding: 24px;
+            width: 90%; max-width: 450px; box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+        .modal h2 { color: #1a5276; margin-bottom: 16px; font-size: 1.2rem; }
+        .modal-row {
+            display: flex; align-items: center; gap: 10px; margin-bottom: 12px;
+        }
+        .modal-row label { width: 130px; font-weight: 600; color: #555; font-size: 0.9rem; }
+        .modal-row input {
+            flex: 1; padding: 8px 10px; border: 2px solid #ddd; border-radius: 6px;
+            font-size: 0.95rem; text-align: right;
+        }
+        .modal-row .info {
+            flex: 1; padding: 8px 10px; background: #f5f5f5; border-radius: 6px;
+            text-align: right; font-weight: 600; color: #333;
+        }
+        .modal-actions { display: flex; gap: 10px; margin-top: 16px; }
+
+        /* Sem dados */
+        .sem-dados { text-align: center; color: #999; padding: 30px; font-size: 0.95rem; }
+
+        /* Print */
+        @media print {
+            body { background: #fff; padding: 10px; }
+            .nav-principal, .btn, .tabs, .filtros { display: none !important; }
+            .secao { display: block !important; }
+        }
+
+        @media (max-width: 600px) {
+            .bicos-grid { grid-template-columns: 1fr; }
+            .bico-row label { width: 90px; font-size: 0.75rem; }
+            .nav-principal { flex-direction: column; align-items: center; }
+            .filtros { flex-direction: column; align-items: stretch; }
+        }
+    </style>
+</head>
+<body>
+
+<h1>LMC - Livro de Movimentação de Combustível</h1>
+<p class="subtitle" id="dataAtual"></p>
+
+<div class="nav-principal">
+    <button class="nav-btn active" onclick="mostrarSecao('caixa')">Caixa</button>
+    <button class="nav-btn" onclick="mostrarSecao('historico')">Caixas por Dia</button>
+    <button class="nav-btn" onclick="mostrarSecao('resumo')">Resumo</button>
+    <button class="nav-btn" onclick="mostrarSecao('relatorios')">Relatórios</button>
+</div>
+
+<!-- ==================== SEÇÃO CAIXA ==================== -->
+<div class="secao ativa" id="secao-caixa">
+    <!-- Preços -->
+    <div class="card">
+        <h2>Preços por Litro (R$)</h2>
+        <div style="display:flex; gap:12px; flex-wrap:wrap;">
+            <div><small>GCV</small><br><input type="number" id="preco-gcv" step="0.01" value="5.89" style="width:80px; padding:6px; border:2px solid #ccc; border-radius:6px; text-align:center;"></div>
+            <div><small>GCP</small><br><input type="number" id="preco-gcp" step="0.01" value="6.09" style="width:80px; padding:6px; border:2px solid #ccc; border-radius:6px; text-align:center;"></div>
+            <div><small>Etanol</small><br><input type="number" id="preco-etanol" step="0.01" value="3.99" style="width:80px; padding:6px; border:2px solid #ccc; border-radius:6px; text-align:center;"></div>
+            <div><small>Aditiv.</small><br><input type="number" id="preco-aditivada" step="0.01" value="6.19" style="width:80px; padding:6px; border:2px solid #ccc; border-radius:6px; text-align:center;"></div>
+            <div><small>S500</small><br><input type="number" id="preco-s500" step="0.01" value="5.79" style="width:80px; padding:6px; border:2px solid #ccc; border-radius:6px; text-align:center;"></div>
+            <div><small>S10</small><br><input type="number" id="preco-s10" step="0.01" value="5.99" style="width:80px; padding:6px; border:2px solid #ccc; border-radius:6px; text-align:center;"></div>
+            <div style="margin-left:auto;"><br><button class="btn btn-editar" onclick="carregarMockup()">Dados Mockup</button></div>
+        </div>
+    </div>
+
+    <!-- Status do Caixa -->
+    <div class="card" id="caixaPanel">
+        <div class="caixa-header">
+            <h2>Controle de Caixa</h2>
+            <div id="caixaStatusBadge"></div>
+        </div>
+        <div id="caixaConteudo"></div>
+    </div>
+</div>
+
+<!-- ==================== SEÇÃO CAIXAS POR DIA ==================== -->
+<div class="secao" id="secao-historico">
+    <div class="card">
+        <h2>Caixas por Dia</h2>
+        <div class="filtros">
+            <div class="filtro-group">
+                <label>Filtrar por data:</label>
+                <input type="date" id="histDataFiltro" onchange="renderHistorico()">
+            </div>
+            <button class="btn btn-filtrar" onclick="document.getElementById('histDataFiltro').value=''; renderHistorico();">Mostrar Todos</button>
+        </div>
+        <div id="historicoList"></div>
+    </div>
+</div>
+
+<!-- ==================== SEÇÃO RESUMO ==================== -->
+<div class="secao" id="secao-resumo">
+    <div class="card">
+        <div class="filtros">
+            <div class="filtro-group">
+                <label>Visualizar resumo do dia:</label>
+                <input type="date" id="resumoDataFiltro" onchange="renderResumo()">
+            </div>
+            <button class="btn btn-filtrar" onclick="document.getElementById('resumoDataFiltro').value=''; renderResumo();">Todos</button>
+            <span id="resumoDataLabel" style="color:#666; font-size:0.9rem;"></span>
+        </div>
+    </div>
+
+    <div class="card" style="margin-bottom:16px;">
+        <h2>Total por Categoria</h2>
+        <div class="tabela-wrap">
+            <table><thead><tr><th>Categoria</th><th>Total Litros</th><th>Total R$</th></tr></thead>
+            <tbody id="resumoCategoriaBody"></tbody></table>
+        </div>
+    </div>
+
+    <div class="card" style="margin-bottom:16px;">
+        <h2>Sintético por Tipo</h2>
+        <div class="tabela-wrap">
+            <table><thead><tr><th>Combustível</th><th>Bicos</th><th>Total Litros</th><th>Total R$</th></tr></thead>
+            <tbody id="resumoSinteticoBody"></tbody></table>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>Analítico por Bico</h2>
+        <div class="tabela-wrap">
+            <table><thead><tr><th>Bico</th><th>Combustível</th><th>Qtd</th><th>Total Litros</th><th>Total R$</th><th>Enc. Atual</th></tr></thead>
+            <tbody id="resumoAnaliticoBody"></tbody></table>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== SEÇÃO RELATÓRIOS ==================== -->
+<div class="secao" id="secao-relatorios">
+    <div class="card">
+        <h2>Relatórios</h2>
+        <div class="filtros">
+            <div class="filtro-group"><label>Data Início:</label><input type="date" id="relDataInicio"></div>
+            <div class="filtro-group"><label>Data Fim:</label><input type="date" id="relDataFim"></div>
+            <div class="filtro-group">
+                <label>Tipo:</label>
+                <select id="relTipoCombustivel">
+                    <option value="todos">Todos</option>
+                    <option value="gcv">Gasolina Comum à Vista</option>
+                    <option value="gcp">Gasolina Comum à Prazo</option>
+                    <option value="etanol">Etanol</option>
+                    <option value="aditivada">Gasolina Aditivada</option>
+                    <option value="s500v">Diesel S500 à Vista</option>
+                    <option value="s500p">Diesel S500 à Prazo</option>
+                    <option value="s10v">Diesel S10 à Vista</option>
+                    <option value="s10p">Diesel S10 à Prazo</option>
+                </select>
+            </div>
+            <button class="btn btn-filtrar" onclick="gerarRelatorio()">Gerar</button>
+            <button class="btn btn-imprimir" onclick="window.print()">Imprimir</button>
+        </div>
+    </div>
+    <div id="relatorioResultado"></div>
+</div>
+
+<!-- ==================== MODAL ==================== -->
+<div class="modal-overlay" id="modalEdicao">
+    <div class="modal">
+        <h2>Editar Lançamento</h2>
+        <input type="hidden" id="editCaixaId">
+        <input type="hidden" id="editBicoNum">
+        <div class="modal-row"><label>Bico:</label><div class="info" id="editBico"></div></div>
+        <div class="modal-row"><label>Combustível:</label><div class="info" id="editNome"></div></div>
+        <hr style="margin:10px 0; border:1px solid #eee;">
+        <div class="modal-row"><label>Enc. Inicial:</label><input type="number" id="editInicial" step="0.01" oninput="calcularEdicao()"></div>
+        <div class="modal-row"><label>Enc. Final:</label><input type="number" id="editFinal" step="0.01" oninput="calcularEdicao()"></div>
+        <div class="modal-row"><label>Preço/Litro:</label><input type="number" id="editPreco" step="0.01" oninput="calcularEdicao()"></div>
+        <hr style="margin:10px 0; border:1px solid #eee;">
+        <div class="modal-row"><label>Litros:</label><div class="info" id="editLitros"></div></div>
+        <div class="modal-row"><label>Total R$:</label><div class="info" id="editTotal"></div></div>
+        <div class="modal-actions">
+            <button class="btn btn-salvar" onclick="salvarEdicao()">Salvar</button>
+            <button class="btn btn-cancelar" onclick="fecharModal()">Cancelar</button>
+        </div>
+    </div>
+</div>
+
+<script>
+// ===== DADOS =====
+const BICOS = [
+    { num: 1,  tipo: 'gcv',       nome: 'Gasolina Comum à Vista' },
+    { num: 2,  tipo: 'gcv',       nome: 'Gasolina Comum à Vista' },
+    { num: 3,  tipo: 'gcv',       nome: 'Gasolina Comum à Vista' },
+    { num: 4,  tipo: 'gcp',       nome: 'Gasolina Comum à Prazo' },
+    { num: 5,  tipo: 'gcv',       nome: 'Gasolina Comum à Vista' },
+    { num: 6,  tipo: 'gcp',       nome: 'Gasolina Comum à Prazo' },
+    { num: 7,  tipo: 'gcv',       nome: 'Gasolina Comum à Vista' },
+    { num: 8,  tipo: 'gcv',       nome: 'Gasolina Comum à Vista' },
+    { num: 9,  tipo: 'etanol',    nome: 'Etanol' },
+    { num: 10, tipo: 'aditivada', nome: 'Gasolina Aditivada' },
+    { num: 11, tipo: 'etanol',    nome: 'Etanol' },
+    { num: 12, tipo: 'aditivada', nome: 'Gasolina Aditivada' },
+    { num: 13, tipo: 's500v',     nome: 'Diesel S500 à Vista' },
+    { num: 14, tipo: 's500p',     nome: 'Diesel S500 à Prazo' },
+    { num: 15, tipo: 's10p',      nome: 'Diesel S10 à Prazo' },
+    { num: 16, tipo: 's10v',      nome: 'Diesel S10 à Vista' },
+    { num: 17, tipo: 's500p',     nome: 'Diesel S500 à Prazo' },
+    { num: 18, tipo: 's500v',     nome: 'Diesel S500 à Vista' },
+    { num: 19, tipo: 's10v',      nome: 'Diesel S10 à Vista' },
+    { num: 20, tipo: 's10p',      nome: 'Diesel S10 à Prazo' },
+];
+
+const TIPO_CLASSES = {
+    gcv:'tipo-gcv', gcp:'tipo-gcp', etanol:'tipo-etanol', aditivada:'tipo-aditivada',
+    s500v:'tipo-s500v', s500p:'tipo-s500p', s10v:'tipo-s10v', s10p:'tipo-s10p'
+};
+
+const TIPO_PRECO_KEY = {
+    gcv:'gcv', gcp:'gcp', etanol:'etanol', aditivada:'aditivada',
+    s500v:'s500', s500p:'s500', s10v:'s10', s10p:'s10'
+};
+
+const CATEGORIAS = {
+    'Gasolina Comum': ['gcv','gcp'],
+    'Gasolina Aditivada': ['aditivada'],
+    'Etanol': ['etanol'],
+    'Diesel S500': ['s500v','s500p'],
+    'Diesel S10': ['s10v','s10p']
+};
+
+// Estado
+let caixas = JSON.parse(localStorage.getItem('lmc_caixas')) || [];
+let filtroBicos = 'todos';
+
+// ===== DATA =====
+document.getElementById('dataAtual').textContent = new Date().toLocaleDateString('pt-BR', {
+    weekday:'long', year:'numeric', month:'long', day:'numeric'
+});
+
+// ===== NAVEGAÇÃO =====
+function mostrarSecao(secao) {
+    document.querySelectorAll('.secao').forEach(s => s.classList.remove('ativa'));
+    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('secao-' + secao).classList.add('ativa');
+    event.target.classList.add('active');
+    if (secao === 'historico') renderHistorico();
+    if (secao === 'resumo') renderResumo();
+}
+
+// ===== PREÇOS =====
+function getPreco(tipo) {
+    const key = TIPO_PRECO_KEY[tipo];
+    const el = document.getElementById('preco-' + key);
+    return el ? parseFloat(el.value) || 0 : 0;
+}
+
+// ===== CAIXA =====
+function getCaixaAberto() {
+    return caixas.find(c => c.aberto);
+}
+
+function getUltimoEncerrante(bicoNum) {
+    // Buscar o último encerrante final deste bico em caixas fechados
+    for (let i = caixas.length - 1; i >= 0; i--) {
+        const c = caixas[i];
+        if (c.lancamentos[bicoNum] && c.lancamentos[bicoNum].final > 0) {
+            return c.lancamentos[bicoNum].final;
+        }
+    }
+    return 0;
+}
+
+function getDataHora() {
+    const now = new Date();
+    return {
+        data: now.toLocaleDateString('pt-BR'),
+        hora: now.toLocaleTimeString('pt-BR'),
+        timestamp: now.toISOString()
+    };
+}
+
+function abrirCaixa() {
+    if (getCaixaAberto()) {
+        alert('Já existe um caixa aberto! Feche-o antes de abrir outro.');
+        return;
+    }
+
+    const dataInput = document.getElementById('caixaData');
+    const horaInput = document.getElementById('caixaHora');
+
+    if (!dataInput || !horaInput) return;
+
+    const dataVal = dataInput.value;
+    const horaVal = horaInput.value;
+
+    if (!dataVal || !horaVal) {
+        alert('Preencha a data e o horário de abertura!');
+        return;
+    }
+
+    // Converter data de YYYY-MM-DD para DD/MM/YYYY
+    const [ano, mes, dia] = dataVal.split('-');
+    const dataFmt = `${dia}/${mes}/${ano}`;
+
+    // Converter hora de HH:MM para HH:MM:00
+    const horaFmt = horaVal + ':00';
+
+    const caixa = {
+        id: Date.now(),
+        aberto: true,
+        dataAbertura: dataFmt,
+        horaAbertura: horaFmt,
+        dataFechamento: '',
+        horaFechamento: '',
+        lancamentos: {}
+    };
+
+    caixas.push(caixa);
+    salvar();
+    renderCaixa();
+}
+
+function fecharCaixa() {
+    const caixa = getCaixaAberto();
+    if (!caixa) return;
+
+    // Verificar se tem pelo menos 1 lançamento
+    const temLancamento = Object.keys(caixa.lancamentos).some(k => caixa.lancamentos[k].final > 0);
+    if (!temLancamento) {
+        alert('Faça pelo menos um lançamento antes de fechar o caixa!');
+        return;
+    }
+
+    const dh = getDataHora();
+    caixa.aberto = false;
+    caixa.dataFechamento = dh.data;
+    caixa.horaFechamento = dh.hora;
+
+    // Calcular totais do caixa
+    caixa.totalLitros = 0;
+    caixa.totalRS = 0;
+    Object.values(caixa.lancamentos).forEach(l => {
+        caixa.totalLitros += l.litros || 0;
+        caixa.totalRS += l.totalRS || 0;
+    });
+
+    salvar();
+    renderCaixa();
+    alert(`Caixa fechado!\nTotal: ${caixa.totalLitros.toFixed(2)} litros — R$ ${caixa.totalRS.toFixed(2)}`);
+}
+
+function renderCaixa() {
+    const caixa = getCaixaAberto();
+    const statusBadge = document.getElementById('caixaStatusBadge');
+    const conteudo = document.getElementById('caixaConteudo');
+
+    if (!caixa) {
+        // Data atual como padrão
+        const hoje = new Date();
+        const hojeStr = hoje.toISOString().split('T')[0];
+        const horaStr = hoje.toTimeString().slice(0,5);
+
+        statusBadge.innerHTML = '<span class="caixa-status status-fechado">Nenhum caixa aberto</span>';
+        conteudo.innerHTML = `
+            <p style="color:#666; margin-bottom:12px;">Abra um caixa para iniciar os lançamentos.</p>
+            <div style="display:flex; gap:12px; align-items:flex-end; flex-wrap:wrap; margin-bottom:16px;">
+                <div>
+                    <label style="display:block; font-weight:600; color:#1a5276; margin-bottom:4px; font-size:0.85rem;">Data de Abertura:</label>
+                    <input type="date" id="caixaData" value="${hojeStr}" style="padding:8px 12px; border:2px solid #ccc; border-radius:6px; font-size:0.95rem;">
+                </div>
+                <div>
+                    <label style="display:block; font-weight:600; color:#1a5276; margin-bottom:4px; font-size:0.85rem;">Horário de Abertura:</label>
+                    <input type="time" id="caixaHora" value="${horaStr}" style="padding:8px 12px; border:2px solid #ccc; border-radius:6px; font-size:0.95rem;">
+                </div>
+                <button class="btn btn-abrir" onclick="abrirCaixa()">Abrir Caixa</button>
+            </div>
+            ${renderCaixasFechados()}`;
+        return;
+    }
+
+    statusBadge.innerHTML = `<span class="caixa-status status-aberto">CAIXA ABERTO — ${caixa.dataAbertura} ${caixa.horaAbertura}</span>`;
+
+    // Tabs de filtro
+    const tiposUnicos = [...new Set(BICOS.map(b => b.tipo))];
+    let tabsHtml = `<div class="tabs" style="margin-top:12px;">
+        <div class="tab ${filtroBicos==='todos'?'active':''}" onclick="filtroBicos='todos'; renderCaixa();">Todos</div>`;
+    tiposUnicos.forEach(t => {
+        const labels = {gcv:'GCV',gcp:'GCP',etanol:'Etanol',aditivada:'Aditiv.',s500v:'S500 V.',s500p:'S500 P.',s10v:'S10 V.',s10p:'S10 P.'};
+        tabsHtml += `<div class="tab ${filtroBicos===t?'active':''}" onclick="filtroBicos='${t}'; renderCaixa();">${labels[t]}</div>`;
+    });
+    tabsHtml += '</div>';
+
+    // Bicos
+    const bicosFiltrados = filtroBicos === 'todos' ? BICOS : BICOS.filter(b => b.tipo === filtroBicos);
+    let bicosHtml = '<div class="bicos-grid">';
+
+    bicosFiltrados.forEach(b => {
+        const l = caixa.lancamentos[b.num] || { inicial: 0, final: 0, litros: 0, totalRS: 0, preco: 0 };
+        const ini = l.inicial || getUltimoEncerrante(b.num);
+        const preenchido = l.final > 0;
+
+        bicosHtml += `
+        <div class="bico-card ${preenchido ? 'preenchido' : 'pendente'}">
+            <div class="bico-header">
+                <span class="bico-num">Bico ${b.num}</span>
+                <span class="bico-tipo ${TIPO_CLASSES[b.tipo]}">${b.nome}</span>
+            </div>
+            <div class="bico-row">
+                <label>Enc. Inicial:</label>
+                <div class="valor">${ini.toFixed(2)}</div>
+            </div>
+            <div class="bico-row">
+                <label>Enc. Final:</label>
+                <input type="number" id="fim-${b.num}" step="0.01"
+                    value="${preenchido ? l.final : ''}"
+                    oninput="calcularBico(${b.num})">
+            </div>
+            <div class="bico-row">
+                <label>Litros:</label>
+                <div class="valor" id="litros-${b.num}">${preenchido ? l.litros.toFixed(2) : '—'}</div>
+            </div>
+            <div class="bico-row">
+                <label>Total R$:</label>
+                <div class="valor" id="total-${b.num}">${preenchido ? 'R$ ' + l.totalRS.toFixed(2) : '—'}</div>
+            </div>
+            ${preenchido ? `<button class="btn btn-editar btn-sm" style="margin-top:8px;" onclick="abrirModalEdicao(${caixa.id}, ${b.num})">Editar</button>` : ''}
+        </div>`;
+    });
+
+    bicosHtml += '</div>';
+
+    // Totais do caixa atual
+    let totalLitros = 0, totalRS = 0;
+    Object.values(caixa.lancamentos).forEach(l => {
+        totalLitros += l.litros || 0;
+        totalRS += l.totalRS || 0;
+    });
+
+    const totaisHtml = `
+    <div style="display:flex; gap:16px; flex-wrap:wrap; margin-top:12px; padding:12px; background:#eaf2f8; border-radius:8px;">
+        <div><strong>Litros no caixa:</strong> ${totalLitros.toFixed(2)}</div>
+        <div><strong>Total R$:</strong> R$ ${totalRS.toFixed(2)}</div>
+        <div><strong>Bicos lançados:</strong> ${Object.keys(caixa.lancamentos).filter(k => caixa.lancamentos[k].final > 0).length}/20</div>
+    </div>`;
+
+    conteudo.innerHTML = tabsHtml + bicosHtml + totaisHtml +
+        `<div style="margin-top:16px;"><button class="btn btn-fechar" onclick="fecharCaixa()">Fechar Caixa</button></div>`;
+
+    // Mostrar caixas fechados abaixo
+    conteudo.innerHTML += renderCaixasFechados();
+}
+
+function calcularBico(num) {
+    const caixa = getCaixaAberto();
+    if (!caixa) return;
+
+    const inputFim = document.getElementById('fim-' + num);
+    const final = parseFloat(inputFim.value) || 0;
+    const inicial = getUltimoEncerrante(num);
+    const litros = final - inicial;
+
+    if (litros < 0) {
+        document.getElementById('litros-' + num).textContent = 'ERRO';
+        document.getElementById('total-' + num).textContent = 'ERRO';
+        return;
+    }
+
+    const bico = BICOS.find(b => b.num === num);
+    const preco = getPreco(bico.tipo);
+    const totalRS = litros * preco;
+
+    // Salvar no caixa
+    caixa.lancamentos[num] = {
+        inicial, final, litros, totalRS, preco,
+        bico: num, nome: bico.nome, tipo: bico.tipo
+    };
+
+    document.getElementById('litros-' + num).textContent = litros.toFixed(2);
+    document.getElementById('total-' + num).textContent = 'R$ ' + totalRS.toFixed(2);
+
+    salvar();
+}
+
+function renderCaixasFechados() {
+    const fechados = caixas.filter(c => !c.aberto).reverse();
+    if (fechados.length === 0) return '<div style="margin-top:24px;"><h3 style="color:#1a5276;">Caixas Fechados</h3><p class="sem-dados">Nenhum caixa fechado.</p></div>';
+
+    let html = '<div style="margin-top:24px;"><h3 style="color:#1a5276; margin-bottom:12px;">Caixas Fechados</h3>';
+    fechados.forEach(c => {
+        const qtd = Object.keys(c.lancamentos).filter(k => c.lancamentos[k].final > 0).length;
+        html += `
+        <div class="caixa-item fechado" onclick="verCaixaFechado(${c.id})">
+            <div class="caixa-item-header">
+                <span class="caixa-item-titulo">Caixa ${c.dataAbertura} ${c.horaAbertura}</span>
+                <span class="caixa-status status-fechado">Fechado ${c.dataFechamento} ${c.horaFechamento}</span>
+            </div>
+            <div class="caixa-item-resumo">
+                ${qtd} bicos lançados — ${(c.totalLitros||0).toFixed(2)} litros — R$ ${(c.totalRS||0).toFixed(2)}
+            </div>
+        </div>`;
+    });
+    html += '</div>';
+    return html;
+}
+
+function verCaixaFechado(id) {
+    const c = caixas.find(cx => cx.id === id);
+    if (!c) return;
+
+    let html = `
+    <div style="margin-top:12px; padding:16px; background:#fff; border:2px solid #27ae60; border-radius:10px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+            <h3 style="color:#1a5276;">Caixa ${c.dataAbertura} ${c.horaAbertura}</h3>
+            <span class="caixa-status status-fechado">Fechado ${c.dataFechamento} ${c.horaFechamento}</span>
+        </div>
+        <div class="tabela-wrap">
+        <table>
+            <thead><tr><th>Bico</th><th>Combustível</th><th>Enc. Inicial</th><th>Enc. Final</th><th>Litros</th><th>R$/L</th><th>Total R$</th></tr></thead>
+            <tbody>`;
+
+    let totalLitros = 0, totalRS = 0;
+    BICOS.forEach(b => {
+        const l = c.lancamentos[b.num];
+        if (l && l.final > 0) {
+            totalLitros += l.litros;
+            totalRS += l.totalRS;
+            html += `<tr>
+                <td>Bico ${b.num}</td><td>${b.nome}</td>
+                <td>${l.inicial.toFixed(2)}</td><td>${l.final.toFixed(2)}</td>
+                <td>${l.litros.toFixed(2)}</td><td>R$ ${l.preco.toFixed(2)}</td>
+                <td>R$ ${l.totalRS.toFixed(2)}</td>
+            </tr>`;
+        }
+    });
+
+    html += `<tr class="total-row"><td colspan="4">TOTAL</td><td>${totalLitros.toFixed(2)}</td><td></td><td>R$ ${totalRS.toFixed(2)}</td></tr>`;
+    html += '</tbody></table></div></div>';
+
+    // Inserir após o card do caixa
+    const panel = document.getElementById('caixaPanel');
+    const existente = panel.querySelector('.caixa-detalhe');
+    if (existente) existente.remove();
+
+    const div = document.createElement('div');
+    div.className = 'caixa-detalhe';
+    div.innerHTML = html;
+    panel.appendChild(div);
+}
+
+// ===== MODAL =====
+function abrirModalEdicao(caixaId, bicoNum) {
+    const c = caixas.find(cx => cx.id === caixaId);
+    if (!c) return;
+
+    const l = c.lancamentos[bicoNum];
+    if (!l) return;
+
+    const bico = BICOS.find(b => b.num === bicoNum);
+
+    document.getElementById('editCaixaId').value = caixaId;
+    document.getElementById('editBicoNum').value = bicoNum;
+    document.getElementById('editBico').textContent = 'Bico ' + bicoNum;
+    document.getElementById('editNome').textContent = bico.nome;
+    document.getElementById('editInicial').value = l.inicial.toFixed(2);
+    document.getElementById('editFinal').value = l.final.toFixed(2);
+    document.getElementById('editPreco').value = l.preco.toFixed(2);
+
+    calcularEdicao();
+    document.getElementById('modalEdicao').classList.add('ativo');
+}
+
+function fecharModal() {
+    document.getElementById('modalEdicao').classList.remove('ativo');
+}
+
+function calcularEdicao() {
+    const ini = parseFloat(document.getElementById('editInicial').value) || 0;
+    const fim = parseFloat(document.getElementById('editFinal').value) || 0;
+    const preco = parseFloat(document.getElementById('editPreco').value) || 0;
+    const litros = fim - ini;
+    document.getElementById('editLitros').textContent = litros >= 0 ? litros.toFixed(2) : 'ERRO';
+    document.getElementById('editTotal').textContent = litros >= 0 ? 'R$ ' + (litros * preco).toFixed(2) : 'ERRO';
+}
+
+function salvarEdicao() {
+    const caixaId = parseInt(document.getElementById('editCaixaId').value);
+    const bicoNum = parseInt(document.getElementById('editBicoNum').value);
+    const c = caixas.find(cx => cx.id === caixaId);
+    if (!c) return;
+
+    const novaInicial = parseFloat(document.getElementById('editInicial').value) || 0;
+    const novoFinal = parseFloat(document.getElementById('editFinal').value) || 0;
+    const novoPreco = parseFloat(document.getElementById('editPreco').value) || 0;
+
+    if (novoFinal <= novaInicial) {
+        alert('Encerrante final deve ser maior que o inicial!');
+        return;
+    }
+
+    const litros = novoFinal - novaInicial;
+    const totalRS = litros * novoPreco;
+    const bico = BICOS.find(b => b.num === bicoNum);
+
+    c.lancamentos[bicoNum] = {
+        inicial: novaInicial, final: novoFinal, litros, totalRS, preco: novoPreco,
+        bico: bicoNum, nome: bico.nome, tipo: bico.tipo
+    };
+
+    // Recalcular totais do caixa
+    c.totalLitros = 0;
+    c.totalRS = 0;
+    Object.values(c.lancamentos).forEach(l => {
+        c.totalLitros += l.litros || 0;
+        c.totalRS += l.totalRS || 0;
+    });
+
+    salvar();
+    fecharModal();
+    renderCaixa();
+    renderResumo();
+    renderHistorico();
+    alert('Lançamento atualizado!');
+}
+
+// ===== SALVAR =====
+function salvar() {
+    localStorage.setItem('lmc_caixas', JSON.stringify(caixas));
+}
+
+// ===== CAIXAS POR DIA =====
+function renderHistorico() {
+    const list = document.getElementById('historicoList');
+    const filtroData = document.getElementById('histDataFiltro').value;
+
+    // Agrupar caixas por dia
+    const caixasPorDia = {};
+    caixas.forEach(c => {
+        if (filtroData) {
+            const [y,m,d] = filtroData.split('-');
+            const fmt = `${d}/${m}/${y}`;
+            if (c.dataAbertura !== fmt) return;
+        }
+        if (!caixasPorDia[c.dataAbertura]) caixasPorDia[c.dataAbertura] = [];
+        caixasPorDia[c.dataAbertura].push(c);
+    });
+
+    if (Object.keys(caixasPorDia).length === 0) {
+        list.innerHTML = '<p class="sem-dados">Nenhum caixa encontrado para esta data.</p>';
+        return;
+    }
+
+    // Ordenar dias decrescente
+    const diasOrdenados = Object.keys(caixasPorDia).sort((a, b) => {
+        const [da, ma, aa] = a.split('/');
+        const [db, mb, ab] = b.split('/');
+        return new Date(ab, mb-1, db) - new Date(aa, ma-1, da);
+    });
+
+    let html = '';
+    diasOrdenados.forEach(dia => {
+        const listaCaixas = caixasPorDia[dia];
+        let totalDiaLitros = 0, totalDiaRS = 0;
+        listaCaixas.forEach(c => {
+            totalDiaLitros += c.totalLitros || 0;
+            totalDiaRS += c.totalRS || 0;
+        });
+
+        html += `
+        <div style="margin-bottom:24px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; padding:12px 16px; background:#1a5276; color:#fff; border-radius:8px; margin-bottom:10px;">
+                <strong style="font-size:1.1rem;">${dia}</strong>
+                <span>${listaCaixas.length} caixa(s) — ${totalDiaLitros.toFixed(2)} litros — R$ ${totalDiaRS.toFixed(2)}</span>
+            </div>`;
+
+        listaCaixas.forEach(c => {
+            const qtd = Object.keys(c.lancamentos).filter(k => c.lancamentos[k].final > 0).length;
+            const statusClass = c.aberto ? 'status-aberto' : 'status-fechado';
+            const statusText = c.aberto ? 'ABERTO' : `Fechado ${c.horaFechamento}`;
+
+            html += `
+            <div style="background:#fff; border:2px solid ${c.aberto ? '#e74c3c' : '#e0e0e0'}; border-radius:10px; margin-bottom:10px; overflow:hidden;">
+                <div style="display:flex; justify-content:space-between; align-items:center; padding:14px 16px; cursor:pointer; flex-wrap:wrap; gap:10px;" onclick="expandirCaixaHistorico(${c.id})">
+                    <div style="display:flex; align-items:center; gap:12px;">
+                        <span style="font-size:1.5rem; color:#1a5276;">&#128336;</span>
+                        <div>
+                            <div style="font-weight:700; font-size:1.05rem; color:#1a5276;">Caixa ${c.horaAbertura}</div>
+                            <div style="font-size:0.8rem; color:#888;">${qtd} bicos lançados</div>
+                        </div>
+                    </div>
+                    <div style="text-align:right;">
+                        <span class="caixa-status ${statusClass}">${statusText}</span>
+                        <div style="font-size:0.85rem; color:#555; margin-top:4px;">
+                            <strong>${(c.totalLitros||0).toFixed(2)}</strong> litros — <strong>R$ ${(c.totalRS||0).toFixed(2)}</strong>
+                        </div>
+                    </div>
+                </div>
+                <div id="hist-detail-${c.id}" style="display:none; border-top:2px solid #eee;"></div>
+            </div>`;
+        });
+
+        html += '</div>';
+    });
+
+    list.innerHTML = html;
+}
+
+function expandirCaixaHistorico(caixaId) {
+    const detailDiv = document.getElementById('hist-detail-' + caixaId);
+    if (!detailDiv) return;
+
+    if (detailDiv.style.display === 'block') {
+        detailDiv.style.display = 'none';
+        return;
+    }
+
+    const c = caixas.find(cx => cx.id === caixaId);
+    if (!c) return;
+
+    let html = `
+    <div style="padding:16px; background:#f8f9fa;">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:14px;">
+            <div>
+                <div style="font-weight:700; color:#1a5276; font-size:1.1rem;">Detalhes do Caixa</div>
+                <div style="font-size:0.85rem; color:#666;">
+                    Abertura: <strong>${c.dataAbertura} ${c.horaAbertura}</strong>
+                    ${!c.aberto ? ` | Fechamento: <strong>${c.dataFechamento} ${c.horaFechamento}</strong>` : ''}
+                </div>
+            </div>
+            <div style="text-align:right;">
+                <div style="font-size:0.9rem; color:#555;">
+                    Total: <strong style="font-size:1.1rem; color:#1a5276;">${(c.totalLitros||0).toFixed(2)} litros</strong>
+                </div>
+                <div style="font-size:0.9rem; color:#555;">
+                    Valor: <strong style="font-size:1.1rem; color:#27ae60;">R$ ${(c.totalRS||0).toFixed(2)}</strong>
+                </div>
+            </div>
+        </div>
+
+        <div class="tabela-wrap">
+        <table>
+            <thead><tr>
+                <th>Bico</th><th>Combustível</th><th>Enc. Ini</th><th>Enc. Fim</th>
+                <th>Litros</th><th>R$/L</th><th>Total R$</th><th>Ação</th>
+            </tr></thead>
+            <tbody>`;
+
+    let totalLitros = 0, totalRS = 0;
+    BICOS.forEach(b => {
+        const l = c.lancamentos[b.num];
+        if (l && l.final > 0) {
+            totalLitros += l.litros;
+            totalRS += l.totalRS;
+            html += `
+            <tr>
+                <td style="font-weight:700;">Bico ${b.num}</td>
+                <td>${b.nome}</td>
+                <td>${l.inicial.toFixed(2)}</td>
+                <td>${l.final.toFixed(2)}</td>
+                <td>${l.litros.toFixed(2)}</td>
+                <td>R$ ${l.preco.toFixed(2)}</td>
+                <td>R$ ${l.totalRS.toFixed(2)}</td>
+                <td><button class="btn btn-editar btn-sm" onclick="abrirModalEdicao(${c.id}, ${b.num})">Editar</button></td>
+            </tr>`;
+        }
+    });
+
+    html += `
+            <tr class="total-row">
+                <td colspan="4" style="text-align:right; font-weight:700;">TOTAL</td>
+                <td>${totalLitros.toFixed(2)}</td><td></td>
+                <td>R$ ${totalRS.toFixed(2)}</td><td></td>
+            </tr>`;
+    html += '</tbody></table></div>';
+
+    // Bicos não lançados
+    const bicosNaoLancados = BICOS.filter(b => !c.lancamentos[b.num] || c.lancamentos[b.num].final <= 0);
+    if (bicosNaoLancados.length > 0) {
+        html += `
+        <div style="margin-top:12px; padding:10px; background:#fff3cd; border-radius:6px; font-size:0.85rem;">
+            <strong>Bicos não lançados:</strong> ${bicosNaoLancados.map(b => b.num).join(', ')}
+        </div>`;
+    }
+
+    html += '</div>';
+
+    detailDiv.innerHTML = html;
+    detailDiv.style.display = 'block';
+}
+
+// ===== RESUMO =====
+function renderResumo() {
+    const filtroInput = document.getElementById('resumoDataFiltro').value;
+    const label = document.getElementById('resumoDataLabel');
+    let filtroFmt = '';
+
+    if (filtroInput) {
+        const [y,m,d] = filtroInput.split('-');
+        filtroFmt = `${d}/${m}/${y}`;
+        label.textContent = `Exibindo: ${filtroFmt}`;
+    } else {
+        label.textContent = 'Exibindo: Todos';
+    }
+
+    // Coletar dados dos caixas
+    const dadosPorTipo = {};
+    const dadosPorBico = {};
+
+    BICOS.forEach(b => {
+        dadosPorBico[b.num] = { litros: 0, totalRS: 0, qtd: 0, encerrante: 0 };
+    });
+
+    caixas.forEach(c => {
+        // Filtrar por data se necessário
+        if (filtroFmt && c.dataAbertura !== filtroFmt) return;
+
+        Object.entries(c.lancamentos).forEach(([num, l]) => {
+            if (l.final <= 0) return;
+
+            // Por bico
+            dadosPorBico[num].litros += l.litros;
+            dadosPorBico[num].totalRS += l.totalRS;
+            dadosPorBico[num].qtd++;
+            dadosPorBico[num].encerrante = l.final;
+
+            // Por tipo
+            if (!dadosPorTipo[l.tipo]) {
+                dadosPorTipo[l.tipo] = { nome: l.nome, litros: 0, totalRS: 0, bicos: new Set() };
+            }
+            dadosPorTipo[l.tipo].litros += l.litros;
+            dadosPorTipo[l.tipo].totalRS += l.totalRS;
+            dadosPorTipo[l.tipo].bicos.add(parseInt(num));
+        });
+    });
+
+    // Resumo por Categoria
+    let catHtml = '';
+    let totalGeralLitros = 0, totalGeralRS = 0;
+
+    Object.entries(CATEGORIAS).forEach(([cat, tipos]) => {
+        let litros = 0, rs = 0;
+        tipos.forEach(t => {
+            if (dadosPorTipo[t]) { litros += dadosPorTipo[t].litros; rs += dadosPorTipo[t].totalRS; }
+        });
+        totalGeralLitros += litros;
+        totalGeralRS += rs;
+        catHtml += `<tr><td style="font-weight:700;">${cat}</td><td>${litros.toFixed(2)}</td><td>R$ ${rs.toFixed(2)}</td></tr>`;
+    });
+    catHtml += `<tr class="total-row"><td>TOTAL GERAL</td><td>${totalGeralLitros.toFixed(2)}</td><td>R$ ${totalGeralRS.toFixed(2)}</td></tr>`;
+    document.getElementById('resumoCategoriaBody').innerHTML = catHtml;
+
+    // Sintético por tipo
+    let sinHtml = '';
+    Object.entries(dadosPorTipo).forEach(([tipo, d]) => {
+        sinHtml += `<tr><td>${d.nome}</td><td>${[...d.bicos].join(', ')}</td><td>${d.litros.toFixed(2)}</td><td>R$ ${d.totalRS.toFixed(2)}</td></tr>`;
+    });
+    sinHtml += `<tr class="total-row"><td>TOTAL</td><td></td><td>${totalGeralLitros.toFixed(2)}</td><td>R$ ${totalGeralRS.toFixed(2)}</td></tr>`;
+    document.getElementById('resumoSinteticoBody').innerHTML = sinHtml;
+
+    // Analítico por bico
+    let anaHtml = '';
+    let anaLitros = 0, anaRS = 0;
+    BICOS.forEach(b => {
+        const d = dadosPorBico[b.num];
+        anaLitros += d.litros;
+        anaRS += d.totalRS;
+        anaHtml += `<tr><td>Bico ${b.num}</td><td>${b.nome}</td><td>${d.qtd}</td><td>${d.litros.toFixed(2)}</td><td>R$ ${d.totalRS.toFixed(2)}</td><td>${d.encerrante.toFixed(2)}</td></tr>`;
+    });
+    anaHtml += `<tr class="total-row"><td>TOTAL</td><td></td><td></td><td>${anaLitros.toFixed(2)}</td><td>R$ ${anaRS.toFixed(2)}</td><td></td></tr>`;
+    document.getElementById('resumoAnaliticoBody').innerHTML = anaHtml;
+
+    // Caixas agrupados por dia
+    const caixasPorDia = {};
+    caixas.forEach(c => {
+        if (filtroFmt && c.dataAbertura !== filtroFmt) return;
+        if (!caixasPorDia[c.dataAbertura]) caixasPorDia[c.dataAbertura] = [];
+        caixasPorDia[c.dataAbertura].push(c);
+    });
+
+    const containerCaixas = document.getElementById('resumoCaixasDia');
+    if (Object.keys(caixasPorDia).length === 0) {
+        containerCaixas.innerHTML = '<p class="sem-dados">Nenhum caixa encontrado para esta data.</p>';
+        return;
+    }
+
+    let caixasHtml = '';
+    // Ordenar dias decrescente
+    const diasOrdenados = Object.keys(caixasPorDia).sort((a, b) => {
+        const [da, ma, aa] = a.split('/');
+        const [db, mb, ab] = b.split('/');
+        return new Date(ab, mb-1, db) - new Date(aa, ma-1, da);
+    });
+
+    diasOrdenados.forEach(dia => {
+        const listaCaixas = caixasPorDia[dia];
+        let totalDiaLitros = 0, totalDiaRS = 0;
+        listaCaixas.forEach(c => {
+            totalDiaLitros += c.totalLitros || 0;
+            totalDiaRS += c.totalRS || 0;
+        });
+
+        caixasHtml += `
+        <div style="margin-bottom:24px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; padding:12px 16px; background:#1a5276; color:#fff; border-radius:8px; margin-bottom:10px;">
+                <strong style="font-size:1.1rem;">${dia}</strong>
+                <span>${listaCaixas.length} caixa(s) — ${totalDiaLitros.toFixed(2)} litros — R$ ${totalDiaRS.toFixed(2)}</span>
+            </div>`;
+
+        listaCaixas.forEach((c, idx) => {
+            const qtd = Object.keys(c.lancamentos).filter(k => c.lancamentos[k].final > 0).length;
+            const statusClass = c.aberto ? 'status-aberto' : 'status-fechado';
+            const statusText = c.aberto ? 'ABERTO' : `Fechado ${c.horaFechamento}`;
+
+            caixasHtml += `
+            <div style="background:#fff; border:2px solid ${c.aberto ? '#e74c3c' : '#e0e0e0'}; border-radius:10px; margin-bottom:10px; overflow:hidden;">
+                <div style="display:flex; justify-content:space-between; align-items:center; padding:14px 16px; cursor:pointer; flex-wrap:wrap; gap:10px;" onclick="expandirCaixaResumo(${c.id})">
+                    <div style="display:flex; align-items:center; gap:12px;">
+                        <span style="font-size:1.5rem; color:#1a5276;">🕐</span>
+                        <div>
+                            <div style="font-weight:700; font-size:1.05rem; color:#1a5276;">Caixa ${c.horaAbertura}</div>
+                            <div style="font-size:0.8rem; color:#888;">${qtd} bicos lançados</div>
+                        </div>
+                    </div>
+                    <div style="text-align:right;">
+                        <span class="caixa-status ${statusClass}">${statusText}</span>
+                        <div style="font-size:0.85rem; color:#555; margin-top:4px;">
+                            <strong>${(c.totalLitros||0).toFixed(2)}</strong> litros — <strong>R$ ${(c.totalRS||0).toFixed(2)}</strong>
+                        </div>
+                    </div>
+                </div>
+                <div id="caixa-detail-${c.id}" style="display:none; border-top:2px solid #eee;"></div>
+            </div>`;
+        });
+
+        caixasHtml += '</div>';
+    });
+
+    containerCaixas.innerHTML = caixasHtml;
+}
+
+function expandirCaixaResumo(caixaId) {
+    const detailDiv = document.getElementById('caixa-detail-' + caixaId);
+    if (!detailDiv) return;
+
+    // Toggle visibility
+    if (detailDiv.style.display === 'block') {
+        detailDiv.style.display = 'none';
+        return;
+    }
+
+    const c = caixas.find(cx => cx.id === caixaId);
+    if (!c) return;
+
+    // Info header
+    let html = `
+    <div style="padding:16px; background:#f8f9fa;">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:14px;">
+            <div>
+                <div style="font-weight:700; color:#1a5276; font-size:1.1rem;">Detalhes do Caixa</div>
+                <div style="font-size:0.85rem; color:#666;">
+                    Abertura: <strong>${c.dataAbertura} ${c.horaAbertura}</strong>
+                    ${!c.aberto ? ` | Fechamento: <strong>${c.dataFechamento} ${c.horaFechamento}</strong>` : ''}
+                </div>
+            </div>
+            <div style="text-align:right;">
+                <div style="font-size:0.9rem; color:#555;">
+                    Total: <strong style="font-size:1.1rem; color:#1a5276;">${(c.totalLitros||0).toFixed(2)} litros</strong>
+                </div>
+                <div style="font-size:0.9rem; color:#555;">
+                    Valor: <strong style="font-size:1.1rem; color:#27ae60;">R$ ${(c.totalRS||0).toFixed(2)}</strong>
+                </div>
+            </div>
+        </div>
+
+        <div class="tabela-wrap">
+        <table>
+            <thead><tr>
+                <th>Bico</th><th>Combustível</th><th>Enc. Ini</th><th>Enc. Fim</th>
+                <th>Litros</th><th>R$/L</th><th>Total R$</th><th>Ação</th>
+            </tr></thead>
+            <tbody>`;
+
+    let totalLitros = 0, totalRS = 0;
+    BICOS.forEach(b => {
+        const l = c.lancamentos[b.num];
+        if (l && l.final > 0) {
+            totalLitros += l.litros;
+            totalRS += l.totalRS;
+            html += `
+            <tr>
+                <td style="font-weight:700;">Bico ${b.num}</td>
+                <td>${b.nome}</td>
+                <td>${l.inicial.toFixed(2)}</td>
+                <td>${l.final.toFixed(2)}</td>
+                <td>${l.litros.toFixed(2)}</td>
+                <td>R$ ${l.preco.toFixed(2)}</td>
+                <td>R$ ${l.totalRS.toFixed(2)}</td>
+                <td><button class="btn btn-editar btn-sm" onclick="abrirModalEdicao(${c.id}, ${b.num})">Editar</button></td>
+            </tr>`;
+        }
+    });
+
+    html += `
+            <tr class="total-row">
+                <td colspan="4" style="text-align:right; font-weight:700;">TOTAL</td>
+                <td>${totalLitros.toFixed(2)}</td><td></td>
+                <td>R$ ${totalRS.toFixed(2)}</td><td></td>
+            </tr>`;
+    html += '</tbody></table></div>';
+
+    // Bicos não lançados
+    const bicosNaoLancados = BICOS.filter(b => !c.lancamentos[b.num] || c.lancamentos[b.num].final <= 0);
+    if (bicosNaoLancados.length > 0) {
+        html += `
+        <div style="margin-top:12px; padding:10px; background:#fff3cd; border-radius:6px; font-size:0.85rem;">
+            <strong>Bicos não lançados:</strong> ${bicosNaoLancados.map(b => b.num).join(', ')}
+        </div>`;
+    }
+
+    html += '</div>';
+
+    detailDiv.innerHTML = html;
+    detailDiv.style.display = 'block';
+}
+
+// ===== RELATÓRIOS =====
+function gerarRelatorio() {
+    const di = document.getElementById('relDataInicio').value;
+    const df = document.getElementById('relDataFim').value;
+    const tipoFiltro = document.getElementById('relTipoCombustivel').value;
+
+    if (!di || !df) { alert('Selecione as datas!'); return; }
+
+    const [yi,mi,ddi] = di.split('-');
+    const [yf,mf,ddf] = df.split('-');
+    const diFmt = `${ddi}/${mi}/${yi}`;
+    const dfFmt = `${ddf}/${mf}/${yf}`;
+
+    // Filtrar caixas por período
+    const caixasFiltrados = caixas.filter(c => !c.aberto && c.dataAbertura >= diFmt && c.dataAbertura <= dfFmt);
+
+    // Coletar movimentações
+    const movs = [];
+    caixasFiltrados.forEach(c => {
+        Object.values(c.lancamentos).forEach(l => {
+            if (l.final <= 0) return;
+            if (tipoFiltro !== 'todos' && l.tipo !== tipoFiltro) return;
+            movs.push({ ...l, data: c.dataAbertura, hora: c.horaAbertura });
+        });
+    });
+
+    renderRelatorio(movs, diFmt, dfFmt, tipoFiltro);
+}
+
+function renderRelatorio(movs, di, df, tipo) {
+    const container = document.getElementById('relatorioResultado');
+    const agora = new Date().toLocaleString('pt-BR');
+
+    if (movs.length === 0) {
+        container.innerHTML = '<div class="card"><p class="sem-dados">Nenhuma movimentação no período.</p></div>';
+        return;
+    }
+
+    // Agrupar por categoria
+    const porCat = {};
+    Object.entries(CATEGORIAS).forEach(([cat, tipos]) => {
+        let litros = 0, rs = 0, qtd = 0;
+        movs.forEach(m => {
+            if (tipos.includes(m.tipo)) { litros += m.litros; rs += m.totalRS; qtd++; }
+        });
+        if (qtd > 0) porCat[cat] = { litros, rs, qtd };
+    });
+
+    let totalLitros = 0, totalRS = 0;
+    Object.values(porCat).forEach(c => { totalLitros += c.litros; totalRS += c.rs; });
+
+    let html = `<div class="card">
+        <div style="display:flex; justify-content:space-between; flex-wrap:wrap; margin-bottom:12px;">
+            <span><strong>Período:</strong> ${di} a ${df} | <strong>Tipo:</strong> ${tipo === 'todos' ? 'Todos' : tipo}</span>
+            <span style="color:#999;">Gerado: ${agora}</span>
+        </div>
+        <h2 style="margin-bottom:12px;">Resumo por Categoria</h2>
+        <div class="tabela-wrap"><table>
+        <thead><tr><th>Categoria</th><th>Qtd</th><th>Total Litros</th><th>Total R$</th></tr></thead>
+        <tbody>`;
+
+    Object.entries(porCat).forEach(([cat, c]) => {
+        html += `<tr><td style="font-weight:700;">${cat}</td><td>${c.qtd}</td><td>${c.litros.toFixed(2)}</td><td>R$ ${c.rs.toFixed(2)}</td></tr>`;
+    });
+    html += `<tr class="total-row"><td>TOTAL</td><td>${movs.length}</td><td>${totalLitros.toFixed(2)}</td><td>R$ ${totalRS.toFixed(2)}</td></tr>`;
+    html += '</tbody></table></div></div>';
+
+    // Detalhamento
+    html += `<div class="card"><h2>Detalhamento</h2><div class="tabela-wrap"><table>
+        <thead><tr><th>Data</th><th>Bico</th><th>Combustível</th><th>Enc. Ini</th><th>Enc. Fim</th><th>Litros</th><th>R$/L</th><th>Total R$</th></tr></thead>
+        <tbody>`;
+
+    movs.forEach(m => {
+        html += `<tr><td>${m.data}</td><td>${m.bico}</td><td>${m.nome}</td><td>${m.inicial.toFixed(2)}</td><td>${m.final.toFixed(2)}</td><td>${m.litros.toFixed(2)}</td><td>R$ ${m.preco.toFixed(2)}</td><td>R$ ${m.totalRS.toFixed(2)}</td></tr>`;
+    });
+    html += `<tr class="total-row"><td colspan="5">TOTAL</td><td>${totalLitros.toFixed(2)}</td><td></td><td>R$ ${totalRS.toFixed(2)}</td></tr>`;
+    html += '</tbody></table></div></div>';
+
+    container.innerHTML = html;
+}
+
+// ===== MOCKUP =====
+function carregarMockup() {
+    if (!confirm('Substituir todos os dados pelos de teste?')) return;
+
+    localStorage.removeItem('lmc_caixas');
+    caixas = [];
+
+    const mock = [
+        // Caixa 18/05 manhã
+        { data:'18/05/2026', hora:'06:00', bicos: [
+            {b:1,ini:12500,fim:12685.50,preco:5.89},{b:2,ini:8900,fim:9042.30,preco:5.89},
+            {b:3,ini:15200,fim:15398.70,preco:5.89},{b:4,ini:5600,fim:5723.40,preco:6.09},
+            {b:5,ini:11800,fim:11956.80,preco:5.89},{b:9,ini:3400,fim:3587.20,preco:3.99},
+            {b:10,ini:7800,fim:7934.50,preco:6.19},{b:13,ini:22000,fim:22456.80,preco:5.79},
+            {b:16,ini:18500,fim:18892.30,preco:5.99},{b:19,ini:9200,fim:9534.60,preco:5.99}
+        ]},
+        // Caixa 18/05 tarde
+        { data:'18/05/2026', hora:'12:00', bicos: [
+            {b:1,ini:12685.50,fim:12892.30,preco:5.89},{b:2,ini:9042.30,fim:9234.80,preco:5.89},
+            {b:7,ini:6300,fim:6478.90,preco:5.89},{b:8,ini:4100,fim:4256.70,preco:5.89},
+            {b:9,ini:3587.20,fim:3798.40,preco:3.99},{b:11,ini:2100,fim:2287.50,preco:3.99},
+            {b:13,ini:22456.80,fim:22834.50,preco:5.79},{b:14,ini:14200,fim:14567.80,preco:5.79},
+            {b:16,ini:18892.30,fim:19234.60,preco:5.99}
+        ]},
+        // Caixa 19/05 manhã
+        { data:'19/05/2026', hora:'06:00', bicos: [
+            {b:1,ini:12892.30,fim:13156.80,preco:5.89},{b:2,ini:9234.80,fim:9478.50,preco:5.89},
+            {b:3,ini:15398.70,fim:15634.20,preco:5.89},{b:4,ini:5723.40,fim:5867.90,preco:6.09},
+            {b:6,ini:3800,fim:3934.50,preco:6.09},{b:9,ini:3798.40,fim:4012.60,preco:3.99},
+            {b:10,ini:7934.50,fim:8123.80,preco:6.19},{b:12,ini:5400,fim:5578.30,preco:6.19},
+            {b:13,ini:22834.50,fim:23234.80,preco:5.79},{b:15,ini:7600,fim:7834.50,preco:5.99},
+            {b:16,ini:19234.60,fim:19567.80,preco:5.99},{b:18,ini:11200,fim:11534.60,preco:5.79},
+            {b:19,ini:9534.60,fim:9789.30,preco:5.99},{b:20,ini:4800,fim:5012.40,preco:5.99}
+        ]},
+        // Caixa 19/05 tarde
+        { data:'19/05/2026', hora:'14:00', bicos: [
+            {b:1,ini:13156.80,fim:13423.50,preco:5.89},{b:3,ini:15634.20,fim:15878.90,preco:5.89},
+            {b:5,ini:11956.80,fim:12189.40,preco:5.89},{b:9,ini:4012.60,fim:4234.80,preco:3.99},
+            {b:10,ini:8123.80,fim:8312.50,preco:6.19},{b:13,ini:23234.80,fim:23567.30,preco:5.79},
+            {b:17,ini:8900,fim:9234.50,preco:5.79},{b:19,ini:9789.30,fim:10123.80,preco:5.99}
+        ]},
+        // Caixa 20/05 manhã
+        { data:'20/05/2026', hora:'06:00', bicos: [
+            {b:1,ini:13423.50,fim:13678.90,preco:5.89},{b:2,ini:9478.50,fim:9689.30,preco:5.89},
+            {b:3,ini:15878.90,fim:16123.40,preco:5.89},{b:4,ini:5867.90,fim:6012.30,preco:6.09},
+            {b:5,ini:12189.40,fim:12434.80,preco:5.89},{b:9,ini:4234.80,fim:4456.30,preco:3.99},
+            {b:10,ini:8312.50,fim:8512.80,preco:6.19},{b:13,ini:23567.30,fim:23989.60,preco:5.79},
+            {b:16,ini:19567.80,fim:19923.40,preco:5.99},{b:19,ini:10123.80,fim:10456.30,preco:5.99}
+        ]}
+    ];
+
+    mock.forEach(m => {
+        const caixa = {
+            id: Date.now() + Math.random(),
+            aberto: false,
+            dataAbertura: m.data,
+            horaAbertura: m.hora,
+            dataFechamento: m.data,
+            horaFechamento: (parseInt(m.hora)+4) + ':00',
+            lancamentos: {},
+            totalLitros: 0,
+            totalRS: 0
+        };
+
+        m.bicos.forEach(b => {
+            const bico = BICOS.find(x => x.num === b.b);
+            const litros = b.fim - b.ini;
+            const totalRS = litros * b.preco;
+            caixa.lancamentos[b.b] = {
+                inicial: b.ini, final: b.fim, litros, totalRS, preco: b.preco,
+                bico: b.b, nome: bico.nome, tipo: bico.tipo
+            };
+            caixa.totalLitros += litros;
+            caixa.totalRS += totalRS;
+        });
+
+        caixas.push(caixa);
+    });
+
+    salvar();
+    renderCaixa();
+    alert('5 caixas mockup carregados!\n18/05 manhã e tarde\n19/05 manhã e tarde\n20/05 manhã');
+}
+
+// ===== INIT =====
+renderCaixa();
+</script>
+
+</body>
+</html>

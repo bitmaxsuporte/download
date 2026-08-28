@@ -521,7 +521,7 @@ body {
           <a class="nav-item" onclick="showArticle('transportadoras')">Transportadoras</a>
           <a class="nav-item" onclick="showArticle('vendedores')">Vendedores</a>
           <span class="nav-sub-label">Compras e Vendas</span>
-          <a class="nav-item" onclick="showArticle('classificação-fiscal')">Classificação Fiscal</a>
+          <a class="nav-item" onclick="showArticle('classificacao-fiscal')">Classificação Fiscal</a>
           <a class="nav-item" onclick="showArticle('mensagem-nf')">Mensagem na Nota Fiscal</a>
           <a class="nav-item" onclick="showArticle('natureza-operacoes')">Natureza de Operações</a>
           <a class="nav-item" onclick="showArticle('tributacoes-federais')">Tributações Federais</a>
@@ -543,15 +543,15 @@ body {
         <div class="nav-items" id="items-vendas">
           <a class="nav-item" onclick="showArticle('faturamento')">Faturamento (NF-e)</a>
           <a class="nav-item" onclick="showArticle('venda-rapida')">Venda Rápida</a>
-          <a class="nav-item" onclick="showArticle('outras-saídas')">Outras Saídas</a>
+          <a class="nav-item" onclick="showArticle('outras-saidas')">Outras Saídas</a>
           <a class="nav-item" onclick="showArticle('recebimento-venda')">Recebimento de Venda</a>
-          <a class="nav-item" onclick="showArticle('reajuste-preço')">Reajuste de Preço</a>
+          <a class="nav-item" onclick="showArticle('reajuste-preco')">Reajuste de Preço</a>
           <a class="nav-item" onclick="showArticle('cancelamento-reajuste')">Cancelamento de Reajuste</a>
-          <a class="nav-item" onclick="showArticle('reajuste-unitário')">Reajuste Unitário</a>
+          <a class="nav-item" onclick="showArticle('reajuste-unitario')">Reajuste Unitário</a>
           <span class="nav-sub-label">Oficina</span>
-          <a class="nav-item" onclick="showArticle('ordem-serviço')">Ordem de Serviço</a>
+          <a class="nav-item" onclick="showArticle('ordem-servico')">Ordem de Serviço</a>
           <span class="nav-sub-label">Relatórios</span>
-          <a class="nav-item" onclick="showArticle('relatórios-vendas')">Relatórios de Vendas</a>
+          <a class="nav-item" onclick="showArticle('relatorios-vendas')">Relatórios de Vendas</a>
         </div>
       </div>
 
@@ -569,7 +569,7 @@ body {
           <a class="nav-item" onclick="showArticle('entrada-manual')">Entrada Manual de Produtos</a>
           <a class="nav-item" onclick="showArticle('outras-entradas')">Outras Entradas</a>
           <a class="nav-item" onclick="showArticle('entrada-cte')">Entrada de CT-e</a>
-          <a class="nav-item" onclick="showArticle('relatórios-compras')">Relatórios de Compras</a>
+          <a class="nav-item" onclick="showArticle('relatorios-compras')">Relatórios de Compras</a>
         </div>
       </div>
 
@@ -584,12 +584,12 @@ body {
         </div>
         <div class="nav-items" id="items-financeiro">
           <span class="nav-sub-label">Contas a Receber</span>
-          <a class="nav-item" onclick="showArticle('títulos-receber')">Registro de Títulos</a>
-          <a class="nav-item" onclick="showArticle('baixa-títulos')">Baixa de Títulos</a>
-          <a class="nav-item" onclick="showArticle('títulos-massa')">Gerar Títulos em Massa</a>
-          <a class="nav-item" onclick="showArticle('prorrogação')">Prorrogação e Bloquetes</a>
+          <a class="nav-item" onclick="showArticle('titulos-receber')">Registro de Títulos</a>
+          <a class="nav-item" onclick="showArticle('baixa-titulos')">Baixa de Títulos</a>
+          <a class="nav-item" onclick="showArticle('titulos-massa')">Gerar Títulos em Massa</a>
+          <a class="nav-item" onclick="showArticle('prorrogacao')">Prorrogação e Bloquetes</a>
           <span class="nav-sub-label">Contas a Pagar</span>
-          <a class="nav-item" onclick="showArticle('títulos-pagar')">Registro e Baixa (Fornec.)</a>
+          <a class="nav-item" onclick="showArticle('titulos-pagar')">Registro e Baixa (Fornec.)</a>
           <span class="nav-sub-label">Caixa</span>
           <a class="nav-item" onclick="showArticle('movimento-caixa')">Movimento do Caixa</a>
           <a class="nav-item" onclick="showArticle('ferramentas-caixa')">Ferramentas de Caixa</a>
@@ -608,9 +608,9 @@ body {
           <svg class="nav-chevron" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
         </div>
         <div class="nav-items" id="items-ferramentas">
-          <a class="nav-item" onclick="showArticle('usuários')">Usuários e Permissões</a>
-          <a class="nav-item" onclick="showArticle('análise-diagnóstico')">Análise e Diagnóstico</a>
-          <a class="nav-item" onclick="showArticle('balanço-estoque')">Balanço de Estoque</a>
+          <a class="nav-item" onclick="showArticle('usuarios')">Usuários e Permissões</a>
+          <a class="nav-item" onclick="showArticle('analise-diagnostico')">Análise e Diagnóstico</a>
+          <a class="nav-item" onclick="showArticle('balanco-estoque')">Balanço de Estoque</a>
           <a class="nav-item" onclick="showArticle('boletos')">Gestão de Boletos</a>
           <a class="nav-item" onclick="showArticle('consulta-produto')">Consulta de Produto</a>
           <a class="nav-item" onclick="showArticle('cancelamento-nf')">Cancelamento de NF/NFC-e</a>
@@ -1115,7 +1115,7 @@ const articles = {
   </div>`
 },
 
-'classificação-fiscal': {
+'classificacao-fiscal': {
   module: 'Cadastro > Compras e Vendas',
   title: 'Classificação Fiscal',
   desc: 'Cadastre as classificações fiscais (CST, IPI, origem) utilizadas nos produtos.',
@@ -1278,7 +1278,7 @@ const articles = {
   </div>`
 },
 
-'outras-saídas': {
+'outras-saidas': {
   module: 'Vendas',
   title: 'Outras Saídas',
   desc: 'Lance complementos, ajustes, devoluções e outros tipos de saida.',
@@ -1321,7 +1321,7 @@ const articles = {
   </div>`
 },
 
-'reajuste-preço': {
+'reajuste-preco': {
   module: 'Vendas',
   title: 'Reajuste de Preços',
   desc: 'Atualize preços de grupos de produtos por percentual.',
@@ -1365,7 +1365,7 @@ const articles = {
   </div>`
 },
 
-'reajuste-unitário': {
+'reajuste-unitario': {
   module: 'Vendas',
   title: 'Reajuste de Preço Unitário',
   desc: 'Altere o preço de um produto especifico.',
@@ -1382,7 +1382,7 @@ const articles = {
   </div>`
 },
 
-'ordem-serviço': {
+'ordem-servico': {
   module: 'Vendas > Oficina',
   title: 'Ordem de Serviço',
   desc: 'Abra e gerencie ordens de serviço na oficina.',
@@ -1410,7 +1410,7 @@ const articles = {
   </div>`
 },
 
-'relatórios-vendas': {
+'relatorios-vendas': {
   module: 'Vendas',
   title: 'Relatórios de Vendas',
   desc: 'Emita relatórios de desempenho de vendas, comissoes, curva ABC e muito mais.',
@@ -1512,7 +1512,7 @@ const articles = {
   </div>`
 },
 
-'relatórios-compras': {
+'relatorios-compras': {
   module: 'Compras',
   title: 'Relatórios de Compras',
   desc: 'Emita relatórios de estoque, entradas, ficha Kardex, sugestão de compra e mais.',
@@ -1527,7 +1527,7 @@ const articles = {
 },
 
 // ── FINANCEIRO ──────────────────────────────────────────────────────────
-'títulos-receber': {
+'titulos-receber': {
   module: 'Financeiro > Contas a Receber',
   title: 'Registro de Títulos a Receber',
   desc: 'Cadastre manualmente títulos financeiros a receber de clientes.',
@@ -1546,7 +1546,7 @@ const articles = {
   </div>`
 },
 
-'baixa-títulos': {
+'baixa-titulos': {
   module: 'Financeiro > Contas a Receber',
   title: 'Baixa de Títulos',
   desc: 'Registre o recebimento de títulos individualmente ou em lote.',
@@ -1573,7 +1573,7 @@ const articles = {
   </div>`
 },
 
-'títulos-massa': {
+'titulos-massa': {
   module: 'Financeiro > Contas a Receber',
   title: 'Gerar Títulos em Massa',
   desc: 'Gere multiplas parcelas ou títulos de uma vez para um cliente.',
@@ -1591,7 +1591,7 @@ const articles = {
   </div>`
 },
 
-'prorrogação': {
+'prorrogacao': {
   module: 'Financeiro > Contas a Receber',
   title: 'Prorrogação e Bloquetes',
   desc: 'Altere datas de vencimento e gerencie documentos de cobrança.',
@@ -1608,7 +1608,7 @@ const articles = {
   </div>`
 },
 
-'títulos-pagar': {
+'titulos-pagar': {
   module: 'Financeiro > Contas a Pagar',
   title: 'Contas a Pagar',
   desc: 'Registre, baixe, cancele e prorrogue títulos de fornecedores.',
@@ -1697,7 +1697,7 @@ const articles = {
 },
 
 // ── FERRAMENTAS ──────────────────────────────────────────────────────────
-'usuários': {
+'usuarios': {
   module: 'Ferramentas',
   title: 'Usuários e Permissões',
   desc: 'Crie novos usuários e configure grupos de permissões de acesso ao sistema.',
@@ -1724,7 +1724,7 @@ const articles = {
   </div>`
 },
 
-'análise-diagnóstico': {
+'analise-diagnostico': {
   module: 'Ferramentas',
   title: 'Análise e Diagnóstico',
   desc: 'Raio-X da empresa para identificar erros, pendencias e auditoria de vendas.',
@@ -1748,7 +1748,7 @@ const articles = {
   </div>`
 },
 
-'balanço-estoque': {
+'balanco-estoque': {
   module: 'Ferramentas',
   title: 'Balanço de Estoque',
   desc: 'Corrija divergências entre o estoque físico e o sistema.',
